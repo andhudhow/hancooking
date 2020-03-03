@@ -1,0 +1,84 @@
+/* Splash */
+.rotd-container {
+  position: relative;
+  padding-bottom: 40px;
+}
+
+.splash-img {
+  height: 80vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+
+#rotd-card{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  width: 260px;
+  height: 201px;
+  background: white;
+  position: absolute;
+  right: 85px;
+  bottom: 81px;
+  text-align: center;
+  cursor: pointer;
+  padding: 52px 30px 30px;
+}
+
+#rotd-label{
+  box-sizing: border-box;
+  outline: 0;
+  font-size: 12px;
+  background-color: #e33d26;
+  color: #fff;
+  font-family: 'karnak-400';
+  letter-spacing: 1.1px;
+  text-align: center;
+  text-transform: uppercase;
+  z-index: 55;
+  border-radius: 54px;
+  height: 108px;
+  line-height: 1.5rem;
+  margin: 0;
+  padding: 28px 10px 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 108px;
+  right: 33px;
+  bottom: 310px;
+}
+
+#rotd-title {
+  font: 34px 'cheltenham-300',Georgia,"Times New Roman",serif;;
+  color: #222;
+  text-align: center;
+  box-sizing: border-box;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  font-weight: 300;
+  letter-spacing: .5px;
+  margin-bottom: 10px;
+  line-height: 3.8rem;
+}
+
+#rotd-description {
+  font: 20px 'cheltenham-300',Georgia,"Times New Roman",serif;
+  color: #222;
+  letter-spacing: .6px;
+  padding-bottom: 100px;
+}
+
+.carousel-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+#carousel-container img {
+  /* height: 100px;
+  width: 100px; */
+}
