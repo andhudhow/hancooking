@@ -5,7 +5,7 @@
   right: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.7);
-  z-index: 100;
+  z-index: 10;
 }
 
 .modal-child {
@@ -13,6 +13,75 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: white;
+  height: 350px;
+  width: 200;
+  padding: 25px;
+  font:15 'cheltenham-300',Georgia,"Times New Roman",serif;
+}
+
+.modal-child h2 {
+  text-align: center;
+}
+
+.modal-child a {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.login-error {
+  color: #e33d26; 
+}
+
+.login-input {
+  -webkit-font-smoothing: antialiased;
+  width: 100%;
+  height: 2.5rem;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: normal;
+  color: rgb(0, 0, 0);
+  background-color: rgb(236, 236, 236);
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  opacity: 1;
+  box-shadow: rgba(0, 0, 0, 0.07) 0.125em 0.1875em 0.1875em inset;
+  padding: 0px 0.5rem;
+  border-radius: 3px;
+  outline: none;
+  overflow: hidden;
+  border-width: 0px;
+  border-style: initial;
+  border-color: initial;
+  border-image: initial;
+  transition: box-shadow 200ms linear 0s;
+}
+
+.session-submit {
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  width: 100%;
+  height: 2.5em;
+  line-height: 2.375em;
+  font-family: nyt-franklin, helvetica, arial, sans-serif;
+  font-size: 1em;
+  font-weight: 700;
+  cursor: pointer;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background-image: none;
+  color: rgb(255, 255, 255);
+  background-color: rgb(227, 61, 38);
+  margin: 0px;
+  padding: 0px;
+  border-width: 0.0625em;
+  border-style: solid;
+  border-image: initial;
+  border-radius: 0.2em;
+  border-color: rgb(227, 61, 38);
+  transition: all 0.15s ease-in 0s;
 }
 
 .close-x {

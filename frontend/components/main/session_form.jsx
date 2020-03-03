@@ -5,7 +5,7 @@ class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
+      email: '',
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,7 +27,7 @@ class SessionForm extends React.Component {
     return(
       <ul>
         {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
+          <li className="login-error" key={`error-${i}`}>
             {error}
           </li>
         ))}
@@ -39,17 +39,17 @@ class SessionForm extends React.Component {
     return (
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          Welcome to BenchBnB!
+          <img src="/assets/logo.png" />
           <br/>
-          Please {this.props.formType} or {this.props.otherForm}
+          Please {this.props.headerText} below or {this.props.otherForm}
           <div onClick={this.props.closeModal} className="close-x">X</div>
           {this.renderErrors()}
           <div className="login-form">
             <br/>
-            <label>Username:
+            <label>Email Address:
               <input type="text"
-                value={this.state.username}
-                onChange={this.update('username')}
+                value={this.state.email}
+                onChange={this.update('email')}
                 className="login-input"
               />
             </label>
@@ -61,8 +61,8 @@ class SessionForm extends React.Component {
                 className="login-input"
               />
             </label>
-            <br/>
-            <input className="session-submit" type="submit" value={this.props.formType} />
+            <br/><br/>
+            <input className="session-submit" type="submit" value={this.props.buttonText} />
           </div>
         </form>
       </div>

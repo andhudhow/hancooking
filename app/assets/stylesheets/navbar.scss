@@ -63,12 +63,12 @@
   text-align: right;
   padding-left: 35px;
   padding-right: 45px;
-  float:right;
 }
 
 .nav-btn-wrapper {
   justify-content: space-between;
   display: flex;
+  float: right;
 }
 
 .nav-btns {
@@ -99,19 +99,4 @@
 .nav-btns:hover {
   border-bottom: 4px solid #666;
   cursor: pointer;
-}
-
-.welcomeMessage {
-  font-size: .75rem;
-  color: black;
-  letter-spacing: inherit;
-  line-height: 1.1em;
-  text-align: center;
-  text-transform: uppercase;
-  margin: 5px auto 0;
-  text-decoration: none;
-  text-transform: uppercase;
-  margin: 5px;
-  display: flex;
-  flex-direction: row;
 }

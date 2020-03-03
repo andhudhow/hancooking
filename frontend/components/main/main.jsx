@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import MainCarousel from './main-carousel';
+import MainCarousel from './main-carousel';
 import { openModal } from '../../actions/modal_actions';
 import NavBarContainer from '../main/navbar/nav_container';
 
@@ -29,34 +29,7 @@ import NavBarContainer from '../main/navbar/nav_container';
 const Splash = () => {
   return (
       <div className='outer'>
-        <section className='main-nav'>
-          <div className='logo-wrapper'>
-            <Link to='/'>
-              <img className='logo' src='/assets/logo.png' />
-            </Link>
-          </div>
-
-          
-          {/* <img src="/assets/nav-inline-search-glass" id="search-glass" /> */}
-          <section className='search-bar'>
-            <input id='search-input' type='text' placeholder='What would you like to cook?'/>
-            {/* Todo add a UL */}
-          </section>
-
-        <nav className='right-nav'>
-            <div className="nav-btn-wrapper">
-              <ul>
-                <li className='nav-btns'>
-                  <Link to='/recipes/recipe-box'>Grocery List</Link>
-                </li>
-                <li className='nav-btns'>
-                  <Link to='/recipes/recipe-box'>Recipe Box</Link>
-                </li>
-                <li className='nav-btns' onClick={() => openModal('login')}>Log in / Sign up</li>
-              </ul>
-            </div>
-        </nav>
-        </section>
+        <NavBarContainer />
         {/* <img src='/assets/bibimbap' className='splash-img' /> */}
         <section className="rotd-container">
           <video className='splash-img' autoPlay muted loop type='video/mp4' src='/assets/COTE_VIDEO_4.mp4' />
@@ -71,7 +44,7 @@ const Splash = () => {
             </div>
           </section>
         <div className="carousel-container">
-          {/* <MainCarousel /> */}
+          <MainCarousel />
         </div>
     </div>
   )
