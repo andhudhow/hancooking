@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import MainCarousel from './main-carousel';
+// import MainCarousel from './main-carousel';
+import { openModal } from '../../actions/modal_actions';
+import NavBarContainer from '../main/navbar/nav_container';
 
 //A welcome message including the user's username
 //A button to logout
@@ -42,7 +44,7 @@ const Splash = () => {
           </section>
 
         <nav className='right-nav'>
-            <div class="nav-btn-wrapper">
+            <div className="nav-btn-wrapper">
               <ul>
                 <li className='nav-btns'>
                   <Link to='/recipes/recipe-box'>Grocery List</Link>
@@ -50,7 +52,7 @@ const Splash = () => {
                 <li className='nav-btns'>
                   <Link to='/recipes/recipe-box'>Recipe Box</Link>
                 </li>
-                <li className='nav-btns'>Log out</li>
+                <li className='nav-btns' onClick={() => openModal('login')}>Log in / Sign up</li>
               </ul>
             </div>
         </nav>

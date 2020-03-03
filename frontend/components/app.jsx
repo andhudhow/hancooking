@@ -1,5 +1,6 @@
 import React from "react";
 import Main from '../components/main/main'
+import Modal from '../components/modals/modal';
 
 import {
     Route,
@@ -13,6 +14,7 @@ const App = () => {
     
     return (
     <div>
+        <Modal />
         <Main />
     </div>
     )
