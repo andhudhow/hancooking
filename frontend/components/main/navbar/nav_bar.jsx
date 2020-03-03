@@ -17,7 +17,7 @@ class NavBar extends React.Component{
           <Link to='/recipes/recipe-box'>Recipe Box</Link>
         </li>
         <li className='nav-btns'>
-          <a href="#logout" onClick={logout}>Log Out</a>
+          <a href="" onClick={logout}>Log Out</a>
         </li>
       </ul>
     );

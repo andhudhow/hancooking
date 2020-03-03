@@ -26,6 +26,12 @@
   text-align: center;
   cursor: pointer;
   padding: 52px 30px 30px;
+  border-radius: 3px;
+}
+
+#rotd-card:hover{
+  border: 0.1px solid #e6e6e6;
+  box-shadow: 0 0 15px rgba(0,0,0,.3);
 }
 
 #rotd-label{
@@ -66,20 +72,31 @@
 }
 
 #rotd-description {
-  font: 20px 'cheltenham-300',Georgia,"Times New Roman",serif;
+  font: 22px 'cheltenham-300',Georgia,"Times New Roman",serif;
   color: #222;
-  letter-spacing: .5px;
+  letter-spacing: .6px;
   padding-bottom: 100px;
 }
 
 .carousel-container {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  width: 80%;
+
 }
 
 #carousel-container img {
   /* height: 100px;
   width: 100px; */
+}
+
+.what-to-cook {
+  text-align: center;
+  text-transform: none;
+  font-family: 'karnak-400',Georgia,"Times New Roman",serif;
+  font-weight: 400;
+  letter-spacing: .3px;
+  font-size: 3.8rem;
+  line-height: 4rem;
+  box-sizing: border-box;
+  outline: 0;
+  text-decoration: none;
+  color: #222;
 }

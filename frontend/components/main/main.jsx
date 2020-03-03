@@ -43,9 +43,14 @@ const Splash = () => {
                 </div>
             </div>
           </section>
-        <div className="carousel-container">
-          <MainCarousel />
-        </div>
+        <br />
+        <section className="what-to-cook">
+          What to Cook This Week
+          <br /><br />
+          <div className="carousel-container">
+            <MainCarousel />
+          </div>
+        </section>
     </div>
   )
 }

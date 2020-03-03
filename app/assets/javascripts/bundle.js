@@ -311,8 +311,8 @@ var MainCarousel = /*#__PURE__*/function (_React$Component) {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
+        slidesToShow: 5,
+        slidesToScroll: 12,
         responsive: [{
           breakpoint: 1024,
           settings: {
@@ -417,9 +417,11 @@ var Splash = function Splash() {
     id: "rotd-title"
   }, "Korean-Style Shortrib"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "rotd-description"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Also known as galbi, these shortribs are great at a restaurant, but also wonderful at home.")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Also known as galbi, these shortribs are great at a restaurant, but also wonderful at home.")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+    className: "what-to-cook"
+  }, "What to Cook This Week", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "carousel-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_carousel__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_carousel__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Splash);
@@ -489,7 +491,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         }, "Recipe Box")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "nav-btns"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "#logout",
+          href: "",
           onClick: logout
         }, "Log Out")));
       };
@@ -685,7 +687,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Please ", this.props.headerText, " below or ", this.props.otherForm, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         onClick: this.props.closeModal,
         className: "close-x"
-      }, "X"), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "\xD7"), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email Address:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
@@ -891,10 +893,24 @@ document.addEventListener("DOMContentLoaded", function () {
   window.login = _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["login"];
   window.logout = _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["logout"];
   window.signup = _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["signup"];
-  var store = Object(_store_store__WEBPACK_IMPORTED_MODULE_3__["default"])();
-  var root = document.getElementById("root");
+  var store;
+
+  if (window.currentUser) {
+    var preloadedState = {
+      session: {
+        currentUser: window.currentUser
+      }
+    };
+    store = Object(_store_store__WEBPACK_IMPORTED_MODULE_3__["default"])(preloadedState);
+    delete window.currentUser;
+  } else {
+    store = Object(_store_store__WEBPACK_IMPORTED_MODULE_3__["default"])();
+  }
+
   window.getState = store.getState;
   window.dispatch = store.dispatch;
+  debugger;
+  var root = document.getElementById("root");
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_4__["default"], {
     store: store
   }), root);
@@ -1033,7 +1049,7 @@ var sessionReducer = function sessionReducer() {
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
       return {
-        currentUser: action.currentUser.id
+        currentUser: action.currentUser
       };
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["LOGOUT_CURRENT_USER"]:
