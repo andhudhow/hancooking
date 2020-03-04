@@ -29,7 +29,6 @@ import NavBarContainer from '../main/navbar/nav_container';
 const Splash = () => {
   return (
       <div className='outer'>
-        <NavBarContainer />
         {/* <img src='/assets/bibimbap' className='splash-img' /> */}
         <section className="rotd-container">
           <video className='splash-img' autoPlay muted loop type='video/mp4' src='/assets/COTE_VIDEO_4.mp4' />
@@ -39,7 +38,7 @@ const Splash = () => {
                     Korean-Style Shortrib
                 </h3>
                 <div id="rotd-description">
-                  <p>Also known as galbi, these shortribs are great at a restaurant, but also wonderful at home.</p>
+                  <p>Also known as galbi (갈비), these shortribs are great at a restaurant, but also wonderful at home.</p>
                 </div>
             </div>
           </section>

@@ -1,0 +1,104 @@
+// Recipes
+
+
+.recipe-show-container {
+  position: fixed;
+  padding-top: 64px;
+}
+
+.recipe-image-container {
+  box-sizing: border-box;
+  outline: 0;
+  position: relative;
+  padding-top: 7px;
+  max-width: 600px;
+  text-align: right;
+  float: right;
+  margin: 0 auto 20px 30px;
+  width: 62.63158%;
+  margin-bottom: 25px;
+}
+
+.recipe-image {
+  color: #222;
+  font: 12px nyt-franklin,Arial,Helvetica,sans-serif;
+  font-weight: 500;
+  text-align: right;
+  box-sizing: border-box;
+  outline: 0;
+  vertical-align: middle;
+  max-width: 600%;
+}
+
+// .ingredients-wrap {
+//   color: #222;
+//   font-family: 'franklin-300',Arial,Helvetica,sans-serif;
+//   font-weight: 500;
+//   box-sizing: border-box;
+//   outline: 0;
+//   display: block;
+//   float: left;
+//   margin-bottom: 0;
+//   padding-right: 1em;
+//   width: 32.31579%;
+// }
+
+// .ingredients-wrap li:before {
+//   content: ' ';
+//   display: table;
+// }
+
+// .ingredients-wrap li:after {
+//   clear: both;
+// }
+
+
+
+// .ingredients {
+//   color: #222;
+//   font-family: 'franklin-300',Arial,Helvetica,sans-serif;
+//   font-weight: 500;
+//   box-sizing: border-box;
+//   outline: 0;
+//   padding: 0;
+//   display: block;
+//   margin: 0 0 15px 0;
+// }
+
+// .ingredient-list {
+//   color: #222;
+//   font: 12px nyt-franklin,Arial,Helvetica,sans-serif;
+//   font-weight: 500;
+//   box-sizing: border-box;
+//   outline: 0;
+//   margin: 0;
+//   padding: 0;
+// }
+ 
+// .ingredient-quantity {
+//   color: #222;
+//   box-sizing: border-box;
+//   outline: 0;
+//   display: inline-block;
+//   font-size: 15px;
+//   line-height: 18.6px;
+//   vertical-align: top;
+//   font-family: 'franklin-300',Arial,Helvetica,sans-serif;
+//   font-weight: 700;
+//   text-align: right;
+//   width: 57px;
+// }
+
+// .ingredient-desc {
+//   color: #222;
+//   box-sizing: border-box;
+//   outline: 0;
+//   display: inline-block;
+//   font-family: 'franklin-300',Arial,Helvetica,sans-serif;
+//   font-size: 15px;
+//   font-weight: 700;
+//   line-height: 18.6px;
+//   vertical-align: top;
+//   padding-left: 5px;
+//   width: 70%;
+// }

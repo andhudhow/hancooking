@@ -1,4 +1,4 @@
-json.recipe do
+json.set! :recipe do
   json.partial! 'api/recipes/recipe', recipe: @recipe
   json.ingredientIds @recipe.ingredients.ids
   json.prep_steps @recipe.prep_steps.order(:step).ids

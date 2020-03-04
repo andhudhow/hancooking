@@ -1,6 +1,8 @@
 import React from "react";
 import Main from '../components/main/main'
 import Modal from '../components/modals/modal';
+import RecipeShowContainer from '../components/recipe/recipe_show_container';
+import NavBarContainer from '../components/main/navbar/nav_container';
 
 import {
     Route,
@@ -13,9 +15,14 @@ import {
 const App = () => {
     
     return (
-    <div>
+    <div className="site-container">
         <Modal />
-        <Main />
+        <NavBarContainer />
+        <Switch>
+            <Route path="/recipes/:recipeId" component={RecipeShowContainer} />
+            <Route path="/" component={Main} />
+        </Switch>
+        
     </div>
     )
 };

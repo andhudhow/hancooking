@@ -18,6 +18,7 @@
   width: 200;
   padding: 25px;
   font:15 'cheltenham-300',Georgia,"Times New Roman",serif;
+  border-radius: 10px;
 }
 
 .modal-child h2 {
@@ -30,7 +31,7 @@
 }
 
 .login-error {
-  color: #e33d26; 
+  color: #e33d26;
 }
 
 .login-input {
@@ -48,7 +49,7 @@
   opacity: 1;
   box-shadow: rgba(0, 0, 0, 0.07) 0.125em 0.1875em 0.1875em inset;
   padding: 0px 0.5rem;
-  border-radius: 3px;
+  border-radius: 10px;
   outline: none;
   overflow: hidden;
   border-width: 0px;
@@ -87,6 +88,6 @@
 .close-x {
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 20px;
   cursor: pointer;
 }
