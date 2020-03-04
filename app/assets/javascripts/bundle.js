@@ -1038,6 +1038,68 @@ var PrepStepListIndexItem = function PrepStepListIndexItem(props) {
 
 /***/ }),
 
+/***/ "./frontend/components/recipe/recipe_header.jsx":
+/*!******************************************************!*\
+  !*** ./frontend/components/recipe/recipe_header.jsx ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var RecipeHeader = function RecipeHeader(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recipe-title-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recipe-title"
+  }, props.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recipe-title author"
+  }, props.authorName)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recipe-sub-title-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "yeild-time-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recipe-yield-time"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "time-yield-label"
+  }, "Yield"), " ", props.servings, " servings"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recipe-yield-time"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "time-yield-label"
+  }, "Time"), " ", props.cookTime)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recipe-sub-title-btn-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "save-recipe-btn"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "save-recipe-icon",
+    src: "assets/save-white-outline.svg"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "save-btn-text"
+  }, "Save to Recipe Box")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "print-recipe-btn"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "javascript:window.print()"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "print-recipe-icon",
+    src: "assets/rdp-print.svg"
+  }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recipe-description-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "recipe-description"
+  }, props.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "recipe-image",
+    src: "assets/bibimbap.jpg"
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (RecipeHeader);
+
+/***/ }),
+
 /***/ "./frontend/components/recipe/recipe_show.jsx":
 /*!****************************************************!*\
   !*** ./frontend/components/recipe/recipe_show.jsx ***!
@@ -1047,16 +1109,18 @@ var PrepStepListIndexItem = function PrepStepListIndexItem(props) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ingredient_list_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ingredient_list_index */ "./frontend/components/recipe/ingredient_list_index.jsx");
-/* harmony import */ var _prep_steps_list_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./prep_steps_list_index */ "./frontend/components/recipe/prep_steps_list_index.jsx");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _recipe_header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./recipe_header */ "./frontend/components/recipe/recipe_header.jsx");
+/* harmony import */ var _ingredient_list_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ingredient_list_index */ "./frontend/components/recipe/ingredient_list_index.jsx");
+/* harmony import */ var _prep_steps_list_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./prep_steps_list_index */ "./frontend/components/recipe/prep_steps_list_index.jsx");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
 
 var RecipeShow = function RecipeShow(props) {
-  Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(function () {
+  Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {
     props.fetchRecipe(props.match.params.recipeId);
   }, []);
 
@@ -1072,53 +1136,29 @@ var RecipeShow = function RecipeShow(props) {
     }
   };
 
-  return props.recipe.id ? react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+  return props.recipe.id ? react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
     className: "recipe-show-container"
-  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-    className: "recipe-title-container"
-  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-    className: "recipe-title"
-  }, props.recipe.title), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-    className: "recipe-title author"
-  }, props.recipe.authorName)), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-    className: "recipe-sub-title-container"
-  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-    className: "yeild-time-container"
-  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-    className: "recipe-yield-time"
-  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
-    className: "time-yield-label"
-  }, "Yield"), " ", props.recipe.servings, " servings"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-    className: "recipe-yield-time"
-  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
-    className: "time-yield-label"
-  }, "Time"), " ", cookTime(props.recipe.minDuration))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-    className: "recipe-sub-title-btn-container"
-  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-    className: "save-recipe-btn"
-  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("img", {
-    className: "save-recipe-icon",
-    src: "assets/save-white-outline.svg"
-  }), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-    id: "save-btn-text"
-  }, "Save to Recipe Box")))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-    className: "recipe-description-container"
-  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", {
-    className: "recipe-description"
-  }, props.recipe.description), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("img", {
-    className: "recipe-image",
-    src: "assets/bibimbap.jpg"
-  })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_recipe_header__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    title: props.recipe.title,
+    authorName: props.recipe.authorName,
+    description: props.recipe.description,
+    servings: props.recipe.servings,
+    cookTime: cookTime(props.recipe.minDuration)
+  }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
     className: "recipe-instructions-container"
-  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
     className: "recipe-ingredients-list-container"
-  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("h3", null, "Ingredients"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_ingredient_list_index__WEBPACK_IMPORTED_MODULE_0__["default"], {
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("h3", {
+    className: "instructions-header"
+  }, "Ingredients"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_ingredient_list_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
     ingredients: props.ingredients
-  })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+  })), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
     className: "recipe-prepsteps-list"
-  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("h3", null, "Preparation"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_prep_steps_list_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("h3", {
+    className: "instructions-header"
+  }, "Preparation"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_prep_steps_list_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
     prepSteps: props.prepSteps
-  })))) : react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", null, "LOADING!");
+  })))) : react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", null, "LOADING!");
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (RecipeShow);

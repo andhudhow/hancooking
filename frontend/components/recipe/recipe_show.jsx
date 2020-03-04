@@ -1,3 +1,4 @@
+import RecipeHeader from './recipe_header';
 import IngredientListIndex from './ingredient_list_index';
 import PrepStepsListIndex from './prep_steps_list_index';
 
@@ -24,33 +25,22 @@ const RecipeShow = (props) => {
   return (
       props.recipe.id ?
         <div className="recipe-show-container">
-          <div className="recipe-title-container">
-            <div className="recipe-title">{props.recipe.title}</div>
-            <div className="recipe-title author">{props.recipe.authorName}</div>
-          </div>
-          <div className="recipe-sub-title-container">
-            <div className="yeild-time-container">
-              <div className="recipe-yield-time"><span className="time-yield-label">Yield</span> {props.recipe.servings} servings</div>
-              <div className="recipe-yield-time"><span className="time-yield-label">Time</span> {cookTime(props.recipe.minDuration)}</div>
-            </div>
-            <div className="recipe-sub-title-btn-container">
-              <div className="save-recipe-btn">
-                <img className="save-recipe-icon" src="assets/save-white-outline.svg"></img>
-                  <div id="save-btn-text">Save to Recipe Box</div>
-              </div>
-            </div>
-          </div>
-          <div className="recipe-description-container">
-            <p className="recipe-description">{props.recipe.description}</p>
-            <img className="recipe-image" src="assets/bibimbap.jpg" />
-          </div>
+          <RecipeHeader
+            title={props.recipe.title}
+            authorName={props.recipe.authorName}
+            description={props.recipe.description}
+            servings={props.recipe.servings}
+            cookTime={cookTime(props.recipe.minDuration)}
+          />
           <div className="recipe-instructions-container">
             <div className="recipe-ingredients-list-container">
-              <h3>Ingredients</h3>
+              <h3 className='instructions-header'>Ingredients</h3>
+              <br /><br />
               <IngredientListIndex ingredients={props.ingredients} />
             </div>
             <div className="recipe-prepsteps-list">
-            <h3>Preparation</h3>
+            <h3 className='instructions-header'>Preparation</h3>
+            <br /><br />
               <PrepStepsListIndex prepSteps={props.prepSteps} />
             </div>
           </div>
