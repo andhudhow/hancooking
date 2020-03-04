@@ -18,10 +18,18 @@ body {
   line-height: 1.5;
 }
 
-ol, ul {
+ol, ul, li {
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
 
 img {
   width: 100%
+}
+
+* {
+  outline-style: dotted;
+  outline-color: red;
+  outline-width: 1px;
 }

@@ -970,9 +970,9 @@ var IngredientListIndexItem = function IngredientListIndexItem(props) {
     key: props.key,
     className: "ingredient"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    "class": "ingredient-quantity"
+    className: "ingredient-quantity"
   }, props.ingredient.quantity), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    "class": "ingredient-desc"
+    className: "ingredient-desc"
   }, props.ingredient.description));
 };
 
@@ -1026,14 +1026,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var PrepStepListIndexItem = function PrepStepListIndexItem(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Step ", props.index), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     key: props.index,
     className: "prepStep"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "prepStep-quantity"
-  }, props.prepStep.quantity), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, "Step ", props.prepStep.step, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "prepStep-desc"
-  }, props.prepStep.description)));
+  }, props.prepStep.description))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (PrepStepListIndexItem);
@@ -1074,32 +1072,53 @@ var RecipeShow = function RecipeShow(props) {
     }
   };
 
-  return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+  return props.recipe.id ? react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
     className: "recipe-show-container"
+  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+    className: "recipe-title-container"
   }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
     className: "recipe-title"
   }, props.recipe.title), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-    className: "recipe-byline"
-  }, props.recipe.authorName), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-    className: "yield"
+    className: "recipe-title author"
+  }, props.recipe.authorName)), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+    className: "recipe-sub-title-container"
+  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+    className: "yeild-time-container"
+  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+    className: "recipe-yield-time"
   }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
     className: "time-yield-label"
-  }, "Yield:"), " ", props.recipe.servings), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-    className: "cook-time"
+  }, "Yield"), " ", props.recipe.servings, " servings"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+    className: "recipe-yield-time"
   }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
-    className: "yield"
-  }, "Time:"), " ", cookTime(props.recipe.minDuration)), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-    className: "servings"
-  }, props.recipe.description), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-    className: "recipe-image-container"
+    className: "time-yield-label"
+  }, "Time"), " ", cookTime(props.recipe.minDuration))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+    className: "recipe-sub-title-btn-container"
+  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+    className: "save-recipe-btn"
   }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("img", {
+    className: "save-recipe-icon",
+    src: "assets/save-white-outline.svg"
+  }), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+    id: "save-btn-text"
+  }, "Save to Recipe Box")))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+    className: "recipe-description-container"
+  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", {
+    className: "recipe-description"
+  }, props.recipe.description), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("img", {
     className: "recipe-image",
     src: "assets/bibimbap.jpg"
-  })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_ingredient_list_index__WEBPACK_IMPORTED_MODULE_0__["default"], {
+  })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+    className: "recipe-instructions-container"
+  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+    className: "recipe-ingredients-list-container"
+  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("h3", null, "Ingredients"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_ingredient_list_index__WEBPACK_IMPORTED_MODULE_0__["default"], {
     ingredients: props.ingredients
-  }), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_prep_steps_list_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+    className: "recipe-prepsteps-list"
+  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("h3", null, "Preparation"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_prep_steps_list_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
     prepSteps: props.prepSteps
-  }));
+  })))) : react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", null, "LOADING!");
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (RecipeShow);
@@ -1127,7 +1146,6 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var session = _ref.session,
       entities = _ref.entities;
-  // debugger
   return {
     currentUser: session.currentUser,
     recipe: entities.recipes,
