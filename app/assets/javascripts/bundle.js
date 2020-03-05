@@ -1498,6 +1498,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _recipes_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./recipes_reducer */ "./frontend/reducers/recipes_reducer.js");
 /* harmony import */ var _ingredients_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ingredients_reducer */ "./frontend/reducers/ingredients_reducer.js");
 /* harmony import */ var _prep_steps_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./prep_steps_reducer */ "./frontend/reducers/prep_steps_reducer.js");
+/* harmony import */ var _saved_recipes_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./saved_recipes_reducer */ "./frontend/reducers/saved_recipes_reducer.js");
+
 
 
 
@@ -1505,7 +1507,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   recipes: _recipes_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   ingredients: _ingredients_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  prepSteps: _prep_steps_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  prepSteps: _prep_steps_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  savedRecipes: _saved_recipes_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
 }));
 
 /***/ }),
@@ -1684,6 +1687,47 @@ var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(
 
 /***/ }),
 
+/***/ "./frontend/reducers/saved_recipes_reducer.js":
+/*!****************************************************!*\
+  !*** ./frontend/reducers/saved_recipes_reducer.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
+
+
+
+var savedRecipesReducer = function savedRecipesReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
+      return action.currentUser.savedRecipes;
+
+    case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_RECIPE_SAVE"]:
+      return action.currentUser.savedRecipes;
+
+    case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__["REMOVE_RECIPE_SAVE"]:
+      return action.currentUser.savedRecipes;
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["LOGOUT_CURRENT_USER"]:
+      return {};
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (savedRecipesReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/session_errors_reducer.js":
 /*!*****************************************************!*\
   !*** ./frontend/reducers/session_errors_reducer.js ***!
@@ -1740,21 +1784,33 @@ var sessionReducer = function sessionReducer() {
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
       return {
-        currentUser: action.currentUser
+        currentUser: {
+          id: action.currentUser.id,
+          email: action.currentUser.email,
+          savedRecipeIds: action.currentUser.savedRecipeIds
+        }
       };
-
-    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["LOGOUT_CURRENT_USER"]:
-      return _nullUser;
 
     case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_RECIPE_SAVE"]:
       return {
-        currentUser: action.currentUser
+        currentUser: {
+          id: action.currentUser.id,
+          email: action.currentUser.email,
+          savedRecipeIds: action.currentUser.savedRecipeIds
+        }
       };
 
     case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__["REMOVE_RECIPE_SAVE"]:
       return {
-        currentUser: action.currentUser
+        currentUser: {
+          id: action.currentUser.id,
+          email: action.currentUser.email,
+          savedRecipeIds: action.currentUser.savedRecipeIds
+        }
       };
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["LOGOUT_CURRENT_USER"]:
+      return _nullUser;
 
     default:
       return state;
