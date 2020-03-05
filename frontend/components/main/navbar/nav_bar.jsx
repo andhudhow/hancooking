@@ -11,10 +11,10 @@ class NavBar extends React.Component{
     const navButtons = () => (
       <ul>
         <li className='nav-btns'>
-          <Link to='/recipes/recipe-box'>Grocery List</Link>
+          <Link to='/recipe-box'>Grocery List</Link>
         </li>
         <li className='nav-btns'>
-          <Link to='/recipes/recipe-box'>Recipe Box</Link>
+          <Link to='/recipe-box'>Recipe Box</Link>
         </li>
         <li className='nav-btns'>
           <a href="" onClick={logout}>Log Out</a>

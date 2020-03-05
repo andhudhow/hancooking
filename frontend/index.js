@@ -17,7 +17,16 @@ document.addEventListener("DOMContentLoaded", () => {
   let store;
   if (window.currentUser) 
     {
-    const preloadedState = { session: { currentUser: window.currentUser } };
+    const preloadedState = { 
+      entities: { savedRecipes: window.currentUser.savedRecipes },
+      session: { 
+        currentUser: {
+          id: window.currentUser.id,
+          email: window.currentUser.email,
+          savedRecipeIds: window.currentUser.savedRecipeIds
+        }
+      }
+    };
     store = configureStore(preloadedState);
     delete window.currentUser;
   } else {

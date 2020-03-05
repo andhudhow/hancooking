@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchrecipe} from '../../actions/recipe_actions';
+import { fetchrecipe } from '../../actions/recipe_actions';
 import RecipeShow from './recipe_show';
 import { withRouter } from 'react-router-dom';
 
