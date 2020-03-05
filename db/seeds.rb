@@ -39,7 +39,7 @@ while recipe_id <= max_recipe_id
     
     step = 1
     5.times do
-      PrepStep.create!(recipe_id: recipe_id, step: step, description: Faker::GreekPhilosophers.quote)
+      PrepStep.create!(recipe_id: recipe_id, step: step, description: Faker::GreekPhilosophers.quote + "" + Faker::GreekPhilosophers.quote + "" + Faker::GreekPhilosophers.quote + "" + Faker::GreekPhilosophers.quote + "" + Faker::GreekPhilosophers.quote + "" + Faker::GreekPhilosophers.quote + "" + Faker::GreekPhilosophers.quote + "" + Faker::GreekPhilosophers.quote)
       step += 1
     end
   

@@ -1028,9 +1028,9 @@ __webpack_require__.r(__webpack_exports__);
 var PrepStepListIndexItem = function PrepStepListIndexItem(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     key: props.index,
-    className: "prepStep"
+    className: "prep-step"
   }, "Step ", props.prepStep.step, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "prepStep-desc"
+    className: "prep-step-desc"
   }, props.prepStep.description))));
 };
 
@@ -1152,7 +1152,10 @@ var RecipeShow = function RecipeShow(props) {
     className: "instructions-header"
   }, "Ingredients"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_ingredient_list_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
     ingredients: props.ingredients
-  })), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+  }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("button", {
+    className: "add-glist-btn",
+    type: "button"
+  }, "Add to Your Grocery List")), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
     className: "recipe-prepsteps-list"
   }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("h3", {
     className: "instructions-header"

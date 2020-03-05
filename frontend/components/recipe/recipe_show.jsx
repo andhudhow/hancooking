@@ -37,6 +37,7 @@ const RecipeShow = (props) => {
               <h3 className='instructions-header'>Ingredients</h3>
               <br /><br />
               <IngredientListIndex ingredients={props.ingredients} />
+              <button className="add-glist-btn" type="button">Add to Your Grocery List</button>
             </div>
             <div className="recipe-prepsteps-list">
             <h3 className='instructions-header'>Preparation</h3>
