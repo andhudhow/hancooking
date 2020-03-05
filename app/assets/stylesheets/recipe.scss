@@ -147,7 +147,7 @@
   width: 12px;
 }
 
-#save-btn-text {
+.save-btn-text {
   font: 13px 'franklin-400',Arial,Helvetica,sans-serif;
   text-align: left;
   color: #fff;
@@ -157,13 +157,11 @@
   line-height: 36px;
   box-sizing: border-box;
   outline: 0;
-  // padding-left: 5px;
 }
 
-
-// .save-recipe-btn span.icon {
-//   background: url("save-white-outline.svg") no-repeat;
-// }
+.save-btn-text.saved {
+  margin-right: 88px;
+}
 
 .yeild-time-container {
   display: flex;

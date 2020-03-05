@@ -1094,9 +1094,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -1109,21 +1109,35 @@ var RecipeHeader = /*#__PURE__*/function (_React$Component) {
   _inherits(RecipeHeader, _React$Component);
 
   function RecipeHeader(props) {
+    var _this;
+
     _classCallCheck(this, RecipeHeader);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(RecipeHeader).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(RecipeHeader).call(this, props));
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(RecipeHeader, [{
+    key: "handleClick",
+    value: function handleClick(e) {
+      if (this.props.btnText === 'Save To Recipe Box') {
+        this.props.saveRecipe(this.props.recipe.id);
+      } else {
+        this.props.unsaveRecipe(this.props.recipe.id);
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
+      // { title, authorName, servings. minDuration, saveIcon, buttonText, handleSaveClick } = this.props;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-title-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-title"
-      }, props.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.recipe.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-title author"
-      }, props.authorName)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.recipe.authorName)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-sub-title-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "yeild-time-container"
@@ -1131,20 +1145,21 @@ var RecipeHeader = /*#__PURE__*/function (_React$Component) {
         className: "recipe-yield-time"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "time-yield-label"
-      }, "Yield"), " ", props.servings, " servings"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Yield"), " ", this.props.recipe.servings, " servings"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-yield-time"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "time-yield-label"
-      }, "Time"), " ", Object(_util_cook_time_util__WEBPACK_IMPORTED_MODULE_1__["cookTime"])(props.minDuration))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Time"), " ", Object(_util_cook_time_util__WEBPACK_IMPORTED_MODULE_1__["cookTime"])(this.props.recipe.minDuration))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-sub-title-btn-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "save-recipe-btn"
+        className: "save-recipe-btn",
+        onClick: this.handleClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "save-recipe-icon",
-        src: props.saveIcon
+        src: this.props.saveIcon
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "save-btn-text"
-      }, props.buttonText)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: this.props.textClass
+      }, this.props.btnText)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "print-recipe-btn"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "javascript:window.print()"
@@ -1155,7 +1170,7 @@ var RecipeHeader = /*#__PURE__*/function (_React$Component) {
         className: "recipe-description-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "recipe-description"
-      }, props.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, this.props.recipe.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "recipe-image",
         src: "assets/bibimbap.jpg"
       })));
@@ -1192,28 +1207,29 @@ var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var session = _ref.session,
       entities = _ref.entities;
   var saveIcon;
-  var buttonText;
+  var btnText;
+  var textClass;
   var recipe = entities.recipes;
 
   if (!session.currentUser) {
     saveIcon = "assets/save-white-outline.svg";
-    buttonText = "Save To Recipe Box";
+    btnText = "Save To Recipe Box";
+    textClass = "save-btn-text";
   } else if (session.currentUser.savedRecipeIds.includes(parseInt(ownProps.match.params.recipeId))) {
     saveIcon = "assets/save-white.svg";
-    buttonText = "Saved";
+    btnText = "Saved";
+    textClass = "save-btn-text saved";
   } else {
     saveIcon = "assets/save-white-outline.svg";
-    buttonText = "Save To Recipe Box";
+    btnText = "Save To Recipe Box";
+    textClass = "save-btn-text";
   }
 
   return {
-    saveIcon: saveIcon,
-    buttonText: buttonText,
-    title: recipe.title,
-    authorName: recipe.authorName,
-    description: recipe.description,
-    servings: recipe.servings,
-    minDuration: recipe.minDuration
+    // saveIcon,
+    btnText: btnText,
+    textClass: textClass,
+    recipe: recipe
   };
 };
 
@@ -1221,6 +1237,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
   return {
     saveRecipe: function saveRecipe(recipeId) {
       return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_2__["saveRecipe"])(recipeId));
+    },
+    unsaveRecipe: function unsaveRecipe(recipeId) {
+      return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_2__["unsaveRecipe"])(recipeId));
     } // launchUnsaveModal: ((recipe) =>
     //   dispatch(receiveModalWithRecipe(UnsaveModalContainer, recipe))),
 
