@@ -18,13 +18,13 @@ Recipe.destroy_all
 User.destroy_all
 
 
-User.create(email: "andhudhow@gmail.com", password: "password", first_name: "Andrew", last_name: "Howell")
+User.create(email: "username@gmail.com", password: "password")
 10.times do
-  User.create(email: Faker::Internet.email, password: Faker::Beer.brand, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
+  User.create(email: Faker::Internet.email, password: Faker::Beer.brand)
 end
 
 10.times do
-  Recipe.create(title: Faker::Food.sushi, author_name: Faker::GreekPhilosophers.name, description: Faker::Food.description, servings: Faker::Number.between(from: 2, to: 8) , min_duration: Faker::Number.between(from: 15, to: 180))
+  Recipe.create(title: Faker::Food.sushi, author_name: Faker::GreekPhilosophers.name, description: Faker::Food.description + " " + Faker::Food.description + " " + Faker::Food.description, servings: Faker::Number.between(from: 2, to: 8) , min_duration: Faker::Number.between(from: 15, to: 180))
 end
 
 min_recipe_id = Recipe.minimum(:id)
@@ -34,7 +34,7 @@ recipe_id = min_recipe_id
 
 while recipe_id <= max_recipe_id
     10.times do
-      Ingredient.create!(recipe_id: recipe_id, quantity: Faker::Food.measurement, description: Faker::Food.ingredient)
+      Ingredient.create!(recipe_id: recipe_id, quantity: Faker::Number.between(from: 2, to: 8), description: "cups " + Faker::Food.ingredient)
     end
     
     step = 1

@@ -197,12 +197,14 @@
 }
 
 .recipe-image {
-  width: 60%
+  width: 60%;
+  border-radius: 3px;
 }
 
 .recipe-instructions-container{
   display: flex;
   flex-direction: row;
+  padding-top: 30px;
 }
 
 .recipe-ingredients-list-container {
@@ -215,6 +217,9 @@
 
 .ingredient-quantity {
   text-align: right;
+  font-family: 'franklin-700',Arial,Helvetica,sans-serif;
+  font-size: 15px;
+  color: black;
   
 }
 
@@ -241,16 +246,18 @@
 .ingredient {
   display: grid; 
   margin-bottom: .5rem;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 76px 1fr;
+  display: inline-block;
+  font-family: 'franklin-700',Arial,Helvetica,sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 18.6px;
+  vertical-align: top;
 }
 
 .ingredient > span:first-child {
   padding-right: 1rem;
   text-align: right;
-}
-
-.ingredients-wrap li:after {
-  clear: both;
 }
 
 .instructions-header {
@@ -265,54 +272,3 @@
   text-transform: uppercase;
   width: 60px;
 }
-
-
-
-// .ingredients {
-//   color: #222;
-//   font-family: 'franklin-300',Arial,Helvetica,sans-serif;
-//   font-weight: 500;
-//   box-sizing: border-box;
-//   outline: 0;
-//   padding: 0;
-//   display: block;
-//   margin: 0 0 15px 0;
-// }
-
-// .ingredient-list {
-//   color: #222;
-//   font: 12px nyt-franklin,Arial,Helvetica,sans-serif;
-//   font-weight: 500;
-//   box-sizing: border-box;
-//   outline: 0;
-//   margin: 0;
-//   padding: 0;
-// }
- 
-// .ingredient-quantity {
-//   color: #222;
-//   box-sizing: border-box;
-//   outline: 0;
-//   display: inline-block;
-//   font-size: 15px;
-//   line-height: 18.6px;
-//   vertical-align: top;
-//   font-family: 'franklin-300',Arial,Helvetica,sans-serif;
-//   font-weight: 700;
-//   text-align: right;
-//   width: 57px;
-// }
-
-// .ingredient-desc {
-//   color: #222;
-//   box-sizing: border-box;
-//   outline: 0;
-//   display: inline-block;
-//   font-family: 'franklin-300',Arial,Helvetica,sans-serif;
-//   font-size: 15px;
-//   font-weight: 700;
-//   line-height: 18.6px;
-//   vertical-align: top;
-//   padding-left: 5px;
-//   width: 70%;
-// }
