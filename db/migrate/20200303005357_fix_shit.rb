@@ -10,10 +10,6 @@ class FixShit < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    add_index :users, :email, unique: true
-  end
-
-  def change
     create_table :ingredients do |t|
       t.integer :recipe_id, null: false
       t.string :quantity, null: false
@@ -22,8 +18,8 @@ class FixShit < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
+    add_index :users, :email, unique: true
     add_index :ingredients, :recipe_id
   end
-  
 
 end

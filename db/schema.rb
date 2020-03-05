@@ -24,34 +24,6 @@ ActiveRecord::Schema.define(version: 2020_03_03_201119) do
     t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
   end
 
-  create_table "prep_steps", force: :cascade do |t|
-    t.integer "recipe_id", null: false
-    t.integer "step", null: false
-    t.string "description", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["recipe_id"], name: "index_prep_steps_on_recipe_id"
-  end
-
-  create_table "preparations", force: :cascade do |t|
-    t.integer "recipe_id", null: false
-    t.integer "step", null: false
-    t.string "description", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["recipe_id"], name: "index_preparations_on_recipe_id"
-  end
-
-  create_table "recipes", force: :cascade do |t|
-    t.string "title", null: false
-    t.string "author_name", null: false
-    t.integer "servings", null: false
-    t.string "description", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "min_duration", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "password_digest", null: false
