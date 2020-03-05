@@ -32,7 +32,7 @@ const Splash = () => {
         {/* <img src='/assets/bibimbap' className='splash-img' /> */}
         <section className="rotd-container">
           <video className='splash-img' autoPlay muted loop type='video/mp4' src='/assets/COTE_VIDEO_4.mp4' />
-            <div id="rotd-label">RECIPE <br/>OF THE DAY</div>
+            <div id="rotd-label">recipe<br/>OF THE DAY</div>
               <div id="rotd-card">
                 <h3 id="rotd-title">
                     Korean-Style Shortrib

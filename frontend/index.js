@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { login, logout, signup } from './actions/session_actions';
-import { fetchRecipe, fetchRecipes } from './actions/recipe_actions';
+import { fetchRecipe, fetchRecipes, saveRecipe, unsaveRecipe } from './actions/recipe_actions';
 import configureStore from './store/store';
 import Root from './components/root';
 
@@ -9,8 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
   window.login = login;
   window.logout = logout;
   window.signup = signup;
-  window.fetchRecipe = fetchRecipe;
+  window.fetchRecipe= fetchRecipe;
   window.fetchRecipes = fetchRecipes;
+  window.saveRecipe = saveRecipe;
+  window.unsaveRecipe = unsaveRecipe;
 
   let store;
   if (window.currentUser) 

@@ -6,7 +6,7 @@ end
 
 json.set! :ingredients do
   @recipe.ingredients.each do |ingredient|
-    json.set! ingredient.id do 
+    json.set! ingredient.id do
       json.extract! ingredient, :recipe_id, :quantity, :description
     end
   end

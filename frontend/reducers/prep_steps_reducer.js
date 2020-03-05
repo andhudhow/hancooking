@@ -1,4 +1,4 @@
-import { RECEIVE_RECIPE } from '../actions/recipe_actions';
+import { RECEIVE_RECIPE} from '../actions/recipe_actions';
 
 const prepStepsReducer = (state = {}, action) => {
   Object.freeze(state);
