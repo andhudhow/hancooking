@@ -25,7 +25,7 @@ const mapStateToProps = ( {session, entities}, ownProps) => {
       textClass = "save-btn-text";
     }
     return {
-      // saveIcon,
+      saveIcon,
       btnText,
       textClass,
       recipe

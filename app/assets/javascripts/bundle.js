@@ -1226,7 +1226,7 @@ var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   }
 
   return {
-    // saveIcon,
+    saveIcon: saveIcon,
     btnText: btnText,
     textClass: textClass,
     recipe: recipe
