@@ -19,7 +19,8 @@
     "webpack-cli": "^3.3.11"
   },
   "scripts": {
-    "postinstall": "webpack"
+    "postinstall": "webpack",
+    "start": "webpack --watch --mode=development"
   },
   "engines": {
     "node": "10.13.0",
