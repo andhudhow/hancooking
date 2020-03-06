@@ -4,6 +4,7 @@ import Modal from './modals/modal';
 import RecipeShowContainer from './recipe/recipe_show_container';
 import RecipeBoxContainer from './recipe_box/recipe_box_container';
 import NavBarContainer from './main/navbar/nav_container';
+import { Button } from 'reactstrap';
 
 import {
     Route,

@@ -1,6 +1,24 @@
 .recipe-box-container {
   padding-top: 64px;
-  max-width: 1000px;
   margin:0 auto;
   background-color: #f2f3ef;
+  max-width: 1200px;
+}
+
+.card-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe-card {
+  // animation: nytc---cardbase---fadeIn .4s ease-out;
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  float: left;
+  height: 278px;
+  margin: 10px;
+  position: relative;
+  width: 235px;
+  cursor: pointer;
 }

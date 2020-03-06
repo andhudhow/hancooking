@@ -1,5 +1,6 @@
 import React from 'react';
 import { cookTime } from '../../util/cook_time_util';
+import { Link } from 'react-router-dom';
 
 class RecipeBox extends React.Component {
   constructor(props) {
@@ -9,15 +10,16 @@ class RecipeBox extends React.Component {
   render() {
     const recipes = 
       this.props.savedRecipeIds.map((id, idx) =>
-        <div class="recipeCard">
-          <ul>
-            <li key={idx}>{this.props.savedRecipes[id].title}</li>
-            <li key={idx}>{this.props.savedRecipes[id].authorName}</li>
-            <li key={idx}>{cookTime(this.props.savedRecipes[id].minDuration)}</li>
-            <li key={idx}><img src='assets/jajangmyeon.jpg' /></li>
-          </ul>
-        </div>
+        <Link to={`/recipes/${id}`}>
+          <div class="recipe-card">
+            <div>{this.props.savedRecipes[id].title}</div>
+            <div>{this.props.savedRecipes[id].authorName}</div>
+            <div>{cookTime(this.props.savedRecipes[id].minDuration)}</div>
+            <div><img src='assets/jajangmyeon.jpg' /></div>
+          </div>
+        </Link>
       )
+
 
     return (
       <div className='recipe-box-container'>
