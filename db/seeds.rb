@@ -18,21 +18,19 @@ Recipe.destroy_all
 User.destroy_all
 
 
-User.create(email: "username@gmail.com", password: "password")
+User.create(email: "andhudhow@gmail.com", password: "password")
 10.times do
   User.create(email: Faker::Internet.email, password: Faker::Beer.brand)
 end
 
-10.times do
+50.times do
   Recipe.create(title: Faker::Food.sushi, author_name: Faker::GreekPhilosophers.name, description: Faker::Food.description + " " + Faker::Food.description + " " + Faker::Food.description, servings: Faker::Number.between(from: 2, to: 8) , min_duration: Faker::Number.between(from: 15, to: 180))
 end
 
-min_recipe_id = Recipe.minimum(:id)
-max_recipe_id = Recipe.maximum(:id)
+recipe_id = Recipe.first.id
+User.find_by(email: "andhudhow@gmail.com").id
 
-recipe_id = min_recipe_id
-
-while recipe_id <= max_recipe_id
+while recipe_id <= Recipe.last.id
     10.times do
       Ingredient.create!(recipe_id: recipe_id, quantity: Faker::Number.between(from: 2, to: 8), description: "cups " + Faker::Food.ingredient)
     end
@@ -42,6 +40,8 @@ while recipe_id <= max_recipe_id
       PrepStep.create!(recipe_id: recipe_id, step: step, description: Faker::GreekPhilosophers.quote + "" + Faker::GreekPhilosophers.quote + "" + Faker::GreekPhilosophers.quote + "" + Faker::GreekPhilosophers.quote + "" + Faker::GreekPhilosophers.quote + "" + Faker::GreekPhilosophers.quote + "" + Faker::GreekPhilosophers.quote + "" + Faker::GreekPhilosophers.quote)
       step += 1
     end
+
+    RecipeSave.create!(recipe_id: recipe_id, user_id: User.find_by(email: "andhudhow@gmail.com").id)
   
   recipe_id += 1
 end

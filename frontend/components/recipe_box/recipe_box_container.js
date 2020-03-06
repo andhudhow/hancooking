@@ -3,7 +3,7 @@ import { unsaveRecipe } from '../../actions/recipe_actions';
 import RecipeBox from './recipe_box';
 
 const mapStateToProps = ( { entities, session } ) => {
-  debugger
+  // debugger
   return ({
     savedRecipeIds: session.currentUser.savedRecipeIds,
     savedRecipes: entities.savedRecipes,

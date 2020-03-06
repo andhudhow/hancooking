@@ -1,17 +1,20 @@
 .recipe-box-container {
-  padding-top: 64px;
-  margin:0 auto;
   background-color: #f2f3ef;
-  max-width: 1200px;
+  height: 100vh;
+  text-align: left;
+  padding: 80px 93px 0px 93px;
 }
 
-.card-container {
-  width: 100%;
+.saved-recipe-index-container {
   display: flex;
-  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin:0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
-.recipe-card {
+.recipe-card-container {
   // animation: nytc---cardbase---fadeIn .4s ease-out;
   background: #fff;
   border: 1px solid #e6e6e6;
@@ -20,5 +23,60 @@
   margin: 10px;
   position: relative;
   width: 235px;
-  cursor: pointer;
+  // margin: 0px 20px
+}
+
+.recipe-card-container:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.card-title {
+  font-family: 'franklin-700', 'Arial', 'Helvetica', 'sans-serif';
+  font-size: 17px;
+  color: #222;
+  line-height: 1.06em;
+}
+
+.card-byline {
+  font-family: 'franklin-300', 'Arial', 'Helvetica', 'sans-serif';
+  font-size: 13px;
+  letter-spacing: .3px;
+  line-height: 1.14em;
+  padding-top: 3px;
+  color: #222;
+}
+
+.card-cook-time {
+  bottom: 12px;
+  color: #767676;
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: .3px;
+  line-height: 1em;
+  overflow: hidden;
+  position: absolute;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 80%;
+}
+
+.recipe-box-container > h3 {
+  font-family: 'franklin-700', 'Arial', 'Helvetica', 'sans-serif';
+  font-size: 24px;
+  color: #222;
+}
+
+.card-base {
+  height: 106px;
+  padding: 12px 12px 6px;
+}
+
+.saved-recipe-icon {
+  height: 19px;
+  width: 15px;
+  bottom: 12px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  margin-left: 196px;
 }

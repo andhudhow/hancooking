@@ -12,6 +12,7 @@ html, body, div, span, h1, h2, h3, h4, a, ol, ul, li, form, label, article, asid
 html, body {
   height: 100%;
   width: 100%;
+  overflow-y: scroll;
 }
 
 body {

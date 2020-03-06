@@ -14,16 +14,16 @@ class RecipeShow extends React.Component {
     this.props.fetchRecipe(this.props.match.params.recipeId);
   }
 
-  componentDidUpdate (prevProps, prevState) {
-    if (prevProps.match.params.recipeId !== this.props.match.params.recipeId) {
-      this.props.fetchRecipe(this.props.match.params.recipeId)
-    }
-  }
+  // componentDidUpdate (prevProps, prevState) {
+  //   if (prevProps.match.params.recipeId !== this.props.match.params.recipeId) {
+  //     this.props.fetchRecipe(this.props.match.params.recipeId)
+  //   }
+  // }
   
   render() {
     debugger
     return (
-        this.props.recipe.id ?
+        this.props.recipe.id === parseInt(this.props.match.params.recipeId) ?
           <div className="recipe-show-container">
             <RecipeHeaderContainer />
             <div className="recipe-instructions-container">

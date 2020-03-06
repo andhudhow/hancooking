@@ -634,7 +634,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
           className: "nav-btns",
           onClick: function onClick() {
             return login({
-              email: 'username@gmail.com',
+              email: 'andhudhow@gmail.com',
               password: 'password'
             });
           }
@@ -1308,19 +1308,17 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       // debugger
       this.props.fetchRecipe(this.props.match.params.recipeId);
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps, prevState) {
-      if (prevProps.match.params.recipeId !== this.props.match.params.recipeId) {
-        this.props.fetchRecipe(this.props.match.params.recipeId);
-      }
-    }
+    } // componentDidUpdate (prevProps, prevState) {
+    //   if (prevProps.match.params.recipeId !== this.props.match.params.recipeId) {
+    //     this.props.fetchRecipe(this.props.match.params.recipeId)
+    //   }
+    // }
+
   }, {
     key: "render",
     value: function render() {
       debugger;
-      return this.props.recipe.id ? react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+      return this.props.recipe.id === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
         className: "recipe-show-container"
       }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_recipe_header_container__WEBPACK_IMPORTED_MODULE_0__["default"], null), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
         className: "recipe-instructions-container"
@@ -1460,17 +1458,28 @@ var RecipeBox = /*#__PURE__*/function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           to: "/recipes/".concat(id)
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          "class": "recipe-card"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, _this.props.savedRecipes[id].title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, _this.props.savedRecipes[id].authorName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_util_cook_time_util__WEBPACK_IMPORTED_MODULE_1__["cookTime"])(_this.props.savedRecipes[id].minDuration)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "recipe-card-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: "assets/jajangmyeon.jpg"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "card-base"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "card-title"
+        }, _this.props.savedRecipes[id].title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "card-byline"
+        }, "By ", _this.props.savedRecipes[id].authorName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "card-cook-time"
+        }, Object(_util_cook_time_util__WEBPACK_IMPORTED_MODULE_1__["cookTime"])(_this.props.savedRecipes[id].minDuration)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "saved-recipe-icon",
+          src: "/assets/save-grey.svg"
         }))));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-box-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Saved Recipes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Saved Recipes"), this.props.currentUserEmail, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "saved-recipe-count"
       }, this.props.savedRecipeCount, " recipes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "saved-recipe-index"
+        className: "saved-recipe-index-container"
       }, recipes));
     }
   }]);
@@ -1501,7 +1510,7 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(_ref) {
   var entities = _ref.entities,
       session = _ref.session;
-  debugger;
+  // debugger
   return {
     savedRecipeIds: session.currentUser.savedRecipeIds,
     savedRecipes: entities.savedRecipes,
