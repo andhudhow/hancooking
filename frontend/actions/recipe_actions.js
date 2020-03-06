@@ -41,6 +41,7 @@ const removeRecipeSave = currentUser => {
     currentUser
   };
 };
+
 export const fetchRecipes = () => dispatch => {
   return RecipeApiUtil.fetchRecipes().then(recipes => {
     return dispatch(receiveAllRecipes(recipes));

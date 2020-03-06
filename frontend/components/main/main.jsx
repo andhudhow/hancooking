@@ -1,35 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import MainCarousel from './main-carousel';
-import { openModal } from '../../actions/modal_actions';
-import NavBarContainer from '../main/navbar/nav_container';
 
-//A welcome message including the user's username
-//A button to logout
+class Main extends React.Component{
 
-//Nav bar
-// const NavBar = ( { currentUser, logout }) => {
-//     const sessionLinks = () => (
-//         <nav className='login-signup'>
-//             <Link to='/login'>Log in!</Link> <br />
-//             <Link to='/signup'>Sign up!</Link>
-//         </nav>
-//     );
+  constructor(props) {
+    super(props)
+  }
 
-//     const personalGreeting = () => (
-//         <nav className='personal-greeting'>
-//             <h2 className='header-name'>Welcome { currentUser.username }!</h2>
-//             <button className='log-out-button' onClick={logout}>Log Out</button>
-//         </nav>
-//     );
+  componentDidMount() {
+    this.props.fetchRecipes()
+  }
 
-//     return currentUser ? personalGreeting() : sessionLinks();
-// }
-
-const Splash = () => {
-  return (
+  render() {
+    return (
       <div className='outer'>
-        {/* <img src='/assets/bibimbap' className='splash-img' /> */}
         <section className="rotd-container">
           <video className='splash-img' autoPlay muted loop type='video/mp4' src='/assets/COTE_VIDEO_4.mp4' />
             <div id="rotd-label">recipe<br/>OF THE DAY</div>
@@ -47,13 +31,14 @@ const Splash = () => {
           What to Cook This Week
           <br /><br />
           <div className="carousel-container">
-            <MainCarousel />
+            <MainCarousel carousel={this.props.carousel} unsaveRecipe={this.props.unsaveRecipe} />
           </div>
         </section>
     </div>
   )
+  }
 }
 
 
 
-export default Splash;
+export default Main;

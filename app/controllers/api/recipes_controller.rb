@@ -1,6 +1,11 @@
 class Api::RecipesController < ApplicationController
   def index
     @recipes = Recipe.all
+    if @recipes
+      render 'api/recipes/index'
+    else
+      render json: recipe_save.errors.full_messages, status: 422
+    end
   end
 
   def show
