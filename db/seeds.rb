@@ -23,14 +23,16 @@ User.create(email: "andhudhow@gmail.com", password: "password")
   User.create(email: Faker::Internet.email, password: Faker::Beer.brand)
 end
 
-50.times do
+25.times do
   Recipe.create(title: Faker::Food.sushi, author_name: Faker::GreekPhilosophers.name, description: Faker::Food.description + " " + Faker::Food.description + " " + Faker::Food.description, servings: Faker::Number.between(from: 2, to: 8) , min_duration: Faker::Number.between(from: 15, to: 180))
 end
 
-recipe_id = Recipe.first.id
-User.find_by(email: "andhudhow@gmail.com").id
 
+demo_id = User.find_by(email: "andhudhow@gmail.com").id
+
+recipe_id = Recipe.first.id
 while recipe_id <= Recipe.last.id
+  
     10.times do
       Ingredient.create!(recipe_id: recipe_id, quantity: Faker::Number.between(from: 2, to: 8), description: "cups " + Faker::Food.ingredient)
     end
@@ -41,7 +43,11 @@ while recipe_id <= Recipe.last.id
       step += 1
     end
 
-    RecipeSave.create!(recipe_id: recipe_id, user_id: User.find_by(email: "andhudhow@gmail.com").id)
+    RecipeSave.create!(recipe_id: recipe_id, user_id: demo_id)
   
   recipe_id += 1
+end
+
+Recipe.all.each do |recipe|
+  recipe.photo.attach(io: File.open('app/assets/images/jajangmyeon.jpg'), filename: 'jajangmyeon.jpg')
 end

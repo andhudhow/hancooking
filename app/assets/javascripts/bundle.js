@@ -1179,7 +1179,7 @@ var RecipeHeader = /*#__PURE__*/function (_React$Component) {
         className: "recipe-description"
       }, this.props.recipe.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "recipe-image",
-        src: "assets/bibimbap.jpg"
+        src: this.props.recipe.photoUrl
       })));
     }
   }]);
@@ -1455,7 +1455,7 @@ var RecipeBox = /*#__PURE__*/function (_React$Component) {
       var _this = this;
 
       var recipes = this.props.savedRecipeIds.map(function (id, idx) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           to: "/recipes/".concat(id)
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "recipe-card-container"
@@ -1469,10 +1469,15 @@ var RecipeBox = /*#__PURE__*/function (_React$Component) {
           className: "card-byline"
         }, "By ", _this.props.savedRecipes[id].authorName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "card-cook-time"
-        }, Object(_util_cook_time_util__WEBPACK_IMPORTED_MODULE_1__["cookTime"])(_this.props.savedRecipes[id].minDuration)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        }, Object(_util_cook_time_util__WEBPACK_IMPORTED_MODULE_1__["cookTime"])(_this.props.savedRecipes[id].minDuration)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: "/recipe-box"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "saved-recipe-icon",
-          src: "/assets/save-grey.svg"
-        }))));
+          src: "/assets/save-grey.svg",
+          onClick: function onClick() {
+            return _this.props.unsaveRecipe(id);
+          }
+        }))))));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-box-container"

@@ -42,7 +42,7 @@ class RecipeHeader extends React.Component {
         </div>
         <div className="recipe-description-container">
           <p className="recipe-description">{this.props.recipe.description}</p>
-          <img className="recipe-image" src="assets/bibimbap.jpg" />
+          <img className="recipe-image" src={this.props.recipe.photoUrl} />
         </div>
       </section>
     )

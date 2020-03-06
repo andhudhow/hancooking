@@ -10,6 +10,7 @@ class RecipeBox extends React.Component {
   render() {
     const recipes = 
       this.props.savedRecipeIds.map((id, idx) =>
+        <div>
         <Link to={`/recipes/${id}`}>
           <div className="recipe-card-container">
             <div><img src='assets/jajangmyeon.jpg' /></div>
@@ -17,10 +18,11 @@ class RecipeBox extends React.Component {
               <div className="card-title">{this.props.savedRecipes[id].title}</div>
               <div className="card-byline">By {this.props.savedRecipes[id].authorName}</div>
               <div className="card-cook-time">{cookTime(this.props.savedRecipes[id].minDuration)}</div>
-              <img className="saved-recipe-icon" src="/assets/save-grey.svg"></img>
+              <Link to={"/recipe-box"}><img className="saved-recipe-icon" src="/assets/save-grey.svg" onClick={() => this.props.unsaveRecipe(id)}></img></Link>
             </div>
           </div>
         </Link>
+        </div>
       )
 
 
