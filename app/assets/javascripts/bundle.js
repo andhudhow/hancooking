@@ -1416,6 +1416,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _util_cook_time_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/cook_time_util */ "./frontend/util/cook_time_util.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1436,6 +1437,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var RecipeBox = /*#__PURE__*/function (_React$Component) {
   _inherits(RecipeBox, _React$Component);
 
@@ -1446,25 +1448,32 @@ var RecipeBox = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(RecipeBox, [{
-    key: "recipes",
-    value: function recipes() {
-      var _this = this;
-
-      debugger;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.savedRecipeIds.map(function (id) {
-        return _this.props.savedRecipes[id].title;
-      }));
-    }
-  }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
+      var recipes = this.props.savedRecipeIds.map(function (id, idx) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          "class": "recipeCard"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: idx
+        }, _this.props.savedRecipes[id].title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: idx
+        }, _this.props.savedRecipes[id].authorName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: idx
+        }, Object(_util_cook_time_util__WEBPACK_IMPORTED_MODULE_1__["cookTime"])(_this.props.savedRecipes[id].minDuration)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: idx
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: "assets/jajangmyeon.jpg"
+        }))));
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-box-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Saved Recipes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "saved-recipe-count"
       }, this.props.savedRecipeCount, " recipes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "saved-recipe-index"
-      }, this.recipes()));
+      }, recipes));
     }
   }]);
 
