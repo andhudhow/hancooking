@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-//comment
+//comment with some more changes
 
 class RecipeCard extends React.Component{
   constructor(props) {
