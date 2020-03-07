@@ -35,9 +35,9 @@ class SearchBar extends React.Component {
 
   filterResults() {
     let titleResults = this.props.recipes.filter(recipe => recipe.title.toLowerCase().includes(this.state.query.toLowerCase()));
-    let descriptionResults = this.props.recipes.filter(recipe => recipe.description.toLowerCase().includes(this.state.query.toLowerCase()));
+    // let descriptionResults = this.props.recipes.filter(recipe => recipe.description.toLowerCase().split(' ').includes(this.state.query.toLowerCase()));
     
-    let results = titleResults.concat(descriptionResults);
+    let results = titleResults//.concat(descriptionResults);
     //ingredient matches
     //tag matches
     this.setState({ results })
@@ -58,7 +58,7 @@ class SearchBar extends React.Component {
         value={this.state.query}
       />
       <div>
-        {resultList}
+        {resultList.slice(0,6)}
       </div>
       </section>
     )

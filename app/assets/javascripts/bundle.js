@@ -2099,11 +2099,10 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
 
       var titleResults = this.props.recipes.filter(function (recipe) {
         return recipe.title.toLowerCase().includes(_this2.state.query.toLowerCase());
-      });
-      var descriptionResults = this.props.recipes.filter(function (recipe) {
-        return recipe.description.toLowerCase().includes(_this2.state.query.toLowerCase());
-      });
-      var results = titleResults.concat(descriptionResults); //ingredient matches
+      }); // let descriptionResults = this.props.recipes.filter(recipe => recipe.description.toLowerCase().split(' ').includes(this.state.query.toLowerCase()));
+
+      var results = titleResults; //.concat(descriptionResults);
+      //ingredient matches
       //tag matches
 
       this.setState({
@@ -2130,7 +2129,7 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
         placeholder: "What would you like to cook?",
         onChange: this.handleTyping,
         value: this.state.query
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, resultList));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, resultList.slice(0, 6)));
     }
   }]);
 
