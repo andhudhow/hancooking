@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SearchBarContainer from '../../search/search_container';
 
 class NavBar extends React.Component{
   constructor(props) {
@@ -43,14 +44,8 @@ class NavBar extends React.Component{
             <img className='logo' src={window.logoURL} />
           </Link>
         </div>
-
-        
         {/* <img src="/assets/nav-inline-search-glass" id="search-glass" /> */}
-        <section className='search-bar'>
-          <input id='search-input' type='text' placeholder='What would you like to cook?'/>
-          {/* Todo add a UL */}
-        </section>
-
+        <SearchBarContainer />
           <nav className='right-nav'>
               <div className="nav-btn-wrapper">
                 { this.navButtonRender() }

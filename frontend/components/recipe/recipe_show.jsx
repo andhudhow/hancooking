@@ -11,7 +11,6 @@ class RecipeShow extends React.Component {
   }  
 
   componentDidMount() {
-    // 
     this.props.fetchRecipe(this.props.match.params.recipeId);
   }
 
