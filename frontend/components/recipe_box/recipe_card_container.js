@@ -5,7 +5,8 @@ import { openModal } from '../../actions/modal_actions';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = ( { session } ) => ({
-  loggedIn: Boolean(session.currentUser)
+  loggedIn: Boolean(session.currentUser),
+  savedRecipeIds: Boolean(session.currentUser) ? session.currentUser.savedRecipeIds : null
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -4,7 +4,6 @@ import RecipeIndex from './recipe_index';
 import { fetchRecipes } from '../../actions/recipe_actions';
 
 const mapStateToProps = ( { entities, session } ) => {
-  debugger
   return ({
     recipes: entities.recipes,
     savedRecipeIds: session.currentUser ? session.currentUser.savedRecipeIds : null,

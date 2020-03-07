@@ -4,32 +4,75 @@ import { Link } from 'react-router-dom';
 class RecipeCard extends React.Component{
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    this.state = {
+      saveHover: false
+    };
+    this.handleCardClick = this.handleCardClick.bind(this);
+    this.hoverOn = this.hoverOn.bind(this);
+    this.hoverOff = this.hoverOff.bind(this);
+    this.handleSave = this.handleSave.bind(this);
+  }
+
+  hoverOn() {
+    this.setState({ saveHover: true });
+  }
+ 
+  hoverOff(){
+    this.setState({ saveHover: false });
+  }
+
+  icon() {
+    let icon;
+    if(this.props.loggedIn && this.props.savedRecipeIds.includes(this.props.id)) {
+      return window.saveGreyURL
+    } else if (this.props.loggedIn && this.state.saveHover) {
+      return window.saveGreyURL
+    } else {
+      return window.saveRibbonGrayOutlineURL
+    }
+  }
+
+  handleSave(e) {
+    if(this.props.loggedIn && this.props.savedRecipeIds.includes(this.props.id)) {
+      return this.props.unsaveRecipe(this.props.id)
+    } else if (this.props.loggedIn && this.state.saveHover) {
+      return this.props.saveRecipe(this.props.id)
+    } else {
+      return this.props.saveRecipe(this.props.id)
+    }
   }
   
-  handleClick(e){
-    debugger
+  handleCardClick(e){
     if (this.props.loggedIn) {
       return null
     } else { 
       this.props.openModal('login')
     }
   }
+
+  //if the user is logged in then check to see if it's saved
+  //if it's save, render the filled gray and make the click unsave it
+  //if it's not saved, render the outline gray and make the click save it
   
   render() {
-    debugger
     const url = this.props.loggedIn ? `/recipes/${this.props.id}` : '/';
-
+    
     return (
       <div>
-      <Link to={url} onClick={this.handleClick}>
+      <Link to={url} onClick={this.handleCardClick}>
         <div className="recipe-card-container">
           <div><img src={this.props.photoUrl}/></div>
           <div className="card-base">
             <div className="card-title">{this.props.title}</div>
             <div className="card-byline">By {this.props.authorName}</div>
             <div className="card-cook-time">{this.props.cookTime}</div>
-            <Link to="/recipe-box"><img className="saved-recipe-icon" src={window.saveGreyURL} onClick={() => this.props.unsaveRecipe(this.props.id)} /></Link>
+            <Link to={this.props.pathname}>
+              <img className="saved-recipe-icon" 
+                onMouseEnter={this.hoverOn}
+                onMouseLeave={this.hoverOff}
+                src={this.icon()}
+                onClick={this.handleSave} />
+            </Link>
           </div>
         </div>
       </Link>

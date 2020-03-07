@@ -1373,15 +1373,15 @@ var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var recipe = entities.recipes;
 
   if (!session.currentUser) {
-    saveIcon = "".concat(window.saveRibbonURL);
+    saveIcon = "".concat(window.saveRibbonWhiteOutlineURL);
     btnText = "Save To Recipe Box";
     textClass = "save-btn-text";
   } else if (session.currentUser.savedRecipeIds.includes(parseInt(ownProps.match.params.recipeId))) {
-    saveIcon = "".concat(window.savedFillRibbonURL);
+    saveIcon = "".concat(window.savedFillRibbonWhiteURL);
     btnText = "Saved";
     textClass = "save-btn-text saved";
   } else {
-    saveIcon = "".concat(window.saveRibbonURL);
+    saveIcon = "".concat(window.saveRibbonWhiteOutlineURL);
     btnText = "Save To Recipe Box";
     textClass = "save-btn-text";
   }
@@ -1513,7 +1513,6 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(_ref) {
   var entities = _ref.entities,
       session = _ref.session;
-  debugger;
   return {
     recipes: entities.recipes,
     savedRecipeIds: session.currentUser ? session.currentUser.savedRecipeIds : null
@@ -1849,31 +1848,73 @@ var RecipeCard = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, RecipeCard);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(RecipeCard).call(this, props));
-    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    _this.state = {
+      saveHover: false
+    };
+    _this.handleCardClick = _this.handleCardClick.bind(_assertThisInitialized(_this));
+    _this.hoverOn = _this.hoverOn.bind(_assertThisInitialized(_this));
+    _this.hoverOff = _this.hoverOff.bind(_assertThisInitialized(_this));
+    _this.handleSave = _this.handleSave.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(RecipeCard, [{
-    key: "handleClick",
-    value: function handleClick(e) {
-      debugger;
+    key: "hoverOn",
+    value: function hoverOn() {
+      this.setState({
+        saveHover: true
+      });
+    }
+  }, {
+    key: "hoverOff",
+    value: function hoverOff() {
+      this.setState({
+        saveHover: false
+      });
+    }
+  }, {
+    key: "icon",
+    value: function icon() {
+      var icon;
 
+      if (this.props.loggedIn && this.props.savedRecipeIds.includes(this.props.id)) {
+        return window.saveGreyURL;
+      } else if (this.props.loggedIn && this.state.saveHover) {
+        return window.saveGreyURL;
+      } else {
+        return window.saveRibbonGrayOutlineURL;
+      }
+    }
+  }, {
+    key: "handleSave",
+    value: function handleSave(e) {
+      if (this.props.loggedIn && this.props.savedRecipeIds.includes(this.props.id)) {
+        return this.props.unsaveRecipe(this.props.id);
+      } else if (this.props.loggedIn && this.state.saveHover) {
+        return this.props.saveRecipe(this.props.id);
+      } else {
+        return this.props.saveRecipe(this.props.id);
+      }
+    }
+  }, {
+    key: "handleCardClick",
+    value: function handleCardClick(e) {
       if (this.props.loggedIn) {
         return null;
       } else {
         this.props.openModal('login');
       }
-    }
+    } //if the user is logged in then check to see if it's saved
+    //if it's save, render the filled gray and make the click unsave it
+    //if it's not saved, render the outline gray and make the click save it
+
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
-      debugger;
       var url = this.props.loggedIn ? "/recipes/".concat(this.props.id) : '/';
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: url,
-        onClick: this.handleClick
+        onClick: this.handleCardClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-card-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -1887,13 +1928,13 @@ var RecipeCard = /*#__PURE__*/function (_React$Component) {
       }, "By ", this.props.authorName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-cook-time"
       }, this.props.cookTime), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/recipe-box"
+        to: this.props.pathname
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "saved-recipe-icon",
-        src: window.saveGreyURL,
-        onClick: function onClick() {
-          return _this2.props.unsaveRecipe(_this2.props.id);
-        }
+        onMouseEnter: this.hoverOn,
+        onMouseLeave: this.hoverOff,
+        src: this.icon(),
+        onClick: this.handleSave
       }))))));
     }
   }]);
@@ -1928,7 +1969,8 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(_ref) {
   var session = _ref.session;
   return {
-    loggedIn: Boolean(session.currentUser)
+    loggedIn: Boolean(session.currentUser),
+    savedRecipeIds: Boolean(session.currentUser) ? session.currentUser.savedRecipeIds : null
   };
 };
 
