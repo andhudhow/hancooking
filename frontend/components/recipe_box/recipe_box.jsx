@@ -1,5 +1,6 @@
 import React from 'react';
 import { cookTime } from '../../util/cook_time_util';
+import RecipeCardContainer from './recipe_card_container';
 import { Link } from 'react-router-dom';
 import RecipeCard from './recipe_card';
 
@@ -12,7 +13,7 @@ class RecipeBox extends React.Component {
     const recipes = 
       this.props.savedRecipeIds.map((id, idx) =>
         <div>
-          <RecipeCard
+          <RecipeCardContainer
             id={id}
             photoUrl={this.props.savedRecipes[id].photoUrl}
             title={this.props.savedRecipes[id].title}

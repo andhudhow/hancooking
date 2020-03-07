@@ -17,6 +17,7 @@ class RecipeCard extends React.Component{
   }
   
   render() {
+    debugger
     const url = this.props.loggedIn ? `/recipes/${this.props.id}` : '/';
 
     return (
@@ -28,7 +29,7 @@ class RecipeCard extends React.Component{
             <div className="card-title">{this.props.title}</div>
             <div className="card-byline">By {this.props.authorName}</div>
             <div className="card-cook-time">{this.props.cookTime}</div>
-            <Link to="/recipe-box"><img className="saved-recipe-icon" src={window.saveGreyURL} onClick={() => props.unsaveRecipe(this.props.id)} /></Link>
+            <Link to="/recipe-box"><img className="saved-recipe-icon" src={window.saveGreyURL} onClick={() => this.props.unsaveRecipe(this.props.id)} /></Link>
           </div>
         </div>
       </Link>
