@@ -9,14 +9,11 @@ class RecipeIndex extends React.Component {
   }
 
   componentDidMount() {
-    
+    debugger
     this.props.fetchRecipes()
   }
   //icon-bookmark-hover-outline.svg if not saved
   // if already saved icon-bookmark-hover-fill.svg on hover
-  handleHover() {
-
-  }
 
   render() {
     const recipes = 
@@ -24,7 +21,7 @@ class RecipeIndex extends React.Component {
         <div>
           <RecipeCard
             id={key}
-            photoUrl={this.props.recipe.photoUrl}
+            photoUrl={this.props.recipes[key].photoUrl}
             title={this.props.recipes[key].title}
             authorName={this.props.recipes[key].authorName}
             cookTime={cookTime(this.props.recipes[key].minDuration)}

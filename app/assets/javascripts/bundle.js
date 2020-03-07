@@ -1427,13 +1427,11 @@ var RecipeIndex = /*#__PURE__*/function (_React$Component) {
   _createClass(RecipeIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      debugger;
       this.props.fetchRecipes();
     } //icon-bookmark-hover-outline.svg if not saved
     // if already saved icon-bookmark-hover-fill.svg on hover
 
-  }, {
-    key: "handleHover",
-    value: function handleHover() {}
   }, {
     key: "render",
     value: function render() {
@@ -1442,7 +1440,7 @@ var RecipeIndex = /*#__PURE__*/function (_React$Component) {
       var recipes = Object.keys(this.props.recipes).map(function (key, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_recipe_box_recipe_card__WEBPACK_IMPORTED_MODULE_3__["default"], {
           id: key,
-          photoUrl: _this.props.recipe.photoUrl,
+          photoUrl: _this.props.recipes[key].photoUrl,
           title: _this.props.recipes[key].title,
           authorName: _this.props.recipes[key].authorName,
           cookTime: Object(_util_cook_time_util__WEBPACK_IMPORTED_MODULE_1__["cookTime"])(_this.props.recipes[key].minDuration),
@@ -1484,6 +1482,7 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(_ref) {
   var entities = _ref.entities,
       session = _ref.session;
+  debugger;
   return {
     recipes: entities.recipes,
     savedRecipeIds: session.currentUser.savedRecipeIds
