@@ -1458,7 +1458,6 @@ var RecipeIndex = /*#__PURE__*/function (_React$Component) {
   _createClass(RecipeIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      debugger;
       this.props.fetchRecipes();
     } //icon-bookmark-hover-outline.svg if not saved
     // if already saved icon-bookmark-hover-fill.svg on hover
@@ -1877,7 +1876,7 @@ var RecipeCard = /*#__PURE__*/function (_React$Component) {
     value: function icon() {
       var icon;
 
-      if (this.props.loggedIn && this.props.savedRecipeIds.includes(this.props.id)) {
+      if (this.props.loggedIn && this.props.savedRecipeIds.includes(parseInt(this.props.id))) {
         return window.saveGreyURL;
       } else if (this.props.loggedIn && this.state.saveHover) {
         return window.saveGreyURL;
@@ -1888,7 +1887,7 @@ var RecipeCard = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSave",
     value: function handleSave(e) {
-      if (this.props.loggedIn && this.props.savedRecipeIds.includes(this.props.id)) {
+      if (this.props.loggedIn && this.props.savedRecipeIds.includes(parseInt(this.props.id))) {
         return this.props.unsaveRecipe(this.props.id);
       } else if (this.props.loggedIn && this.state.saveHover) {
         return this.props.saveRecipe(this.props.id);
@@ -1904,10 +1903,7 @@ var RecipeCard = /*#__PURE__*/function (_React$Component) {
       } else {
         this.props.openModal('login');
       }
-    } //if the user is logged in then check to see if it's saved
-    //if it's save, render the filled gray and make the click unsave it
-    //if it's not saved, render the outline gray and make the click save it
-
+    }
   }, {
     key: "render",
     value: function render() {

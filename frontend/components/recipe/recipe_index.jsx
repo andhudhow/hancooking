@@ -8,7 +8,6 @@ class RecipeIndex extends React.Component {
   }
 
   componentDidMount() {
-    debugger
     this.props.fetchRecipes()
   }
   //icon-bookmark-hover-outline.svg if not saved

@@ -23,7 +23,7 @@ class RecipeCard extends React.Component{
 
   icon() {
     let icon;
-    if(this.props.loggedIn && this.props.savedRecipeIds.includes(this.props.id)) {
+    if(this.props.loggedIn && this.props.savedRecipeIds.includes(parseInt(this.props.id))) {
       return window.saveGreyURL
     } else if (this.props.loggedIn && this.state.saveHover) {
       return window.saveGreyURL
@@ -33,7 +33,7 @@ class RecipeCard extends React.Component{
   }
 
   handleSave(e) {
-    if(this.props.loggedIn && this.props.savedRecipeIds.includes(this.props.id)) {
+    if(this.props.loggedIn && this.props.savedRecipeIds.includes(parseInt(this.props.id))) {
       return this.props.unsaveRecipe(this.props.id)
     } else if (this.props.loggedIn && this.state.saveHover) {
       return this.props.saveRecipe(this.props.id)
@@ -50,9 +50,6 @@ class RecipeCard extends React.Component{
     }
   }
 
-  //if the user is logged in then check to see if it's saved
-  //if it's save, render the filled gray and make the click unsave it
-  //if it's not saved, render the outline gray and make the click save it
   
   render() {
     const url = this.props.loggedIn ? `/recipes/${this.props.id}` : '/';
