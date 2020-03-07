@@ -6,6 +6,7 @@ import React, { useEffect } from 'react'
 
 class RecipeShow extends React.Component {
   constructor(props) {
+    debugger
     super(props)
   }  
 
@@ -21,7 +22,6 @@ class RecipeShow extends React.Component {
   // }
   
   render() {
-    
     return (
         this.props.recipe.id === parseInt(this.props.match.params.recipeId) ?
           <div className="recipe-show-container">

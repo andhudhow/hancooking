@@ -11,7 +11,7 @@ class MainCarousel extends React.Component {
   }
 
   render() {
-    const images = this.props.carousel.map(recipe => 
+    const images = this.props.carousel.map((recipe, index) => 
       <div>
         <RecipeCardContainer
           id={recipe.id}

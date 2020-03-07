@@ -9,8 +9,7 @@ const mapStateToProps = ({ session, entities}, ownProps) => {
   
   return ({
     currentUser: session.currentUser,
-    currentRecipeId: ownProps.match.params.recipeId,
-    recipe: entities.recipes,
+    recipe: entities.recipes[ownProps.match.params.recipeId],
     ingredients: Object.keys(entities.ingredients).map(key=>entities.ingredients[key]),
     prepSteps: Object.keys(entities.prepSteps).map(key=>entities.prepSteps[key])
   })

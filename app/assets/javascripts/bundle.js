@@ -575,7 +575,7 @@ var MainCarousel = /*#__PURE__*/function (_React$Component) {
   _createClass(MainCarousel, [{
     key: "render",
     value: function render() {
-      var images = this.props.carousel.map(function (recipe) {
+      var images = this.props.carousel.map(function (recipe, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_recipe_box_recipe_card_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
           id: recipe.id,
           title: recipe.title,
@@ -1370,7 +1370,7 @@ var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var saveIcon;
   var btnText;
   var textClass;
-  var recipe = entities.recipes;
+  var recipe = entities.recipes[ownProps.match.params.recipeId];
 
   if (!session.currentUser) {
     saveIcon = "".concat(window.saveRibbonWhiteOutlineURL);
@@ -1579,6 +1579,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   function RecipeShow(props) {
     _classCallCheck(this, RecipeShow);
 
+    debugger;
     return _possibleConstructorReturn(this, _getPrototypeOf(RecipeShow).call(this, props));
   }
 
@@ -1649,8 +1650,7 @@ var mapStateToProps = function mapStateToProps(_ref, ownProps) {
       entities = _ref.entities;
   return {
     currentUser: session.currentUser,
-    currentRecipeId: ownProps.match.params.recipeId,
-    recipe: entities.recipes,
+    recipe: entities.recipes[ownProps.match.params.recipeId],
     ingredients: Object.keys(entities.ingredients).map(function (key) {
       return entities.ingredients[key];
     }),
@@ -2239,9 +2239,8 @@ var recipesReducer = function recipesReducer() {
   switch (action.type) {
     case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_RECIPES"]:
       return action.recipes;
-
-    case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_RECIPE"]:
-      return action.recipe.recipe;
+    // case RECEIVE_RECIPE:
+    //   return action.recipe.recipe;
 
     default:
       return state;

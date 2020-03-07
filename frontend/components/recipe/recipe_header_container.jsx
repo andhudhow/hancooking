@@ -9,7 +9,7 @@ const mapStateToProps = ( {session, entities}, ownProps) => {
     let saveIcon;
     let btnText;
     let textClass;
-    let recipe = entities.recipes;
+    let recipe = entities.recipes[ownProps.match.params.recipeId];
     
     if (!session.currentUser) {
       saveIcon = `${window.saveRibbonWhiteOutlineURL}`;
