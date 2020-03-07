@@ -41,7 +41,7 @@ class Main extends React.Component{
             <h2 className="section-title">Suggestions From the Editor</h2>
             <h3 className="section-intro">Recipes selected throughout the month by Andrew Howell, food editor of Hancooking.</h3>
           <div className="carousel-container">
-            <MainCarousel carousel={this.props.editor} unsaveRecipe={this.props.unsaveRecipe} />
+            <MainCarousel carousel={this.props.editor} unsaveRecipe={this.props.unsaveRecipe} openModal={this.props.openModal} />
           </div>
           </div>
         </section>
@@ -50,7 +50,7 @@ class Main extends React.Component{
             <h2 className="section-title">Our Most Popular Recipes</h2>
             <h3 className="section-intro">Tried and true classics that are guaranteed to impress.</h3>
           <div className="carousel-container">
-            <MainCarousel carousel={this.props.popular} unsaveRecipe={this.props.unsaveRecipe} />
+            <MainCarousel carousel={this.props.popular} unsaveRecipe={this.props.unsaveRecipe} openModal={this.props.openModal} />
           </div>
           <Link to="/recipes"><h3 className='recipe-index-link'>View All Recipes</h3></Link>
           </div>

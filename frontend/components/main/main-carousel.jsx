@@ -15,11 +15,12 @@ class MainCarousel extends React.Component {
       <div>
         <RecipeCard
           id={recipe.id}
-          photoUrl={recipe.photoUrl}
           title={recipe.title}
           authorName={recipe.authorName}
           cookTime={cookTime(recipe.minDuration)}
           unsaveRecipe={this.props.unsaveRecipe}
+          openModal={this.props.openModal}
+          photoUrl={recipe.photoUrl}
         />
       </div>
     );
