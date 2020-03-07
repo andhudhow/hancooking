@@ -8,15 +8,20 @@ class RecipeIndex extends React.Component {
     super(props)
   }
 
+  componentDidMount() {
+    debugger
+    this.props.fetchRecipes()
+  }
+
   render() {
     const recipes = 
-      this.props.recipes.map((id, idx) =>
+      Object.keys(this.props.recipes).map((key, keyx) =>
         <div>
           <RecipeCard
-            id={id}
-            title={this.props.savedRecipes[id].title}
-            authorName={this.props.savedRecipes[id].authorName}
-            cookTime={cookTime(this.props.savedRecipes[id].minDuration)}
+            id={key}
+            title={this.props.recipes[key].title}
+            authorName={this.props.recipes[key].authorName}
+            cookTime={cookTime(this.props.recipes[key].minDuration)}
             unsaveRecipe={this.props.unsaveRecipe}
           />
         </div>
@@ -25,8 +30,7 @@ class RecipeIndex extends React.Component {
 
     return (
       <div className='recipe-box-container'>
-          <h3>Saved Recipes</h3>{this.props.currentUserEmail}<br /><br />
-          <div className="saved-recipe-count">All recipes</div>
+          <h3>All Recipes</h3>{this.props.currentUserEmail}<br /><br />
           <section className="saved-recipe-index-container">
             {recipes}
           </section>

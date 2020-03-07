@@ -145,6 +145,7 @@ var REMOVE_RECIPE_SAVE = 'REMOVE_RECIPE_SAVE';
 var RECEIVE_RECIPE_ERRORS = 'RECEIVE_RECIPE_ERRORS';
 
 var receiveAllRecipes = function receiveAllRecipes(recipes) {
+  debugger;
   return {
     type: RECEIVE_RECIPES,
     recipes: recipes
@@ -181,6 +182,7 @@ var removeRecipeSave = function removeRecipeSave(currentUser) {
 
 var fetchRecipes = function fetchRecipes() {
   return function (dispatch) {
+    debugger;
     return _util_recipe_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchRecipes"]().then(function (recipes) {
       return dispatch(receiveAllRecipes(recipes));
     }, function (errors) {
@@ -1420,24 +1422,28 @@ var RecipeIndex = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(RecipeIndex, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      debugger;
+      this.props.fetchRecipes();
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this = this;
 
-      var recipes = this.props.recipes.map(function (id, idx) {
+      var recipes = Object.keys(this.props.recipes).map(function (key, keyx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_recipe_box_recipe_card__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          id: id,
-          title: _this.props.savedRecipes[id].title,
-          authorName: _this.props.savedRecipes[id].authorName,
-          cookTime: Object(_util_cook_time_util__WEBPACK_IMPORTED_MODULE_1__["cookTime"])(_this.props.savedRecipes[id].minDuration),
+          id: key,
+          title: _this.props.recipes[key].title,
+          authorName: _this.props.recipes[key].authorName,
+          cookTime: Object(_util_cook_time_util__WEBPACK_IMPORTED_MODULE_1__["cookTime"])(_this.props.recipes[key].minDuration),
           unsaveRecipe: _this.props.unsaveRecipe
         }));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-box-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Saved Recipes"), this.props.currentUserEmail, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "saved-recipe-count"
-      }, "All recipes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "All Recipes"), this.props.currentUserEmail, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "saved-recipe-index-container"
       }, recipes));
     }
@@ -1461,8 +1467,7 @@ var RecipeIndex = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
-/* harmony import */ var _reducers_selectors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../reducers/selectors */ "./frontend/reducers/selectors.js");
-/* harmony import */ var _recipe_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./recipe_index */ "./frontend/components/recipe/recipe_index.jsx");
+/* harmony import */ var _recipe_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./recipe_index */ "./frontend/components/recipe/recipe_index.jsx");
 
 
 
@@ -1471,15 +1476,18 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(_ref) {
   var entities = _ref.entities,
       session = _ref.session;
-  // debugger
+  debugger;
   return {
-    recipes: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_2__["selectAllRecipes"])(entities.recipes),
+    recipes: entities.recipes,
     savedRecipeIds: session.currentUser.savedRecipeIds
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
+    fetchRecipes: function fetchRecipes() {
+      return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__["fetchRecipes"])());
+    },
     unsaveRecipe: function unsaveRecipe(recipeId) {
       return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__["unsaveRecipe"])(recipeId));
     },
@@ -1489,7 +1497,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_recipe_index__WEBPACK_IMPORTED_MODULE_3__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_recipe_index__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 
