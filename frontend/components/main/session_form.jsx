@@ -39,7 +39,7 @@ class SessionForm extends React.Component {
     return (
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          <img src="/assets/logo.png" />
+          <img src={window.logoURL} />
           <br/>
           Please {this.props.headerText} below or {this.props.otherForm}
           <div onClick={this.props.closeModal} className="close-x">&times;</div>

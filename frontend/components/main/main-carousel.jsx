@@ -7,7 +7,6 @@ import { cookTime } from '../../util/cook_time_util';
  
 class MainCarousel extends React.Component {
   constructor(props){
-    debugger
     super(props)
   }
 

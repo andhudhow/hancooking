@@ -432,7 +432,6 @@ var MainCarousel = /*#__PURE__*/function (_React$Component) {
   function MainCarousel(props) {
     _classCallCheck(this, MainCarousel);
 
-    debugger;
     return _possibleConstructorReturn(this, _getPrototypeOf(MainCarousel).call(this, props));
   }
 
@@ -922,7 +921,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         onSubmit: this.handleSubmit,
         className: "login-form-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/assets/logo.png"
+        src: window.logoURL
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Please ", this.props.headerText, " below or ", this.props.otherForm, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         onClick: this.props.closeModal,
         className: "close-x"
