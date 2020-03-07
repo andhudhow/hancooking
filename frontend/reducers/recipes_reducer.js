@@ -3,6 +3,7 @@ import {
   RECEIVE_RECIPE
 } from '../actions/recipe_actions';
 
+//small change comment
 const recipesReducer = (state = {}, action) => {
   Object.freeze(state);
 
