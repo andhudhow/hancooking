@@ -14,6 +14,7 @@ class RecipeBox extends React.Component {
         <div>
           <RecipeCard
             id={id}
+            photoUrl={this.props.savedRecipes[id].photoUrl}
             title={this.props.savedRecipes[id].title}
             authorName={this.props.savedRecipes[id].authorName}
             cookTime={cookTime(this.props.savedRecipes[id].minDuration)}

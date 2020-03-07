@@ -5,7 +5,7 @@ const RecipeCard = (props) => (
   <div>
   <Link to={`/recipes/${props.id}`}>
     <div className="recipe-card-container">
-      <div><img src='assets/jajangmyeon.jpg' /></div>
+      <div><img src={props.photoUrl}/></div>
       <div className="card-base">
         <div className="card-title">{props.title}</div>
         <div className="card-byline">By {props.authorName}</div>

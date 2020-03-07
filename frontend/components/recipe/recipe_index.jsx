@@ -24,6 +24,7 @@ class RecipeIndex extends React.Component {
         <div>
           <RecipeCard
             id={key}
+            photoUrl={this.props.recipe.photoUrl}
             title={this.props.recipes[key].title}
             authorName={this.props.recipes[key].authorName}
             cookTime={cookTime(this.props.recipes[key].minDuration)}

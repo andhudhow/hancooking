@@ -7,6 +7,7 @@ import { cookTime } from '../../util/cook_time_util';
  
 class MainCarousel extends React.Component {
   constructor(props){
+    debugger
     super(props)
   }
 
@@ -15,6 +16,7 @@ class MainCarousel extends React.Component {
       <div>
         <RecipeCard
           id={recipe.id}
+          photoUrl={recipe.photoUrl}
           title={recipe.title}
           authorName={recipe.authorName}
           cookTime={cookTime(recipe.minDuration)}

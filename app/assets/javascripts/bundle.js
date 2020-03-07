@@ -432,6 +432,7 @@ var MainCarousel = /*#__PURE__*/function (_React$Component) {
   function MainCarousel(props) {
     _classCallCheck(this, MainCarousel);
 
+    debugger;
     return _possibleConstructorReturn(this, _getPrototypeOf(MainCarousel).call(this, props));
   }
 
@@ -443,6 +444,7 @@ var MainCarousel = /*#__PURE__*/function (_React$Component) {
       var images = this.props.carousel.map(function (recipe) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_recipe_box_recipe_card__WEBPACK_IMPORTED_MODULE_2__["default"], {
           id: recipe.id,
+          photoUrl: recipe.photoUrl,
           title: recipe.title,
           authorName: recipe.authorName,
           cookTime: Object(_util_cook_time_util__WEBPACK_IMPORTED_MODULE_3__["cookTime"])(recipe.minDuration),
@@ -1441,6 +1443,7 @@ var RecipeIndex = /*#__PURE__*/function (_React$Component) {
       var recipes = Object.keys(this.props.recipes).map(function (key, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_recipe_box_recipe_card__WEBPACK_IMPORTED_MODULE_3__["default"], {
           id: key,
+          photoUrl: _this.props.recipe.photoUrl,
           title: _this.props.recipes[key].title,
           authorName: _this.props.recipes[key].authorName,
           cookTime: Object(_util_cook_time_util__WEBPACK_IMPORTED_MODULE_1__["cookTime"])(_this.props.recipes[key].minDuration),
@@ -1706,6 +1709,7 @@ var RecipeBox = /*#__PURE__*/function (_React$Component) {
       var recipes = this.props.savedRecipeIds.map(function (id, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_recipe_card__WEBPACK_IMPORTED_MODULE_3__["default"], {
           id: id,
+          photoUrl: _this.props.savedRecipes[id].photoUrl,
           title: _this.props.savedRecipes[id].title,
           authorName: _this.props.savedRecipes[id].authorName,
           cookTime: Object(_util_cook_time_util__WEBPACK_IMPORTED_MODULE_1__["cookTime"])(_this.props.savedRecipes[id].minDuration),
@@ -1793,7 +1797,7 @@ var RecipeCard = function RecipeCard(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "recipe-card-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: "assets/jajangmyeon.jpg"
+    src: props.photoUrl
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-base"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
