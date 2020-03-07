@@ -1,7 +1,6 @@
 import React from 'react';
 import { cookTime } from '../../util/cook_time_util';
-import { Link } from 'react-router-dom';
-import RecipeCard from '../recipe_box/recipe_card';
+import RecipeCardContainer from '../recipe_box/recipe_card_container';
 
 class RecipeIndex extends React.Component {
   constructor(props) {
@@ -19,7 +18,7 @@ class RecipeIndex extends React.Component {
     const recipes = 
       Object.keys(this.props.recipes).map((key, idx) =>
         <div>
-          <RecipeCard
+          <RecipeCardContainer
             id={key}
             photoUrl={this.props.recipes[key].photoUrl}
             title={this.props.recipes[key].title}

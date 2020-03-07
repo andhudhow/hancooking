@@ -1423,8 +1423,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _util_cook_time_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/cook_time_util */ "./frontend/util/cook_time_util.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _recipe_box_recipe_card__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../recipe_box/recipe_card */ "./frontend/components/recipe_box/recipe_card.jsx");
+/* harmony import */ var _recipe_box_recipe_card_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../recipe_box/recipe_card_container */ "./frontend/components/recipe_box/recipe_card_container.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1442,7 +1441,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -1471,7 +1469,7 @@ var RecipeIndex = /*#__PURE__*/function (_React$Component) {
       var _this = this;
 
       var recipes = Object.keys(this.props.recipes).map(function (key, idx) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_recipe_box_recipe_card__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_recipe_box_recipe_card_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
           id: key,
           photoUrl: _this.props.recipes[key].photoUrl,
           title: _this.props.recipes[key].title,
