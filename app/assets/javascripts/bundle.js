@@ -555,7 +555,7 @@ var Main = /*#__PURE__*/function (_React$Component) {
         muted: true,
         loop: true,
         type: "video/mp4",
-        src: "/assets/COTE_VIDEO_4.mp4"
+        src: window.splashVidURL
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "rotd-label"
       }, "Recipe", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "of the day"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1292,7 +1292,7 @@ var RecipeHeader = /*#__PURE__*/function (_React$Component) {
         href: "javascript:window.print()"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "print-recipe-icon",
-        src: "assets/rdp-print.svg"
+        src: window.printIconURL
       }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-description-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -1339,15 +1339,15 @@ var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var recipe = entities.recipes;
 
   if (!session.currentUser) {
-    saveIcon = "assets/save-white-outline.svg";
+    saveIcon = "".concat(window.saveRibbonURL);
     btnText = "Save To Recipe Box";
     textClass = "save-btn-text";
   } else if (session.currentUser.savedRecipeIds.includes(parseInt(ownProps.match.params.recipeId))) {
-    saveIcon = "assets/save-white.svg";
+    saveIcon = "".concat(window.savedFillRibbonURL);
     btnText = "Saved";
     textClass = "save-btn-text saved";
   } else {
-    saveIcon = "assets/save-white-outline.svg";
+    saveIcon = "".concat(window.saveRibbonURL);
     btnText = "Save To Recipe Box";
     textClass = "save-btn-text";
   }
@@ -1806,7 +1806,7 @@ var RecipeCard = function RecipeCard(props) {
     to: "/recipe-box"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "saved-recipe-icon",
-    src: "/assets/save-grey.svg",
+    src: window.saveGreyURL,
     onClick: function onClick() {
       return props.unsaveRecipe(props.id);
     }

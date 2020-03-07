@@ -22,7 +22,7 @@ class Main extends React.Component{
     return (
       <div className='outer'>
         <section className="rotd-container">
-          <video className='splash-img' autoPlay muted loop type='video/mp4' src='/assets/COTE_VIDEO_4.mp4' />
+          <video className='splash-img' autoPlay muted loop type='video/mp4' src={window.splashVidURL} />
             <div id="rotd-label">Recipe<br/>of the day< /div>
               <div id="rotd-card">
                 <h3 id="rotd-title">

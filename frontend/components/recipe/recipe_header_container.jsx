@@ -12,15 +12,15 @@ const mapStateToProps = ( {session, entities}, ownProps) => {
     let recipe = entities.recipes;
     
     if (!session.currentUser) {
-      saveIcon = "assets/save-white-outline.svg";
+      saveIcon = `${window.saveRibbonURL}`;
       btnText = "Save To Recipe Box";
       textClass = "save-btn-text"
     } else if (session.currentUser.savedRecipeIds.includes(parseInt(ownProps.match.params.recipeId))) {
-      saveIcon = "assets/save-white.svg"
+      saveIcon = `${window.savedFillRibbonURL}`
       btnText = "Saved";
       textClass = "save-btn-text saved";
     } else {
-      saveIcon = "assets/save-white-outline.svg";
+      saveIcon = `${window.saveRibbonURL}`;
       btnText = "Save To Recipe Box";
       textClass = "save-btn-text";
     }

@@ -36,7 +36,7 @@ class RecipeHeader extends React.Component {
                 <div className={ this.props.textClass }>{this.props.btnText}</div>
             </div>
             <div className="print-recipe-btn">
-            <a href="javascript:window.print()"><img className="print-recipe-icon" src="assets/rdp-print.svg"></img></a>
+            <a href="javascript:window.print()"><img className="print-recipe-icon" src={window.printIconURL}></img></a>
             </div>
           </div>
         </div>
