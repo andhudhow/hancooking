@@ -1,4 +1,8 @@
 /* Splash */
+.outer {
+  background-color: #f2f3ef
+}
+
 .rotd-container {
   position: relative;
   padding-bottom: 40px;
@@ -77,13 +81,13 @@
   letter-spacing: .6px
 }
 
-.carousel-container {
-
+.rotm-container {
+  border-top: 7px solid #222;
+  padding-top: 12px;
 }
 
-#carousel-container img {
-  /* height: 100px;
-  width: 100px; */
+.carousel-container {
+  padding-top: 19px;
 }
 
 .what-to-cook {
@@ -92,7 +96,7 @@
   font-family: 'karnak-400',Georgia,"Times New Roman",serif;
   font-weight: 400;
   letter-spacing: .3px;
-  font-size: 3.8rem;
+  font-size: 38px;
   line-height: 4rem;
   box-sizing: border-box;
   outline: 0;
@@ -100,4 +104,69 @@
   color: #222;
   max-width: 1000px;
   margin: 0 auto;
+  padding-bottom: 42px;
 } 
+
+.recipes-week-of {
+  color: #222;
+  font: 'franklin-500',Arial,Helvetica,sans-serif;
+  text-align: center;
+  box-sizing: border-box;
+  outline: 0;
+  margin-top: 5px;
+  text-transform: uppercase;
+  width: 100%;
+  display: block;
+  font-size: 12px;
+  letter-spacing: 1.3px;
+  line-height: 1.2;
+  margin-bottom: 50px;
+}
+
+.rotm-container {
+  text-align: left
+}
+.section-title {
+  color: #222;
+  box-sizing: border-box;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  font-family: "cheltenham-300",Georgia,"Times New Roman",serif;
+  line-height: 1.2;
+  font-weight: 200;
+  letter-spacing: .5px;
+  font-size: 30px;
+}
+
+.section-intro {
+  color: #999;
+  box-sizing: border-box;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  font-family: "cheltenham-300",Georgia,"Times New Roman",serif;
+  line-height: 1.2;
+  font-weight: 200;
+  letter-spacing: .5px;
+  font-size: 30px;
+}
+
+.recipe-index-link {
+  margin-top: 50px;
+  text-align: center
+}
+
+.recipe-index-link {
+  color: #e33d26;
+  box-sizing: border-box;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  font-family: "karnak-400",Georgia,"Times New Roman",serif;
+  line-height: 1.2;
+  font-weight: 100;
+  letter-spacing: .5px;
+  font-size: 30px;
+  padding-top: 50px;
+}

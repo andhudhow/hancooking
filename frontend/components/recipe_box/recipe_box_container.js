@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { unsaveRecipe } from '../../actions/recipe_actions';
+import { unsaveRecipe, saveRecipe } from '../../actions/recipe_actions';
 import RecipeBox from './recipe_box';
 
 const mapStateToProps = ( { entities, session } ) => {
@@ -13,7 +13,8 @@ const mapStateToProps = ( { entities, session } ) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  unsaveRecipe: recipeId => dispatch(unsaveRecipe(recipeId))
+  unsaveRecipe: recipeId => dispatch(unsaveRecipe(recipeId)),
+  saveRecipe: recipeId => dispatch(unsaveRecipe(recipeId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipeBox);

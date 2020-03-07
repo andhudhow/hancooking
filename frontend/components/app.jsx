@@ -1,5 +1,6 @@
 import React from "react";
 import Modal from './modals/modal';
+import RecipeIndexContainer from './recipe/recipe_index_container';
 import RecipeShowContainer from './recipe/recipe_show_container';
 import RecipeBoxContainer from './recipe_box/recipe_box_container';
 import NavBarContainer from './main/navbar/nav_container';
@@ -21,6 +22,7 @@ const App = () => {
         <NavBarContainer />
             <Switch>
                 <Route path="/recipe-box" component={RecipeBoxContainer} />
+                <Route path="/recipes" component={RecipeIndexContainer} />
                 <Route path="/recipes/:recipeId" component={RecipeShowContainer} />
                 <Route path="/" component={MainContainer} />
             </Switch>

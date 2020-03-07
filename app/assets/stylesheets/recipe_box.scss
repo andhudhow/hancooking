@@ -23,6 +23,7 @@
   margin: 10px;
   position: relative;
   width: 235px;
+  text-align: left;
   // margin: 0px 20px
 }
 
@@ -79,4 +80,18 @@
   position: absolute;
   white-space: nowrap;
   margin-left: 196px;
+}
+
+.slick-prev:before,
+.slick-next:before
+{
+    font-family: 'slick';
+    font-size: 20px;
+    line-height: 1;
+
+    opacity: .75;
+    color: #ccc;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }

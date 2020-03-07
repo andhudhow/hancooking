@@ -10,7 +10,7 @@ const RecipeCard = (props) => (
         <div className="card-title">{props.title}</div>
         <div className="card-byline">By {props.authorName}</div>
         <div className="card-cook-time">{props.cookTime}</div>
-        <img className="saved-recipe-icon" src="/assets/save-grey.svg" onClick={() => props.unsaveRecipe(props.id)} />
+        <Link to="/recipe-box"><img className="saved-recipe-icon" src="/assets/save-grey.svg" onClick={() => props.unsaveRecipe(props.id)} /></Link>
       </div>
     </div>
   </Link>

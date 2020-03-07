@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
-import { selectCarouselRecipes } from '../../reducers/selectors';
+import { selectEditorRecipes, selectPopularRecipes } from '../../reducers/selectors';
 import Main from './main';
 
 const mapStateToProps = ({ entities }) => ({
   recipes: entities.recipes,
-  carousel: selectCarouselRecipes(entities.recipes)
+  editor: selectEditorRecipes(entities.recipes),
+  popular: selectPopularRecipes(entities.recipes)
 });
   
 const mapDispatchToProps = dispatch => ({
