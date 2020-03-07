@@ -90,7 +90,7 @@
   background-image: none;
   color: rgb(255, 255, 255);
   background-color: rgb(227, 61, 38);
-  margin: 0px;
+  margin-bottom: 10px;
   padding: 0px;
   border-width: 0.0625em;
   border-style: solid;
@@ -98,6 +98,11 @@
   border-radius: 0.2em;
   border-color: rgb(227, 61, 38);
   transition: all 0.15s ease-in 0s;
+}
+
+.demo {
+  background-color: black;
+  border-color: black
 }
 
 .close-x {

@@ -381,6 +381,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     }, "sign up here"),
     closeModal: function closeModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["closeModal"])());
+    },
+    login: function login(user) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["login"])(user));
     }
   };
 };
@@ -887,6 +890,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       password: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleDemoLogin = _this.handleDemoLogin.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -915,6 +919,15 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
           key: "error-".concat(i)
         }, error);
       }));
+    }
+  }, {
+    key: "handleDemoLogin",
+    value: function handleDemoLogin(e) {
+      this.props.closeModal();
+      return this.props.login({
+        email: 'andhudhow@gmail.com',
+        password: 'password'
+      });
     }
   }, {
     key: "render",
@@ -951,7 +964,10 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         className: "session-submit",
         type: "submit",
         value: this.props.buttonText
-      }))));
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "session-submit demo",
+        onClick: this.handleDemoLogin
+      }, "\uD83C\uDDF0\uD83C\uDDF7 Log in as demo user \uD83C\uDDF0\uD83C\uDDF7"));
     }
   }]);
 
@@ -1005,7 +1021,20 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     }, "log in here"),
     closeModal: function closeModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["closeModal"])());
-    }
+    },
+    login: function (_login) {
+      function login(_x) {
+        return _login.apply(this, arguments);
+      }
+
+      login.toString = function () {
+        return _login.toString();
+      };
+
+      return login;
+    }(function (user) {
+      return dispatch(login(user));
+    })
   };
 };
 
