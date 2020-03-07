@@ -10,7 +10,7 @@ class RecipeShow extends React.Component {
   }  
 
   componentDidMount() {
-    // debugger
+    // 
     this.props.fetchRecipe(this.props.match.params.recipeId);
   }
 
@@ -21,7 +21,7 @@ class RecipeShow extends React.Component {
   // }
   
   render() {
-    debugger
+    
     return (
         this.props.recipe.id === parseInt(this.props.match.params.recipeId) ?
           <div className="recipe-show-container">

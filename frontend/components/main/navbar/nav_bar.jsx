@@ -10,14 +10,14 @@ class NavBar extends React.Component{
     const { currentUser, openModal, logout, login } = this.props;
     const navButtons = () => (
       <ul>
-        <li className='nav-btns'>
-          <Link to='/recipe-box'>Grocery List</Link>
-        </li>
-        <li className='nav-btns'>
-          <Link to='/recipe-box'>Recipe Box</Link>
-        </li>
-        <li className='nav-btns'>
-          <a href="" onClick={logout}>Log Out</a>
+        <Link to='/recipe-box'>
+          <li className='nav-btns'>Grocery List</li>
+        </Link>
+        <Link to='/recipe-box'>
+          <li className='nav-btns'>Recipe Box</li>
+        </Link>
+        <li className='nav-btns' onClick={logout}>
+          Log Out
         </li>
       </ul>
     );

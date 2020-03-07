@@ -22,8 +22,8 @@ const App = () => {
         <NavBarContainer />
             <Switch>
                 <Route path="/recipe-box" component={RecipeBoxContainer} />
-                <Route path="/recipes" component={RecipeIndexContainer} />
                 <Route path="/recipes/:recipeId" component={RecipeShowContainer} />
+                <Route path="/recipes" component={RecipeIndexContainer} />
                 <Route path="/" component={MainContainer} />
             </Switch>
     </div>

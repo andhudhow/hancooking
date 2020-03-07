@@ -7,7 +7,7 @@ export const REMOVE_RECIPE_SAVE = 'REMOVE_RECIPE_SAVE';
 export const RECEIVE_RECIPE_ERRORS = 'RECEIVE_RECIPE_ERRORS';
 
 const receiveAllRecipes = recipes => {
-  debugger
+  
   return {
     type: RECEIVE_RECIPES,
     recipes
@@ -44,7 +44,7 @@ const removeRecipeSave = currentUser => {
 };
 
 export const fetchRecipes = () => dispatch => {
-  debugger
+  
   return RecipeApiUtil.fetchRecipes().then(recipes => {
     return dispatch(receiveAllRecipes(recipes));
   }, errors => {

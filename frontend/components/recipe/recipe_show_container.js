@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 
 
 const mapStateToProps = ({ session, entities}, ownProps) => {
-  debugger
+  
   return ({
     currentUser: session.currentUser,
     currentRecipeId: ownProps.match.params.recipeId,

@@ -48,7 +48,7 @@ class Main extends React.Component{
         <section className="what-to-cook">
           <div className="rotm-container">
             <h2 className="section-title">Our Most Popular Recipes</h2>
-            <h3 className="section-intro">Our tried and true classics that are guaranteed to impress.</h3>
+            <h3 className="section-intro">Tried and true classics that are guaranteed to impress.</h3>
           <div className="carousel-container">
             <MainCarousel carousel={this.props.popular} unsaveRecipe={this.props.unsaveRecipe} />
           </div>

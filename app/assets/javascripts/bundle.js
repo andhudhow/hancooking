@@ -145,7 +145,6 @@ var REMOVE_RECIPE_SAVE = 'REMOVE_RECIPE_SAVE';
 var RECEIVE_RECIPE_ERRORS = 'RECEIVE_RECIPE_ERRORS';
 
 var receiveAllRecipes = function receiveAllRecipes(recipes) {
-  debugger;
   return {
     type: RECEIVE_RECIPES,
     recipes: recipes
@@ -182,7 +181,6 @@ var removeRecipeSave = function removeRecipeSave(currentUser) {
 
 var fetchRecipes = function fetchRecipes() {
   return function (dispatch) {
-    debugger;
     return _util_recipe_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchRecipes"]().then(function (recipes) {
       return dispatch(receiveAllRecipes(recipes));
     }, function (errors) {
@@ -323,11 +321,11 @@ var App = function App() {
     path: "/recipe-box",
     component: _recipe_box_recipe_box_container__WEBPACK_IMPORTED_MODULE_4__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Route"], {
-    path: "/recipes",
-    component: _recipe_recipe_index_container__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Route"], {
     path: "/recipes/:recipeId",
     component: _recipe_recipe_show_container__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Route"], {
+    path: "/recipes",
+    component: _recipe_recipe_index_container__WEBPACK_IMPORTED_MODULE_2__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Route"], {
     path: "/",
     component: _main_main_container__WEBPACK_IMPORTED_MODULE_6__["default"]
@@ -589,7 +587,7 @@ var Main = /*#__PURE__*/function (_React$Component) {
         className: "section-title"
       }, "Our Most Popular Recipes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "section-intro"
-      }, "Our tried and true classics that are guaranteed to impress."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Tried and true classics that are guaranteed to impress."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "carousel-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_carousel__WEBPACK_IMPORTED_MODULE_1__["default"], {
         carousel: this.props.popular,
@@ -721,20 +719,18 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
           login = _this$props.login;
 
       var navButtons = function navButtons() {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          className: "nav-btns"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/recipe-box"
-        }, "Grocery List")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "nav-btns"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        }, "Grocery List")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/recipe-box"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "nav-btns"
         }, "Recipe Box")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          className: "nav-btns"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "",
+          className: "nav-btns",
           onClick: logout
-        }, "Log Out")));
+        }, "Log Out"));
       };
 
       var sessionButtons = function sessionButtons() {
@@ -930,16 +926,22 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         className: "close-x"
       }, "\xD7"), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email Address:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "login-form-box"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.email,
         onChange: this.update('email'),
-        className: "login-input"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "login-input",
+        placeholder: "Email Address"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "login-form-box"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         value: this.state.password,
         onChange: this.update('password'),
-        className: "login-input"
+        className: "login-input",
+        placeholder: "Password"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "session-submit",
         type: "submit",
@@ -1424,15 +1426,19 @@ var RecipeIndex = /*#__PURE__*/function (_React$Component) {
   _createClass(RecipeIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      debugger;
       this.props.fetchRecipes();
-    }
+    } //icon-bookmark-hover-outline.svg if not saved
+    // if already saved icon-bookmark-hover-fill.svg on hover
+
+  }, {
+    key: "handleHover",
+    value: function handleHover() {}
   }, {
     key: "render",
     value: function render() {
       var _this = this;
 
-      var recipes = Object.keys(this.props.recipes).map(function (key, keyx) {
+      var recipes = Object.keys(this.props.recipes).map(function (key, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_recipe_box_recipe_card__WEBPACK_IMPORTED_MODULE_3__["default"], {
           id: key,
           title: _this.props.recipes[key].title,
@@ -1476,7 +1482,6 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(_ref) {
   var entities = _ref.entities,
       session = _ref.session;
-  debugger;
   return {
     recipes: entities.recipes,
     savedRecipeIds: session.currentUser.savedRecipeIds
@@ -1550,7 +1555,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   _createClass(RecipeShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      // debugger
+      // 
       this.props.fetchRecipe(this.props.match.params.recipeId);
     } // componentDidUpdate (prevProps, prevState) {
     //   if (prevProps.match.params.recipeId !== this.props.match.params.recipeId) {
@@ -1561,7 +1566,6 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
       return this.props.recipe.id === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
         className: "recipe-show-container"
       }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_recipe_header_container__WEBPACK_IMPORTED_MODULE_0__["default"], null), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
@@ -1613,7 +1617,6 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var session = _ref.session,
       entities = _ref.entities;
-  debugger;
   return {
     currentUser: session.currentUser,
     currentRecipeId: ownProps.match.params.recipeId,
@@ -1745,7 +1748,7 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(_ref) {
   var entities = _ref.entities,
       session = _ref.session;
-  // debugger
+  // 
   return {
     savedRecipeIds: session.currentUser.savedRecipeIds,
     savedRecipes: entities.savedRecipes,
@@ -2230,7 +2233,7 @@ var _nullUser = Object.freeze({
 var sessionReducer = function sessionReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _nullUser;
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(state); // debugger
+  Object.freeze(state); // 
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:

@@ -5,17 +5,22 @@ import RecipeCard from '../recipe_box/recipe_card';
 
 class RecipeIndex extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   componentDidMount() {
-    debugger
+    
     this.props.fetchRecipes()
+  }
+  //icon-bookmark-hover-outline.svg if not saved
+  // if already saved icon-bookmark-hover-fill.svg on hover
+  handleHover() {
+
   }
 
   render() {
     const recipes = 
-      Object.keys(this.props.recipes).map((key, keyx) =>
+      Object.keys(this.props.recipes).map((key, idx) =>
         <div>
           <RecipeCard
             id={key}
