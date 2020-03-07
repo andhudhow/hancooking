@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 
 
 const mapStateToProps = ({ session, entities}, ownProps) => {
-  debugger
+  
   return ({
     currentUser: session.currentUser,
     recipe: entities.recipes[ownProps.match.params.recipeId],
@@ -16,7 +16,8 @@ const mapStateToProps = ({ session, entities}, ownProps) => {
 };
   
 const mapDispatchToProps = dispatch => ({
-  fetchRecipe: recipeId => dispatch(fetchRecipe(recipeId))
+  fetchRecipe: recipeId => dispatch(fetchRecipe(recipeId)),
+  fetchRecipes: () => dispatch(fetchRecipes())
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RecipeShow));

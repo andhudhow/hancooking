@@ -16,6 +16,7 @@ class SearchBar extends React.Component {
     this.handleTyping = this.handleTyping.bind(this);
     this.filterResults = this.filterResults.bind(this);
     this.handleResultClick = this.handleResultClick.bind(this);
+    this.handleOutsideClick = this.handleOutsideClick.bind(this);
   }
 
   componentDidMount(){
@@ -33,6 +34,11 @@ class SearchBar extends React.Component {
     this.setState({results: []});
   }
 
+  handleOutsideClick(e){
+    
+    this.setState({results: []})
+  }
+
   filterResults() {
     let titleResults = this.props.recipes.filter(recipe => recipe.title.toLowerCase().includes(this.state.query.toLowerCase()));
     // let descriptionResults = this.props.recipes.filter(recipe => recipe.description.toLowerCase().split(' ').includes(this.state.query.toLowerCase()));
@@ -45,7 +51,14 @@ class SearchBar extends React.Component {
   
   render() {
     let resultList = this.state.results.map(result => 
-      <li><Link to={`/recipes/${result.id}`} path={`/recipes/${result.id}`} onClick={this.handleResultClick}>{result.title}</Link></li>
+      <li>
+        <Link to={`/recipes/${result.id}`}
+          path={`/recipes/${result.id}`}
+          onClick={this.handleResultClick}
+        >
+            {result.title}
+        </Link>
+      </li>
     );
 
     return(

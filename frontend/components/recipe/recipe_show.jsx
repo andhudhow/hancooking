@@ -6,12 +6,17 @@ import React, { useEffect } from 'react'
 
 class RecipeShow extends React.Component {
   constructor(props) {
-    debugger
+    
     super(props)
   }  
 
   componentDidMount() {
+    this.props.recipe ? null : this.props.fetchRecipe();
     this.props.fetchRecipe(this.props.match.params.recipeId);
+  }
+
+  componentDidUpdate() {
+    window.scrollTo(0, 0);
   }
 
   // componentDidUpdate (prevProps, prevState) {
@@ -22,7 +27,7 @@ class RecipeShow extends React.Component {
   
   render() {
     return (
-        this.props.recipe.id === parseInt(this.props.match.params.recipeId) ?
+        this.props.recipe && this.props.recipe.id === parseInt(this.props.match.params.recipeId) ?
           <div className="recipe-show-container">
             <RecipeHeaderContainer />
             <div className="recipe-instructions-container">

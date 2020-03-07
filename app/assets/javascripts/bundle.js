@@ -1573,14 +1573,19 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   function RecipeShow(props) {
     _classCallCheck(this, RecipeShow);
 
-    debugger;
     return _possibleConstructorReturn(this, _getPrototypeOf(RecipeShow).call(this, props));
   }
 
   _createClass(RecipeShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      this.props.recipe ? null : this.props.fetchRecipe();
       this.props.fetchRecipe(this.props.match.params.recipeId);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      window.scrollTo(0, 0);
     } // componentDidUpdate (prevProps, prevState) {
     //   if (prevProps.match.params.recipeId !== this.props.match.params.recipeId) {
     //     this.props.fetchRecipe(this.props.match.params.recipeId)
@@ -1590,7 +1595,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return this.props.recipe.id === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+      return this.props.recipe && this.props.recipe.id === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
         className: "recipe-show-container"
       }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_recipe_header_container__WEBPACK_IMPORTED_MODULE_0__["default"], null), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
         className: "recipe-instructions-container"
@@ -1641,7 +1646,6 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var session = _ref.session,
       entities = _ref.entities;
-  debugger;
   return {
     currentUser: session.currentUser,
     recipe: entities.recipes[ownProps.match.params.recipeId],
@@ -1668,6 +1672,19 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       return fetchRecipe;
     }(function (recipeId) {
       return dispatch(fetchRecipe(recipeId));
+    }),
+    fetchRecipes: function (_fetchRecipes) {
+      function fetchRecipes() {
+        return _fetchRecipes.apply(this, arguments);
+      }
+
+      fetchRecipes.toString = function () {
+        return _fetchRecipes.toString();
+      };
+
+      return fetchRecipes;
+    }(function () {
+      return dispatch(fetchRecipes());
     })
   };
 };
@@ -2065,6 +2082,7 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
     _this.handleTyping = _this.handleTyping.bind(_assertThisInitialized(_this));
     _this.filterResults = _this.filterResults.bind(_assertThisInitialized(_this));
     _this.handleResultClick = _this.handleResultClick.bind(_assertThisInitialized(_this));
+    _this.handleOutsideClick = _this.handleOutsideClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2088,6 +2106,13 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
       this.setState({
         query: ''
       });
+      this.setState({
+        results: []
+      });
+    }
+  }, {
+    key: "handleOutsideClick",
+    value: function handleOutsideClick(e) {
       this.setState({
         results: []
       });
