@@ -1,6 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
-import RecipeCard from "../../components/recipe_box/recipe_card";
+import RecipeCardContainer from "../recipe_box/recipe_card_container";
 import { cookTime } from '../../util/cook_time_util';
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
@@ -13,13 +13,11 @@ class MainCarousel extends React.Component {
   render() {
     const images = this.props.carousel.map(recipe => 
       <div>
-        <RecipeCard
+        <RecipeCardContainer
           id={recipe.id}
           title={recipe.title}
           authorName={recipe.authorName}
           cookTime={cookTime(recipe.minDuration)}
-          unsaveRecipe={this.props.unsaveRecipe}
-          openModal={this.props.openModal}
           photoUrl={recipe.photoUrl}
         />
       </div>

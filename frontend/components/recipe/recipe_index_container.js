@@ -7,7 +7,7 @@ const mapStateToProps = ( { entities, session } ) => {
   debugger
   return ({
     recipes: entities.recipes,
-    savedRecipeIds: session.currentUser.savedRecipeIds
+    savedRecipeIds: session.currentUser ? session.currentUser.savedRecipeIds : null,
   })
 };
 

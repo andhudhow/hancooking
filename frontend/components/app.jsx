@@ -6,7 +6,6 @@ import RecipeBoxContainer from './recipe_box/recipe_box_container';
 import NavBarContainer from './main/navbar/nav_container';
 import MainContainer from './main/main_container';
 import { ProtectedRoute } from '../util/route_util';
-import RedirectToLogin from '../components/main/login_redirect'
 
 import {
     Route,
@@ -17,16 +16,14 @@ import {
 } from 'react-router-dom';
 
 const App = (props) => {
-    const loggedIn = getState().session.currentUser === 'undefined'
-
     return (
     <div className="site-container">
         <Modal />
         <NavBarContainer />
             <Switch>
-                <Route path="/recipe-box" component={ loggedIn ? RecipeBoxContainer : RedirectToLogin } />
-                <Route path="/recipes/:recipeId" component={ loggedIn ? RecipeShowContainer : RedirectToLogin } />
-                <Route path="/recipes" component={ loggedIn ? RecipeIndexContainer : RedirectToLogin } />
+                <ProtectedRoute path="/recipe-box" component={ RecipeBoxContainer } />
+                <ProtectedRoute path="/recipes/:recipeId" component={ RecipeShowContainer } />
+                <ProtectedRoute path="/recipes" component={ RecipeIndexContainer } />
                 <Route path="/" component={MainContainer} />
             </Switch>
     </div>

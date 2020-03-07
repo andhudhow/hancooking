@@ -1,15 +1,24 @@
 import React from 'react';
-import MainCarousel from './main-carousel';
+import MainCarousel from './main_carousel';
 import { Link } from 'react-router-dom';
 
 class Main extends React.Component{
 
   constructor(props) {
-    super(props)
+    super(props);
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
     this.props.fetchRecipes()
+  }
+
+  handleClick(e){
+    if (this.props.loggedIn) {
+      return null
+    } else { 
+      this.props.openModal('login')
+    }
   }
 
   render() {
@@ -52,7 +61,9 @@ class Main extends React.Component{
           <div className="carousel-container">
             <MainCarousel carousel={this.props.popular} unsaveRecipe={this.props.unsaveRecipe} openModal={this.props.openModal} />
           </div>
-          <Link to="/recipes"><h3 className='recipe-index-link'>View All Recipes</h3></Link>
+          <Link to={this.props.loggedIn ? "/recipes" : "/"} onClick={this.handleClick}>
+            <h3 className='recipe-index-link'>View All Recipes</h3>
+          </Link>
           </div>
         </section>
     </div>

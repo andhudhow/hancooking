@@ -4,19 +4,24 @@ import { Link } from 'react-router-dom';
 class RecipeCard extends React.Component{
   constructor(props) {
     super(props);
-    debugger
     this.handleClick = this.handleClick.bind(this);
   }
-
+  
   handleClick(e){
-    const loggedIn = getState().session.currentUser === 'undefined'
-    return loggedIn ? null : this.props.openModal('login')
+    debugger
+    if (this.props.loggedIn) {
+      return null
+    } else { 
+      this.props.openModal('login')
+    }
   }
   
   render() {
+    const url = this.props.loggedIn ? `/recipes/${this.props.id}` : '/';
+
     return (
       <div>
-      <Link to={`/recipes/${this.props.id}`} onClick={this.handleClick}>
+      <Link to={url} onClick={this.handleClick}>
         <div className="recipe-card-container">
           <div><img src={this.props.photoUrl}/></div>
           <div className="card-base">
