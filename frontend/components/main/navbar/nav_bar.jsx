@@ -40,7 +40,7 @@ class NavBar extends React.Component{
       <section className='main-nav'>
         <div className='logo-wrapper'>
           <Link to='/'>
-            <img className='logo' src='/assets/logo.png' />
+            <img className='logo' src={window.logoURL} />
           </Link>
         </div>
 

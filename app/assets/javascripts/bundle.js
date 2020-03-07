@@ -769,7 +769,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         to: "/"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "logo",
-        src: "/assets/logo.png"
+        src: window.logoURL
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "search-bar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
