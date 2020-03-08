@@ -1117,6 +1117,302 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/recipe/ingredient_list_index.jsx":
+/*!**************************************************************!*\
+  !*** ./frontend/components/recipe/ingredient_list_index.jsx ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ingredient_list_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ingredient_list_index_item */ "./frontend/components/recipe/ingredient_list_index_item.jsx");
+
+
+
+var IngredientListIndex = function IngredientListIndex(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ingredients-wrap"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "ingredient-list"
+  }, props.ingredients.map(function (ingredient, index) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ingredient_list_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      ingredient: ingredient,
+      key: index
+    });
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (IngredientListIndex);
+
+/***/ }),
+
+/***/ "./frontend/components/recipe/ingredient_list_index_item.jsx":
+/*!*******************************************************************!*\
+  !*** ./frontend/components/recipe/ingredient_list_index_item.jsx ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var IngredientListIndexItem = function IngredientListIndexItem(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    key: props.key,
+    className: "ingredient"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "ingredient-quantity"
+  }, props.ingredient.quantity), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "ingredient-desc"
+  }, props.ingredient.description));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (IngredientListIndexItem);
+
+/***/ }),
+
+/***/ "./frontend/components/recipe/prep_steps_list_index.jsx":
+/*!**************************************************************!*\
+  !*** ./frontend/components/recipe/prep_steps_list_index.jsx ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _prep_steps_list_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./prep_steps_list_index_item */ "./frontend/components/recipe/prep_steps_list_index_item.jsx");
+
+
+
+var PrepStepListIndex = function PrepStepListIndex(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "prepStep-wrap"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "prepStep-list"
+  }, props.prepSteps.map(function (prepStep, index) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_prep_steps_list_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      prepStep: prepStep,
+      key: index
+    });
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (PrepStepListIndex);
+
+/***/ }),
+
+/***/ "./frontend/components/recipe/prep_steps_list_index_item.jsx":
+/*!*******************************************************************!*\
+  !*** ./frontend/components/recipe/prep_steps_list_index_item.jsx ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var PrepStepListIndexItem = function PrepStepListIndexItem(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    key: props.index,
+    className: "prep-step"
+  }, "Step ", props.prepStep.step, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "prep-step-desc"
+  }, props.prepStep.description))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (PrepStepListIndexItem);
+
+/***/ }),
+
+/***/ "./frontend/components/recipe/recipe_header.jsx":
+/*!******************************************************!*\
+  !*** ./frontend/components/recipe/recipe_header.jsx ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _util_cook_time_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/cook_time_util */ "./frontend/util/cook_time_util.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var RecipeHeader = /*#__PURE__*/function (_React$Component) {
+  _inherits(RecipeHeader, _React$Component);
+
+  function RecipeHeader(props) {
+    var _this;
+
+    _classCallCheck(this, RecipeHeader);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(RecipeHeader).call(this, props));
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(RecipeHeader, [{
+    key: "handleClick",
+    value: function handleClick(e) {
+      if (this.props.btnText === 'Save To Recipe Box') {
+        this.props.saveRecipe(this.props.recipe.id);
+      } else {
+        this.props.unsaveRecipe(this.props.recipe.id);
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      // { title, authorName, servings. minDuration, saveIcon, buttonText, handleSaveClick } = this.props;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "recipe-title-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "recipe-title"
+      }, this.props.recipe.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "recipe-title author"
+      }, this.props.recipe.authorName)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "recipe-sub-title-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "yeild-time-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "recipe-yield-time"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "time-yield-label"
+      }, "Yield"), " ", this.props.recipe.servings, " servings"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "recipe-yield-time"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "time-yield-label"
+      }, "Time"), " ", Object(_util_cook_time_util__WEBPACK_IMPORTED_MODULE_1__["cookTime"])(this.props.recipe.minDuration))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "recipe-sub-title-btn-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "save-recipe-btn",
+        onClick: this.handleClick
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "save-recipe-icon",
+        src: this.props.saveIcon
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: this.props.textClass
+      }, this.props.btnText)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "print-recipe-btn"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "javascript:window.print()"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "print-recipe-icon",
+        src: window.printIconURL
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "recipe-description-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "recipe-description"
+      }, this.props.recipe.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "recipe-image",
+        src: this.props.recipe.photoUrl
+      })));
+    }
+  }]);
+
+  return RecipeHeader;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (RecipeHeader);
+
+/***/ }),
+
+/***/ "./frontend/components/recipe/recipe_header_container.jsx":
+/*!****************************************************************!*\
+  !*** ./frontend/components/recipe/recipe_header_container.jsx ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _recipe_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./recipe_header */ "./frontend/components/recipe/recipe_header.jsx");
+/* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+ // import { receiveModalWithRecipe } from '../../actions/ui_actions';
+// import UnsaveModalContainer from '../unsave_modal/unsave_modal_container';
+
+var mapStateToProps = function mapStateToProps(_ref, ownProps) {
+  var session = _ref.session,
+      entities = _ref.entities;
+  var saveIcon;
+  var btnText;
+  var textClass;
+  var recipe = entities.recipes[ownProps.match.params.recipeId];
+
+  if (!session.currentUser) {
+    saveIcon = "".concat(window.saveRibbonWhiteOutlineURL);
+    btnText = "Save To Recipe Box";
+    textClass = "save-btn-text";
+  } else if (session.currentUser.savedRecipeIds.includes(parseInt(ownProps.match.params.recipeId))) {
+    saveIcon = "".concat(window.savedFillRibbonWhiteURL);
+    btnText = "Saved";
+    textClass = "save-btn-text saved";
+  } else {
+    saveIcon = "".concat(window.saveRibbonWhiteOutlineURL);
+    btnText = "Save To Recipe Box";
+    textClass = "save-btn-text";
+  }
+
+  return {
+    saveIcon: saveIcon,
+    btnText: btnText,
+    textClass: textClass,
+    recipe: recipe
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
+  return {
+    saveRecipe: function saveRecipe(recipeId) {
+      return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_2__["saveRecipe"])(recipeId));
+    },
+    unsaveRecipe: function unsaveRecipe(recipeId) {
+      return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_2__["unsaveRecipe"])(recipeId));
+    } // launchUnsaveModal: ((recipe) =>
+    //   dispatch(receiveModalWithRecipe(UnsaveModalContainer, recipe))),
+
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_recipe_header__WEBPACK_IMPORTED_MODULE_1__["default"])));
+
+/***/ }),
+
 /***/ "./frontend/components/recipe/recipe_index.jsx":
 /*!*****************************************************!*\
   !*** ./frontend/components/recipe/recipe_index.jsx ***!
@@ -1253,9 +1549,89 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   !*** ./frontend/components/recipe/recipe_show.jsx ***!
   \****************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/frontend/components/recipe/recipe_show.jsx: Unterminated JSX contents (42:27)\n\n\u001b[0m \u001b[90m 40 | \u001b[39m\u001b[90m          </div> */\u001b[39m}\u001b[0m\n\u001b[0m \u001b[90m 41 | \u001b[39m          \u001b[33m:\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 42 | \u001b[39m        \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\u001b[33mLOADING\u001b[39m\u001b[33m!\u001b[39m\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 43 | \u001b[39m    )\u001b[0m\n\u001b[0m \u001b[90m 44 | \u001b[39m  }\u001b[0m\n\u001b[0m \u001b[90m 45 | \u001b[39m}\u001b[0m\n    at Object.raise (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:7044:17)\n    at Object.jsxReadToken (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:3742:20)\n    at Object.getTokenFromCode (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:4124:19)\n    at Object.nextToken (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:7268:12)\n    at Object.next (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:7197:10)\n    at Object.eat (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:7202:12)\n    at Object.expect (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:8408:10)\n    at Object.jsxParseClosingElementAt (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:4022:10)\n    at Object.jsxParseElementAt (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:4041:37)\n    at Object.jsxParseElementAt (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:4045:32)\n    at Object.jsxParseElement (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:4103:17)\n    at Object.parseExprAtom (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:4110:19)\n    at Object.parseExprSubscripts (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:9287:23)\n    at Object.parseMaybeUnary (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:9267:21)\n    at Object.parseExprOps (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:9137:23)\n    at Object.parseMaybeConditional (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:9110:23)\n    at Object.parseMaybeAssign (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:9065:21)\n    at Object.parseConditional (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:9124:30)\n    at Object.parseMaybeConditional (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:9117:17)\n    at Object.parseMaybeAssign (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:9065:21)\n    at Object.parseParenAndDistinguishExpression (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:9842:28)\n    at Object.parseExprAtom (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:9622:21)\n    at Object.parseExprAtom (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:4115:20)\n    at Object.parseExprSubscripts (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:9287:23)\n    at Object.parseMaybeUnary (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:9267:21)\n    at Object.parseExprOps (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:9137:23)\n    at Object.parseMaybeConditional (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:9110:23)\n    at Object.parseMaybeAssign (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:9065:21)\n    at Object.parseExpression (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:9017:23)\n    at Object.parseReturnStatement (/Users/andrewhowell/Desktop/a:A/Fullstack/hancooking/hancooking/node_modules/@babel/parser/lib/index.js:11091:28)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _recipe_header_container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./recipe_header_container */ "./frontend/components/recipe/recipe_header_container.jsx");
+/* harmony import */ var _ingredient_list_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ingredient_list_index */ "./frontend/components/recipe/ingredient_list_index.jsx");
+/* harmony import */ var _prep_steps_list_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./prep_steps_list_index */ "./frontend/components/recipe/prep_steps_list_index.jsx");
+/* harmony import */ var _util_scroll_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/scroll_util */ "./frontend/util/scroll_util.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+var RecipeShow = /*#__PURE__*/function (_React$Component) {
+  _inherits(RecipeShow, _React$Component);
+
+  function RecipeShow() {
+    _classCallCheck(this, RecipeShow);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(RecipeShow).apply(this, arguments));
+  }
+
+  _createClass(RecipeShow, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.recipe ? null : this.props.fetchRecipe();
+      this.props.fetchRecipe(this.props.match.params.recipeId);
+      {
+        Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_3__["scrollTop"])();
+      }
+      ;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return this.props.recipe && this.props.recipe.id === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
+        className: "recipe-show-container"
+      }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_recipe_header_container__WEBPACK_IMPORTED_MODULE_0__["default"], null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
+        className: "recipe-instructions-container"
+      }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
+        className: "recipe-ingredients-list-container"
+      }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("h3", {
+        className: "instructions-header"
+      }, "Ingredients"), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_ingredient_list_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        ingredients: this.props.ingredients
+      }), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("button", {
+        className: "add-glist-btn",
+        type: "button"
+      }, "Add to Your Grocery List")), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
+        className: "recipe-prepsteps-list"
+      }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("h3", {
+        className: "instructions-header"
+      }, "Preparation"), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_prep_steps_list_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        prepSteps: this.props.prepSteps
+      })))) : react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", null, "LOADING!");
+    }
+  }]);
+
+  return RecipeShow;
+}(react__WEBPACK_IMPORTED_MODULE_4___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (RecipeShow);
 
 /***/ }),
 
@@ -1745,8 +2121,6 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleResultClick",
     value: function handleResultClick(e) {
-      debugger;
-
       if (this.props.loggedIn) {
         this.props.history.push(e.path);
         this.setState({

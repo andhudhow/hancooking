@@ -8,7 +8,6 @@ import React, { useEffect } from 'react'
 class RecipeShow extends React.Component{
 
   componentDidMount() {
-    debugger
     this.props.recipe ? null : this.props.fetchRecipe();
     this.props.fetchRecipe(this.props.match.params.recipeId);
     { scrollTop() };
@@ -33,11 +32,11 @@ class RecipeShow extends React.Component{
                   <PrepStepsListIndex prepSteps={this.props.prepSteps} />
               </div>
             </div>
-            {/* <div className="comments-contianer">
+              {/* <div className="comments-contianer">
                 {this.props.comments.map(comment => 
                   <li>{comment.body}</li>)}
-              </div>
-          </div> */}
+              </div> */}
+          </div>
           :
         <div>LOADING!</div>
     )

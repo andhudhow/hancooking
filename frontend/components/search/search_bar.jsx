@@ -29,7 +29,6 @@ class SearchBar extends React.Component {
   }
 
   handleResultClick(e){
-    debugger
     if (this.props.loggedIn) {
       this.props.history.push(e.path);
       this.setState({query: ''});
