@@ -51,14 +51,14 @@ class SearchBar extends React.Component {
   
   render() {
     let resultList = this.state.results.map(result => 
-      <li className='search-result'>
-        <Link to={`/recipes/${result.id}`}
+      <Link to={`/recipes/${result.id}`}
           path={`/recipes/${result.id}`}
-          onClick={this.handleResultClick}
-        >
-            {result.title}
-        </Link>
-      </li>
+          onClick={this.handleResultClick}>
+        <li className='search-result'>
+          <img className='search-thumb' src={result.photoUrl} />
+          <span className='result-text'></span>{result.title}
+        </li>
+      </Link>
     );
 
     return(

@@ -2140,13 +2140,18 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
       var _this3 = this;
 
       var resultList = this.state.results.map(function (result) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          className: "search-result"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/recipes/".concat(result.id),
           path: "/recipes/".concat(result.id),
           onClick: _this3.handleResultClick
-        }, result.title));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "search-result"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "search-thumb",
+          src: result.photoUrl
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "result-text"
+        }), result.title));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "search-bar"
