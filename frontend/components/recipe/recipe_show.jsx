@@ -33,11 +33,11 @@ class RecipeShow extends React.Component{
                   <PrepStepsListIndex prepSteps={this.props.prepSteps} />
               </div>
             </div>
-            <div className="comments-contianer">
+            {/* <div className="comments-contianer">
                 {this.props.comments.map(comment => 
                   <li>{comment.body}</li>)}
               </div>
-          </div>
+          </div> */}
           :
         <div>LOADING!</div>
     )
