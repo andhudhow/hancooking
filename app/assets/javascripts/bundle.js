@@ -1595,12 +1595,14 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   _createClass(RecipeShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      debugger;
       this.props.recipe ? null : this.props.fetchRecipe();
       this.props.fetchRecipe(this.props.match.params.recipeId);
       {
         Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_3__["scrollTop"])();
       }
       ;
+      debugger;
     }
   }, {
     key: "render",
@@ -1624,7 +1626,9 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         className: "instructions-header"
       }, "Preparation"), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_prep_steps_list_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
         prepSteps: this.props.prepSteps
-      })))) : react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", null, "LOADING!");
+      })))) : react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
+        "class": "loading-show"
+      }, "LOADING!");
     }
   }]);
 

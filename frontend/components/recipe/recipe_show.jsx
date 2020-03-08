@@ -8,10 +8,11 @@ import React, { useEffect } from 'react'
 class RecipeShow extends React.Component{
 
   componentDidMount() {
+    debugger
     this.props.recipe ? null : this.props.fetchRecipe();
     this.props.fetchRecipe(this.props.match.params.recipeId);
     { scrollTop() };
-
+    debugger
   }
   
   render() {
@@ -38,7 +39,7 @@ class RecipeShow extends React.Component{
               </div> */}
           </div>
           :
-        <div>LOADING!</div>
+        <div class="loading-show">LOADING!</div>
     )
   }
 }
