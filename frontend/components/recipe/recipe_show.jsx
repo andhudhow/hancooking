@@ -9,15 +9,16 @@ class RecipeShow extends React.Component{
 
   componentDidMount() {
     debugger
-    this.props.recipe ? null : this.props.fetchRecipe();
+    this.props.recipe ? null : this.props.fetchRecipes();
     this.props.fetchRecipe(this.props.match.params.recipeId);
     { scrollTop() };
-    debugger
   }
   
   render() {
+    const fetchedRecipeId = this.props.recipe ? this.props.ingredients[0].recipeId : null
+    
     return (
-        this.props.recipe && this.props.recipe.id === parseInt(this.props.match.params.recipeId) ?
+        fetchedRecipeId === parseInt(this.props.match.params.recipeId) ?
           <div className="recipe-show-container">
             <RecipeHeaderContainer />
             <div className="recipe-instructions-container">
@@ -39,7 +40,7 @@ class RecipeShow extends React.Component{
               </div> */}
           </div>
           :
-        <div class="loading-show">LOADING!</div>
+        <div className="loading-show">LOADING!</div>
     )
   }
 }

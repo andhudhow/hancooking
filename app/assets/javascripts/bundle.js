@@ -1596,18 +1596,18 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       debugger;
-      this.props.recipe ? null : this.props.fetchRecipe();
+      this.props.recipe ? null : this.props.fetchRecipes();
       this.props.fetchRecipe(this.props.match.params.recipeId);
       {
         Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_3__["scrollTop"])();
       }
       ;
-      debugger;
     }
   }, {
     key: "render",
     value: function render() {
-      return this.props.recipe && this.props.recipe.id === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
+      var fetchedRecipeId = this.props.recipe ? this.props.ingredients[0].recipeId : null;
+      return fetchedRecipeId === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
         className: "recipe-show-container"
       }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_recipe_header_container__WEBPACK_IMPORTED_MODULE_0__["default"], null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
         className: "recipe-instructions-container"
@@ -1627,7 +1627,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       }, "Preparation"), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_prep_steps_list_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
         prepSteps: this.props.prepSteps
       })))) : react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
-        "class": "loading-show"
+        className: "loading-show"
       }, "LOADING!");
     }
   }]);
@@ -1660,6 +1660,7 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var session = _ref.session,
       entities = _ref.entities;
+  debugger;
   return {
     currentUser: session.currentUser,
     recipe: entities.recipes[ownProps.match.params.recipeId],
