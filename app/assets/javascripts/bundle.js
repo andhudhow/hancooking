@@ -2140,7 +2140,9 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
       var _this3 = this;
 
       var resultList = this.state.results.map(function (result) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "search-result"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/recipes/".concat(result.id),
           path: "/recipes/".concat(result.id),
           onClick: _this3.handleResultClick
@@ -2148,13 +2150,15 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "search-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-result-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        id: "search-input",
+        "class": "search-input",
         type: "text",
         placeholder: "What would you like to cook?",
         onChange: this.handleTyping,
         value: this.state.query
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, resultList.slice(0, 6)));
+      }), this.state.query.length > 1 ? resultList.slice(0, 6) : null));
     }
   }]);
 

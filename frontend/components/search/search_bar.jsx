@@ -51,7 +51,7 @@ class SearchBar extends React.Component {
   
   render() {
     let resultList = this.state.results.map(result => 
-      <li>
+      <li className='search-result'>
         <Link to={`/recipes/${result.id}`}
           path={`/recipes/${result.id}`}
           onClick={this.handleResultClick}
@@ -63,16 +63,16 @@ class SearchBar extends React.Component {
 
     return(
       <section className='search-bar'>
-      <input
-        id='search-input'
-        type='text'
-        placeholder='What would you like to cook?'
-        onChange={this.handleTyping}
-        value={this.state.query}
-      />
-      <div>
-        {resultList.slice(0,6)}
-      </div>
+        <div className='search-result-container'>
+          <input
+            class='search-input'
+            type='text'
+            placeholder='What would you like to cook?'
+            onChange={this.handleTyping}
+            value={this.state.query}
+          />
+          {this.state.query.length > 1 ? resultList.slice(0,6) : null}
+        </div>
       </section>
     )
   }
