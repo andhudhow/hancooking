@@ -35,7 +35,6 @@ class SearchBar extends React.Component {
   }
 
   handleOutsideClick(e){
-    
     this.setState({results: []})
   }
 

@@ -1453,6 +1453,7 @@ var RecipeIndex = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchRecipes();
+      window.scrollTo(0, 0);
     } //icon-bookmark-hover-outline.svg if not saved
     // if already saved icon-bookmark-hover-fill.svg on hover
 
@@ -1570,10 +1571,10 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 var RecipeShow = /*#__PURE__*/function (_React$Component) {
   _inherits(RecipeShow, _React$Component);
 
-  function RecipeShow(props) {
+  function RecipeShow() {
     _classCallCheck(this, RecipeShow);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(RecipeShow).call(this, props));
+    return _possibleConstructorReturn(this, _getPrototypeOf(RecipeShow).apply(this, arguments));
   }
 
   _createClass(RecipeShow, [{
@@ -1581,17 +1582,8 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       this.props.recipe ? null : this.props.fetchRecipe();
       this.props.fetchRecipe(this.props.match.params.recipeId);
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {
       window.scrollTo(0, 0);
-    } // componentDidUpdate (prevProps, prevState) {
-    //   if (prevProps.match.params.recipeId !== this.props.match.params.recipeId) {
-    //     this.props.fetchRecipe(this.props.match.params.recipeId)
-    //   }
-    // }
-
+    }
   }, {
     key: "render",
     value: function render() {
@@ -1742,6 +1734,11 @@ var RecipeBox = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(RecipeBox, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      window.scrollTo(0, 0);
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this = this;

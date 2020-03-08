@@ -4,26 +4,13 @@ import PrepStepsListIndex from './prep_steps_list_index';
 
 import React, { useEffect } from 'react'
 
-class RecipeShow extends React.Component {
-  constructor(props) {
-    
-    super(props)
-  }  
+class RecipeShow extends React.Component{
 
   componentDidMount() {
     this.props.recipe ? null : this.props.fetchRecipe();
     this.props.fetchRecipe(this.props.match.params.recipeId);
+    window.scrollTo(0,0);
   }
-
-  componentDidUpdate() {
-    window.scrollTo(0, 0);
-  }
-
-  // componentDidUpdate (prevProps, prevState) {
-  //   if (prevProps.match.params.recipeId !== this.props.match.params.recipeId) {
-  //     this.props.fetchRecipe(this.props.match.params.recipeId)
-  //   }
-  // }
   
   render() {
     return (

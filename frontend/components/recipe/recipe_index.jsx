@@ -8,7 +8,8 @@ class RecipeIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchRecipes()
+    this.props.fetchRecipes();
+    window.scrollTo(0,0);
   }
   //icon-bookmark-hover-outline.svg if not saved
   // if already saved icon-bookmark-hover-fill.svg on hover
