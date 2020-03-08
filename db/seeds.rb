@@ -18,13 +18,13 @@ Recipe.destroy_all
 User.destroy_all
 
 
-User.create(email: "andhudhow@gmail.com", password: "password")
+User.create(email: "andhudhow@gmail.com", password: "password", nickname: "Andrew H.")
 10.times do
-  User.create(email: Faker::Internet.email, password: Faker::Beer.brand)
+  User.create(email: Faker::Internet.email, password: Faker::Beer.brand, nickname: Faker::Kpop.girl_groups)
 end
 
 25.times do
-  Recipe.create(title: Faker::Food.sushi, author_name: Faker::GreekPhilosophers.name, description: Faker::Food.description + " " + Faker::Food.description + " " + Faker::Food.description, servings: Faker::Number.between(from: 2, to: 8) , min_duration: Faker::Number.between(from: 15, to: 180))
+  Recipe.create(title: Faker::Food.sushi, author_name: Faker::Kpop.solo, description: Faker::Food.description + " " + Faker::Food.description + " " + Faker::Food.description, servings: Faker::Number.between(from: 2, to: 8) , min_duration: Faker::Number.between(from: 15, to: 180))
 end
 
 
@@ -34,13 +34,17 @@ recipe_id = Recipe.first.id
 while recipe_id <= Recipe.last.id
   
     10.times do
-      Ingredient.create!(recipe_id: recipe_id, quantity: Faker::Number.between(from: 2, to: 8), description: "cups " + Faker::Food.ingredient)
+      Ingredient.create!(recipe_id: recipe_id, quantity: Faker::Number.between(from: 2, to: 8), description: ["cups", "tbs", "tsp", "grams"].sample + " " + Faker::Food.ingredient)
     end
     
     step = 1
     5.times do
-      PrepStep.create!(recipe_id: recipe_id, step: step, description: Faker::GreekPhilosophers.quote + "" + Faker::GreekPhilosophers.quote + "" + Faker::GreekPhilosophers.quote + "" + Faker::GreekPhilosophers.quote + "" + Faker::GreekPhilosophers.quote + "" + Faker::GreekPhilosophers.quote + "" + Faker::GreekPhilosophers.quote + "" + Faker::GreekPhilosophers.quote)
+      PrepStep.create!(recipe_id: recipe_id, step: step, description: Faker::GreekPhilosophers.quote + " " + Faker::GreekPhilosophers.quote + " " + Faker::GreekPhilosophers.quote + " " + Faker::GreekPhilosophers.quote + " " + Faker::GreekPhilosophers.quote + " " + Faker::GreekPhilosophers.quote + " " + Faker::GreekPhilosophers.quote + " " + Faker::GreekPhilosophers.quote)
       step += 1
+    end
+
+    5.times do
+      Comment.create!(recipe_id: recipe_id, user_id: (User.first.id..User.last.id).to_a.sample, body: Faker::Hipster.sentence)
     end
 
     RecipeSave.create!(recipe_id: recipe_id, user_id: demo_id)

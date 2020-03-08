@@ -565,9 +565,13 @@ var MainCarousel = /*#__PURE__*/function (_React$Component) {
   _inherits(MainCarousel, _React$Component);
 
   function MainCarousel(props) {
+    var _this;
+
     _classCallCheck(this, MainCarousel);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(MainCarousel).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MainCarousel).call(this, props));
+    debugger;
+    return _this;
   }
 
   _createClass(MainCarousel, [{
@@ -1580,6 +1584,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   _createClass(RecipeShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      debugger;
       this.props.recipe ? null : this.props.fetchRecipe();
       this.props.fetchRecipe(this.props.match.params.recipeId);
       window.scrollTo(0, 0);
@@ -1606,7 +1611,9 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         className: "instructions-header"
       }, "Preparation"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_prep_steps_list_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
         prepSteps: this.props.prepSteps
-      })))) : react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", null, "LOADING!");
+      })), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+        className: "comments-contianer"
+      }))) : react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", null, "LOADING!");
     }
   }]);
 
@@ -1646,6 +1653,9 @@ var mapStateToProps = function mapStateToProps(_ref, ownProps) {
     }),
     prepSteps: Object.keys(entities.prepSteps).map(function (key) {
       return entities.prepSteps[key];
+    }),
+    comments: Object.keys(entities.comments).map(function (key) {
+      return entities.comments[key];
     })
   };
 };
@@ -2155,7 +2165,7 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-result-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        "class": "search-input",
+        className: "search-input",
         type: "text",
         placeholder: "What would you like to cook?",
         onChange: this.handleTyping,
@@ -2278,6 +2288,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /***/ }),
 
+/***/ "./frontend/reducers/comments_reducer.js":
+/*!***********************************************!*\
+  !*** ./frontend/reducers/comments_reducer.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
+
+
+var commentsReducer = function commentsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_RECIPE"]:
+      return action.recipe.comments;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (commentsReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/entities_reducer.js":
 /*!***********************************************!*\
   !*** ./frontend/reducers/entities_reducer.js ***!
@@ -2292,6 +2332,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ingredients_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ingredients_reducer */ "./frontend/reducers/ingredients_reducer.js");
 /* harmony import */ var _prep_steps_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./prep_steps_reducer */ "./frontend/reducers/prep_steps_reducer.js");
 /* harmony import */ var _saved_recipes_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./saved_recipes_reducer */ "./frontend/reducers/saved_recipes_reducer.js");
+/* harmony import */ var _comments_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./comments_reducer */ "./frontend/reducers/comments_reducer.js");
+
 
 
 
@@ -2301,7 +2343,8 @@ __webpack_require__.r(__webpack_exports__);
   recipes: _recipes_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   ingredients: _ingredients_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
   prepSteps: _prep_steps_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
-  savedRecipes: _saved_recipes_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
+  savedRecipes: _saved_recipes_reducer__WEBPACK_IMPORTED_MODULE_4__["default"],
+  comments: _comments_reducer__WEBPACK_IMPORTED_MODULE_5__["default"]
 }));
 
 /***/ }),

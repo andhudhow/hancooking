@@ -64,7 +64,7 @@ class SearchBar extends React.Component {
       <section className='search-bar'>
         <div className='search-result-container'>
           <input
-            class='search-input'
+            className='search-input'
             type='text'
             placeholder='What would you like to cook?'
             onChange={this.handleTyping}

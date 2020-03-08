@@ -7,6 +7,7 @@ import React, { useEffect } from 'react'
 class RecipeShow extends React.Component{
 
   componentDidMount() {
+    debugger
     this.props.recipe ? null : this.props.fetchRecipe();
     this.props.fetchRecipe(this.props.match.params.recipeId);
     window.scrollTo(0,0);
@@ -25,9 +26,12 @@ class RecipeShow extends React.Component{
                 <button className="add-glist-btn" type="button">Add to Your Grocery List</button>
               </div>
               <div className="recipe-prepsteps-list">
-              <h3 className='instructions-header'>Preparation</h3>
-              <br /><br />
-                <PrepStepsListIndex prepSteps={this.props.prepSteps} />
+                <h3 className='instructions-header'>Preparation</h3>
+                <br /><br />
+                  <PrepStepsListIndex prepSteps={this.props.prepSteps} />
+              </div>
+              <div className="comments-contianer">
+                
               </div>
             </div>
           </div>

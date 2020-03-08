@@ -19,3 +19,11 @@ json.set! :prepSteps do
     end
   end
 end
+
+json.set! :comments do
+  @recipe.comments.each do |comment|
+    json.set! comment.id do
+      json.extract! comment, :id, :user_id, :body
+    end
+  end
+end

@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :recipe_saves, foreign_key: :user_id, class_name: :RecipeSave
   has_many :saved_recipes, through: :recipe_saves, source: :recipe
 
+  has_many :comments, foreign_key: :user_id, class_name: :Comment
+
   after_initialize :ensure_session_token
 
   attr_reader :password
