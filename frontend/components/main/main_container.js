@@ -6,6 +6,7 @@ import Main from './main';
 
 const mapStateToProps = ({ entities, session }) => ({
   recipes: entities.recipes,
+  // featured_recipe: entities.recipes
   editor: selectEditorRecipes(entities.recipes),
   popular: selectPopularRecipes(entities.recipes),
   loggedIn: Boolean(session.currentUser)

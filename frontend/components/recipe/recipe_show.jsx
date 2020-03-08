@@ -1,6 +1,7 @@
 import RecipeHeaderContainer from './recipe_header_container';
 import IngredientListIndex from './ingredient_list_index';
 import PrepStepsListIndex from './prep_steps_list_index';
+import { scrollTop } from '../../util/scroll_util';
 
 import React, { useEffect } from 'react'
 
@@ -10,7 +11,8 @@ class RecipeShow extends React.Component{
     debugger
     this.props.recipe ? null : this.props.fetchRecipe();
     this.props.fetchRecipe(this.props.match.params.recipeId);
-    window.scrollTo(0,0);
+    { scrollTop() };
+
   }
   
   render() {
@@ -30,10 +32,11 @@ class RecipeShow extends React.Component{
                 <br /><br />
                   <PrepStepsListIndex prepSteps={this.props.prepSteps} />
               </div>
-              <div className="comments-contianer">
-                
-              </div>
             </div>
+            <div className="comments-contianer">
+                {this.props.comments.map(comment => 
+                  <li>{comment.body}</li>)}
+              </div>
           </div>
           :
         <div>LOADING!</div>

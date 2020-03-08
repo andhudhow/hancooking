@@ -11,7 +11,7 @@ class NavBar extends React.Component{
     const { currentUser, openModal, logout, login } = this.props;
     const navButtons = () => (
       <ul>
-        <Link to='/recipe-box'>
+        <Link to='/'>
           <li className='nav-btns'>Grocery List</li>
         </Link>
         <Link to='/recipe-box'>

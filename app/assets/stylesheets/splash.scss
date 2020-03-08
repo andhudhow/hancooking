@@ -30,7 +30,7 @@
   text-align: center;
   cursor: pointer;
   padding: 52px 30px 30px;
-  border-radius: 10px;
+  border-radius: 3px;
 }
 
 #rotd-card:hover{
@@ -81,6 +81,15 @@
   letter-spacing: .6px
 }
 
+#rotd-byline {
+  font: 12px 'franklin-700',Arial,Helvetica,sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.8rem;
+  color: #222
+}
+
 .rotm-container {
   border-top: 7px solid #222;
   padding-top: 12px;
@@ -109,7 +118,7 @@
 
 .recipes-week-of {
   color: #222;
-  font: 'franklin-500',Arial,Helvetica,sans-serif;
+  font: 12px 'franklin-500',Arial,Helvetica,sans-serif;
   text-align: center;
   box-sizing: border-box;
   outline: 0;
@@ -117,7 +126,6 @@
   text-transform: uppercase;
   width: 100%;
   display: block;
-  font-size: 12px;
   letter-spacing: 1.3px;
   line-height: 1.2;
   margin-bottom: 50px;

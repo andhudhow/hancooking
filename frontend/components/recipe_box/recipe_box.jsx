@@ -1,8 +1,7 @@
 import React from 'react';
 import { cookTime } from '../../util/cook_time_util';
 import RecipeCardContainer from './recipe_card_container';
-import { Link } from 'react-router-dom';
-import RecipeCard from './recipe_card';
+import { scrollTop } from '../../util/scroll_util';
 
 class RecipeBox extends React.Component {
   constructor(props) {
@@ -10,7 +9,7 @@ class RecipeBox extends React.Component {
   }
 
   componentDidMount(){
-    window.scrollTo(0,0);
+    { scrollTop() };
   }
 
   render() {

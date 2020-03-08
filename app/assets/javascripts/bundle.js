@@ -438,12 +438,17 @@ var Main = /*#__PURE__*/function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Main).call(this, props));
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     return _this;
-  } // componentDidMount() {
-  //   this.props.fetchRecipes()
-  // }
-
+  }
 
   _createClass(Main, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      document.documentElement.style.height = "100%";
+      document.documentElement.style.width = "100%";
+      document.body.style.height = "100%";
+      document.body.style.width = "100%";
+    }
+  }, {
     key: "handleClick",
     value: function handleClick(e) {
       if (this.props.loggedIn) {
@@ -474,9 +479,11 @@ var Main = /*#__PURE__*/function (_React$Component) {
         id: "rotd-card"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         id: "rotd-title"
-      }, "Korean-Style Shortrib"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Korean-Style Shortrib"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         id: "rotd-description"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Also known as galbi (\uAC08\uBE44), these shortribs are great at a restaurant, but also wonderful at home.")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }, "Also known as galbi (\uAC08\uBE44), these shortribs are great at a restaurant, but also wonderful at home."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        id: "rotd-byline"
+      }, "Suzana E. Lee"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "what-to-cook"
       }, "What to Cook This Month", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipes-week-of"
@@ -565,13 +572,9 @@ var MainCarousel = /*#__PURE__*/function (_React$Component) {
   _inherits(MainCarousel, _React$Component);
 
   function MainCarousel(props) {
-    var _this;
-
     _classCallCheck(this, MainCarousel);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(MainCarousel).call(this, props));
-    debugger;
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(MainCarousel).call(this, props));
   }
 
   _createClass(MainCarousel, [{
@@ -653,6 +656,7 @@ var mapStateToProps = function mapStateToProps(_ref) {
       session = _ref.session;
   return {
     recipes: entities.recipes,
+    // featured_recipe: entities.recipes
     editor: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_1__["selectEditorRecipes"])(entities.recipes),
     popular: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_1__["selectPopularRecipes"])(entities.recipes),
     loggedIn: Boolean(session.currentUser)
@@ -732,7 +736,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
 
       var navButtons = function navButtons() {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          to: "/recipe-box"
+          to: "/"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "nav-btns"
         }, "Grocery List")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -1422,6 +1426,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _util_cook_time_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/cook_time_util */ "./frontend/util/cook_time_util.js");
 /* harmony import */ var _recipe_box_recipe_card_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../recipe_box/recipe_card_container */ "./frontend/components/recipe_box/recipe_card_container.js");
+/* harmony import */ var _util_scroll_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/scroll_util */ "./frontend/util/scroll_util.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1444,6 +1449,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var RecipeIndex = /*#__PURE__*/function (_React$Component) {
   _inherits(RecipeIndex, _React$Component);
 
@@ -1457,7 +1463,10 @@ var RecipeIndex = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchRecipes();
-      window.scrollTo(0, 0);
+      {
+        Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_3__["scrollTop"])();
+      }
+      ;
     } //icon-bookmark-hover-outline.svg if not saved
     // if already saved icon-bookmark-hover-fill.svg on hover
 
@@ -1547,8 +1556,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _recipe_header_container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./recipe_header_container */ "./frontend/components/recipe/recipe_header_container.jsx");
 /* harmony import */ var _ingredient_list_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ingredient_list_index */ "./frontend/components/recipe/ingredient_list_index.jsx");
 /* harmony import */ var _prep_steps_list_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./prep_steps_list_index */ "./frontend/components/recipe/prep_steps_list_index.jsx");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _util_scroll_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/scroll_util */ "./frontend/util/scroll_util.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1572,6 +1582,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var RecipeShow = /*#__PURE__*/function (_React$Component) {
   _inherits(RecipeShow, _React$Component);
 
@@ -1587,38 +1598,43 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       debugger;
       this.props.recipe ? null : this.props.fetchRecipe();
       this.props.fetchRecipe(this.props.match.params.recipeId);
-      window.scrollTo(0, 0);
+      {
+        Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_3__["scrollTop"])();
+      }
+      ;
     }
   }, {
     key: "render",
     value: function render() {
-      return this.props.recipe && this.props.recipe.id === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+      return this.props.recipe && this.props.recipe.id === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
         className: "recipe-show-container"
-      }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_recipe_header_container__WEBPACK_IMPORTED_MODULE_0__["default"], null), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_recipe_header_container__WEBPACK_IMPORTED_MODULE_0__["default"], null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
         className: "recipe-instructions-container"
-      }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
         className: "recipe-ingredients-list-container"
-      }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("h3", {
+      }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("h3", {
         className: "instructions-header"
-      }, "Ingredients"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_ingredient_list_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, "Ingredients"), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_ingredient_list_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
         ingredients: this.props.ingredients
-      }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("button", {
+      }), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("button", {
         className: "add-glist-btn",
         type: "button"
-      }, "Add to Your Grocery List")), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+      }, "Add to Your Grocery List")), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
         className: "recipe-prepsteps-list"
-      }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("h3", {
+      }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("h3", {
         className: "instructions-header"
-      }, "Preparation"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_prep_steps_list_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, "Preparation"), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_prep_steps_list_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
         prepSteps: this.props.prepSteps
-      })), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
         className: "comments-contianer"
-      }))) : react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", null, "LOADING!");
+      }, this.props.comments.map(function (comment) {
+        return react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("li", null, comment.body);
+      }))) : react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", null, "LOADING!");
     }
   }]);
 
   return RecipeShow;
-}(react__WEBPACK_IMPORTED_MODULE_3___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_4___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (RecipeShow);
 
@@ -1708,8 +1724,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _util_cook_time_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/cook_time_util */ "./frontend/util/cook_time_util.js");
 /* harmony import */ var _recipe_card_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./recipe_card_container */ "./frontend/components/recipe_box/recipe_card_container.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _recipe_card__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./recipe_card */ "./frontend/components/recipe_box/recipe_card.jsx");
+/* harmony import */ var _util_scroll_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/scroll_util */ "./frontend/util/scroll_util.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1733,7 +1748,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
 var RecipeBox = /*#__PURE__*/function (_React$Component) {
   _inherits(RecipeBox, _React$Component);
 
@@ -1746,7 +1760,10 @@ var RecipeBox = /*#__PURE__*/function (_React$Component) {
   _createClass(RecipeBox, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      window.scrollTo(0, 0);
+      {
+        Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_3__["scrollTop"])();
+      }
+      ;
     }
   }, {
     key: "render",
@@ -2109,13 +2126,20 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleResultClick",
     value: function handleResultClick(e) {
-      this.props.history.push(e.path);
-      this.setState({
-        query: ''
-      });
-      this.setState({
-        results: []
-      });
+      debugger;
+
+      if (this.props.loggedIn) {
+        this.props.history.push(e.path);
+        this.setState({
+          query: ''
+        });
+        this.setState({
+          results: []
+        });
+        return null;
+      } else {
+        this.props.openModal('login');
+      }
     }
   }, {
     key: "handleOutsideClick",
@@ -2193,14 +2217,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _search_bar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./search_bar */ "./frontend/components/search/search_bar.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
 
 
 
 
 var mapStateToProps = function mapStateToProps(_ref) {
-  var entities = _ref.entities;
+  var entities = _ref.entities,
+      session = _ref.session;
   return {
-    recipes: Object.values(entities.recipes)
+    recipes: Object.values(entities.recipes),
+    loggedIn: Boolean(session.currentUser)
   };
 };
 
@@ -2218,7 +2246,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       return fetchRecipes;
     }(function () {
       return dispatch(fetchRecipes());
-    })
+    }),
+    openModal: function openModal(modal) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])(modal));
+    }
   };
 };
 
@@ -2867,6 +2898,33 @@ var mapStateToProps = function mapStateToProps(_ref3) {
 var AuthRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps)(Auth)); // connect Protected to the redux state
 
 var ProtectedRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps)(Protected));
+
+/***/ }),
+
+/***/ "./frontend/util/scroll_util.js":
+/*!**************************************!*\
+  !*** ./frontend/util/scroll_util.js ***!
+  \**************************************/
+/*! exports provided: scrollTop, removeScrollTop */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "scrollTop", function() { return scrollTop; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeScrollTop", function() { return removeScrollTop; });
+var scrollTop = function scrollTop() {
+  document.documentElement.style.height = "";
+  document.body.style.height = "auto";
+  document.documentElement.style.width = "auto";
+  document.body.style.width = "auto";
+  window.scrollTo(0, 0);
+};
+var removeScrollTop = function removeScrollTop() {
+  document.documentElement.style.height = "";
+  document.body.style.height = "";
+  document.documentElement.style.width = "";
+  document.body.style.width = "";
+};
 
 /***/ }),
 

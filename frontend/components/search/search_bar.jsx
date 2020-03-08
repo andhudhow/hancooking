@@ -29,9 +29,15 @@ class SearchBar extends React.Component {
   }
 
   handleResultClick(e){
-    this.props.history.push(e.path);
-    this.setState({query: ''});
-    this.setState({results: []});
+    debugger
+    if (this.props.loggedIn) {
+      this.props.history.push(e.path);
+      this.setState({query: ''});
+      this.setState({results: []});
+      return null
+    } else { 
+      this.props.openModal('login');
+    }
   }
 
   handleOutsideClick(e){

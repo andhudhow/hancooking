@@ -9,9 +9,12 @@ class Main extends React.Component{
     this.handleClick = this.handleClick.bind(this)
   }
 
-  // componentDidMount() {
-  //   this.props.fetchRecipes()
-  // }
+  componentDidMount() {
+    document.documentElement.style.height="100%";
+    document.documentElement.style.width="100%";
+    document.body.style.height="100%";
+    document.body.style.width="100%";
+  }
 
   handleClick(e){
     if (this.props.loggedIn) {
@@ -32,14 +35,18 @@ class Main extends React.Component{
       <div className='outer'>
         <section className="rotd-container">
           <video className='splash-img' autoPlay muted loop type='video/mp4' src={window.splashVidURL} />
-            <div id="rotd-label">Recipe<br/>of the day< /div>
+            <div id="rotd-label">Recipe<br/>of the day</div>
+              
               <div id="rotd-card">
                 <h3 id="rotd-title">
                     Korean-Style Shortrib
                 </h3>
-                <div id="rotd-description">
-                  <p>Also known as galbi (갈비), these shortribs are great at a restaurant, but also wonderful at home.</p>
-                </div>
+                <p id="rotd-description">
+                  Also known as galbi (갈비), these shortribs are great at a restaurant, but also wonderful at home.
+                </p>
+                <p id="rotd-byline">
+                  Suzana E. Lee
+                </p>
             </div>
           </section>
         <br />
