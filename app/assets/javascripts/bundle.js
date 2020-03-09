@@ -119,7 +119,7 @@ var closeModal = function closeModal() {
 /*!********************************************!*\
   !*** ./frontend/actions/recipe_actions.js ***!
   \********************************************/
-/*! exports provided: RECEIVE_RECIPES, RECEIVE_RECIPE, REMOVE_RECIPE, RECEIVE_RECIPE_SAVE, REMOVE_RECIPE_SAVE, RECEIVE_RECIPE_ERRORS, fetchRecipes, fetchRecipe, removeErrors, saveRecipe, unsaveRecipe */
+/*! exports provided: RECEIVE_RECIPES, RECEIVE_RECIPE, REMOVE_RECIPE, RECEIVE_RECIPE_SAVE, REMOVE_RECIPE_SAVE, RECEIVE_RECIPE_ERRORS, RECEIVE_COMMENT, REMOVE_COMMENT, fetchRecipes, fetchRecipe, removeErrors, saveRecipe, unsaveRecipe, saveComment, deleteComment */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -130,12 +130,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_RECIPE_SAVE", function() { return RECEIVE_RECIPE_SAVE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_RECIPE_SAVE", function() { return REMOVE_RECIPE_SAVE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_RECIPE_ERRORS", function() { return RECEIVE_RECIPE_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_COMMENT", function() { return RECEIVE_COMMENT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_COMMENT", function() { return REMOVE_COMMENT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchRecipes", function() { return fetchRecipes; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchRecipe", function() { return fetchRecipe; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeErrors", function() { return removeErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveRecipe", function() { return saveRecipe; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unsaveRecipe", function() { return unsaveRecipe; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveComment", function() { return saveComment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteComment", function() { return deleteComment; });
 /* harmony import */ var _util_recipe_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/recipe_api_util */ "./frontend/util/recipe_api_util.js");
+/* harmony import */ var _util_comment_api_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util/comment_api_util */ "./frontend/util/comment_api_util.js");
+
 
 var RECEIVE_RECIPES = 'RECEIVE_RECIPES';
 var RECEIVE_RECIPE = 'RECEIVE_RECIPE';
@@ -143,6 +149,8 @@ var REMOVE_RECIPE = 'REMOVE_RECIPE';
 var RECEIVE_RECIPE_SAVE = 'RECEIVE_RECIPE_SAVE';
 var REMOVE_RECIPE_SAVE = 'REMOVE_RECIPE_SAVE';
 var RECEIVE_RECIPE_ERRORS = 'RECEIVE_RECIPE_ERRORS';
+var RECEIVE_COMMENT = 'RECEIVE_COMMENT';
+var REMOVE_COMMENT = 'REMOVE_COMMENT';
 
 var receiveAllRecipes = function receiveAllRecipes(recipes) {
   return {
@@ -176,6 +184,20 @@ var removeRecipeSave = function removeRecipeSave(currentUser) {
   return {
     type: RECEIVE_RECIPE_SAVE,
     currentUser: currentUser
+  };
+};
+
+var receiveComment = function receiveComment(recipe) {
+  return {
+    type: RECEIVE_COMMENT,
+    recipe: recipe
+  };
+};
+
+var removeComment = function removeComment(recipe) {
+  return {
+    type: REMOVE_COMMENT,
+    recipe: recipe
   };
 };
 
@@ -213,6 +235,20 @@ var unsaveRecipe = function unsaveRecipe(recipeId) {
   return function (dispatch) {
     return _util_recipe_api_util__WEBPACK_IMPORTED_MODULE_0__["unsaveRecipe"](recipeId).then(function (response) {
       return dispatch(removeRecipeSave(response));
+    });
+  };
+};
+var saveComment = function saveComment(comment) {
+  return function (dispatch) {
+    return _util_comment_api_util__WEBPACK_IMPORTED_MODULE_1__["saveComment"](comment).then(function (recipe) {
+      return dispatch(receiveComment(recipe));
+    });
+  };
+};
+var deleteComment = function deleteComment(recipeId) {
+  return function (dispatch) {
+    return _util_comment_api_util__WEBPACK_IMPORTED_MODULE_1__["deleteComment"](recipeId).then(function (recipe) {
+      return dispatch(removeCommentSave(recipe));
     });
   };
 };
@@ -1117,20 +1153,20 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/recipe/comment.jsx":
-/*!************************************************!*\
-  !*** ./frontend/components/recipe/comment.jsx ***!
-  \************************************************/
-/*! exports provided: Comment, default */
+/***/ "./frontend/components/recipe/comment_index.jsx":
+/*!******************************************************!*\
+  !*** ./frontend/components/recipe/comment_index.jsx ***!
+  \******************************************************/
+/*! exports provided: CommentIndex, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Comment", function() { return Comment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CommentIndex", function() { return CommentIndex; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
-var Comment = function Comment(props) {
+var CommentIndex = function CommentIndex(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "comment-wrap"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1147,7 +1183,7 @@ var Comment = function Comment(props) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, comment.body);
   })))))));
 };
-/* harmony default export */ __webpack_exports__["default"] = (Comment);
+/* harmony default export */ __webpack_exports__["default"] = (CommentIndex);
 
 /***/ }),
 
@@ -1590,10 +1626,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _recipe_header_container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./recipe_header_container */ "./frontend/components/recipe/recipe_header_container.jsx");
 /* harmony import */ var _ingredient_list_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ingredient_list_index */ "./frontend/components/recipe/ingredient_list_index.jsx");
 /* harmony import */ var _prep_steps_list_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./prep_steps_list_index */ "./frontend/components/recipe/prep_steps_list_index.jsx");
-/* harmony import */ var _comment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./comment */ "./frontend/components/recipe/comment.jsx");
+/* harmony import */ var _comment_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./comment_index */ "./frontend/components/recipe/comment_index.jsx");
 /* harmony import */ var _util_scroll_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/scroll_util */ "./frontend/util/scroll_util.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/nutr_info_api_util */ "./frontend/util/nutr_info_api_util.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1604,9 +1641,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -1619,13 +1656,25 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var RecipeShow = /*#__PURE__*/function (_React$Component) {
   _inherits(RecipeShow, _React$Component);
 
-  function RecipeShow() {
+  function RecipeShow(props) {
+    var _this;
+
     _classCallCheck(this, RecipeShow);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(RecipeShow).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(RecipeShow).call(this, props));
+    _this.state = {
+      commentOpen: false,
+      commentContent: ''
+    };
+    _this.handleCommentOpen = _this.handleCommentOpen.bind(_assertThisInitialized(_this));
+    _this.handleCommentSubmit = _this.handleCommentSubmit.bind(_assertThisInitialized(_this));
+    _this.handleCommentCancel = _this.handleCommentCancel.bind(_assertThisInitialized(_this));
+    _this.handleTyping = _this.handleTyping.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(RecipeShow, [{
@@ -1639,70 +1688,128 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       ;
     }
   }, {
+    key: "handleNutrHovr",
+    value: function handleNutrHovr() {// const ingredientsArr = ingredients.reduce()
+      // fetchNutritionData()
+    }
+  }, {
+    key: "handleCommentOpen",
+    value: function handleCommentOpen() {
+      // e.preventDefault();
+      this.setState({
+        commentOpen: !this.state.commentOpen
+      });
+    }
+  }, {
+    key: "handleCommentSubmit",
+    value: function handleCommentSubmit(e) {
+      debugger;
+      e.preventDefault();
+      this.props.saveComment({
+        recipe_id: this.props.match.params.recipeId,
+        body: this.state.commentContent
+      });
+      this.setState({
+        commentOpen: false,
+        commentContent: ''
+      });
+    }
+  }, {
+    key: "handleCommentCancel",
+    value: function handleCommentCancel(e) {
+      // debugger
+      e.preventDefault();
+      this.setState({
+        commentContent: ''
+      });
+      this.setState({
+        commentOpen: false
+      });
+    }
+  }, {
+    key: "handleTyping",
+    value: function handleTyping(e) {
+      // debugger
+      this.setState({
+        commentContent: e.currentTarget.value
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var fetchedRecipeId = this.props.recipe ? this.props.ingredients[0].recipeId : null;
-      return this.props.match.params && fetchedRecipeId === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      return this.props.match.params && fetchedRecipeId === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "recipe-show-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_recipe_header_container__WEBPACK_IMPORTED_MODULE_0__["default"], null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_recipe_header_container__WEBPACK_IMPORTED_MODULE_0__["default"], null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "recipe-instructions-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "recipe-ingredients-list-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h3", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h3", {
         className: "instructions-header"
-      }, "Ingredients"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_ingredient_list_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, "Ingredients"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_ingredient_list_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
         ingredients: this.props.ingredients
-      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
+      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
         className: "add-glist-btn",
         type: "button"
-      }, "Add to Your Grocery List")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }, "Add to Your Grocery List"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "nutr-container"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
+        className: "nutr-icon",
+        src: window.nutrInfoIconOutline
+      }), "Nutritional Information")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "recipe-prepsteps-list"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h3", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h3", {
         className: "instructions-header"
-      }, "Preparation"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_prep_steps_list_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, "Preparation"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_prep_steps_list_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
         prepSteps: this.props.prepSteps
-      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "cooked-module"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
         className: "cooked-label"
-      }, "Have you cooked this?"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
+      }, "Have you cooked this?"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
         className: "cooked-icon",
         src: window.uncookedIconURL
-      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
         className: "cooked-text"
-      }, "Mark as ", react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("strong", null, "Cooked"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }, "Mark as ", react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("strong", null, "Cooked"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "comments-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h3", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h3", {
         className: "instructions-header"
-      }, "Cooking Notes"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }, "Cooking Notes"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("form", {
+        onSubmit: this.handleCommentSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         "class": "comment-body-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         "class": "user-name-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         "class": "comment-input-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("textarea", {
-        "class": "comments-body",
-        placeholder: "Share your notes with other cooks or leave a private note."
-      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("textarea", {
+        "class": this.state.commentOpen ? "comment-textarea-editing" : "comment-textarea",
+        onClick: this.handleCommentOpen,
+        onChange: this.handleTyping,
+        placeholder: "Share your notes with other cooks or leave a private note.",
+        value: this.state.commentContent
+      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         "class": "comment-action-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
-        "class": "cancelcomment-btn"
-      }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
+        "class": "cancelcomment-btn",
+        onClick: this.handleCommentCancel
+      }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
         "class": "add-comment-btn"
-      }, "Add Note"))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }, "Add Note"))))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "comment-index-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "comment-index"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_comment__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_comment_index__WEBPACK_IMPORTED_MODULE_3__["default"], {
         comments: this.props.comments
-      }))))))) : react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }))))))) : react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "loading-show"
       }, "LOADING!");
     }
   }]);
 
   return RecipeShow;
-}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (RecipeShow);
 
@@ -1746,19 +1853,9 @@ var mapStateToProps = function mapStateToProps(_ref, ownProps) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchRecipe: function (_fetchRecipe) {
-      function fetchRecipe(_x) {
-        return _fetchRecipe.apply(this, arguments);
-      }
-
-      fetchRecipe.toString = function () {
-        return _fetchRecipe.toString();
-      };
-
-      return fetchRecipe;
-    }(function (recipeId) {
-      return dispatch(fetchRecipe(recipeId));
-    }),
+    fetchRecipe: function fetchRecipe(recipeId) {
+      return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__["fetchRecipe"])(recipeId));
+    },
     fetchRecipes: function (_fetchRecipes) {
       function fetchRecipes() {
         return _fetchRecipes.apply(this, arguments);
@@ -1771,7 +1868,13 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       return fetchRecipes;
     }(function () {
       return dispatch(fetchRecipes());
-    })
+    }),
+    saveComment: function saveComment(comment) {
+      return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__["saveComment"])(comment));
+    },
+    deleteComment: function deleteComment(commentId) {
+      return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__["deleteComment"])(commentId));
+    }
   };
 };
 
@@ -2171,7 +2274,6 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
       results: []
     };
     _this.handleTyping = _this.handleTyping.bind(_assertThisInitialized(_this));
-    _this.handleTyping = _this.handleTyping.bind(_assertThisInitialized(_this));
     _this.filterResults = _this.filterResults.bind(_assertThisInitialized(_this));
     _this.handleResultClick = _this.handleResultClick.bind(_assertThisInitialized(_this));
     _this.handleOutsideClick = _this.handleOutsideClick.bind(_assertThisInitialized(_this));
@@ -2397,6 +2499,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
 
 
+
 var commentsReducer = function commentsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
@@ -2404,6 +2507,12 @@ var commentsReducer = function commentsReducer() {
 
   switch (action.type) {
     case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_RECIPE"]:
+      return action.recipe.comments;
+
+    case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_COMMENT"]:
+      return action.recipe.comments;
+
+    case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_COMMENT"]:
       return action.recipe.comments;
 
     default:
@@ -2832,6 +2941,35 @@ var configureStore = function configureStore() {
 
 /***/ }),
 
+/***/ "./frontend/util/comment_api_util.js":
+/*!*******************************************!*\
+  !*** ./frontend/util/comment_api_util.js ***!
+  \*******************************************/
+/*! exports provided: saveComment, deleteComment */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveComment", function() { return saveComment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteComment", function() { return deleteComment; });
+var saveComment = function saveComment(comment) {
+  return $.ajax({
+    method: 'POST',
+    url: "api/recipes/".concat(comment.recipe_id, "/comments"),
+    data: {
+      comment: comment
+    }
+  });
+};
+var deleteComment = function deleteComment(recipeId) {
+  return $.ajax({
+    method: 'DELETE',
+    url: "api/comments/".concat(commentId)
+  });
+};
+
+/***/ }),
+
 /***/ "./frontend/util/cook_time_util.js":
 /*!*****************************************!*\
   !*** ./frontend/util/cook_time_util.js ***!
@@ -2855,6 +2993,27 @@ var cookTime = function cookTime(mins) {
     return hours + ' hour and ' + mins % 60 + ' minutes';
   } else {
     return mins + ' minutes';
+  }
+};
+
+/***/ }),
+
+/***/ "./frontend/util/nutr_info_api_util.js":
+/*!*********************************************!*\
+  !*** ./frontend/util/nutr_info_api_util.js ***!
+  \*********************************************/
+/*! exports provided: fetchNutritionData */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchNutritionData", function() { return fetchNutritionData; });
+var fetchNutritionData = function fetchNutritionData(ingredientArr) {
+  {
+    $.ajax({
+      method: 'GET',
+      url: "https://api.edamam.com/api/nutrition-data?app_id=74b9d2c3&app_key=b3d15dc2182b81257d63ac5780f35895&ingr=".concat(ingredientArr)
+    });
   }
 };
 

@@ -4,8 +4,9 @@ Rails.application.routes.draw do
     resources :recipes, only: [:index, :show] do
       post 'save'
       delete 'unsave'
-      resources :comments, only: [:create, :destroy]
+      resources :comments, only: [:create]
     end
+    resources :comments, only: [:destroy]
     resource :session, only: [:create, :destroy]
   end
 

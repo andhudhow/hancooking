@@ -3,6 +3,7 @@
   padding-top: 64px;
   max-width: 1000px;
   margin:0 auto;
+  padding: 24px 30px;
 }
 
 .recipe-title-container {
@@ -253,18 +254,6 @@
   line-height: 1.45em;
   margin-bottom: 30px;
 }
-// .ingredients-wrap {
-//   color: #222;
-//   font-family: 'franklin-300',Arial,Helvetica,sans-serif;
-//   font-weight: 500;
-//   box-sizing: border-box;
-//   outline: 0;
-//   display: block;
-//   float: left;
-//   margin-bottom: 0;
-//   padding-right: 1em;
-//   width: 32.31579%;
-// }
 
 .ingredient {
   display: grid; 
@@ -346,7 +335,8 @@
   font-family: 'franklin-300',Arial,Helvetica,sans-serif;
   font-size: 15px;
   margin-left: 49px;
-  padding: 10.5px 10px;
+  margin-top: 12px;
+  padding: 10.5px 10px 10.5px;
   width: 177.16px;
   height: 40px;
   cursor: pointer;
@@ -375,4 +365,32 @@
   margin-top: 5px;
   white-space: pre-line;
   word-wrap: break-word;
+}
+
+.comment-textarea {
+  height: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  cursor: text;
+  font: 16px 'franklin-300',Arial,Helvetica,sans-serif;
+  padding: 13px 10px 15px 15px;
+  transition: all .33s ease-in-out;
+}
+
+.comment-textarea-editing {
+  font: 16px 'franklin-300',Arial,Helvetica,sans-serif;
+  height: 200px;
+  padding-right: 50p;
+  width: 100%;
+  line-height: 20px;
+  outline: 0;
+  padding: 13px 10px 15px 15px;
+  resize: none;
+  transition: all .33s ease-in-out;
+}
+
+.nutr-icon {
+  height: 15px;
+  width: 15px;
+  margin-left: 49px;
 }

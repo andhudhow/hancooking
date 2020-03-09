@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchrecipe } from '../../actions/recipe_actions';
+import { fetchRecipe, saveComment, deleteComment } from '../../actions/recipe_actions';
 import RecipeShow from './recipe_show';
 import { withRouter } from 'react-router-dom';
 
@@ -17,7 +17,9 @@ const mapStateToProps = ({ session, entities}, ownProps) => {
   
 const mapDispatchToProps = dispatch => ({
   fetchRecipe: recipeId => dispatch(fetchRecipe(recipeId)),
-  fetchRecipes: () => dispatch(fetchRecipes())
+  fetchRecipes: () => dispatch(fetchRecipes()),
+  saveComment: comment => dispatch(saveComment(comment)),
+  deleteComment: commentId => dispatch(deleteComment(commentId))  
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RecipeShow));

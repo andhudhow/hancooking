@@ -13,7 +13,6 @@ class SearchBar extends React.Component {
       results: [],
     }
     this.handleTyping = this.handleTyping.bind(this);
-    this.handleTyping = this.handleTyping.bind(this);
     this.filterResults = this.filterResults.bind(this);
     this.handleResultClick = this.handleResultClick.bind(this);
     this.handleOutsideClick = this.handleOutsideClick.bind(this);

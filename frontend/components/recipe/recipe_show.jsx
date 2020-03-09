@@ -1,17 +1,63 @@
 import RecipeHeaderContainer from './recipe_header_container';
 import IngredientListIndex from './ingredient_list_index';
 import PrepStepsListIndex from './prep_steps_list_index';
-import Comment from './comment';
+import CommentIndex from './comment_index';
 import { scrollTop } from '../../util/scroll_util';
+import { fetchNutritionData } from '../../util/nutr_info_api_util';
 
 import React, { useEffect } from 'react'
 
 class RecipeShow extends React.Component{
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      commentOpen: false,
+      commentContent: ''
+    }
+    this.handleCommentOpen = this.handleCommentOpen.bind(this);
+    this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
+    this.handleCommentCancel = this.handleCommentCancel.bind(this);
+    this.handleTyping = this.handleTyping.bind(this);
+  }
   componentDidMount() {
     this.props.recipe ? null : this.props.fetchRecipes();
     this.props.fetchRecipe(this.props.match.params.recipeId);
     { scrollTop() };
+  }
+
+  handleNutrHovr() {
+    // const ingredientsArr = ingredients.reduce()
+    // fetchNutritionData()
+  }
+
+  handleCommentOpen() {
+    // e.preventDefault();
+    this.setState({ commentOpen: !this.state.commentOpen })
+  }
+
+  handleCommentSubmit(e){
+    debugger
+    e.preventDefault();
+    this.props.saveComment({
+      recipe_id: this.props.match.params.recipeId,
+      body: this.state.commentContent
+    });
+    this.setState( { 
+      commentOpen: false,
+      commentContent: '' }
+    );
+  }
+
+  handleCommentCancel(e){
+    // debugger
+    e.preventDefault();
+    this.setState({ commentContent: '' })
+    this.setState({ commentOpen : false})
+  }
+
+  handleTyping(e){
+    // debugger
+    this.setState({ commentContent: e.currentTarget.value })
   }
   
   render() {
@@ -26,7 +72,13 @@ class RecipeShow extends React.Component{
                 <h3 className='instructions-header'>Ingredients</h3>
                 <br /><br />
                 <IngredientListIndex ingredients={this.props.ingredients} />
-                <button className="add-glist-btn" type="button">Add to Your Grocery List</button>
+                <button className="add-glist-btn" type="button">
+                  Add to Your Grocery List
+                </button>
+                <div className="nutr-container">
+                  <img className='nutr-icon' src={window.nutrInfoIconOutline} />
+                  Nutritional Information
+                </div>
               </div>
               <div className="recipe-prepsteps-list">
                 <h3 className='instructions-header'>Preparation</h3>
@@ -40,16 +92,19 @@ class RecipeShow extends React.Component{
                   <div className="comments-container">
                     {/* TODO - ADD LOGIC FOR COOKED / UNCOOKED */}
                     <h3 className='instructions-header'>Cooking Notes</h3>
-                    <form>
+                    <form onSubmit={this.handleCommentSubmit}>
                       <div class="comment-body-container">
                         <div class="user-name-container">
                           <div class="comment-input-container">
-                            <textarea class="comments-body"
-                              placeholder="Share your notes with other cooks or leave a private note.">
+                            <textarea class={this.state.commentOpen ? "comment-textarea-editing" : "comment-textarea"}
+                              onClick={this.handleCommentOpen} 
+                              onChange={this.handleTyping}
+                              placeholder="Share your notes with other cooks or leave a private note."
+                              value={this.state.commentContent} >
                             </textarea>
                           </div>
                           <div class="comment-action-container">
-                            <button class="cancelcomment-btn">Cancel</button>
+                            <button class="cancelcomment-btn" onClick={this.handleCommentCancel}>Cancel</button>
                             <button class="add-comment-btn">Add Note</button>
                           </div>
                         </div>
@@ -57,9 +112,9 @@ class RecipeShow extends React.Component{
                     </form>
                     <div className="comment-index-container">
                       <div className="comment-index">
-                        <Comment comments={this.props.comments} />
+                        <CommentIndex comments={this.props.comments} />
                       </div>
-                      </div>
+                    </div>
             </div>
             </div>
           </div>
