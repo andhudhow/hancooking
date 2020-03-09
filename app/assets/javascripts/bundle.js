@@ -1847,6 +1847,8 @@ var mapStateToProps = function mapStateToProps(_ref, ownProps) {
     }),
     comments: Object.keys(entities.comments).map(function (key) {
       return entities.comments[key];
+    }).sort(function (a, b) {
+      return a.createdAt > b.createdAt ? -1 : 1;
     })
   };
 };

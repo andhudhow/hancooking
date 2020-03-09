@@ -8,8 +8,7 @@ export const CommentIndex = (props) => {
         <div className="comment-author-nickname">
           <div className="comment-time">
             <div className="comment-body">
-              {props.comments.map(comment => 
-                <li>{comment.body}</li>)}
+              {props.comments.map(comment => <li>{comment.body}</li>)}
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@ const mapStateToProps = ({ session, entities}, ownProps) => {
     recipe: entities.recipes[ownProps.match.params.recipeId],
     ingredients: Object.keys(entities.ingredients).map(key=>entities.ingredients[key]),
     prepSteps: Object.keys(entities.prepSteps).map(key=>entities.prepSteps[key]),
-    comments: Object.keys(entities.comments).map(key=>entities.comments[key])
+    comments: Object.keys(entities.comments).map(key=>entities.comments[key]).sort((a, b) => (a.createdAt > b.createdAt) ? -1 : 1)
   })
 };
   
