@@ -32,7 +32,7 @@ class RecipeIndex extends React.Component {
 
 
     return (
-      <div className='recipe-box-container'>
+      <div className='search-results-container'>
           <h3>All Recipes</h3>{this.props.currentUserEmail}<br /><br />
           <section className="saved-recipe-index-container">
             {recipes}

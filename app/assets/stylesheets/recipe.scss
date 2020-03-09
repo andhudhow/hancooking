@@ -144,7 +144,7 @@
 
 .save-recipe-icon {
   height: 18px;
-  width: 12px;
+  width: 12px
 }
 
 .save-btn-text {
@@ -292,7 +292,48 @@
   letter-spacing: 1.6px;
   margin-top: 2px;
   text-transform: uppercase;
-  width: 60px;
+  width: 100%;
+}
+
+.cooked-module {
+  color: #222;
+  font: 12px "franklin-500",Arial,Helvetica,sans-serif;
+  font-weight: 500;
+  box-sizing: border-box;
+  outline: 0;
+  background: #f2f3ef;
+  font-size: 12.5px;
+  padding: 14px;
+  position: relative;
+  margin: 50px 0 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.cooked-label {
+  color: #222;
+  cursor: pointer;
+  font-size: 1em;
+  font: 15px 'franklin-700',Arial,Helvetica,sans-serif;
+  box-sizing: border-box;
+  outline: 0;
+  font-weight: 700;
+  margin-right: 10px; 
+}
+
+
+.cooked-icon {
+  width: 22px;
+  height: 18px;
+  margin-right: 4.75px;
+}
+
+.cooked-text {
+  color: #222;
+  font: 15px 'franklin-300',Arial,Helvetica,sans-serif;
+  font-weight: 300
 }
 
 .add-glist-btn {
@@ -314,4 +355,24 @@
 .add-glist-btn:hover {
   background-color: #222;
   color: #fff;
+}
+
+.comment-wrap {
+  display: flex;
+  font-weight: 500;
+  box-sizing: border-box;
+  outline: 0;
+  overflow: hidden;
+  padding: 30px 0 15px 15px;
+}
+
+.comment-body {
+  color: #222;
+  font: 'franklin-500',Arial,Helvetica,sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  margin-top: 5px;
+  white-space: pre-line;
+  word-wrap: break-word;
 }

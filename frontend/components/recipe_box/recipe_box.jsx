@@ -29,7 +29,7 @@ class RecipeBox extends React.Component {
 
 
     return (
-      <div className='recipe-box-container'>
+      <div className='search-results-container'>
           <h3>Saved Recipes</h3>{this.props.currentUserEmail}<br /><br />
           <div className="saved-recipe-count">{this.props.savedRecipeCount} recipes</div>
           <section className="saved-recipe-index-container">

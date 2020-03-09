@@ -1,4 +1,4 @@
-.recipe-box-container {
+.search-results-container {
   background-color: #f2f3ef;
   text-align: left;
   padding: 80px 93px 0px 93px;
@@ -11,6 +11,7 @@
   margin:0 auto;
   padding-left: 15px;
   padding-right: 15px;
+  margin: 0 auto;
 }
 
 .recipe-card-container {
@@ -60,7 +61,7 @@
   // width: 80%;
 }
 
-.recipe-box-container > h3 {
+.search-results-container > h3 {
   font-family: 'franklin-700', 'Arial', 'Helvetica', 'sans-serif';
   font-size: 24px;
   color: #222;

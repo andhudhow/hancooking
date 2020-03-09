@@ -24,6 +24,7 @@ json.set! :comments do
   @recipe.comments.each do |comment|
     json.set! comment.id do
       json.extract! comment, :id, :user_id, :body
+      json.nickname comment.user.nickname
     end
   end
 end

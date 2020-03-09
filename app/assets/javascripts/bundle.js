@@ -1117,6 +1117,40 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/recipe/comment.jsx":
+/*!************************************************!*\
+  !*** ./frontend/components/recipe/comment.jsx ***!
+  \************************************************/
+/*! exports provided: Comment, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Comment", function() { return Comment; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var Comment = function Comment(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "comment-wrap"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "comment-header"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "comment-avatar"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "comment-author-nickname"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "comment-time"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "comment-body"
+  }, props.comments.map(function (comment) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, comment.body);
+  })))))));
+};
+/* harmony default export */ __webpack_exports__["default"] = (Comment);
+
+/***/ }),
+
 /***/ "./frontend/components/recipe/ingredient_list_index.jsx":
 /*!**************************************************************!*\
   !*** ./frontend/components/recipe/ingredient_list_index.jsx ***!
@@ -1486,7 +1520,7 @@ var RecipeIndex = /*#__PURE__*/function (_React$Component) {
         }));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "recipe-box-container"
+        className: "search-results-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "All Recipes"), this.props.currentUserEmail, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "saved-recipe-index-container"
       }, recipes));
@@ -1556,9 +1590,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _recipe_header_container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./recipe_header_container */ "./frontend/components/recipe/recipe_header_container.jsx");
 /* harmony import */ var _ingredient_list_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ingredient_list_index */ "./frontend/components/recipe/ingredient_list_index.jsx");
 /* harmony import */ var _prep_steps_list_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./prep_steps_list_index */ "./frontend/components/recipe/prep_steps_list_index.jsx");
-/* harmony import */ var _util_scroll_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/scroll_util */ "./frontend/util/scroll_util.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _comment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./comment */ "./frontend/components/recipe/comment.jsx");
+/* harmony import */ var _util_scroll_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/scroll_util */ "./frontend/util/scroll_util.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1583,6 +1618,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var RecipeShow = /*#__PURE__*/function (_React$Component) {
   _inherits(RecipeShow, _React$Component);
 
@@ -1595,11 +1631,10 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   _createClass(RecipeShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      debugger;
       this.props.recipe ? null : this.props.fetchRecipes();
       this.props.fetchRecipe(this.props.match.params.recipeId);
       {
-        Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_3__["scrollTop"])();
+        Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_4__["scrollTop"])();
       }
       ;
     }
@@ -1607,33 +1642,67 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var fetchedRecipeId = this.props.recipe ? this.props.ingredients[0].recipeId : null;
-      return fetchedRecipeId === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
+      return this.props.match.params && fetchedRecipeId === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "recipe-show-container"
-      }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_recipe_header_container__WEBPACK_IMPORTED_MODULE_0__["default"], null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_recipe_header_container__WEBPACK_IMPORTED_MODULE_0__["default"], null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "recipe-instructions-container"
-      }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "recipe-ingredients-list-container"
-      }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("h3", {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h3", {
         className: "instructions-header"
-      }, "Ingredients"), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_ingredient_list_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, "Ingredients"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_ingredient_list_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
         ingredients: this.props.ingredients
-      }), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("button", {
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
         className: "add-glist-btn",
         type: "button"
-      }, "Add to Your Grocery List")), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
+      }, "Add to Your Grocery List")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "recipe-prepsteps-list"
-      }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("h3", {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h3", {
         className: "instructions-header"
-      }, "Preparation"), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_prep_steps_list_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, "Preparation"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_prep_steps_list_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
         prepSteps: this.props.prepSteps
-      })))) : react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "cooked-module"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+        className: "cooked-label"
+      }, "Have you cooked this?"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
+        className: "cooked-icon",
+        src: window.uncookedIconURL
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+        className: "cooked-text"
+      }, "Mark as ", react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("strong", null, "Cooked"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "comments-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h3", {
+        className: "instructions-header"
+      }, "Cooking Notes"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        "class": "comment-body-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        "class": "user-name-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        "class": "comment-input-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("textarea", {
+        "class": "comments-body",
+        placeholder: "Share your notes with other cooks or leave a private note."
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        "class": "comment-action-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
+        "class": "cancelcomment-btn"
+      }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
+        "class": "add-comment-btn"
+      }, "Add Note"))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "comment-index-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "comment-index"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_comment__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        comments: this.props.comments
+      }))))))) : react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "loading-show"
       }, "LOADING!");
     }
   }]);
 
   return RecipeShow;
-}(react__WEBPACK_IMPORTED_MODULE_4___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (RecipeShow);
 
@@ -1660,7 +1729,6 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var session = _ref.session,
       entities = _ref.entities;
-  debugger;
   return {
     currentUser: session.currentUser,
     recipe: entities.recipes[ownProps.match.params.recipeId],
@@ -1781,7 +1849,7 @@ var RecipeBox = /*#__PURE__*/function (_React$Component) {
         }));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "recipe-box-container"
+        className: "search-results-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Saved Recipes"), this.props.currentUserEmail, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "saved-recipe-count"
       }, this.props.savedRecipeCount, " recipes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
