@@ -16,7 +16,7 @@ json.set! :prepSteps do
   @recipe.prep_steps.each do |prep_step|
     json.set! prep_step.id do
       json.extract! prep_step, :recipe_id, :step, :description
-    end 
+    end
   end
 end
 

@@ -1674,6 +1674,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     _this.handleCommentSubmit = _this.handleCommentSubmit.bind(_assertThisInitialized(_this));
     _this.handleCommentCancel = _this.handleCommentCancel.bind(_assertThisInitialized(_this));
     _this.handleTyping = _this.handleTyping.bind(_assertThisInitialized(_this));
+    debugger;
     return _this;
   }
 
@@ -1713,11 +1714,11 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         commentOpen: false,
         commentContent: ''
       });
+      debugger;
     }
   }, {
     key: "handleCommentCancel",
     value: function handleCommentCancel(e) {
-      // debugger
       e.preventDefault();
       this.setState({
         commentContent: ''
@@ -1729,7 +1730,6 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleTyping",
     value: function handleTyping(e) {
-      // debugger
       this.setState({
         commentContent: e.currentTarget.value
       });
@@ -1737,7 +1737,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var fetchedRecipeId = this.props.recipe ? this.props.ingredients[0].recipeId : null;
+      var fetchedRecipeId = this.props.ingredients[0] ? this.props.ingredients[0].recipeId : null;
       return this.props.match.params && fetchedRecipeId === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "recipe-show-container"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_recipe_header_container__WEBPACK_IMPORTED_MODULE_0__["default"], null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {

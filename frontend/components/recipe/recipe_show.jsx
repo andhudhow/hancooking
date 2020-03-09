@@ -18,6 +18,7 @@ class RecipeShow extends React.Component{
     this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
     this.handleCommentCancel = this.handleCommentCancel.bind(this);
     this.handleTyping = this.handleTyping.bind(this);
+    debugger
   }
   componentDidMount() {
     this.props.recipe ? null : this.props.fetchRecipes();
@@ -46,22 +47,21 @@ class RecipeShow extends React.Component{
       commentOpen: false,
       commentContent: '' }
     );
+    debugger
   }
 
   handleCommentCancel(e){
-    // debugger
     e.preventDefault();
     this.setState({ commentContent: '' })
     this.setState({ commentOpen : false})
   }
 
   handleTyping(e){
-    // debugger
     this.setState({ commentContent: e.currentTarget.value })
   }
   
   render() {
-    const fetchedRecipeId = this.props.recipe ? this.props.ingredients[0].recipeId : null
+    const fetchedRecipeId = this.props.ingredients[0] ? this.props.ingredients[0].recipeId : null
     
     return (
         this.props.match.params && (fetchedRecipeId === parseInt(this.props.match.params.recipeId)) ?
