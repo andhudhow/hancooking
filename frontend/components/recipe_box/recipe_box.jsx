@@ -9,7 +9,7 @@ class RecipeBox extends React.Component {
   }
 
   componentDidMount(){
-    { scrollTop() };
+    scrollTop();
   }
 
   render() {

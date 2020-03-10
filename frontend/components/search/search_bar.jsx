@@ -16,6 +16,7 @@ class SearchBar extends React.Component {
     this.filterResults = this.filterResults.bind(this);
     this.handleResultClick = this.handleResultClick.bind(this);
     this.handleOutsideClick = this.handleOutsideClick.bind(this);
+    this.handleKeyEnterPress = this.handleKeyEnterPress.bind(this);
   }
 
   componentDidMount(){
@@ -42,9 +43,20 @@ class SearchBar extends React.Component {
     this.setState({results: []})
   }
 
+  handleKeyEnterPress(e) {
+    if (e.key === 'Enter') {
+      if (this.props.loggedIn) {
+        this.setState( { results: [] });
+        this.props.history.push(`/search/${this.state.query}`)
+      } else {
+        this.props.openModal('login');  
+      };
+    }
+}
+
   filterResults() {
     let titleResults = this.props.recipes.filter(recipe => recipe.title.toLowerCase().includes(this.state.query.toLowerCase()));
-    let descriptionResults = this.props.recipes.filter(recipe => recipe.description.toLowerCase().split(' ').includes(this.state.query.toLowerCase()));
+    let descriptionResults = this.props.recipes.filter(recipe => recipe.description.toLowerCase().split(' ').join('').includes(this.state.query.toLowerCase()));
     
     let results = titleResults.concat(descriptionResults);
     this.setState({ results })
@@ -59,7 +71,7 @@ class SearchBar extends React.Component {
           <img className='search-thumb' src={result.photoUrl} />
           <span className='result-text'></span>{result.title}
         </li>
-      </Link>
+    </Link>
     );
 
     return(
@@ -71,6 +83,7 @@ class SearchBar extends React.Component {
             placeholder='What would you like to cook?'
             onChange={this.handleTyping}
             value={this.state.query}
+            onKeyPress={this.handleKeyEnterPress}
           />
           {this.state.query.length > 1 ? resultList.slice(0,6) : null}
         </div>
