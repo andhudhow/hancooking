@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   has_many :comments, foreign_key: :user_id, class_name: :Comment
 
+  has_one_attached :avatar
+
   after_initialize :ensure_session_token
 
   attr_reader :password

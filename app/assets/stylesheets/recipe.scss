@@ -282,6 +282,7 @@
   margin-top: 2px;
   text-transform: uppercase;
   width: 100%;
+  padding-bottom: 10px;
 }
 
 .cooked-module {
@@ -349,14 +350,29 @@
 
 .comment-wrap {
   display: flex;
+  flex-direction: row;
   font-weight: 500;
   box-sizing: border-box;
   outline: 0;
   overflow: hidden;
   padding: 30px 0 15px 15px;
+  width: 100%;
+  border-top: 1px solid #f4f4f4;
 }
 
-.comment-body {
+.comment-contents {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 15px;
+}
+
+.comment-avatar {
+  height: 40px;
+  width: 40px;
+}
+
+.comment-body{
   color: #222;
   font: 'franklin-500',Arial,Helvetica,sans-serif;
   font-weight: 500;
@@ -365,6 +381,7 @@
   margin-top: 5px;
   white-space: pre-line;
   word-wrap: break-word;
+  width: 100%;
 }
 
 .comment-textarea {
@@ -389,8 +406,108 @@
   transition: all .33s ease-in-out;
 }
 
+.comment-header {
+  width: 100%;
+}
+
+.comment-author-nickname {
+  font: 14px 'franklin-700',Arial,Helvetica,sans-serif;
+  color: #222;
+  display: inline-block;
+  font-weight: 700;
+}
+
+.comment-time {
+  border-left: 1px solid #ccc;
+  color: #767676;
+  display: inline-block;
+  height: 12px;
+  line-height: 12px;
+  margin-left: 8px;
+  padding-left: 10px;
+}
+
+.add-comment-btn {
+  box-sizing: border-box;
+  outline: 0;
+  -webkit-appearance: none;
+  border-radius: 0;
+  background: 0 0;
+  border: 0;
+  color: #e33d26;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'franklin-500',Arial,Helvetica,sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0 10px;
+  text-align: center;
+  border-left: 1px solid #ccc;
+}
+
+.add-comment-btn-disabled {
+  box-sizing: border-box;
+  outline: 0;
+  -webkit-appearance: none;
+  border-radius: 0;
+  background: 0 0;
+  border: 0;
+  color: #767676;
+  pointer-events: none;
+  display: inline-block;
+  font-family: 'franklin-500',Arial,Helvetica,sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0 10px;
+  text-align: center;
+  border-left: 1px solid #ccc;
+}
+
+.cancel-comment-btn {
+  box-sizing: border-box;
+  outline: 0;
+  -webkit-appearance: none;
+  border-radius: 0;
+  background: 0 0;
+  border: 0;
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'franklin-500',Arial,Helvetica,sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0 10px;
+  text-align: center;
+}
+
+.comment-action-container {
+  text-align: right;
+  transition: all .33s ease-in-out;
+}
+
 .nutr-icon {
   height: 15px;
   width: 15px;
   margin-left: 49px;
+}
+
+.comment-action-container-hidden {
+  display: none;
+}
+
+.delete-comment-btn {
+  box-sizing: border-box;
+  outline: 0;
+  -webkit-appearance: none;
+  border-radius: 0;
+  background: 0 0;
+  border: 0;
+  color: #e33d26;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'franklin-500',Arial,Helvetica,sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 10px 0px 0px 1px;
+  text-align: center; 
 }

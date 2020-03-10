@@ -1,7 +1,7 @@
 import RecipeHeaderContainer from './recipe_header_container';
 import IngredientListIndex from './ingredient_list_index';
 import PrepStepsListIndex from './prep_steps_list_index';
-import CommentIndex from './comment_index';
+import CommentIndexContainer from './comment_index_container';
 import { scrollTop } from '../../util/scroll_util';
 import { fetchNutritionData } from '../../util/nutr_info_api_util';
 
@@ -12,23 +12,19 @@ class RecipeShow extends React.Component{
     super(props);
     this.state = {
       commentOpen: false,
-      commentContent: ''
-    }
+      commentContent: '',
+      nutritionalInfo: {}
+    };
     this.handleCommentOpen = this.handleCommentOpen.bind(this);
     this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
     this.handleCommentCancel = this.handleCommentCancel.bind(this);
     this.handleTyping = this.handleTyping.bind(this);
-    debugger
   }
   componentDidMount() {
     this.props.recipe ? null : this.props.fetchRecipes();
     this.props.fetchRecipe(this.props.match.params.recipeId);
     { scrollTop() };
-  }
-
-  handleNutrHovr() {
-    // const ingredientsArr = ingredients.reduce()
-    // fetchNutritionData()
+    // fetchNutritionData().then(payload => this.setState( {nutritionalInfo : payload }));
   }
 
   handleCommentOpen() {
@@ -37,7 +33,6 @@ class RecipeShow extends React.Component{
   }
 
   handleCommentSubmit(e){
-    debugger
     e.preventDefault();
     this.props.saveComment({
       recipe_id: this.props.match.params.recipeId,
@@ -47,13 +42,12 @@ class RecipeShow extends React.Component{
       commentOpen: false,
       commentContent: '' }
     );
-    debugger
   }
 
   handleCommentCancel(e){
     e.preventDefault();
     this.setState({ commentContent: '' })
-    this.setState({ commentOpen : false})
+    this.setState({ commentOpen : false })
   }
 
   handleTyping(e){
@@ -64,7 +58,7 @@ class RecipeShow extends React.Component{
     const fetchedRecipeId = this.props.ingredients[0] ? this.props.ingredients[0].recipeId : null
     
     return (
-        this.props.match.params && (fetchedRecipeId === parseInt(this.props.match.params.recipeId)) ?
+        this.props.recipe && this.props.match.params && fetchedRecipeId && (fetchedRecipeId === parseInt(this.props.match.params.recipeId)) ?
           <div className="recipe-show-container">
             <RecipeHeaderContainer />
             <div className="recipe-instructions-container">
@@ -93,26 +87,26 @@ class RecipeShow extends React.Component{
                     {/* TODO - ADD LOGIC FOR COOKED / UNCOOKED */}
                     <h3 className='instructions-header'>Cooking Notes</h3>
                     <form onSubmit={this.handleCommentSubmit}>
-                      <div class="comment-body-container">
-                        <div class="user-name-container">
-                          <div class="comment-input-container">
-                            <textarea class={this.state.commentOpen ? "comment-textarea-editing" : "comment-textarea"}
+                      <div className="comment-body-container">
+                        <div className="user-name-container">
+                          <div className="comment-input-container">
+                            <textarea className={this.state.commentOpen ? "comment-textarea-editing" : "comment-textarea"}
                               onClick={this.handleCommentOpen} 
                               onChange={this.handleTyping}
                               placeholder="Share your notes with other cooks or leave a private note."
                               value={this.state.commentContent} >
                             </textarea>
                           </div>
-                          <div class="comment-action-container">
-                            <button class="cancelcomment-btn" onClick={this.handleCommentCancel}>Cancel</button>
-                            <button class="add-comment-btn">Add Note</button>
+                          <div className={this.state.commentOpen ? "comment-action-container" : "comment-action-container-hidden"}>
+                            <button className="cancel-comment-btn" onClick={this.handleCommentCancel}>Cancel</button>
+                            <button className={this.state.commentContent.length > 1 ? "add-comment-btn" : "add-comment-btn-disabled" }>Add Note</button>
                           </div>
                         </div>
                       </div>
                     </form>
                     <div className="comment-index-container">
                       <div className="comment-index">
-                        <CommentIndex comments={this.props.comments} />
+                        <CommentIndexContainer />
                       </div>
                     </div>
             </div>

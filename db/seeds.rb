@@ -55,3 +55,8 @@ end
 Recipe.all.each do |recipe|
   recipe.photo.attach(io: File.open('app/assets/images/jajangmyeon.jpg'), filename: 'jajangmyeon.jpg')
 end
+
+User.all.each do |user|
+  icon = ['user-img-lime.png', 'user-img-eggplant.png', 'user-img-fish.png', 'user-img-tomato.png'].sample
+  user.avatar.attach(io: File.open("app/assets/images/#{icon}"), filename: "#{icon}")
+end

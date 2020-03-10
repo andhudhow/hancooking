@@ -7,7 +7,7 @@ export const saveComment = comment => {
   }))
 };
 
-export const deleteComment = recipeId => (
+export const deleteComment = commentId => (
   $.ajax({
     method: 'DELETE',
     url: `api/comments/${commentId}`,

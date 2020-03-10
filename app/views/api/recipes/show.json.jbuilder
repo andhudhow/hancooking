@@ -25,6 +25,7 @@ json.set! :comments do
     json.set! comment.id do
       json.extract! comment, :id, :user_id, :body, :created_at
       json.nickname comment.user.nickname
+      json.avatarUrl url_for(comment.user.avatar)
     end
   end
 end

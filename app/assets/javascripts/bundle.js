@@ -245,9 +245,9 @@ var saveComment = function saveComment(comment) {
     });
   };
 };
-var deleteComment = function deleteComment(recipeId) {
+var deleteComment = function deleteComment(commentId) {
   return function (dispatch) {
-    return _util_comment_api_util__WEBPACK_IMPORTED_MODULE_1__["deleteComment"](recipeId).then(function (recipe) {
+    return _util_comment_api_util__WEBPACK_IMPORTED_MODULE_1__["deleteComment"](commentId).then(function (recipe) {
       return dispatch(removeCommentSave(recipe));
     });
   };
@@ -1165,25 +1165,77 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CommentIndex", function() { return CommentIndex; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _util_time_ago_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/time_ago_util */ "./frontend/util/time_ago_util.js");
+
 
 var CommentIndex = function CommentIndex(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "comment-wrap"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "comment-header"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "comment-avatar"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "comment-author-nickname"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "comment-time"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "comment-body"
-  }, props.comments.map(function (comment) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, comment.body);
-  })))))));
+  debugger;
+  return props.comments.map(function (comment) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "comment-wrap"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      className: "comment-avatar",
+      src: comment.avatarUrl
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "comment-contents"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "comment-header"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "comment-author-nickname"
+    }, comment.nickname), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "comment-time"
+    }, Object(_util_time_ago_util__WEBPACK_IMPORTED_MODULE_1__["default"])(new Date(comment.createdAt)), " ago"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "comment-body"
+    }, comment.body), comment.userId === props.currentUser.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "delete-comment-btn",
+      onClick: function onClick() {
+        return props.deleteComment(comment.id);
+      }
+    }, "Delete Note") : null)));
+  });
 };
 /* harmony default export */ __webpack_exports__["default"] = (CommentIndex);
+
+/***/ }),
+
+/***/ "./frontend/components/recipe/comment_index_container.js":
+/*!***************************************************************!*\
+  !*** ./frontend/components/recipe/comment_index_container.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
+/* harmony import */ var _comment_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./comment_index */ "./frontend/components/recipe/comment_index.jsx");
+
+
+
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var entities = _ref.entities,
+      session = _ref.session;
+  return {
+    comments: Object.keys(entities.comments).map(function (key) {
+      return entities.comments[key];
+    }).sort(function (a, b) {
+      return a.createdAt > b.createdAt ? -1 : 1;
+    }),
+    currentUser: session.currentUser
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    deleteComment: function deleteComment(commentId) {
+      return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__["deleteComment"])(commentId));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_comment_index__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 
@@ -1626,7 +1678,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _recipe_header_container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./recipe_header_container */ "./frontend/components/recipe/recipe_header_container.jsx");
 /* harmony import */ var _ingredient_list_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ingredient_list_index */ "./frontend/components/recipe/ingredient_list_index.jsx");
 /* harmony import */ var _prep_steps_list_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./prep_steps_list_index */ "./frontend/components/recipe/prep_steps_list_index.jsx");
-/* harmony import */ var _comment_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./comment_index */ "./frontend/components/recipe/comment_index.jsx");
+/* harmony import */ var _comment_index_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./comment_index_container */ "./frontend/components/recipe/comment_index_container.js");
 /* harmony import */ var _util_scroll_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/scroll_util */ "./frontend/util/scroll_util.js");
 /* harmony import */ var _util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/nutr_info_api_util */ "./frontend/util/nutr_info_api_util.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -1668,13 +1720,13 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(RecipeShow).call(this, props));
     _this.state = {
       commentOpen: false,
-      commentContent: ''
+      commentContent: '',
+      nutritionalInfo: {}
     };
     _this.handleCommentOpen = _this.handleCommentOpen.bind(_assertThisInitialized(_this));
     _this.handleCommentSubmit = _this.handleCommentSubmit.bind(_assertThisInitialized(_this));
     _this.handleCommentCancel = _this.handleCommentCancel.bind(_assertThisInitialized(_this));
     _this.handleTyping = _this.handleTyping.bind(_assertThisInitialized(_this));
-    debugger;
     return _this;
   }
 
@@ -1686,12 +1738,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       {
         Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_4__["scrollTop"])();
       }
-      ;
-    }
-  }, {
-    key: "handleNutrHovr",
-    value: function handleNutrHovr() {// const ingredientsArr = ingredients.reduce()
-      // fetchNutritionData()
+      ; // fetchNutritionData().then(payload => this.setState( {nutritionalInfo : payload }));
     }
   }, {
     key: "handleCommentOpen",
@@ -1704,7 +1751,6 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleCommentSubmit",
     value: function handleCommentSubmit(e) {
-      debugger;
       e.preventDefault();
       this.props.saveComment({
         recipe_id: this.props.match.params.recipeId,
@@ -1714,7 +1760,6 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         commentOpen: false,
         commentContent: ''
       });
-      debugger;
     }
   }, {
     key: "handleCommentCancel",
@@ -1738,7 +1783,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var fetchedRecipeId = this.props.ingredients[0] ? this.props.ingredients[0].recipeId : null;
-      return this.props.match.params && fetchedRecipeId === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      return this.props.recipe && this.props.match.params && fetchedRecipeId && fetchedRecipeId === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "recipe-show-container"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_recipe_header_container__WEBPACK_IMPORTED_MODULE_0__["default"], null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "recipe-instructions-container"
@@ -1778,31 +1823,29 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       }, "Cooking Notes"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("form", {
         onSubmit: this.handleCommentSubmit
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        "class": "comment-body-container"
+        className: "comment-body-container"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        "class": "user-name-container"
+        className: "user-name-container"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        "class": "comment-input-container"
+        className: "comment-input-container"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("textarea", {
-        "class": this.state.commentOpen ? "comment-textarea-editing" : "comment-textarea",
+        className: this.state.commentOpen ? "comment-textarea-editing" : "comment-textarea",
         onClick: this.handleCommentOpen,
         onChange: this.handleTyping,
         placeholder: "Share your notes with other cooks or leave a private note.",
         value: this.state.commentContent
       })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        "class": "comment-action-container"
+        className: this.state.commentOpen ? "comment-action-container" : "comment-action-container-hidden"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
-        "class": "cancelcomment-btn",
+        className: "cancel-comment-btn",
         onClick: this.handleCommentCancel
       }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
-        "class": "add-comment-btn"
+        className: this.state.commentContent.length > 1 ? "add-comment-btn" : "add-comment-btn-disabled"
       }, "Add Note"))))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "comment-index-container"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "comment-index"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_comment_index__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        comments: this.props.comments
-      }))))))) : react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_comment_index_container__WEBPACK_IMPORTED_MODULE_3__["default"], null))))))) : react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "loading-show"
       }, "LOADING!");
     }
@@ -2963,7 +3006,7 @@ var saveComment = function saveComment(comment) {
     }
   });
 };
-var deleteComment = function deleteComment(recipeId) {
+var deleteComment = function deleteComment(commentId) {
   return $.ajax({
     method: 'DELETE',
     url: "api/comments/".concat(commentId)
@@ -3191,6 +3234,54 @@ var logout = function logout() {
     url: '/api/session'
   });
 };
+
+/***/ }),
+
+/***/ "./frontend/util/time_ago_util.js":
+/*!****************************************!*\
+  !*** ./frontend/util/time_ago_util.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var timeSince = function timeSince(date) {
+  var seconds = Math.floor((new Date() - date) / 1000);
+  var interval = Math.floor(seconds / 31536000);
+
+  if (interval > 1) {
+    return interval + " years";
+  }
+
+  interval = Math.floor(seconds / 2592000);
+
+  if (interval > 1) {
+    return interval + " months";
+  }
+
+  interval = Math.floor(seconds / 86400);
+
+  if (interval > 1) {
+    return interval + " days";
+  }
+
+  interval = Math.floor(seconds / 3600);
+
+  if (interval > 1) {
+    return interval + " hours";
+  }
+
+  interval = Math.floor(seconds / 60);
+
+  if (interval > 1) {
+    return interval + " minutes";
+  }
+
+  return Math.floor(seconds) + " seconds";
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (timeSince);
 
 /***/ }),
 
