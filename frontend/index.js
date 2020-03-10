@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { login, logout, signup } from './actions/session_actions';
 import { fetchRecipe, fetchRecipes, saveRecipe, unsaveRecipe } from './actions/recipe_actions';
+import { fetchNutritionData } from './util/nutr_info_api_util';
 import configureStore from './store/store';
 import Root from './components/root';
 
@@ -14,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.fetchRecipes = fetchRecipes;
   window.saveRecipe = saveRecipe;
   window.unsaveRecipe = unsaveRecipe;
-
+  window.fetchNutritionData = fetchNutritionData;
   let store;
   if (window.currentUser) 
     {

@@ -2,7 +2,7 @@ import React from 'react';
 import timeSince from '../../util/time_ago_util';
 
 export const CommentIndex = (props) => {
-  debugger
+  
   return (
     props.comments.map(comment => 
       <div className="comment-wrap">

@@ -983,7 +983,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       }, "\xD7"), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        "class": "login-form-box"
+        className: "login-form-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.email,
@@ -991,7 +991,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         className: "login-input",
         placeholder: "Email Address"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        "class": "login-form-box"
+        className: "login-form-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         value: this.state.password,
@@ -1169,7 +1169,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var CommentIndex = function CommentIndex(props) {
-  debugger;
   return props.comments.map(function (comment) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "comment-wrap"
@@ -1723,27 +1722,53 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       commentContent: '',
       nutritionalInfo: {}
     };
-    _this.handleCommentOpen = _this.handleCommentOpen.bind(_assertThisInitialized(_this));
+    _this.handleCommentClick = _this.handleCommentClick.bind(_assertThisInitialized(_this));
     _this.handleCommentSubmit = _this.handleCommentSubmit.bind(_assertThisInitialized(_this));
     _this.handleCommentCancel = _this.handleCommentCancel.bind(_assertThisInitialized(_this));
+    _this.getNutritionData = _this.getNutritionData.bind(_assertThisInitialized(_this));
     _this.handleTyping = _this.handleTyping.bind(_assertThisInitialized(_this));
+    _this.setState = _this.setState.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(RecipeShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.recipe ? null : this.props.fetchRecipes();
-      this.props.fetchRecipe(this.props.match.params.recipeId);
+      var _this2 = this;
+
+      this.props.fetchRecipe(this.props.match.params.recipeId).then(function () {
+        if (_this2.props.recipe) {
+          _this2.getNutritionData();
+        } else {
+          _this2.props.fetchRecipes().then(_this2.getNutritionData());
+        }
+      });
       {
         Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_4__["scrollTop"])();
       }
-      ; // fetchNutritionData().then(payload => this.setState( {nutritionalInfo : payload }));
+      ;
     }
   }, {
-    key: "handleCommentOpen",
-    value: function handleCommentOpen() {
-      // e.preventDefault();
+    key: "getNutritionData",
+    value: function getNutritionData() {
+      var _this3 = this;
+
+      var nutrData = {
+        title: this.props.recipe.title,
+        "yield": this.props.recipe.servings,
+        ingr: this.props.ingredients.reduce(function (acc, el) {
+          return acc.concat(el.quantity + " " + el.description);
+        }, [])
+      };
+      Object(_util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_5__["fetchNutritionData"])(nutrData).then(function (pay) {
+        return _this3.setState({
+          nutritionalInfo: pay
+        });
+      });
+    }
+  }, {
+    key: "handleCommentClick",
+    value: function handleCommentClick() {
       this.setState({
         commentOpen: !this.state.commentOpen
       });
@@ -1782,6 +1807,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      debugger;
       var fetchedRecipeId = this.props.ingredients[0] ? this.props.ingredients[0].recipeId : null;
       return this.props.recipe && this.props.match.params && fetchedRecipeId && fetchedRecipeId === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "recipe-show-container"
@@ -1801,7 +1827,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
         className: "nutr-icon",
         src: window.nutrInfoIconOutline
-      }), "Nutritional Information")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }), "Nutritional Information", react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Calories: ", this.state.nutritionalInfo.calories))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "recipe-prepsteps-list"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h3", {
         className: "instructions-header"
@@ -1830,7 +1856,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         className: "comment-input-container"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("textarea", {
         className: this.state.commentOpen ? "comment-textarea-editing" : "comment-textarea",
-        onClick: this.handleCommentOpen,
+        onClick: this.handleCommentClick,
         onChange: this.handleTyping,
         placeholder: "Share your notes with other cooks or leave a private note.",
         value: this.state.commentContent
@@ -2485,8 +2511,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
-/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
-/* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
+/* harmony import */ var _util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util/nutr_info_api_util */ "./frontend/util/nutr_info_api_util.js");
+/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
+/* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
+
 
 
 
@@ -2501,6 +2529,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.fetchRecipes = _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_3__["fetchRecipes"];
   window.saveRecipe = _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_3__["saveRecipe"];
   window.unsaveRecipe = _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_3__["unsaveRecipe"];
+  window.fetchNutritionData = _util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_4__["fetchNutritionData"];
   var store;
 
   if (window.currentUser) {
@@ -2516,16 +2545,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     };
-    store = Object(_store_store__WEBPACK_IMPORTED_MODULE_4__["default"])(preloadedState);
+    store = Object(_store_store__WEBPACK_IMPORTED_MODULE_5__["default"])(preloadedState);
     delete window.currentUser;
   } else {
-    store = Object(_store_store__WEBPACK_IMPORTED_MODULE_4__["default"])();
+    store = Object(_store_store__WEBPACK_IMPORTED_MODULE_5__["default"])();
   }
 
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   var root = document.getElementById("root");
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_6__["default"], {
     store: store
   }), root);
 });
@@ -3053,13 +3082,14 @@ var cookTime = function cookTime(mins) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchNutritionData", function() { return fetchNutritionData; });
-var fetchNutritionData = function fetchNutritionData(ingredientArr) {
-  {
-    $.ajax({
-      method: 'GET',
-      url: "https://api.edamam.com/api/nutrition-data?app_id=74b9d2c3&app_key=b3d15dc2182b81257d63ac5780f35895&ingr=".concat(ingredientArr)
-    });
-  }
+var fetchNutritionData = function fetchNutritionData(data) {
+  return $.ajax({
+    method: 'POST',
+    url: "https://api.edamam.com/api/nutrition-details?app_id=74b9d2c3&app_key=b3d15dc2182b81257d63ac5780f35895",
+    data: JSON.stringify(data),
+    dataType: "json",
+    contentType: "application/json"
+  });
 };
 
 /***/ }),

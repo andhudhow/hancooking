@@ -15,20 +15,38 @@ class RecipeShow extends React.Component{
       commentContent: '',
       nutritionalInfo: {}
     };
-    this.handleCommentOpen = this.handleCommentOpen.bind(this);
+    this.handleCommentClick = this.handleCommentClick.bind(this);
     this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
     this.handleCommentCancel = this.handleCommentCancel.bind(this);
+    this.getNutritionData = this.getNutritionData.bind(this);
     this.handleTyping = this.handleTyping.bind(this);
+    this.setState = this.setState.bind(this);
   }
   componentDidMount() {
-    this.props.recipe ? null : this.props.fetchRecipes();
-    this.props.fetchRecipe(this.props.match.params.recipeId);
+    this.props.fetchRecipe(this.props.match.params.recipeId)
+    .then(() => {
+      if(this.props.recipe) {
+        this.getNutritionData()
+      } else {
+      this.props.fetchRecipes().then(this.getNutritionData())
+      }
+    });
+
     { scrollTop() };
-    // fetchNutritionData().then(payload => this.setState( {nutritionalInfo : payload }));
+    
   }
 
-  handleCommentOpen() {
-    // e.preventDefault();
+  getNutritionData() {
+    const nutrData = {
+      title: this.props.recipe.title,
+      yield: this.props.recipe.servings,
+      ingr: this.props.ingredients.reduce((acc, el) => acc.concat((el.quantity + " " + el.description)), []),
+    };
+
+    fetchNutritionData(nutrData).then(pay => this.setState( { nutritionalInfo: pay } ))
+  }
+  
+  handleCommentClick() {
     this.setState({ commentOpen: !this.state.commentOpen })
   }
 
@@ -55,6 +73,7 @@ class RecipeShow extends React.Component{
   }
   
   render() {
+    debugger
     const fetchedRecipeId = this.props.ingredients[0] ? this.props.ingredients[0].recipeId : null
     
     return (
@@ -72,6 +91,7 @@ class RecipeShow extends React.Component{
                 <div className="nutr-container">
                   <img className='nutr-icon' src={window.nutrInfoIconOutline} />
                   Nutritional Information
+                  <li>Calories: {this.state.nutritionalInfo.calories}</li>
                 </div>
               </div>
               <div className="recipe-prepsteps-list">
@@ -91,7 +111,7 @@ class RecipeShow extends React.Component{
                         <div className="user-name-container">
                           <div className="comment-input-container">
                             <textarea className={this.state.commentOpen ? "comment-textarea-editing" : "comment-textarea"}
-                              onClick={this.handleCommentOpen} 
+                              onClick={this.handleCommentClick} 
                               onChange={this.handleTyping}
                               placeholder="Share your notes with other cooks or leave a private note."
                               value={this.state.commentContent} >
