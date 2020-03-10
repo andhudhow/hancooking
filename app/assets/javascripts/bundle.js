@@ -2457,7 +2457,7 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
 
       debugger;
       var results = this.props.recipes.filter(function (recipe) {
-        return recipe.title.toLowerCase().includes(_this2.state.query.toLowerCase()) || recipe.description.toLowerCase().split(' ').join('').includes(_this2.state.query.toLowerCase());
+        return recipe.title.toLowerCase().split(' ').join('').includes(_this2.state.query.toLowerCase()) || recipe.description.toLowerCase().split(' ').join('').includes(_this2.state.query.toLowerCase());
       });
       this.setState({
         results: results
@@ -2657,7 +2657,7 @@ var mapStateToProps = function mapStateToProps(_ref, ownProps) {
       session = _ref.session;
   return {
     recipes: Object.values(entities.recipes).filter(function (recipe) {
-      return recipe.title.toLowerCase().includes(ownProps.match.params.searchQuery.toLowerCase()) || recipe.description.split(" ").join("").toLowerCase().includes(ownProps.match.params.searchQuery.toLowerCase());
+      return recipe.title.toLowerCase().split(' ').join('').includes(ownProps.match.params.searchQuery.toLowerCase()) || recipe.description.toLowerCase().split(' ').join('').includes(ownProps.match.params.searchQuery.toLowerCase());
     })
   };
 };

@@ -58,7 +58,7 @@ class SearchBar extends React.Component {
     debugger
     let results = 
       this.props.recipes.filter(recipe => (
-        recipe.title.toLowerCase().includes(this.state.query.toLowerCase())
+        recipe.title.toLowerCase().split(' ').join('').includes(this.state.query.toLowerCase())
         || recipe.description.toLowerCase().split(' ').join('').includes(this.state.query.toLowerCase())
       ));
 
