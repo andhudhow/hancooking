@@ -2455,13 +2455,10 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
     value: function filterResults() {
       var _this2 = this;
 
-      var titleResults = this.props.recipes.filter(function (recipe) {
-        return recipe.title.toLowerCase().includes(_this2.state.query.toLowerCase());
+      debugger;
+      var results = this.props.recipes.filter(function (recipe) {
+        return recipe.title.toLowerCase().includes(_this2.state.query.toLowerCase()) || recipe.description.toLowerCase().split(' ').join('').includes(_this2.state.query.toLowerCase());
       });
-      var descriptionResults = this.props.recipes.filter(function (recipe) {
-        return recipe.description.toLowerCase().split(' ').join('').includes(_this2.state.query.toLowerCase());
-      });
-      var results = titleResults.concat(descriptionResults);
       this.setState({
         results: results
       });
@@ -2624,7 +2621,7 @@ var SearchResult = /*#__PURE__*/function (_React$Component) {
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-results-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Search results for \"", "".concat(this.props.match.params.searchQuery), "\""), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Search results for ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "".concat(this.props.match.params.searchQuery))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "saved-recipe-count"
       }, resultIndex.length, " recipes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "saved-recipe-index-container"
@@ -2660,7 +2657,7 @@ var mapStateToProps = function mapStateToProps(_ref, ownProps) {
       session = _ref.session;
   return {
     recipes: Object.values(entities.recipes).filter(function (recipe) {
-      return recipe.title.toLowerCase().includes(ownProps.match.params.searchQuery.toLowerCase());
+      return recipe.title.toLowerCase().includes(ownProps.match.params.searchQuery.toLowerCase()) || recipe.description.split(" ").join("").toLowerCase().includes(ownProps.match.params.searchQuery.toLowerCase());
     })
   };
 };

@@ -4,8 +4,9 @@ import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = ({ entities, session }, ownProps) => ({
   recipes: Object.values(entities.recipes)
-            .filter(recipe => recipe.title.toLowerCase()
-            .includes(ownProps.match.params.searchQuery.toLowerCase()))
+            .filter(recipe => 
+              (recipe.title.toLowerCase().includes(ownProps.match.params.searchQuery.toLowerCase()))
+              || recipe.description.split(" ").join("").toLowerCase().includes(ownProps.match.params.searchQuery.toLowerCase()))
 });
   
 const mapDispatchToProps = dispatch => ({
