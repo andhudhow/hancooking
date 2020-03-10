@@ -103,6 +103,6 @@ export const saveComment = comment => dispatch => (
 
 export const deleteComment = (commentId) => (dispatch) => (
   CommentAPIUtil.deleteComment(commentId).then(
-    (recipe => dispatch(removeCommentSave(recipe)))
+    (recipe => dispatch(removeComment(recipe)))
   )
 );

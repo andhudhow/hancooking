@@ -248,7 +248,7 @@ var saveComment = function saveComment(comment) {
 var deleteComment = function deleteComment(commentId) {
   return function (dispatch) {
     return _util_comment_api_util__WEBPACK_IMPORTED_MODULE_1__["deleteComment"](commentId).then(function (recipe) {
-      return dispatch(removeCommentSave(recipe));
+      return dispatch(removeComment(recipe));
     });
   };
 };

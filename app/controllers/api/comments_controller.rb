@@ -14,6 +14,7 @@ class Api::CommentsController < ApplicationController
   def destroy
     @comment = Comment.find_by(id: params[:id])
     return nil unless @comment
+    @recipe = Recipe.find_by(id: @comment.recipe_id)
 
     if @comment&.destroy
       render '/api/recipes/show'
