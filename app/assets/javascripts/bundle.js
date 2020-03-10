@@ -1720,7 +1720,8 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       commentOpen: false,
       commentContent: '',
-      nutritionalInfo: {}
+      nutritionalInfo: {},
+      nutrHover: false
     };
     _this.handleCommentClick = _this.handleCommentClick.bind(_assertThisInitialized(_this));
     _this.handleCommentSubmit = _this.handleCommentSubmit.bind(_assertThisInitialized(_this));
@@ -1736,6 +1737,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
+      debugger;
       this.props.fetchRecipe(this.props.match.params.recipeId).then(function () {
         if (_this2.props.recipe) {
           _this2.getNutritionData();
@@ -1753,18 +1755,26 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     value: function getNutritionData() {
       var _this3 = this;
 
-      var nutrData = {
-        title: this.props.recipe.title,
-        "yield": this.props.recipe.servings,
-        ingr: this.props.ingredients.reduce(function (acc, el) {
-          return acc.concat(el.quantity + " " + el.description);
-        }, [])
-      };
-      Object(_util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_5__["fetchNutritionData"])(nutrData).then(function (pay) {
-        return _this3.setState({
-          nutritionalInfo: pay
+      debugger;
+
+      if (this.props.recipe) {
+        var nutrData = {
+          title: this.props.recipe.title,
+          "yield": this.props.recipe.servings + "servings",
+          ingr: this.props.ingredients.reduce(function (acc, el) {
+            return acc.concat(el.quantity + " " + el.description);
+          }, [])
+        };
+        Object(_util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_5__["fetchNutritionData"])(nutrData).then(function (pay) {
+          return _this3.setState({
+            nutritionalInfo: pay
+          });
         });
-      });
+      } else {
+        null;
+      }
+
+      ;
     }
   }, {
     key: "handleCommentClick",
@@ -1807,7 +1817,8 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
+      var _this4 = this;
+
       var fetchedRecipeId = this.props.ingredients[0] ? this.props.ingredients[0].recipeId : null;
       return this.props.recipe && this.props.match.params && fetchedRecipeId && fetchedRecipeId === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "recipe-show-container"
@@ -1822,12 +1833,44 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
         className: "add-glist-btn",
         type: "button"
-      }, "Add to Your Grocery List"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "nutr-container"
+      }, "Add to Your Grocery List"), this.state.nutritionalInfo.calories ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "nutr-container",
+        onMouseLeave: function onMouseLeave() {
+          return _this4.setState({
+            nutrHover: false
+          });
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "nutr-header"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
         className: "nutr-icon",
-        src: window.nutrInfoIconOutline
-      }), "Nutritional Information", react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Calories: ", this.state.nutritionalInfo.calories))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        src: window.nutrInfoIconOutline,
+        onMouseEnter: function onMouseEnter() {
+          return _this4.setState({
+            nutrHover: true
+          });
+        } // onMouseLeave = {()=>this.setState( { nutrHover : false } )}
+
+      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
+        className: "nutr-header-text",
+        onMouseEnter: function onMouseEnter() {
+          return _this4.setState({
+            nutrHover: true
+          });
+        } // onMouseLeave = {()=>this.setState( { nutrHover : false } )}
+
+      }, " Nutritional Information")), this.state.nutritionalInfo.totalNutrients ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: this.state.nutrHover ? "nutr-list" : "nutr-hidden"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "nutr-index-header"
+      }, "Based on ", this.props.recipe.servings, " servings:"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Calories: ", Math.floor(this.state.nutritionalInfo.calories)), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Carbs: ", Math.floor(this.state.nutritionalInfo.totalNutrients.CHOCDF.quantity), " grams"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FAT.quantity), " grams"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Trans Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FATRN.quantity), " grams"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Monosaturated Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FAMS.quantity), " grams"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Polyunsaturated Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FAPU.quantity), " grams"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Fiber: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FIBTG.quantity), " grams"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Sugar: ", Math.floor(this.state.nutritionalInfo.totalNutrients.SUGAR.quantity), " grams"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Protein: ", Math.floor(this.state.nutritionalInfo.totalNutrients.PROCNT.quantity), " grams"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Sodium: ", Math.floor(this.state.nutritionalInfo.totalNutrients.NA.quantity), " grams"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
+        className: "nutrition-note"
+      }, "Note: The information shown is Edamam\u2019s estimate based on available ingredients and preparation. It should not be considered a substitute for a professional nutritionist\u2019s advice."), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
+        className: "nutrition-attribution"
+      }, "Powered by ", react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
+        id: "edamam-logo",
+        src: "https://static01.nyt.com/applications/cooking/982798d/assets/edamam-logo.png"
+      }))) : null) : null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "recipe-prepsteps-list"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h3", {
         className: "instructions-header"
@@ -1905,6 +1948,7 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var session = _ref.session,
       entities = _ref.entities;
+  debugger;
   return {
     currentUser: session.currentUser,
     recipe: entities.recipes[ownProps.match.params.recipeId],
@@ -2394,12 +2438,11 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
 
       var titleResults = this.props.recipes.filter(function (recipe) {
         return recipe.title.toLowerCase().includes(_this2.state.query.toLowerCase());
-      }); // let descriptionResults = this.props.recipes.filter(recipe => recipe.description.toLowerCase().split(' ').includes(this.state.query.toLowerCase()));
-
-      var results = titleResults; //.concat(descriptionResults);
-      //ingredient matches
-      //tag matches
-
+      });
+      var descriptionResults = this.props.recipes.filter(function (recipe) {
+        return recipe.description.toLowerCase().split(' ').includes(_this2.state.query.toLowerCase());
+      });
+      var results = titleResults.concat(descriptionResults);
       this.setState({
         results: results
       });

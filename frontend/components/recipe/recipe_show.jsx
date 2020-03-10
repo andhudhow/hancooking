@@ -13,7 +13,8 @@ class RecipeShow extends React.Component{
     this.state = {
       commentOpen: false,
       commentContent: '',
-      nutritionalInfo: {}
+      nutritionalInfo: {},
+      nutrHover: false
     };
     this.handleCommentClick = this.handleCommentClick.bind(this);
     this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
@@ -23,6 +24,7 @@ class RecipeShow extends React.Component{
     this.setState = this.setState.bind(this);
   }
   componentDidMount() {
+    debugger
     this.props.fetchRecipe(this.props.match.params.recipeId)
     .then(() => {
       if(this.props.recipe) {
@@ -37,13 +39,18 @@ class RecipeShow extends React.Component{
   }
 
   getNutritionData() {
-    const nutrData = {
-      title: this.props.recipe.title,
-      yield: this.props.recipe.servings,
-      ingr: this.props.ingredients.reduce((acc, el) => acc.concat((el.quantity + " " + el.description)), []),
+    debugger
+    if (this.props.recipe) { 
+      const nutrData = {
+        title: this.props.recipe.title,
+        yield: this.props.recipe.servings + "servings",
+        ingr: this.props.ingredients.reduce((acc, el) => acc.concat((el.quantity + " " + el.description)), [])
+      };
+      
+      fetchNutritionData(nutrData).then(pay => this.setState( { nutritionalInfo: pay } ));
+    } else {
+      null
     };
-
-    fetchNutritionData(nutrData).then(pay => this.setState( { nutritionalInfo: pay } ))
   }
   
   handleCommentClick() {
@@ -73,7 +80,6 @@ class RecipeShow extends React.Component{
   }
   
   render() {
-    debugger
     const fetchedRecipeId = this.props.ingredients[0] ? this.props.ingredients[0].recipeId : null
     
     return (
@@ -88,11 +94,38 @@ class RecipeShow extends React.Component{
                 <button className="add-glist-btn" type="button">
                   Add to Your Grocery List
                 </button>
-                <div className="nutr-container">
-                  <img className='nutr-icon' src={window.nutrInfoIconOutline} />
-                  Nutritional Information
-                  <li>Calories: {this.state.nutritionalInfo.calories}</li>
-                </div>
+                {this.state.nutritionalInfo.calories ? 
+                  <div className="nutr-container" onMouseLeave = {()=>this.setState( { nutrHover : false } )}>
+                    <div className='nutr-header'>
+                      <img className='nutr-icon' 
+                        src={window.nutrInfoIconOutline}
+                        onMouseEnter = {()=>this.setState( { nutrHover : true } )}
+                        // onMouseLeave = {()=>this.setState( { nutrHover : false } )}
+                        />
+                      <span className="nutr-header-text" 
+                        onMouseEnter = {()=>this.setState( { nutrHover : true } )}
+                        // onMouseLeave = {()=>this.setState( { nutrHover : false } )}
+                      > Nutritional Information</span>
+                    </div>
+                      {this.state.nutritionalInfo.totalNutrients ? 
+                        <div className={this.state.nutrHover ? "nutr-list" : "nutr-hidden"} >
+                          <div className="nutr-index-header">Based on {this.props.recipe.servings} servings:</div>
+                          <li>Calories: {Math.floor(this.state.nutritionalInfo.calories)}</li>
+                          <li>Carbs: {Math.floor(this.state.nutritionalInfo.totalNutrients.CHOCDF.quantity)} grams</li>
+                          <li>Fat: {Math.floor(this.state.nutritionalInfo.totalNutrients.FAT.quantity)} grams</li>
+                          <li>Trans Fat: {Math.floor(this.state.nutritionalInfo.totalNutrients.FATRN.quantity)} grams</li>
+                          <li>Monosaturated Fat: {Math.floor(this.state.nutritionalInfo.totalNutrients.FAMS.quantity)} grams</li>
+                          <li>Polyunsaturated Fat: {Math.floor(this.state.nutritionalInfo.totalNutrients.FAPU.quantity)} grams</li>
+                          <li>Fiber: {Math.floor(this.state.nutritionalInfo.totalNutrients.FIBTG.quantity)} grams</li>
+                          <li>Sugar: {Math.floor(this.state.nutritionalInfo.totalNutrients.SUGAR.quantity)} grams</li>
+                          <li>Protein: {Math.floor(this.state.nutritionalInfo.totalNutrients.PROCNT.quantity)} grams</li>
+                          <li>Sodium: {Math.floor(this.state.nutritionalInfo.totalNutrients.NA.quantity)} grams</li>
+                          <p className="nutrition-note">Note: The information shown is Edamam’s estimate based on available ingredients and preparation. It should not be considered a substitute for a professional nutritionist’s advice.</p>
+                          <p className="nutrition-attribution">Powered by <img id="edamam-logo" src="https://static01.nyt.com/applications/cooking/982798d/assets/edamam-logo.png"></img></p>
+                        </div>
+                      : null }
+                  </div>
+                  : null }
               </div>
               <div className="recipe-prepsteps-list">
                 <h3 className='instructions-header'>Preparation</h3>

@@ -485,10 +485,82 @@
   transition: all .33s ease-in-out;
 }
 
+.nutr-header {
+  padding-top: 45px;
+}
+
 .nutr-icon {
   height: 15px;
   width: 15px;
   margin-left: 49px;
+  cursor: pointer;
+}
+
+.nutr-header-text {
+  cursor: pointer;
+  color: #e33d26;
+  padding-left: 7px;
+  font-family: 'franklin-300',Arial,Helvetica,sans-serif;
+  font-size: 14px;
+  font-weight: 200;
+  position: absolute;
+  display: inline;
+}
+
+.nutr-list {
+  display: block;
+  position: relative;
+  font-family: 'franklin-300',Arial,Helvetica,sans-serif;
+  color: black;
+  transition: opacity .33s ease-in-out;
+  background-color: #fff;
+  width: 265px;
+  height: auto;
+  left: 48px;
+  padding: 17px;
+  border: 1px solid #e6e6e6;
+  border-radius: 3px;
+  box-shadow: 0 5px 20px 0 rgba(0,0,0,.2);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.2;
+  overflow: visible;
+  right: auto;
+  z-index: 9;
+  opacity: 1;
+}
+
+.nutr-list > li {
+  font-family: 'franklin-300',Arial,Helvetica,sans-serif;
+  color: black;
+}
+
+.nutr-hidden {
+  opacity: 0;
+}
+
+.nutrition-note {
+  font-size: 13px;
+}
+
+.nutr-index-header {
+  font-weight: 700;
+  font-size: 15px;
+  font-family: 'franklin-700';
+  color: black;
+}
+
+.nutrition-attribution {
+  font-size: 13px;
+  font-weight: 300;
+  margin-top: 10px;
+  text-align: center;
+}
+
+#edamam-logo {
+  height: 20px;
+  width: 90px;
+  vertical-align: middle;
 }
 
 .comment-action-container-hidden {
