@@ -405,32 +405,35 @@ var Footer = function Footer() {
     className: "footer-header"
   }, "About us"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "footer-about-description"
-  }, "Hancooking is a digital cookbook that helps home cooks of every level discover, save and organize the world\u2019s best Korean recipes. Sign up today!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Hancooking is a digital cookbook that helps home cooks of every level discover, save and organize the world\u2019s best Korean recipes.", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Sign up today!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "learn-more-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "footer-header"
-  }, "About us"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, "Contact"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     key: "li",
     lassName: "online-presence"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://www.linkedin.com/in/andrewhhowell/",
+    target: "_blank"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "online-presence-logo"
-  }, "LI"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "online-presence"
-  }, "-textLinkedIn")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "online-presence-text"
+  }, "LinkedIn"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     key: "gh",
     className: "online-presence"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://github.com/andhudhow",
+    target: "_blank"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "online-presence-logo"
-  }, "GH"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "online-presence-text"
-  }, "Github")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, "Github"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     key: "resume",
     className: "online-presence"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://drive.google.com/open?id=1CVIZ6PiTux9nYKQ2HY6xbUl4naoPQlCv",
+    target: "_blank"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "online-presence-logo"
-  }, "Res"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "online-presence-text"
-  }, "Resume")))));
+  }, "Resume"))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Footer);
@@ -544,14 +547,14 @@ var Main = /*#__PURE__*/function (_React$Component) {
   _createClass(Main, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      {
-        Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_3__["scrollTop"])();
-      }
-      ;
       document.documentElement.style.height = "100%";
       document.documentElement.style.width = "100%";
       document.body.style.height = "100%";
       document.body.style.width = "100%";
+      {
+        Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_3__["scrollTop"])();
+      }
+      ;
     }
   }, {
     key: "handleClick",
@@ -1983,10 +1986,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         className: "comment-index"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_comment_index_container__WEBPACK_IMPORTED_MODULE_3__["default"], null))))))) : react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "loading-show"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
-        src: "https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif",
-        alt: "loading"
-      }));
+      }, "Loading...");
     }
   }]);
 

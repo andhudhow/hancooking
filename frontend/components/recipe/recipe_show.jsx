@@ -178,7 +178,7 @@ class RecipeShow extends React.Component{
           </div>
           :
         <div className="loading-show">
-          <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="loading"/>
+          Loading...
         </div>
     )
   }

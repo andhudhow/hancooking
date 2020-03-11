@@ -11,11 +11,11 @@ class Main extends React.Component{
   }
 
   componentDidMount() {
-    { scrollTop() };
     document.documentElement.style.height="100%";
     document.documentElement.style.width="100%";
     document.body.style.height="100%";
     document.body.style.width="100%";
+    { scrollTop() };
   }
 
   handleClick(e){
