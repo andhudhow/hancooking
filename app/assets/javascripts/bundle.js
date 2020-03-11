@@ -340,9 +340,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _recipe_box_recipe_box_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./recipe_box/recipe_box_container */ "./frontend/components/recipe_box/recipe_box_container.js");
 /* harmony import */ var _main_navbar_nav_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./main/navbar/nav_container */ "./frontend/components/main/navbar/nav_container.js");
 /* harmony import */ var _search_search_result_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./search/search_result_container */ "./frontend/components/search/search_result_container.js");
-/* harmony import */ var _main_main_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./main/main_container */ "./frontend/components/main/main_container.js");
-/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _footer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./footer */ "./frontend/components/footer.jsx");
+/* harmony import */ var _main_main_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./main/main_container */ "./frontend/components/main/main_container.js");
+/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
@@ -357,25 +359,81 @@ __webpack_require__.r(__webpack_exports__);
 var App = function App(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "site-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modals_modal__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_navbar_nav_container__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_8__["ProtectedRoute"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modals_modal__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_navbar_nav_container__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_9__["ProtectedRoute"], {
     path: "/recipe-box",
     component: _recipe_box_recipe_box_container__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_8__["ProtectedRoute"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_9__["ProtectedRoute"], {
     path: "/search/:searchQuery",
     component: _search_search_result_container__WEBPACK_IMPORTED_MODULE_6__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_8__["ProtectedRoute"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_9__["ProtectedRoute"], {
     path: "/recipes/:recipeId",
     component: _recipe_recipe_show_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_8__["ProtectedRoute"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_9__["ProtectedRoute"], {
     path: "/recipes",
     component: _recipe_recipe_index_container__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Route"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Route"], {
     path: "/",
-    component: _main_main_container__WEBPACK_IMPORTED_MODULE_7__["default"]
-  })));
+    component: _main_main_container__WEBPACK_IMPORTED_MODULE_8__["default"]
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer__WEBPACK_IMPORTED_MODULE_7__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
+
+/***/ }),
+
+/***/ "./frontend/components/footer.jsx":
+/*!****************************************!*\
+  !*** ./frontend/components/footer.jsx ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Footer = function Footer() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "footer"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "footer-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "footer-about-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "footer-header"
+  }, "About us"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "footer-about-description"
+  }, "Hancooking is a digital cookbook that helps home cooks of every level discover, save and organize the world\u2019s best Korean recipes. Sign up today!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "learn-more-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "footer-header"
+  }, "About us"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    key: "li",
+    lassName: "online-presence"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "online-presence-logo"
+  }, "LI"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "online-presence"
+  }, "-textLinkedIn")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    key: "gh",
+    className: "online-presence"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "online-presence-logo"
+  }, "GH"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "online-presence-text"
+  }, "Github")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    key: "resume",
+    className: "online-presence"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "online-presence-logo"
+  }, "Res"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "online-presence-text"
+  }, "Resume")))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Footer);
 
 /***/ }),
 
@@ -1742,7 +1800,6 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      debugger;
       this.props.fetchRecipe(this.props.match.params.recipeId).then(function () {
         if (_this2.props.recipe) {
           _this2.getNutritionData();
@@ -1759,8 +1816,6 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     key: "getNutritionData",
     value: function getNutritionData() {
       var _this3 = this;
-
-      debugger;
 
       if (this.props.recipe) {
         var nutrData = {
@@ -1868,7 +1923,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         className: this.state.nutrHover ? "nutr-list" : "nutr-hidden"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "nutr-index-header"
-      }, "Based on ", this.props.recipe.servings, " servings:"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Calories: ", Math.floor(this.state.nutritionalInfo.calories)), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Carbs: ", Math.floor(this.state.nutritionalInfo.totalNutrients.CHOCDF.quantity), " grams"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FAT.quantity), " grams"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Trans Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FATRN.quantity), " grams"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Monosaturated Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FAMS.quantity), " grams"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Polyunsaturated Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FAPU.quantity), " grams"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Fiber: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FIBTG.quantity), " grams"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Sugar: ", Math.floor(this.state.nutritionalInfo.totalNutrients.SUGAR.quantity), " grams"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Protein: ", Math.floor(this.state.nutritionalInfo.totalNutrients.PROCNT.quantity), " grams"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Sodium: ", Math.floor(this.state.nutritionalInfo.totalNutrients.NA.quantity), " grams"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
+      }, "Based on ", this.props.recipe.servings, " servings:"), this.state.nutritionalInfo.calories ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Calories: ", Math.floor(this.state.nutritionalInfo.calories)) : null, this.state.nutritionalInfo.totalNutrients.CHOCDF ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Carbs: ", Math.floor(this.state.nutritionalInfo.totalNutrients.CHOCDF.quantity), " grams ") : null, this.state.nutritionalInfo.totalNutrients.FAT ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FAT.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.FATRN ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Trans Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FATRN.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.FAMS ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Monosaturated Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FAMS.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.FAPU ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Polyunsaturated Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FAPU.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.FIBTG ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Fiber: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FIBTG.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.SUGAR ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Sugar: ", Math.floor(this.state.nutritionalInfo.totalNutrients.SUGAR.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.PROCNT ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Protein: ", Math.floor(this.state.nutritionalInfo.totalNutrients.PROCNT.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.NA ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Sodium: ", Math.floor(this.state.nutritionalInfo.totalNutrients.NA.quantity), " grams") : null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
         className: "nutrition-note"
       }, "Note: The information shown is Edamam\u2019s estimate based on available ingredients and preparation. It should not be considered a substitute for a professional nutritionist\u2019s advice."), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
         className: "nutrition-attribution"
@@ -1953,7 +2008,6 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var session = _ref.session,
       entities = _ref.entities;
-  debugger;
   return {
     currentUser: session.currentUser,
     recipe: entities.recipes[ownProps.match.params.recipeId],
@@ -2455,7 +2509,6 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
     value: function filterResults() {
       var _this2 = this;
 
-      debugger;
       var results = this.props.recipes.filter(function (recipe) {
         return recipe.title.toLowerCase().split(' ').join('').includes(_this2.state.query.toLowerCase()) || recipe.description.toLowerCase().split(' ').join('').includes(_this2.state.query.toLowerCase());
       });

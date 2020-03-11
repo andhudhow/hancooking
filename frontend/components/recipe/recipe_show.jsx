@@ -24,7 +24,7 @@ class RecipeShow extends React.Component{
     this.setState = this.setState.bind(this);
   }
   componentDidMount() {
-    debugger
+    
     this.props.fetchRecipe(this.props.match.params.recipeId)
     .then(() => {
       if(this.props.recipe) {
@@ -39,7 +39,7 @@ class RecipeShow extends React.Component{
   }
 
   getNutritionData() {
-    debugger
+    
     if (this.props.recipe) { 
       const nutrData = {
         title: this.props.recipe.title,
@@ -110,16 +110,26 @@ class RecipeShow extends React.Component{
                       {this.state.nutritionalInfo.totalNutrients ? 
                         <div className={this.state.nutrHover ? "nutr-list" : "nutr-hidden"} >
                           <div className="nutr-index-header">Based on {this.props.recipe.servings} servings:</div>
-                          <li>Calories: {Math.floor(this.state.nutritionalInfo.calories)}</li>
-                          <li>Carbs: {Math.floor(this.state.nutritionalInfo.totalNutrients.CHOCDF.quantity)} grams</li>
-                          <li>Fat: {Math.floor(this.state.nutritionalInfo.totalNutrients.FAT.quantity)} grams</li>
-                          <li>Trans Fat: {Math.floor(this.state.nutritionalInfo.totalNutrients.FATRN.quantity)} grams</li>
-                          <li>Monosaturated Fat: {Math.floor(this.state.nutritionalInfo.totalNutrients.FAMS.quantity)} grams</li>
-                          <li>Polyunsaturated Fat: {Math.floor(this.state.nutritionalInfo.totalNutrients.FAPU.quantity)} grams</li>
-                          <li>Fiber: {Math.floor(this.state.nutritionalInfo.totalNutrients.FIBTG.quantity)} grams</li>
-                          <li>Sugar: {Math.floor(this.state.nutritionalInfo.totalNutrients.SUGAR.quantity)} grams</li>
-                          <li>Protein: {Math.floor(this.state.nutritionalInfo.totalNutrients.PROCNT.quantity)} grams</li>
-                          <li>Sodium: {Math.floor(this.state.nutritionalInfo.totalNutrients.NA.quantity)} grams</li>
+                          {this.state.nutritionalInfo.calories ?
+                            <li>Calories: {Math.floor(this.state.nutritionalInfo.calories)}</li> : null}
+                          {this.state.nutritionalInfo.totalNutrients.CHOCDF ?
+                            <li>Carbs: {Math.floor(this.state.nutritionalInfo.totalNutrients.CHOCDF.quantity)} grams </li> : null }
+                          {this.state.nutritionalInfo.totalNutrients.FAT ?
+                            <li>Fat: {Math.floor(this.state.nutritionalInfo.totalNutrients.FAT.quantity)} grams</li> : null }
+                          {this.state.nutritionalInfo.totalNutrients.FATRN ?
+                            <li>Trans Fat: {Math.floor(this.state.nutritionalInfo.totalNutrients.FATRN.quantity)} grams</li> : null }
+                          {this.state.nutritionalInfo.totalNutrients.FAMS ?
+                            <li>Monosaturated Fat: {Math.floor(this.state.nutritionalInfo.totalNutrients.FAMS.quantity)} grams</li> : null }
+                          {this.state.nutritionalInfo.totalNutrients.FAPU ?
+                            <li>Polyunsaturated Fat: {Math.floor(this.state.nutritionalInfo.totalNutrients.FAPU.quantity)} grams</li> : null }
+                          {this.state.nutritionalInfo.totalNutrients.FIBTG ?
+                            <li>Fiber: {Math.floor(this.state.nutritionalInfo.totalNutrients.FIBTG.quantity)} grams</li> : null }
+                          {this.state.nutritionalInfo.totalNutrients.SUGAR ?
+                            <li>Sugar: {Math.floor(this.state.nutritionalInfo.totalNutrients.SUGAR.quantity)} grams</li> : null }
+                          {this.state.nutritionalInfo.totalNutrients.PROCNT ?
+                            <li>Protein: {Math.floor(this.state.nutritionalInfo.totalNutrients.PROCNT.quantity)} grams</li> : null }
+                          {this.state.nutritionalInfo.totalNutrients.NA ?
+                            <li>Sodium: {Math.floor(this.state.nutritionalInfo.totalNutrients.NA.quantity)} grams</li> : null }
                           <p className="nutrition-note">Note: The information shown is Edamam’s estimate based on available ingredients and preparation. It should not be considered a substitute for a professional nutritionist’s advice.</p>
                           <p className="nutrition-attribution">Powered by <img id="edamam-logo" src="https://static01.nyt.com/applications/cooking/982798d/assets/edamam-logo.png"></img></p>
                         </div>

@@ -19,3 +19,9 @@
   outline-color: red;
   outline-width: 1px;
 } */
+
+
+.site-container {
+  display:flex;
+  flex-direction: column;
+}

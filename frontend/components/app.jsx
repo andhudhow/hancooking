@@ -5,6 +5,7 @@ import RecipeShowContainer from './recipe/recipe_show_container';
 import RecipeBoxContainer from './recipe_box/recipe_box_container';
 import NavBarContainer from './main/navbar/nav_container';
 import SearchResultContainer from './search/search_result_container'
+import Footer from './footer';
 import MainContainer from './main/main_container';
 import { ProtectedRoute } from '../util/route_util';
 
@@ -26,6 +27,7 @@ const App = (props) => {
                 <ProtectedRoute path="/recipes" component={ RecipeIndexContainer } />
                 <Route path="/" component={MainContainer} />
             </Switch>
+        <Footer />
     </div>
     )
 };
