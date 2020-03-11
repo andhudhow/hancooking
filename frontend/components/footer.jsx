@@ -13,17 +13,23 @@ const Footer = () => (
     </div>
     <div className="learn-more-container">
       <ul className="footer-header">Contact</ul>
-        <li key="li" lassName="online-presence">
+        <li key="li" className="online-presence">
           <a href="https://www.linkedin.com/in/andrewhhowell/" target="_blank">
-            <span className="online-presence-text">LinkedIn</span></a>
+            <img className="online-presence-icon" src={window.linkedinLogoURL} />
+              LinkedIn
+          </a>
         </li>
         <li key="gh" className="online-presence">
           <a href="https://github.com/andhudhow" target="_blank">
-          <span className="online-presence-text">Github</span></a>
+          <img className="online-presence-icon" src={window.githubLogoURL} /> 
+            GitHub
+          </a>
         </li>
         <li key="resume" className="online-presence">
           <a href="https://drive.google.com/open?id=1CVIZ6PiTux9nYKQ2HY6xbUl4naoPQlCv" target="_blank">
-          <span className="online-presence-text">Resume</span></a>
+          <img className="online-presence-icon" src="https://www.iconsdb.com/icons/preview/white/pdf-xxl.png" />
+            Resume
+          </a>
         </li>
       </div>
     </div>

@@ -411,29 +411,32 @@ var Footer = function Footer() {
     className: "footer-header"
   }, "Contact"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     key: "li",
-    lassName: "online-presence"
+    className: "online-presence"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "https://www.linkedin.com/in/andrewhhowell/",
     target: "_blank"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "online-presence-text"
-  }, "LinkedIn"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "online-presence-icon",
+    src: window.linkedinLogoURL
+  }), "LinkedIn")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     key: "gh",
     className: "online-presence"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "https://github.com/andhudhow",
     target: "_blank"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "online-presence-text"
-  }, "Github"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "online-presence-icon",
+    src: window.githubLogoURL
+  }), "GitHub")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     key: "resume",
     className: "online-presence"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "https://drive.google.com/open?id=1CVIZ6PiTux9nYKQ2HY6xbUl4naoPQlCv",
     target: "_blank"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "online-presence-text"
-  }, "Resume"))))));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "online-presence-icon",
+    src: "https://www.iconsdb.com/icons/preview/white/pdf-xxl.png"
+  }), "Resume")))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Footer);
@@ -1889,7 +1892,6 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       var _this4 = this;
 
       var fetchedRecipeId = this.props.ingredients[0] ? this.props.ingredients[0].recipeId : null;
-      debugger;
       return this.props.recipe && this.props.match.params && fetchedRecipeId && fetchedRecipeId === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "recipe-show-container"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_recipe_header_container__WEBPACK_IMPORTED_MODULE_0__["default"], null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {

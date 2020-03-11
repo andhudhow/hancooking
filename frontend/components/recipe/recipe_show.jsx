@@ -81,7 +81,6 @@ class RecipeShow extends React.Component{
   
   render() {
     const fetchedRecipeId = this.props.ingredients[0] ? this.props.ingredients[0].recipeId : null
-    debugger
     return (
         this.props.recipe && this.props.match.params && fetchedRecipeId && (fetchedRecipeId === parseInt(this.props.match.params.recipeId)) ?
           <div className="recipe-show-container">
