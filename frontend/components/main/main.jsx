@@ -1,6 +1,7 @@
 import React from 'react';
 import MainCarousel from './main_carousel';
 import { Link } from 'react-router-dom';
+import { scrollTop } from '../../util/scroll_util';
 
 class Main extends React.Component{
 
@@ -10,6 +11,7 @@ class Main extends React.Component{
   }
 
   componentDidMount() {
+    { scrollTop() };
     document.documentElement.style.height="100%";
     document.documentElement.style.width="100%";
     document.body.style.height="100%";

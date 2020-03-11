@@ -83,7 +83,7 @@ class SearchBar extends React.Component {
           <input
             className='search-input'
             type='text'
-            placeholder='What would you like to cook?'
+            placeholder='🔍 What would you like to cook?'
             onChange={this.handleTyping}
             value={this.state.query}
             onKeyPress={this.handleKeyEnterPress}

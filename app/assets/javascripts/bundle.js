@@ -504,6 +504,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _main_carousel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./main_carousel */ "./frontend/components/main/main_carousel.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _util_scroll_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/scroll_util */ "./frontend/util/scroll_util.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -526,6 +527,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Main = /*#__PURE__*/function (_React$Component) {
   _inherits(Main, _React$Component);
 
@@ -542,6 +544,10 @@ var Main = /*#__PURE__*/function (_React$Component) {
   _createClass(Main, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      {
+        Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_3__["scrollTop"])();
+      }
+      ;
       document.documentElement.style.height = "100%";
       document.documentElement.style.width = "100%";
       document.body.style.height = "100%";
@@ -1880,6 +1886,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       var _this4 = this;
 
       var fetchedRecipeId = this.props.ingredients[0] ? this.props.ingredients[0].recipeId : null;
+      debugger;
       return this.props.recipe && this.props.match.params && fetchedRecipeId && fetchedRecipeId === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "recipe-show-container"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_recipe_header_container__WEBPACK_IMPORTED_MODULE_0__["default"], null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -1976,7 +1983,10 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         className: "comment-index"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_comment_index_container__WEBPACK_IMPORTED_MODULE_3__["default"], null))))))) : react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "loading-show"
-      }, "LOADING!");
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
+        src: "https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif",
+        alt: "loading"
+      }));
     }
   }]);
 
@@ -2542,7 +2552,7 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "search-input",
         type: "text",
-        placeholder: "What would you like to cook?",
+        placeholder: "\uD83D\uDD0D What would you like to cook?",
         onChange: this.handleTyping,
         value: this.state.query,
         onKeyPress: this.handleKeyEnterPress
