@@ -4,8 +4,9 @@ class User < ApplicationRecord
 
   has_many :recipe_saves, foreign_key: :user_id, class_name: :RecipeSave
   has_many :saved_recipes, through: :recipe_saves, source: :recipe
-
   has_many :comments, foreign_key: :user_id, class_name: :Comment
+  has_many :ratings, foreign_key: :user_id, class_name: :Rating
+  has_many :rated_recipes, through: :ratings, source: :recipe
 
   has_one_attached :avatar
 

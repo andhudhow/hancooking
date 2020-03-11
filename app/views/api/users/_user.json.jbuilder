@@ -1,5 +1,6 @@
 json.extract! user, :id, :email, :nickname
 json.savedRecipeIds user.saved_recipes.ids
+json.ratedRecipeIds user.rated_recipes.ids
 
 json.set! :saved_recipes do
   user.saved_recipes.each do |recipe|

@@ -11,7 +11,7 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(:saved_recipes).find_by(id: params[:id])
+    @user = User.includes(:saved_recipes, :rated_recipes).find_by(id: params[:id])
 
     if @user
       login(@user)

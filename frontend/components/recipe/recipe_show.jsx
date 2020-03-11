@@ -1,11 +1,10 @@
+import React from 'react';
 import RecipeHeaderContainer from './recipe_header_container';
 import IngredientListIndex from './ingredient_list_index';
 import PrepStepsListIndex from './prep_steps_list_index';
 import CommentIndexContainer from './comment_index_container';
 import { scrollTop } from '../../util/scroll_util';
 import { fetchNutritionData } from '../../util/nutr_info_api_util';
-
-import React, { useEffect } from 'react'
 
 class RecipeShow extends React.Component{
   constructor(props) {
@@ -23,8 +22,8 @@ class RecipeShow extends React.Component{
     this.handleTyping = this.handleTyping.bind(this);
     this.setState = this.setState.bind(this);
   }
+
   componentDidMount() {
-    
     this.props.fetchRecipe(this.props.match.params.recipeId)
     .then(() => {
       if(this.props.recipe) {
@@ -81,10 +80,143 @@ class RecipeShow extends React.Component{
   
   render() {
     const fetchedRecipeId = this.props.ingredients[0] ? this.props.ingredients[0].recipeId : null
+
+    let starRating
+    debugger
+    if (this.props.recipe) {
+      if (this.props.ratings[0] && this.props.currentUser.ratedRecipeIds.includes(this.props.recipe.id)) {
+        let currentUserRating = this.props.ratings.filter(rating=>rating.userId === this.props.currentUser.id)[0].starRating
+        switch (currentUserRating) {
+          case 1:
+            starRating =
+              <div className = "recipe-rating-avg-stars">
+                <img src="/assets/star-yellow.svg"></img>
+                <img src="/assets/star-rating-unfilled.png"></img>
+                <img src="/assets/star-rating-unfilled.png"></img>
+                <img src="/assets/star-rating-unfilled.png"></img>
+                <img src="/assets/star-rating-unfilled.png"></img>
+              </div>
+              break;
+          case 2:
+            starRating =
+              <div className = "recipe-rating-avg-stars">
+                <img src="/assets/star-yellow.svg"></img>
+                <img src="/assets/star-yellow.svg"></img>
+                <img src="/assets/star-rating-unfilled.png"></img>
+                <img src="/assets/star-rating-unfilled.png"></img>
+                <img src="/assets/star-rating-unfilled.png"></img>
+              </div>
+              break;
+          case 3:
+            starRating =
+            <div className = "recipe-rating-avg-stars">
+              <img src="/assets/star-yellow.svg"></img>
+              <img src="/assets/star-yellow.svg"></img>
+              <img src="/assets/star-yellow.svg"></img>
+              <img src="/assets/star-rating-unfilled.png"></img>
+              <img src="/assets/star-rating-unfilled.png"></img>
+            </div>
+            break;
+          case 4:
+            starRating =
+            <div className = "recipe-rating-avg-stars">
+              <img src="/assets/star-yellow.svg"></img>
+              <img src="/assets/star-yellow.svg"></img>
+              <img src="/assets/star-yellow.svg"></img>
+              <img src="/assets/star-yellow.svg"></img>
+              <img src="/assets/star-rating-unfilled.png"></img>
+            </div>
+            break;
+          case 5:
+            starRating =
+            <div className = "recipe-rating-avg-stars">
+              <img src="/assets/star-yellow.svg"></img>
+              <img src="/assets/star-yellow.svg"></img>
+              <img src="/assets/star-yellow.svg"></img>
+              <img src="/assets/star-yellow.svg"></img>
+              <img src="/assets/star-yellow.svg"></img>
+            </div>
+            break;
+          default:
+            return null;
+          } 
+      } else { 
+        switch (this.props.recipe.avgRating) {
+          case 0:
+            starRating =
+              <div className = "recipe-rating-avg-stars">
+                <img src="/assets/star-rating-unfilled.png"></img>
+                <img src="/assets/star-rating-unfilled.png"></img>
+                <img src="/assets/star-rating-unfilled.png"></img>
+                <img src="/assets/star-rating-unfilled.png"></img>
+                <img src="/assets/star-rating-unfilled.png"></img>
+              </div>
+              break;
+          case 1:
+            starRating =
+              <div className = "recipe-rating-avg-stars">
+                <img src="/assets/star-rating-filled-red.png"></img>
+                <img src="/assets/star-rating-unfilled.png"></img>
+                <img src="/assets/star-rating-unfilled.png"></img>
+                <img src="/assets/star-rating-unfilled.png"></img>
+                <img src="/assets/star-rating-unfilled.png"></img>
+              </div>
+              break;
+          case 2:
+            starRating =
+              <div className = "recipe-rating-avg-stars">
+                <img src="/assets/star-rating-filled-red.png"></img>
+                <img src="/assets/star-rating-filled-red.png"></img>
+                <img src="/assets/star-rating-unfilled.png"></img>
+                <img src="/assets/star-rating-unfilled.png"></img>
+                <img src="/assets/star-rating-unfilled.png"></img>
+              </div>
+              break;
+          case 3:
+            starRating =
+            <div className = "recipe-rating-avg-stars">
+              <img src="/assets/star-rating-filled-red.png"></img>
+              <img src="/assets/star-rating-filled-red.png"></img>
+              <img src="/assets/star-rating-filled-red.png"></img>
+              <img src="/assets/star-rating-unfilled.png"></img>
+              <img src="/assets/star-rating-unfilled.png"></img>
+            </div>
+            break;
+          case 4:
+            starRating =
+            <div className = "recipe-rating-avg-stars">
+              <img src="/assets/star-rating-filled-red.png"></img>
+              <img src="/assets/star-rating-filled-red.png"></img>
+              <img src="/assets/star-rating-filled-red.png"></img>
+              <img src="/assets/star-rating-filled-red.png"></img>
+              <img src="/assets/star-rating-unfilled.png"></img>
+            </div>
+            break;
+          case 5:
+            starRating =
+            <div className = "recipe-rating">
+              <img src="/assets/star-rating-filled-red.png"></img>
+              <img src="/assets/star-rating-filled-red.png"></img>
+              <img src="/assets/star-rating-filled-red.png"></img>
+              <img src="/assets/star-rating-filled-red.png"></img>
+              <img src="/assets/star-rating-filled-red.png"></img>
+            </div>
+            break;
+          default:
+            return null;
+          } 
+      }
+    }
+  ;
+    
     return (
         this.props.recipe && this.props.match.params && fetchedRecipeId && (fetchedRecipeId === parseInt(this.props.match.params.recipeId)) ?
           <div className="recipe-show-container">
             <RecipeHeaderContainer />
+            <div className="recipe-metadata-container">
+                <div class="rating-total">{this.props.recipe.numRatings} ratings</div>
+                <div class="star-rating">{starRating}</div>
+            </div>
             <div className="recipe-instructions-container">
               <div className="recipe-ingredients-list-container">
                 <h3 className='instructions-header'>Ingredients</h3>

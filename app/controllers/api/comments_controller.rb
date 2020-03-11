@@ -3,6 +3,7 @@ class Api::CommentsController < ApplicationController
     @recipe = Recipe.find_by(id: params[:recipe_id])
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
+    @comment.recipe_id = params[:recipe_id]
 
     if @comment.save
       render '/api/recipes/show'
@@ -26,7 +27,7 @@ class Api::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:recipe_id, :body)
+    params.require(:comment).permit(:body)
   end
   
 end

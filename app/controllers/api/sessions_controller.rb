@@ -1,6 +1,6 @@
 class Api::SessionsController < ApplicationController
   def create
-    @user = User.find_by_credentials(
+    @user = User.includes(:saved_recipes, :rated_recipes).find_by_credentials(
       params[:user][:email],
       params[:user][:password]
     )

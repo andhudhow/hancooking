@@ -13,7 +13,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Rating.destroy_all
+RecipeSave.destroy_all
+Comment.destroy_all
 Ingredient.destroy_all
+PrepStep.destroy_all
 Recipe.destroy_all
 User.destroy_all
 
@@ -48,6 +52,13 @@ while recipe_id <= Recipe.last.id
     end
 
     RecipeSave.create!(recipe_id: recipe_id, user_id: demo_id)
+
+    user_id = User.first.id
+
+    while user_id < User.last.id
+      Rating.create(recipe_id: recipe_id, user_id: user_id, star_rating: (3..5).to_a.sample)
+      user_id += 1
+    end
   
   recipe_id += 1
 end

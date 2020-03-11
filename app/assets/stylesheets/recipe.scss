@@ -587,3 +587,38 @@
 .loading-show {
   min-height: 100vh;
 }
+
+.recipe-metadata-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-top: 20px;
+}
+
+.rating-total {
+  color: #222;
+  font: 12px 'franklin-400',Arial,Helvetica,sans-serif;
+  line-height: 1.67em;
+  font-size: 15px;
+  text-align: left;
+  box-sizing: border-box;
+  outline: 0;
+  display: inline-block;
+  font-weight: 500;
+  position: relative;
+  z-index: 160;
+}
+
+.star-rating {
+  padding-left: 10px;
+  margin-top: -4px;
+}
+
+.recipe-rating-avg-stars > img {
+  height: 20px;
+  width: 20px;
+  padding: 0px 2px;
+  margin-bottom: -5px;
+  vertical-align: middle;
+}

@@ -115,6 +115,58 @@ var closeModal = function closeModal() {
 
 /***/ }),
 
+/***/ "./frontend/actions/rating_actions.js":
+/*!********************************************!*\
+  !*** ./frontend/actions/rating_actions.js ***!
+  \********************************************/
+/*! exports provided: RECEIVE_RATING, UPDATE_RATING, createRating, updateRating */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_RATING", function() { return RECEIVE_RATING; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_RATING", function() { return UPDATE_RATING; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createRating", function() { return createRating; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateRating", function() { return updateRating; });
+/* harmony import */ var _util_rating_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/rating_api_util */ "./frontend/util/rating_api_util.js");
+
+var RECEIVE_RATING = 'RECEIVE_RATING';
+var UPDATE_RATING = 'UPDATE_RATING'; // export const REMOVE_RATING = 'REMOVE_RATING';
+
+var receiveRating = function receiveRating(recipes) {
+  return {
+    type: RECEIVE_RATING,
+    recipes: recipes
+  };
+}; // const removeRating = errors => {
+//   return {
+//     type: REMOVE_RATING,
+//     errors
+//   };
+// };
+
+
+var createRating = function createRating(Rating) {
+  return function (dispatch) {
+    return _util_rating_api_util__WEBPACK_IMPORTED_MODULE_0__["createRating"](rating).then(function (recipe) {
+      return dispatch(receiveRating(recipe));
+    });
+  };
+};
+var updateRating = function updateRating(rating) {
+  return function (dispatch) {
+    return _util_rating_api_util__WEBPACK_IMPORTED_MODULE_0__["updateRating"](rating).then(function (recipe) {
+      return dispatch(receiveRating(recipe));
+    });
+  };
+}; // export const deleteRating = (ratingId) => (dispatch) => (
+//   RatingAPIUtil.deleteRating(ratingId).then(
+//     (recipe => dispatch(removeRating(recipe)))
+//   )
+// );
+
+/***/ }),
+
 /***/ "./frontend/actions/recipe_actions.js":
 /*!********************************************!*\
   !*** ./frontend/actions/recipe_actions.js ***!
@@ -1749,14 +1801,14 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _recipe_header_container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./recipe_header_container */ "./frontend/components/recipe/recipe_header_container.jsx");
-/* harmony import */ var _ingredient_list_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ingredient_list_index */ "./frontend/components/recipe/ingredient_list_index.jsx");
-/* harmony import */ var _prep_steps_list_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./prep_steps_list_index */ "./frontend/components/recipe/prep_steps_list_index.jsx");
-/* harmony import */ var _comment_index_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./comment_index_container */ "./frontend/components/recipe/comment_index_container.js");
-/* harmony import */ var _util_scroll_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/scroll_util */ "./frontend/util/scroll_util.js");
-/* harmony import */ var _util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/nutr_info_api_util */ "./frontend/util/nutr_info_api_util.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _recipe_header_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./recipe_header_container */ "./frontend/components/recipe/recipe_header_container.jsx");
+/* harmony import */ var _ingredient_list_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ingredient_list_index */ "./frontend/components/recipe/ingredient_list_index.jsx");
+/* harmony import */ var _prep_steps_list_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./prep_steps_list_index */ "./frontend/components/recipe/prep_steps_list_index.jsx");
+/* harmony import */ var _comment_index_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./comment_index_container */ "./frontend/components/recipe/comment_index_container.js");
+/* harmony import */ var _util_scroll_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/scroll_util */ "./frontend/util/scroll_util.js");
+/* harmony import */ var _util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../util/nutr_info_api_util */ "./frontend/util/nutr_info_api_util.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1820,7 +1872,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         }
       });
       {
-        Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_4__["scrollTop"])();
+        Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_5__["scrollTop"])();
       }
       ;
     }
@@ -1837,7 +1889,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
             return acc.concat(el.quantity + " " + el.description);
           }, [])
         };
-        Object(_util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_5__["fetchNutritionData"])(nutrData).then(function (pay) {
+        Object(_util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_6__["fetchNutritionData"])(nutrData).then(function (pay) {
           return _this3.setState({
             nutritionalInfo: pay
           });
@@ -1892,29 +1944,233 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       var _this4 = this;
 
       var fetchedRecipeId = this.props.ingredients[0] ? this.props.ingredients[0].recipeId : null;
-      return this.props.recipe && this.props.match.params && fetchedRecipeId && fetchedRecipeId === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      var starRating;
+      debugger;
+
+      if (this.props.recipe) {
+        if (this.props.ratings[0] && this.props.currentUser.ratedRecipeIds.includes(this.props.recipe.id)) {
+          var currentUserRating = this.props.ratings.filter(function (rating) {
+            return rating.userId === _this4.props.currentUser.id;
+          })[0].starRating;
+
+          switch (currentUserRating) {
+            case 1:
+              starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+                className: "recipe-rating-avg-stars"
+              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-yellow.svg"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }));
+              break;
+
+            case 2:
+              starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+                className: "recipe-rating-avg-stars"
+              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-yellow.svg"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-yellow.svg"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }));
+              break;
+
+            case 3:
+              starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+                className: "recipe-rating-avg-stars"
+              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-yellow.svg"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-yellow.svg"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-yellow.svg"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }));
+              break;
+
+            case 4:
+              starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+                className: "recipe-rating-avg-stars"
+              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-yellow.svg"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-yellow.svg"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-yellow.svg"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-yellow.svg"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }));
+              break;
+
+            case 5:
+              starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+                className: "recipe-rating-avg-stars"
+              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-yellow.svg"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-yellow.svg"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-yellow.svg"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-yellow.svg"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-yellow.svg"
+              }));
+              break;
+
+            default:
+              return null;
+          }
+        } else {
+          switch (this.props.recipe.avgRating) {
+            case 0:
+              starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+                className: "recipe-rating-avg-stars"
+              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }));
+              break;
+
+            case 1:
+              starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+                className: "recipe-rating-avg-stars"
+              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-filled-red.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }));
+              break;
+
+            case 2:
+              starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+                className: "recipe-rating-avg-stars"
+              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-filled-red.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-filled-red.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }));
+              break;
+
+            case 3:
+              starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+                className: "recipe-rating-avg-stars"
+              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-filled-red.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-filled-red.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-filled-red.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }));
+              break;
+
+            case 4:
+              starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+                className: "recipe-rating-avg-stars"
+              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-filled-red.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-filled-red.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-filled-red.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-filled-red.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-unfilled.png"
+              }));
+              break;
+
+            case 5:
+              starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+                className: "recipe-rating"
+              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-filled-red.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-filled-red.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-filled-red.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-filled-red.png"
+              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                src: "/assets/star-rating-filled-red.png"
+              }));
+              break;
+
+            default:
+              return null;
+          }
+        }
+      }
+
+      ;
+      return this.props.recipe && this.props.match.params && fetchedRecipeId && fetchedRecipeId === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-show-container"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_recipe_header_container__WEBPACK_IMPORTED_MODULE_0__["default"], null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_recipe_header_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "recipe-metadata-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "rating-total"
+      }, this.props.recipe.numRatings, " ratings"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "star-rating"
+      }, starRating)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-instructions-container"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-ingredients-list-container"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h3", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "instructions-header"
-      }, "Ingredients"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_ingredient_list_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, "Ingredients"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ingredient_list_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
         ingredients: this.props.ingredients
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "add-glist-btn",
         type: "button"
-      }, "Add to Your Grocery List"), this.state.nutritionalInfo.calories ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, "Add to Your Grocery List"), this.state.nutritionalInfo.calories ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nutr-container",
         onMouseLeave: function onMouseLeave() {
           return _this4.setState({
             nutrHover: false
           });
         }
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nutr-header"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "nutr-icon",
         src: window.nutrInfoIconOutline,
         onMouseEnter: function onMouseEnter() {
@@ -1923,7 +2179,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
           });
         } // onMouseLeave = {()=>this.setState( { nutrHover : false } )}
 
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "nutr-header-text",
         onMouseEnter: function onMouseEnter() {
           return _this4.setState({
@@ -1931,69 +2187,69 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
           });
         } // onMouseLeave = {()=>this.setState( { nutrHover : false } )}
 
-      }, " Nutritional Information")), this.state.nutritionalInfo.totalNutrients ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, " Nutritional Information")), this.state.nutritionalInfo.totalNutrients ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: this.state.nutrHover ? "nutr-list" : "nutr-hidden"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nutr-index-header"
-      }, "Based on ", this.props.recipe.servings, " servings:"), this.state.nutritionalInfo.calories ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Calories: ", Math.floor(this.state.nutritionalInfo.calories)) : null, this.state.nutritionalInfo.totalNutrients.CHOCDF ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Carbs: ", Math.floor(this.state.nutritionalInfo.totalNutrients.CHOCDF.quantity), " grams ") : null, this.state.nutritionalInfo.totalNutrients.FAT ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FAT.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.FATRN ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Trans Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FATRN.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.FAMS ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Monosaturated Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FAMS.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.FAPU ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Polyunsaturated Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FAPU.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.FIBTG ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Fiber: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FIBTG.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.SUGAR ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Sugar: ", Math.floor(this.state.nutritionalInfo.totalNutrients.SUGAR.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.PROCNT ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Protein: ", Math.floor(this.state.nutritionalInfo.totalNutrients.PROCNT.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.NA ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, "Sodium: ", Math.floor(this.state.nutritionalInfo.totalNutrients.NA.quantity), " grams") : null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
+      }, "Based on ", this.props.recipe.servings, " servings:"), this.state.nutritionalInfo.calories ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Calories: ", Math.floor(this.state.nutritionalInfo.calories)) : null, this.state.nutritionalInfo.totalNutrients.CHOCDF ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Carbs: ", Math.floor(this.state.nutritionalInfo.totalNutrients.CHOCDF.quantity), " grams ") : null, this.state.nutritionalInfo.totalNutrients.FAT ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FAT.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.FATRN ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Trans Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FATRN.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.FAMS ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Monosaturated Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FAMS.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.FAPU ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Polyunsaturated Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FAPU.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.FIBTG ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Fiber: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FIBTG.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.SUGAR ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Sugar: ", Math.floor(this.state.nutritionalInfo.totalNutrients.SUGAR.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.PROCNT ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Protein: ", Math.floor(this.state.nutritionalInfo.totalNutrients.PROCNT.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.NA ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Sodium: ", Math.floor(this.state.nutritionalInfo.totalNutrients.NA.quantity), " grams") : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "nutrition-note"
-      }, "Note: The information shown is Edamam\u2019s estimate based on available ingredients and preparation. It should not be considered a substitute for a professional nutritionist\u2019s advice."), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
+      }, "Note: The information shown is Edamam\u2019s estimate based on available ingredients and preparation. It should not be considered a substitute for a professional nutritionist\u2019s advice."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "nutrition-attribution"
-      }, "Powered by ", react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
+      }, "Powered by ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         id: "edamam-logo",
         src: "https://static01.nyt.com/applications/cooking/982798d/assets/edamam-logo.png"
-      }))) : null) : null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }))) : null) : null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-prepsteps-list"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h3", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "instructions-header"
-      }, "Preparation"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_prep_steps_list_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, "Preparation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_prep_steps_list_index__WEBPACK_IMPORTED_MODULE_3__["default"], {
         prepSteps: this.props.prepSteps
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cooked-module"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "cooked-label"
-      }, "Have you cooked this?"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
+      }, "Have you cooked this?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "cooked-icon",
         src: window.uncookedIconURL
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "cooked-text"
-      }, "Mark as ", react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("strong", null, "Cooked"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, "Mark as ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Cooked"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-container"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h3", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "instructions-header"
-      }, "Cooking Notes"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("form", {
+      }, "Cooking Notes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleCommentSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-body-container"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-name-container"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-input-container"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("textarea", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         className: this.state.commentOpen ? "comment-textarea-editing" : "comment-textarea",
         onClick: this.handleCommentClick,
         onChange: this.handleTyping,
         placeholder: "Share your notes with other cooks or leave a private note.",
         value: this.state.commentContent
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: this.state.commentOpen ? "comment-action-container" : "comment-action-container-hidden"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "cancel-comment-btn",
         onClick: this.handleCommentCancel
-      }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
+      }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: this.state.commentContent.length > 1 ? "add-comment-btn" : "add-comment-btn-disabled"
-      }, "Add Note"))))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, "Add Note"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-index-container"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-index"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_comment_index_container__WEBPACK_IMPORTED_MODULE_3__["default"], null))))))) : react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comment_index_container__WEBPACK_IMPORTED_MODULE_4__["default"], null))))))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "loading-show"
       }, "Loading...");
     }
   }]);
 
   return RecipeShow;
-}(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (RecipeShow);
 
@@ -2020,6 +2276,7 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var session = _ref.session,
       entities = _ref.entities;
+  debugger;
   return {
     currentUser: session.currentUser,
     recipe: entities.recipes[ownProps.match.params.recipeId],
@@ -2033,6 +2290,9 @@ var mapStateToProps = function mapStateToProps(_ref, ownProps) {
       return entities.comments[key];
     }).sort(function (a, b) {
       return a.createdAt > b.createdAt ? -1 : 1;
+    }),
+    ratings: Object.keys(entities.ratings).map(function (key) {
+      return entities.ratings[key];
     })
   };
 };
@@ -2766,8 +3026,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
 /* harmony import */ var _util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util/nutr_info_api_util */ "./frontend/util/nutr_info_api_util.js");
-/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
-/* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
+/* harmony import */ var _util_rating_api_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util/rating_api_util */ "./frontend/util/rating_api_util.js");
+/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
+/* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
+
 
 
 
@@ -2784,6 +3046,9 @@ document.addEventListener("DOMContentLoaded", function () {
   window.saveRecipe = _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_3__["saveRecipe"];
   window.unsaveRecipe = _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_3__["unsaveRecipe"];
   window.fetchNutritionData = _util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_4__["fetchNutritionData"];
+  window.createRating = _util_rating_api_util__WEBPACK_IMPORTED_MODULE_5__["createRating"];
+  window.updateRating = _util_rating_api_util__WEBPACK_IMPORTED_MODULE_5__["updateRating"];
+  window.deleteRating = _util_rating_api_util__WEBPACK_IMPORTED_MODULE_5__["deleteRating"];
   var store;
 
   if (window.currentUser) {
@@ -2795,20 +3060,21 @@ document.addEventListener("DOMContentLoaded", function () {
         currentUser: {
           id: window.currentUser.id,
           email: window.currentUser.email,
-          savedRecipeIds: window.currentUser.savedRecipeIds
+          savedRecipeIds: window.currentUser.savedRecipeIds,
+          ratedRecipeIds: window.currentUser.ratedRecipeIds
         }
       }
     };
-    store = Object(_store_store__WEBPACK_IMPORTED_MODULE_5__["default"])(preloadedState);
+    store = Object(_store_store__WEBPACK_IMPORTED_MODULE_6__["default"])(preloadedState);
     delete window.currentUser;
   } else {
-    store = Object(_store_store__WEBPACK_IMPORTED_MODULE_5__["default"])();
+    store = Object(_store_store__WEBPACK_IMPORTED_MODULE_6__["default"])();
   }
 
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   var root = document.getElementById("root");
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_7__["default"], {
     store: store
   }), root);
 });
@@ -2867,6 +3133,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _prep_steps_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./prep_steps_reducer */ "./frontend/reducers/prep_steps_reducer.js");
 /* harmony import */ var _saved_recipes_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./saved_recipes_reducer */ "./frontend/reducers/saved_recipes_reducer.js");
 /* harmony import */ var _comments_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./comments_reducer */ "./frontend/reducers/comments_reducer.js");
+/* harmony import */ var _ratings_reducer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ratings_reducer */ "./frontend/reducers/ratings_reducer.js");
+
 
 
 
@@ -2878,7 +3146,8 @@ __webpack_require__.r(__webpack_exports__);
   ingredients: _ingredients_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
   prepSteps: _prep_steps_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
   savedRecipes: _saved_recipes_reducer__WEBPACK_IMPORTED_MODULE_4__["default"],
-  comments: _comments_reducer__WEBPACK_IMPORTED_MODULE_5__["default"]
+  comments: _comments_reducer__WEBPACK_IMPORTED_MODULE_5__["default"],
+  ratings: _ratings_reducer__WEBPACK_IMPORTED_MODULE_6__["default"]
 }));
 
 /***/ }),
@@ -2991,6 +3260,43 @@ var prepStepsReducer = function prepStepsReducer() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (prepStepsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/ratings_reducer.js":
+/*!**********************************************!*\
+  !*** ./frontend/reducers/ratings_reducer.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
+/* harmony import */ var _actions_rating_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/rating_actions */ "./frontend/actions/rating_actions.js");
+
+
+
+var ratingsReducer = function ratingsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_RECIPE"]:
+      return action.recipe.ratings;
+
+    case _actions_rating_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_RATING"]:
+      return action.recipe.ratings;
+    // case REMOVE_RATING:
+    //   return action.recipe.ratings;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ratingsReducer);
 
 /***/ }),
 
@@ -3168,6 +3474,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
+/* harmony import */ var _actions_rating_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/rating_actions */ "./frontend/actions/rating_actions.js");
+
 
 
 
@@ -3186,7 +3494,8 @@ var sessionReducer = function sessionReducer() {
         currentUser: {
           id: action.currentUser.id,
           email: action.currentUser.email,
-          savedRecipeIds: action.currentUser.savedRecipeIds
+          savedRecipeIds: action.currentUser.savedRecipeIds,
+          ratedRecipeIds: action.currentUser.ratedRecipeIds
         }
       };
 
@@ -3195,7 +3504,8 @@ var sessionReducer = function sessionReducer() {
         currentUser: {
           id: action.currentUser.id,
           email: action.currentUser.email,
-          savedRecipeIds: action.currentUser.savedRecipeIds
+          savedRecipeIds: action.currentUser.savedRecipeIds,
+          ratedRecipeIds: action.currentUser.ratedRecipeIds
         }
       };
 
@@ -3204,7 +3514,18 @@ var sessionReducer = function sessionReducer() {
         currentUser: {
           id: action.currentUser.id,
           email: action.currentUser.email,
-          savedRecipeIds: action.currentUser.savedRecipeIds
+          savedRecipeIds: action.currentUser.savedRecipeIds,
+          ratedRecipeIds: action.currentUser.ratedRecipeIds
+        }
+      };
+
+    case _actions_rating_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_RATING"]:
+      return {
+        currentUser: {
+          id: action.currentUser.id,
+          email: action.currentUser.email,
+          savedRecipeIds: action.currentUser.savedRecipeIds,
+          ratedRecipeIds: action.currentUser.ratedRecipeIds
         }
       };
 
@@ -3339,10 +3660,49 @@ __webpack_require__.r(__webpack_exports__);
 var fetchNutritionData = function fetchNutritionData(data) {
   return $.ajax({
     method: 'POST',
-    url: "https://api.edamam.com/api/nutrition-details?app_id=74b9d2c3&app_key=b3d15dc2182b81257d63ac5780f35895",
+    url: "https://api.edamam.com/api/nutrition-details?app_id=74b9d2c3&app_key=asdfasdfasdfasdfasdf",
     data: JSON.stringify(data),
     dataType: "json",
     contentType: "application/json"
+  });
+}; //b3d15dc2182b81257d63ac5780f35895
+
+/***/ }),
+
+/***/ "./frontend/util/rating_api_util.js":
+/*!******************************************!*\
+  !*** ./frontend/util/rating_api_util.js ***!
+  \******************************************/
+/*! exports provided: createRating, updateRating, deleteRating */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createRating", function() { return createRating; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateRating", function() { return updateRating; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteRating", function() { return deleteRating; });
+var createRating = function createRating(rating) {
+  return $.ajax({
+    method: 'POST',
+    url: "api/recipes/".concat(rating.recipeId, "/ratings"),
+    data: {
+      rating: rating
+    }
+  });
+};
+var updateRating = function updateRating(rating) {
+  return $.ajax({
+    method: 'PATCH',
+    url: "api/ratings/".concat(rating.id),
+    data: {
+      rating: rating
+    }
+  });
+};
+var deleteRating = function deleteRating(ratingId) {
+  return $.ajax({
+    method: 'DELETE',
+    url: "api/ratings/".concat(ratingId)
   });
 };
 
