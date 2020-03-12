@@ -85,7 +85,9 @@ class RecipeShow extends React.Component{
     debugger
     if (this.props.recipe) {
       if (this.props.ratings[0] && this.props.currentUser.ratedRecipeIds.includes(this.props.recipe.id)) {
-        let currentUserRating = this.props.ratings.filter(rating=>rating.userId === this.props.currentUser.id)[0].starRating
+        let currentUserRatings = this.props.ratings.filter(rating => rating.userId === this.props.currentUser.id)
+        let currentUserRating = currentUserRatings.length > 0 ? currentUserRatings[0].starRating : null
+
         switch (currentUserRating) {
           case 1:
             starRating =

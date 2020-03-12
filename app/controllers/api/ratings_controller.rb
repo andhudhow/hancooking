@@ -1,7 +1,6 @@
 class Api::RatingsController < ApplicationController
 
   def create
-    debugger
     rating = Rating.new(rating_params)
     rating.user_id = current_user.id
     rating.recipe_id = params[:recipe_id]

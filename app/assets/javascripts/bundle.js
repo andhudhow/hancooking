@@ -1949,9 +1949,10 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
 
       if (this.props.recipe) {
         if (this.props.ratings[0] && this.props.currentUser.ratedRecipeIds.includes(this.props.recipe.id)) {
-          var currentUserRating = this.props.ratings.filter(function (rating) {
+          var currentUserRatings = this.props.ratings.filter(function (rating) {
             return rating.userId === _this4.props.currentUser.id;
-          })[0].starRating;
+          });
+          var currentUserRating = currentUserRatings.length > 0 ? currentUserRatings[0].starRating : null;
 
           switch (currentUserRating) {
             case 1:
