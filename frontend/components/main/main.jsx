@@ -39,7 +39,7 @@ class Main extends React.Component{
           <video className='splash-img' autoPlay muted loop type='video/mp4' src={window.splashVidURL} />
             <div id="rotd-label">Recipe<br/>of the day</div>
               
-              <div id="rotd-card">
+              <Link to='/recipes/967'><div id="rotd-card">
                 <h3 id="rotd-title">
                     Korean-Style Shortrib
                 </h3>
@@ -49,7 +49,7 @@ class Main extends React.Component{
                 <p id="rotd-byline">
                   Suzana E. Lee
                 </p>
-            </div>
+            </div></Link>
           </section>
         <br />
         <section className="what-to-cook">

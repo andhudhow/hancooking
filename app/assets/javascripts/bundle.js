@@ -646,7 +646,9 @@ var Main = /*#__PURE__*/function (_React$Component) {
         src: window.splashVidURL
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "rotd-label"
-      }, "Recipe", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "of the day"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Recipe", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "of the day"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/recipes/967"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "rotd-card"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         id: "rotd-title"
@@ -654,7 +656,7 @@ var Main = /*#__PURE__*/function (_React$Component) {
         id: "rotd-description"
       }, "Also known as galbi (\uAC08\uBE44), these shortribs are great at a restaurant, but also wonderful at home."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         id: "rotd-byline"
-      }, "Suzana E. Lee"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }, "Suzana E. Lee")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "what-to-cook"
       }, "What to Cook This Month", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipes-week-of"
