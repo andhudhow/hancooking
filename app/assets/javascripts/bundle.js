@@ -2017,15 +2017,15 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
               starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
                 className: "recipe-rating-avg-stars"
               }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-yellow.svg"
+                src: window.starYellowURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }));
               break;
 
@@ -2033,15 +2033,15 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
               starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
                 className: "recipe-rating-avg-stars"
               }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-yellow.svg"
+                src: window.starYellowURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-yellow.svg"
+                src: window.starYellowURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }));
               break;
 
@@ -2049,15 +2049,15 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
               starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
                 className: "recipe-rating-avg-stars"
               }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-yellow.svg"
+                src: window.starYellowURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-yellow.svg"
+                src: window.starYellowURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-yellow.svg"
+                src: window.starYellowURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }));
               break;
 
@@ -2065,15 +2065,15 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
               starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
                 className: "recipe-rating-avg-stars"
               }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-yellow.svg"
+                src: window.starYellowURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-yellow.svg"
+                src: window.starYellowURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-yellow.svg"
+                src: window.starYellowURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-yellow.svg"
+                src: window.starYellowURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }));
               break;
 
@@ -2081,15 +2081,15 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
               starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
                 className: "recipe-rating-avg-stars"
               }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-yellow.svg"
+                src: window.starYellowURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-yellow.svg"
+                src: window.starYellowURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-yellow.svg"
+                src: window.starYellowURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-yellow.svg"
+                src: window.starYellowURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-yellow.svg"
+                src: window.starYellowURL
               }));
               break;
 
@@ -2102,15 +2102,15 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
               starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
                 className: "recipe-rating-avg-stars"
               }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }));
               break;
 
@@ -2118,15 +2118,15 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
               starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
                 className: "recipe-rating-avg-stars"
               }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-rating-filled-red.png"
+                src: window.starRedURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }));
               break;
 
@@ -2134,15 +2134,15 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
               starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
                 className: "recipe-rating-avg-stars"
               }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-rating-filled-red.png"
+                src: window.starRedURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-rating-filled-red.png"
+                src: window.starRedURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }));
               break;
 
@@ -2150,15 +2150,15 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
               starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
                 className: "recipe-rating-avg-stars"
               }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-rating-filled-red.png"
+                src: window.starRedURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-rating-filled-red.png"
+                src: window.starRedURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-rating-filled-red.png"
+                src: window.starRedURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }));
               break;
 
@@ -2166,15 +2166,15 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
               starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
                 className: "recipe-rating-avg-stars"
               }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-rating-filled-red.png"
+                src: window.starRedURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-rating-filled-red.png"
+                src: window.starRedURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-rating-filled-red.png"
+                src: window.starRedURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-rating-filled-red.png"
+                src: window.starRedURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-empty.svg"
+                src: window.starEmptyURL
               }));
               break;
 
@@ -2182,15 +2182,15 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
               starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
                 className: "recipe-rating"
               }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-rating-filled-red.png"
+                src: window.starRedURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-rating-filled-red.png"
+                src: window.starRedURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-rating-filled-red.png"
+                src: window.starRedURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-rating-filled-red.png"
+                src: window.starRedURL
               }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: "/assets/star-rating-filled-red.png"
+                src: window.starRedURL
               }));
               break;
 
@@ -2215,7 +2215,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-rating-avg-stars"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.starHover >= 1 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg",
+        src: this.state.starHover >= 1 ? window.starYellowURL : window.starEmptyURL,
         onMouseOver: function onMouseOver() {
           return _this3.handleStarHover(1);
         },
@@ -2223,7 +2223,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
           return _this3.handleRatingSubmit(1);
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.starHover >= 2 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg",
+        src: this.state.starHover >= 2 ? window.starYellowURL : window.starEmptyURL,
         onMouseOver: function onMouseOver() {
           return _this3.handleStarHover(2);
         },
@@ -2231,7 +2231,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
           return _this3.handleRatingSubmit(2);
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.starHover >= 3 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg",
+        src: this.state.starHover >= 3 ? window.starYellowURL : window.starEmptyURL,
         onMouseOver: function onMouseOver() {
           return _this3.handleStarHover(3);
         },
@@ -2239,7 +2239,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
           return _this3.handleRatingSubmit(3);
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.starHover >= 4 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg",
+        src: this.state.starHover >= 4 ? window.starYellowURL : window.starEmptyURL,
         onMouseOver: function onMouseOver() {
           return _this3.handleStarHover(4);
         },
@@ -2247,7 +2247,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
           return _this3.handleRatingSubmit(4);
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.starHover >= 5 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg",
+        src: this.state.starHover >= 5 ? window.starYellowURL : window.starEmptyURL,
         onMouseOver: function onMouseOver() {
           return _this3.handleStarHover(5);
         },

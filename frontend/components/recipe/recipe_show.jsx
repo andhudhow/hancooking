@@ -124,51 +124,51 @@ class RecipeShow extends React.Component{
           case 1:
             starRating =
               <div className = "recipe-rating-avg-stars">
-                <img src="/assets/star-yellow.svg"></img>
-                <img src="/assets/star-empty.svg"></img>
-                <img src="/assets/star-empty.svg"></img>
-                <img src="/assets/star-empty.svg"></img>
-                <img src="/assets/star-empty.svg"></img>
+                <img src={window.starYellowURL}></img>
+                <img src={window.starEmptyURL}></img>
+                <img src={window.starEmptyURL}></img>
+                <img src={window.starEmptyURL}></img>
+                <img src={window.starEmptyURL}></img>
               </div>
               break;
           case 2:
             starRating =
               <div className = "recipe-rating-avg-stars">
-                <img src="/assets/star-yellow.svg"></img>
-                <img src="/assets/star-yellow.svg"></img>
-                <img src="/assets/star-empty.svg"></img>
-                <img src="/assets/star-empty.svg"></img>
-                <img src="/assets/star-empty.svg"></img>
+                <img src={window.starYellowURL}></img>
+                <img src={window.starYellowURL}></img>
+                <img src={window.starEmptyURL}></img>
+                <img src={window.starEmptyURL}></img>
+                <img src={window.starEmptyURL}></img>
               </div>
               break;
           case 3:
             starRating =
             <div className = "recipe-rating-avg-stars">
-              <img src="/assets/star-yellow.svg"></img>
-              <img src="/assets/star-yellow.svg"></img>
-              <img src="/assets/star-yellow.svg"></img>
-              <img src="/assets/star-empty.svg"></img>
-              <img src="/assets/star-empty.svg"></img>
+              <img src={window.starYellowURL}></img>
+              <img src={window.starYellowURL}></img>
+              <img src={window.starYellowURL}></img>
+              <img src={window.starEmptyURL}></img>
+              <img src={window.starEmptyURL}></img>
             </div>
             break;
           case 4:
             starRating =
             <div className = "recipe-rating-avg-stars">
-              <img src="/assets/star-yellow.svg"></img>
-              <img src="/assets/star-yellow.svg"></img>
-              <img src="/assets/star-yellow.svg"></img>
-              <img src="/assets/star-yellow.svg"></img>
-              <img src="/assets/star-empty.svg"></img>
+              <img src={window.starYellowURL}></img>
+              <img src={window.starYellowURL}></img>
+              <img src={window.starYellowURL}></img>
+              <img src={window.starYellowURL}></img>
+              <img src={window.starEmptyURL}></img>
             </div>
             break;
           case 5:
             starRating =
             <div className = "recipe-rating-avg-stars">
-              <img src="/assets/star-yellow.svg"></img>
-              <img src="/assets/star-yellow.svg"></img>
-              <img src="/assets/star-yellow.svg"></img>
-              <img src="/assets/star-yellow.svg"></img>
-              <img src="/assets/star-yellow.svg"></img>
+              <img src={window.starYellowURL}></img>
+              <img src={window.starYellowURL}></img>
+              <img src={window.starYellowURL}></img>
+              <img src={window.starYellowURL}></img>
+              <img src={window.starYellowURL}></img>
             </div>
             break;
           default:
@@ -179,61 +179,61 @@ class RecipeShow extends React.Component{
           case 0:
             starRating =
               <div className = "recipe-rating-avg-stars">
-                <img src="/assets/star-empty.svg"></img>
-                <img src="/assets/star-empty.svg"></img>
-                <img src="/assets/star-empty.svg"></img>
-                <img src="/assets/star-empty.svg"></img>
-                <img src="/assets/star-empty.svg"></img>
+                <img src={window.starEmptyURL}></img>
+                <img src={window.starEmptyURL}></img>
+                <img src={window.starEmptyURL}></img>
+                <img src={window.starEmptyURL}></img>
+                <img src={window.starEmptyURL}></img>
               </div>
               break;
           case 1:
             starRating =
               <div className = "recipe-rating-avg-stars">
-                <img src="/assets/star-rating-filled-red.png"></img>
-                <img src="/assets/star-empty.svg"></img>
-                <img src="/assets/star-empty.svg"></img>
-                <img src="/assets/star-empty.svg"></img>
-                <img src="/assets/star-empty.svg"></img>
+                <img src={window.starRedURL}></img>
+                <img src={window.starEmptyURL}></img>
+                <img src={window.starEmptyURL}></img>
+                <img src={window.starEmptyURL}></img>
+                <img src={window.starEmptyURL}></img>
               </div>
               break;
           case 2:
             starRating =
               <div className = "recipe-rating-avg-stars">
-                <img src="/assets/star-rating-filled-red.png"></img>
-                <img src="/assets/star-rating-filled-red.png"></img>
-                <img src="/assets/star-empty.svg"></img>
-                <img src="/assets/star-empty.svg"></img>
-                <img src="/assets/star-empty.svg"></img>
+                <img src={window.starRedURL}></img>
+                <img src={window.starRedURL}></img>
+                <img src={window.starEmptyURL}></img>
+                <img src={window.starEmptyURL}></img>
+                <img src={window.starEmptyURL}></img>
               </div>
               break;
           case 3:
             starRating =
             <div className = "recipe-rating-avg-stars">
-              <img src="/assets/star-rating-filled-red.png"></img>
-              <img src="/assets/star-rating-filled-red.png"></img>
-              <img src="/assets/star-rating-filled-red.png"></img>
-              <img src="/assets/star-empty.svg"></img>
-              <img src="/assets/star-empty.svg"></img>
+              <img src={window.starRedURL}></img>
+              <img src={window.starRedURL}></img>
+              <img src={window.starRedURL}></img>
+              <img src={window.starEmptyURL}></img>
+              <img src={window.starEmptyURL}></img>
             </div>
             break;
           case 4:
             starRating =
             <div className = "recipe-rating-avg-stars">
-              <img src="/assets/star-rating-filled-red.png"></img>
-              <img src="/assets/star-rating-filled-red.png"></img>
-              <img src="/assets/star-rating-filled-red.png"></img>
-              <img src="/assets/star-rating-filled-red.png"></img>
-              <img src="/assets/star-empty.svg"></img>
+              <img src={window.starRedURL}></img>
+              <img src={window.starRedURL}></img>
+              <img src={window.starRedURL}></img>
+              <img src={window.starRedURL}></img>
+              <img src={window.starEmptyURL}></img>
             </div>
             break;
           case 5:
             starRating =
             <div className = "recipe-rating">
-              <img src="/assets/star-rating-filled-red.png"></img>
-              <img src="/assets/star-rating-filled-red.png"></img>
-              <img src="/assets/star-rating-filled-red.png"></img>
-              <img src="/assets/star-rating-filled-red.png"></img>
-              <img src="/assets/star-rating-filled-red.png"></img>
+              <img src={window.starRedURL}></img>
+              <img src={window.starRedURL}></img>
+              <img src={window.starRedURL}></img>
+              <img src={window.starRedURL}></img>
+              <img src={window.starRedURL}></img>
             </div>
             break;
           default:
@@ -251,11 +251,11 @@ class RecipeShow extends React.Component{
             <div className={this.state.ratingHover ? "rating-tooltip-open" : "rating-tooltip-closed"}
               onMouseLeave={()=>this.setState( { ratingHover: false })}>
                 <div className = "recipe-rating-avg-stars">
-                  <img src={this.state.starHover >= 1 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg" } onMouseOver={()=>this.handleStarHover(1)} onClick={()=>this.handleRatingSubmit(1)} />
-                  <img src={this.state.starHover >= 2 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg" } onMouseOver={()=>this.handleStarHover(2)} onClick={()=>this.handleRatingSubmit(2)} />
-                  <img src={this.state.starHover >= 3 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg" } onMouseOver={()=>this.handleStarHover(3)} onClick={()=>this.handleRatingSubmit(3)} />
-                  <img src={this.state.starHover >= 4 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg" } onMouseOver={()=>this.handleStarHover(4)} onClick={()=>this.handleRatingSubmit(4)} />
-                  <img src={this.state.starHover >= 5 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg" } onMouseOver={()=>this.handleStarHover(5)} onClick={()=>this.handleRatingSubmit(5)} />
+                  <img src={this.state.starHover >= 1 ? window.starYellowURL : window.starEmptyURL } onMouseOver={()=>this.handleStarHover(1)} onClick={()=>this.handleRatingSubmit(1)} />
+                  <img src={this.state.starHover >= 2 ? window.starYellowURL : window.starEmptyURL } onMouseOver={()=>this.handleStarHover(2)} onClick={()=>this.handleRatingSubmit(2)} />
+                  <img src={this.state.starHover >= 3 ? window.starYellowURL : window.starEmptyURL } onMouseOver={()=>this.handleStarHover(3)} onClick={()=>this.handleRatingSubmit(3)} />
+                  <img src={this.state.starHover >= 4 ? window.starYellowURL : window.starEmptyURL } onMouseOver={()=>this.handleStarHover(4)} onClick={()=>this.handleRatingSubmit(4)} />
+                  <img src={this.state.starHover >= 5 ? window.starYellowURL : window.starEmptyURL } onMouseOver={()=>this.handleStarHover(5)} onClick={()=>this.handleRatingSubmit(5)} />
                 </div>
             </div>
               <div class="rating-total">{this.props.recipe.numRatings} ratings</div>
