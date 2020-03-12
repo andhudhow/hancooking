@@ -13,7 +13,8 @@ class RecipeShow extends React.Component{
       commentOpen: false,
       commentContent: '',
       nutritionalInfo: {},
-      nutrHover: false
+      nutrHover: false,
+      ratingHover: false
     };
     this.handleCommentClick = this.handleCommentClick.bind(this);
     this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
@@ -21,6 +22,7 @@ class RecipeShow extends React.Component{
     this.getNutritionData = this.getNutritionData.bind(this);
     this.handleTyping = this.handleTyping.bind(this);
     this.setState = this.setState.bind(this);
+    this.handleRatingHover = this.handleRatingHover.bind(this)
   }
 
   componentDidMount() {
@@ -77,6 +79,10 @@ class RecipeShow extends React.Component{
   handleTyping(e){
     this.setState({ commentContent: e.currentTarget.value })
   }
+
+  handleRatingHover(e){
+    this.setState( { ratingHover : true } )
+  }
   
   render() {
     const fetchedRecipeId = this.props.ingredients[0] ? this.props.ingredients[0].recipeId : null
@@ -85,17 +91,17 @@ class RecipeShow extends React.Component{
     if (this.props.recipe) {
       if (this.props.ratings[0] && this.props.currentUser.ratedRecipeIds.includes(this.props.recipe.id)) {
         let currentUserRatings = this.props.ratings.filter(rating => rating.userId === this.props.currentUser.id)
-        let currentUserRating = currentUserRatings.length > 0 ? currentUserRatings[0].starRating : null
+        let currentUserRating = currentUserRatings.length > 0 && currentUserRatings[0] ? currentUserRatings[0].starRating : null
 
         switch (currentUserRating) {
           case 1:
             starRating =
               <div className = "recipe-rating-avg-stars">
                 <img src="/assets/star-yellow.svg"></img>
-                <img src="/assets/star-rating-unfilled.png"></img>
-                <img src="/assets/star-rating-unfilled.png"></img>
-                <img src="/assets/star-rating-unfilled.png"></img>
-                <img src="/assets/star-rating-unfilled.png"></img>
+                <img src="/assets/star-empty.svg"></img>
+                <img src="/assets/star-empty.svg"></img>
+                <img src="/assets/star-empty.svg"></img>
+                <img src="/assets/star-empty.svg"></img>
               </div>
               break;
           case 2:
@@ -103,9 +109,9 @@ class RecipeShow extends React.Component{
               <div className = "recipe-rating-avg-stars">
                 <img src="/assets/star-yellow.svg"></img>
                 <img src="/assets/star-yellow.svg"></img>
-                <img src="/assets/star-rating-unfilled.png"></img>
-                <img src="/assets/star-rating-unfilled.png"></img>
-                <img src="/assets/star-rating-unfilled.png"></img>
+                <img src="/assets/star-empty.svg"></img>
+                <img src="/assets/star-empty.svg"></img>
+                <img src="/assets/star-empty.svg"></img>
               </div>
               break;
           case 3:
@@ -114,8 +120,8 @@ class RecipeShow extends React.Component{
               <img src="/assets/star-yellow.svg"></img>
               <img src="/assets/star-yellow.svg"></img>
               <img src="/assets/star-yellow.svg"></img>
-              <img src="/assets/star-rating-unfilled.png"></img>
-              <img src="/assets/star-rating-unfilled.png"></img>
+              <img src="/assets/star-empty.svg"></img>
+              <img src="/assets/star-empty.svg"></img>
             </div>
             break;
           case 4:
@@ -125,7 +131,7 @@ class RecipeShow extends React.Component{
               <img src="/assets/star-yellow.svg"></img>
               <img src="/assets/star-yellow.svg"></img>
               <img src="/assets/star-yellow.svg"></img>
-              <img src="/assets/star-rating-unfilled.png"></img>
+              <img src="/assets/star-empty.svg"></img>
             </div>
             break;
           case 5:
@@ -142,25 +148,25 @@ class RecipeShow extends React.Component{
             return null;
           } 
       } else { 
-        switch (this.props.recipe.avgRating) {
+        switch (this.props.recipe.avgRating) {  
           case 0:
             starRating =
               <div className = "recipe-rating-avg-stars">
-                <img src="/assets/star-rating-unfilled.png"></img>
-                <img src="/assets/star-rating-unfilled.png"></img>
-                <img src="/assets/star-rating-unfilled.png"></img>
-                <img src="/assets/star-rating-unfilled.png"></img>
-                <img src="/assets/star-rating-unfilled.png"></img>
+                <img src="/assets/star-empty.svg"></img>
+                <img src="/assets/star-empty.svg"></img>
+                <img src="/assets/star-empty.svg"></img>
+                <img src="/assets/star-empty.svg"></img>
+                <img src="/assets/star-empty.svg"></img>
               </div>
               break;
           case 1:
             starRating =
               <div className = "recipe-rating-avg-stars">
                 <img src="/assets/star-rating-filled-red.png"></img>
-                <img src="/assets/star-rating-unfilled.png"></img>
-                <img src="/assets/star-rating-unfilled.png"></img>
-                <img src="/assets/star-rating-unfilled.png"></img>
-                <img src="/assets/star-rating-unfilled.png"></img>
+                <img src="/assets/star-empty.svg"></img>
+                <img src="/assets/star-empty.svg"></img>
+                <img src="/assets/star-empty.svg"></img>
+                <img src="/assets/star-empty.svg"></img>
               </div>
               break;
           case 2:
@@ -168,9 +174,9 @@ class RecipeShow extends React.Component{
               <div className = "recipe-rating-avg-stars">
                 <img src="/assets/star-rating-filled-red.png"></img>
                 <img src="/assets/star-rating-filled-red.png"></img>
-                <img src="/assets/star-rating-unfilled.png"></img>
-                <img src="/assets/star-rating-unfilled.png"></img>
-                <img src="/assets/star-rating-unfilled.png"></img>
+                <img src="/assets/star-empty.svg"></img>
+                <img src="/assets/star-empty.svg"></img>
+                <img src="/assets/star-empty.svg"></img>
               </div>
               break;
           case 3:
@@ -179,8 +185,8 @@ class RecipeShow extends React.Component{
               <img src="/assets/star-rating-filled-red.png"></img>
               <img src="/assets/star-rating-filled-red.png"></img>
               <img src="/assets/star-rating-filled-red.png"></img>
-              <img src="/assets/star-rating-unfilled.png"></img>
-              <img src="/assets/star-rating-unfilled.png"></img>
+              <img src="/assets/star-empty.svg"></img>
+              <img src="/assets/star-empty.svg"></img>
             </div>
             break;
           case 4:
@@ -190,7 +196,7 @@ class RecipeShow extends React.Component{
               <img src="/assets/star-rating-filled-red.png"></img>
               <img src="/assets/star-rating-filled-red.png"></img>
               <img src="/assets/star-rating-filled-red.png"></img>
-              <img src="/assets/star-rating-unfilled.png"></img>
+              <img src="/assets/star-empty.svg"></img>
             </div>
             break;
           case 5:
@@ -215,8 +221,21 @@ class RecipeShow extends React.Component{
           <div className="recipe-show-container">
             <RecipeHeaderContainer />
             <div className="recipe-metadata-container">
-                <div class="rating-total">{this.props.recipe.numRatings} ratings</div>
-                <div class="star-rating">{starRating}</div>
+            <div className={this.state.ratingHover ? "rating-tooltip-open" : "rating-tooltip-closed"}>
+                <div className = "recipe-rating-avg-stars">
+                  <img src="/assets/star-empty.svg"></img>
+                  <img src="/assets/star-empty.svg"></img>
+                  <img src="/assets/star-empty.svg"></img>
+                  <img src="/assets/star-empty.svg"></img>
+                  <img src="/assets/star-empty.svg"></img>
+                </div>
+            </div>
+              <div class="rating-total">{this.props.recipe.numRatings} ratings</div>
+              <div class="star-rating"
+                onMouseEnter={()=>this.setState( { ratingHover: true })}
+                onMouseLeave={()=>this.setState( { ratingHover: false })}>
+                  {starRating}
+              </div>
             </div>
             <div className="recipe-instructions-container">
               <div className="recipe-ingredients-list-container">
