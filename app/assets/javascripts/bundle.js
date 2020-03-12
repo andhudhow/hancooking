@@ -2683,7 +2683,8 @@ var RecipeCard = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-card-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.props.photoUrl
+        src: this.props.photoUrl,
+        "class": "recipe-card-image"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-base"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

@@ -16,7 +16,6 @@
 }
 
 .recipe-card-container {
-  // animation: nytc---cardbase---fadeIn .4s ease-out;
   background: #fff;
   border: 1px solid #e6e6e6;
   float: left;
@@ -25,11 +24,15 @@
   position: relative;
   width: 235px;
   text-align: left;
-  // margin: 0px 20px
 }
 
 .recipe-card-container:hover {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.recipe-card-image {
+  height: 156.66px;
+  object-fit: cover;
 }
 
 .card-title {
