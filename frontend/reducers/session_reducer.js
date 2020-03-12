@@ -47,13 +47,6 @@ const sessionReducer = (state = _nullUser, action) => {
         savedRecipeIds: state.currentUser.savedRecipeIds,
         ratedRecipeIds: action.payload.ratedRecipeIds
       } };
-    case UPDATE_RATING:
-      return { currentUser: {
-        id: state.currentUser.id,
-        email: state.currentUser.email,
-        savedRecipeIds: state.currentUser.savedRecipeIds,
-        ratedRecipeIds: action.payload.ratedRecipeIds
-      } };
     case LOGOUT_CURRENT_USER:
       return _nullUser;
     default:

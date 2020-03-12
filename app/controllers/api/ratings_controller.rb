@@ -1,7 +1,6 @@
 class Api::RatingsController < ApplicationController
 
   def create
-    debugger
     rating = Rating.new(rating_params)
     rating.user_id = current_user.id
     rating.recipe_id = params[:recipe_id]
@@ -16,7 +15,11 @@ class Api::RatingsController < ApplicationController
   end
 
   def update
-    rating = Rating.find_by(id: params[:id])
+    rating = Rating.find_by(
+      recipe_id: params[:rating][:recipe_id],
+      user_id: current_user.id
+    )
+
     if rating.update(star_rating: params[:rating][:star_rating])
       @recipe = Recipe.find_by(id: rating.recipe_id)
     else

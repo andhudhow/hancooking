@@ -80,10 +80,17 @@ class RecipeShow extends React.Component{
 
   handleRatingSubmit(val){
     debugger
-    this.props.createRating({
-      recipe_id: this.props.recipe.id,
-      star_rating: val
-    })
+    if (this.props.currentUser.ratedRecipeIds.includes(parseInt(this.props.match.params.recipeId))) { 
+      this.props.updateRating({
+        recipe_id: this.props.recipe.id,
+        star_rating: val
+      })
+    } else {
+      this.props.createRating({
+        recipe_id: this.props.recipe.id,
+        star_rating: val
+      })
+    }
   }
 
   handleTyping(e){
@@ -103,7 +110,7 @@ class RecipeShow extends React.Component{
 
     let starRating
     if (this.props.recipe) {
-      if (this.props.ratings[0] && this.props.currentUser.ratedRecipeIds.includes(this.props.recipe.id)) {
+      if (this.props.ratings[0] && this.props.currentUser.ratedRecipeIds.includes(parseInt(this.props.match.params.recipeId))) {
         let currentUserRatings = this.props.ratings.filter(rating => rating.userId === this.props.currentUser.id)
         let currentUserRating = currentUserRatings.length > 0 && currentUserRatings[0] ? currentUserRatings[0].starRating : null
 

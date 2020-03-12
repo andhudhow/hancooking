@@ -1956,10 +1956,18 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     key: "handleRatingSubmit",
     value: function handleRatingSubmit(val) {
       debugger;
-      this.props.createRating({
-        recipe_id: this.props.recipe.id,
-        star_rating: val
-      });
+
+      if (this.props.currentUser.ratedRecipeIds.includes(parseInt(this.props.match.params.recipeId))) {
+        this.props.updateRating({
+          recipe_id: this.props.recipe.id,
+          star_rating: val
+        });
+      } else {
+        this.props.createRating({
+          recipe_id: this.props.recipe.id,
+          star_rating: val
+        });
+      }
     }
   }, {
     key: "handleTyping",
@@ -1991,7 +1999,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       var starRating;
 
       if (this.props.recipe) {
-        if (this.props.ratings[0] && this.props.currentUser.ratedRecipeIds.includes(this.props.recipe.id)) {
+        if (this.props.ratings[0] && this.props.currentUser.ratedRecipeIds.includes(parseInt(this.props.match.params.recipeId))) {
           var currentUserRatings = this.props.ratings.filter(function (rating) {
             return rating.userId === _this4.props.currentUser.id;
           });
@@ -3626,16 +3634,6 @@ var sessionReducer = function sessionReducer() {
       };
 
     case _actions_rating_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_RATING"]:
-      return {
-        currentUser: {
-          id: state.currentUser.id,
-          email: state.currentUser.email,
-          savedRecipeIds: state.currentUser.savedRecipeIds,
-          ratedRecipeIds: action.payload.ratedRecipeIds
-        }
-      };
-
-    case _actions_rating_actions__WEBPACK_IMPORTED_MODULE_2__["UPDATE_RATING"]:
       return {
         currentUser: {
           id: state.currentUser.id,
