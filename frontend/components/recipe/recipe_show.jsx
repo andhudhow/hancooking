@@ -8,6 +8,7 @@ import { fetchNutritionData } from '../../util/nutr_info_api_util';
 
 class RecipeShow extends React.Component{
   constructor(props) {
+    debugger
     super(props);
     this.state = {
       commentOpen: false,
@@ -15,7 +16,7 @@ class RecipeShow extends React.Component{
       nutritionalInfo: {},
       nutrHover: false,
       ratingHover: false,
-      starHover: this.props.recipe.avgRating ? this.props.recipe.avgRating : 0
+      starHover: this.props.recipe ? this.props.recipe.avgRating : 0
     };
     this.handleCommentClick = this.handleCommentClick.bind(this);
     this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
@@ -28,21 +29,24 @@ class RecipeShow extends React.Component{
   }
 
   componentDidMount() {
+    debugger
     this.props.fetchRecipe(this.props.match.params.recipeId)
-    .then(() => {
-      if(this.props.recipe) {
-        this.getNutritionData()
-      } else {
-      this.props.fetchRecipes().then(this.getNutritionData())
-      }
-    });
+      .then(this.getNutritionData());
 
     { scrollTop() };
-    
   }
 
+  componentDidUpdate(prevProps) {
+    debugger
+    if (prevProps.recipe=== undefined || (parseInt(this.props.match.params.recipeId) !== prevProps.recipe.id)) {
+      this.props.fetchRecipes().then(this.props.fetchRecipe(this.props.match.params.recipeId))
+      .then(this.getNutritionData())
+    { scrollTop() };
+    }
+  }
+  
+
   getNutritionData() {
-    
     if (this.props.recipe) { 
       const nutrData = {
         title: this.props.recipe.title,

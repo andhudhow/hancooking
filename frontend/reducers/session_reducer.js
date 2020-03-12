@@ -8,7 +8,7 @@ import {
   REMOVE_RECIPE_SAVE
 } from '../actions/recipe_actions';
 
-import { RECEIVE_RATING, UPDATE_RATING, REMOVE_RATING } from '../actions/rating_actions';
+import { RECEIVE_RATING } from '../actions/rating_actions';
 
 
 const _nullUser = Object.freeze({

@@ -1860,6 +1860,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck(this, RecipeShow);
 
+    debugger;
     _this = _possibleConstructorReturn(this, _getPrototypeOf(RecipeShow).call(this, props));
     _this.state = {
       commentOpen: false,
@@ -1867,7 +1868,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       nutritionalInfo: {},
       nutrHover: false,
       ratingHover: false,
-      starHover: _this.props.recipe.avgRating ? _this.props.recipe.avgRating : 0
+      starHover: _this.props.recipe ? _this.props.recipe.avgRating : 0
     };
     _this.handleCommentClick = _this.handleCommentClick.bind(_assertThisInitialized(_this));
     _this.handleCommentSubmit = _this.handleCommentSubmit.bind(_assertThisInitialized(_this));
@@ -1883,24 +1884,30 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   _createClass(RecipeShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this;
-
-      this.props.fetchRecipe(this.props.match.params.recipeId).then(function () {
-        if (_this2.props.recipe) {
-          _this2.getNutritionData();
-        } else {
-          _this2.props.fetchRecipes().then(_this2.getNutritionData());
-        }
-      });
+      debugger;
+      this.props.fetchRecipe(this.props.match.params.recipeId).then(this.getNutritionData());
       {
         Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_5__["scrollTop"])();
       }
       ;
     }
   }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      debugger;
+
+      if (prevProps.recipe === undefined || parseInt(this.props.match.params.recipeId) !== prevProps.recipe.id) {
+        this.props.fetchRecipes().then(this.props.fetchRecipe(this.props.match.params.recipeId)).then(this.getNutritionData());
+        {
+          Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_5__["scrollTop"])();
+        }
+        ;
+      }
+    }
+  }, {
     key: "getNutritionData",
     value: function getNutritionData() {
-      var _this3 = this;
+      var _this2 = this;
 
       if (this.props.recipe) {
         var nutrData = {
@@ -1911,7 +1918,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
           }, [])
         };
         Object(_util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_6__["fetchNutritionData"])(nutrData).then(function (pay) {
-          return _this3.setState({
+          return _this2.setState({
             nutritionalInfo: pay
           });
         });
@@ -1993,7 +2000,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this3 = this;
 
       var fetchedRecipeId = this.props.ingredients[0] ? this.props.ingredients[0].recipeId : null;
       var starRating;
@@ -2001,7 +2008,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       if (this.props.recipe) {
         if (this.props.ratings[0] && this.props.currentUser.ratedRecipeIds.includes(parseInt(this.props.match.params.recipeId))) {
           var currentUserRatings = this.props.ratings.filter(function (rating) {
-            return rating.userId === _this4.props.currentUser.id;
+            return rating.userId === _this3.props.currentUser.id;
           });
           var currentUserRating = currentUserRatings.length > 0 && currentUserRatings[0] ? currentUserRatings[0].starRating : null; //fix this to be a short ternary based on the user rating
 
@@ -2201,7 +2208,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: this.state.ratingHover ? "rating-tooltip-open" : "rating-tooltip-closed",
         onMouseLeave: function onMouseLeave() {
-          return _this4.setState({
+          return _this3.setState({
             ratingHover: false
           });
         }
@@ -2210,49 +2217,49 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: this.state.starHover >= 1 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg",
         onMouseOver: function onMouseOver() {
-          return _this4.handleStarHover(1);
+          return _this3.handleStarHover(1);
         },
         onClick: function onClick() {
-          return _this4.handleRatingSubmit(1);
+          return _this3.handleRatingSubmit(1);
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: this.state.starHover >= 2 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg",
         onMouseOver: function onMouseOver() {
-          return _this4.handleStarHover(2);
+          return _this3.handleStarHover(2);
         },
         onClick: function onClick() {
-          return _this4.handleRatingSubmit(2);
+          return _this3.handleRatingSubmit(2);
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: this.state.starHover >= 3 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg",
         onMouseOver: function onMouseOver() {
-          return _this4.handleStarHover(3);
+          return _this3.handleStarHover(3);
         },
         onClick: function onClick() {
-          return _this4.handleRatingSubmit(3);
+          return _this3.handleRatingSubmit(3);
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: this.state.starHover >= 4 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg",
         onMouseOver: function onMouseOver() {
-          return _this4.handleStarHover(4);
+          return _this3.handleStarHover(4);
         },
         onClick: function onClick() {
-          return _this4.handleRatingSubmit(4);
+          return _this3.handleRatingSubmit(4);
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: this.state.starHover >= 5 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg",
         onMouseOver: function onMouseOver() {
-          return _this4.handleStarHover(5);
+          return _this3.handleStarHover(5);
         },
         onClick: function onClick() {
-          return _this4.handleRatingSubmit(5);
+          return _this3.handleRatingSubmit(5);
         }
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         "class": "rating-total"
       }, this.props.recipe.numRatings, " ratings"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         "class": "star-rating",
         onMouseEnter: function onMouseEnter() {
-          return _this4.setState({
+          return _this3.setState({
             ratingHover: true
           });
         }
@@ -2270,7 +2277,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       }, "Add to Your Grocery List"), this.state.nutritionalInfo.calories ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nutr-container",
         onMouseLeave: function onMouseLeave() {
-          return _this4.setState({
+          return _this3.setState({
             nutrHover: false
           });
         }
@@ -2280,7 +2287,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         className: "nutr-icon",
         src: window.nutrInfoIconOutline,
         onMouseEnter: function onMouseEnter() {
-          return _this4.setState({
+          return _this3.setState({
             nutrHover: true
           });
         } // onMouseLeave = {()=>this.setState( { nutrHover : false } )}
@@ -2288,7 +2295,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "nutr-header-text",
         onMouseEnter: function onMouseEnter() {
-          return _this4.setState({
+          return _this3.setState({
             nutrHover: true
           });
         } // onMouseLeave = {()=>this.setState( { nutrHover : false } )}
