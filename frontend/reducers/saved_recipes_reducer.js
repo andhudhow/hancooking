@@ -13,7 +13,7 @@ const savedRecipesReducer = (state = {}, action) => {
 
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
-      return action.currentUser.savedRecipes
+      return action.currentUser.savedRecipes ? action.currentUser.savedRecipes : {}
     case RECEIVE_RECIPE_SAVE:
       return action.currentUser.savedRecipes
     case REMOVE_RECIPE_SAVE:

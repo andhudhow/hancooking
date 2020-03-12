@@ -76,12 +76,72 @@ class RecipeShow extends React.Component{
     this.setState({ commentOpen : false })
   }
 
+  handleRatingSubmit(e){
+    e.preventDefault();
+    e.target.value
+  }
+
   handleTyping(e){
     this.setState({ commentContent: e.currentTarget.value })
   }
 
   handleRatingHover(e){
     this.setState( { ratingHover : true } )
+  }
+
+  handleStarHover(e){
+    switch(e.target.value) {
+      case 1:
+        return (
+        <div>
+          <img src="/assets/star-yellow.svg" value="1" />
+          <img src="/assets/star-empty.svg" value="2" />
+          <img src="/assets/star-empty.svg" value="3" />
+          <img src="/assets/star-empty.svg" value="4" />
+          <img src="/assets/star-empty.svg" value="5" />
+        </div>
+        )
+      case 2:
+        return (
+        <div>
+          <img src="/assets/star-yellow.svg" value="1" />
+          <img src="/assets/star-yellow.svg" value="2" />
+          <img src="/assets/star-empty.svg" value="3" />
+          <img src="/assets/star-empty.svg" value="4" />
+          <img src="/assets/star-empty.svg" value="5" />
+        </div>
+        )
+      case 3:
+        return (
+        <div>
+          <img src="/assets/star-yellow.svg" value="1" />
+          <img src="/assets/star-yellow.svg" value="2" />
+          <img src="/assets/star-yellow.svg" value="3" />
+          <img src="/assets/star-empty.svg" value="4" />
+          <img src="/assets/star-empty.svg" value="5" />
+        </div>
+        )
+      case 4:
+        <div>
+          <img src="/assets/star-yellow.svg" value="1" />
+          <img src="/assets/star-yellow.svg" value="2" />
+          <img src="/assets/star-yellow.svg" value="3" />
+          <img src="/assets/star-yellow.svg" value="4" />
+          <img src="/assets/star-empty.svg" value="5" />
+        </div>
+      case 5:
+        return (
+        <div>
+          <img src="/assets/star-yellow.svg" value="1" />
+          <img src="/assets/star-yellow.svg" value="2" />
+          <img src="/assets/star-yellow.svg" value="3" />
+          <img src="/assets/star-yellow.svg" value="4" />
+          <img src="/assets/star-yellow.svg" value="5" />
+        </div>
+        )
+      default:
+        return null;
+    }
   }
   
   render() {
@@ -221,19 +281,19 @@ class RecipeShow extends React.Component{
           <div className="recipe-show-container">
             <RecipeHeaderContainer />
             <div className="recipe-metadata-container">
-            <div className={this.state.ratingHover ? "rating-tooltip-open" : "rating-tooltip-closed"}>
+            <div className={this.state.ratingHover ? "rating-tooltip-open" : "rating-tooltip-closed"}
+              onMouseLeave={()=>this.setState( { ratingHover: false })}>
                 <div className = "recipe-rating-avg-stars">
-                  <img src="/assets/star-empty.svg"></img>
-                  <img src="/assets/star-empty.svg"></img>
-                  <img src="/assets/star-empty.svg"></img>
-                  <img src="/assets/star-empty.svg"></img>
-                  <img src="/assets/star-empty.svg"></img>
+                  <img src="/assets/star-empty.svg" value="1" />
+                  <img src="/assets/star-empty.svg" value="2" />
+                  <img src="/assets/star-empty.svg" value="3" />
+                  <img src="/assets/star-empty.svg" value="4" />
+                  <img src="/assets/star-empty.svg" value="5" />
                 </div>
             </div>
               <div class="rating-total">{this.props.recipe.numRatings} ratings</div>
               <div class="star-rating"
-                onMouseEnter={()=>this.setState( { ratingHover: true })}
-                onMouseLeave={()=>this.setState( { ratingHover: false })}>
+                onMouseEnter={()=>this.setState( { ratingHover: true })}>
                   {starRating}
               </div>
             </div>

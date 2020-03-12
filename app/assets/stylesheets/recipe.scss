@@ -585,7 +585,7 @@
 }
 
 .loading-show {
-  min-height: 100vh;
+  min-height: 150vh;
 }
 
 .recipe-metadata-container {
@@ -633,6 +633,8 @@
   padding: 26px 15px;
   margin-top: -30px;
   margin-left: 15px;
+  box-shadow: 0 0 4px rgba(0,0,0,.1);
+  z-index: 165;
 }
 
 // #tooltip {
