@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchRecipe, saveComment, deleteComment } from '../../actions/recipe_actions';
+import { createRating, updateRating } from '../../actions/rating_actions';
 import RecipeShow from './recipe_show';
 import { withRouter } from 'react-router-dom';
 
@@ -20,7 +21,9 @@ const mapDispatchToProps = dispatch => ({
   fetchRecipe: recipeId => dispatch(fetchRecipe(recipeId)),
   fetchRecipes: () => dispatch(fetchRecipes()),
   saveComment: comment => dispatch(saveComment(comment)),
-  deleteComment: commentId => dispatch(deleteComment(commentId))  
+  deleteComment: commentId => dispatch(deleteComment(commentId)),
+  createRating: rating => dispatch(createRating(rating)),
+  updateRating: rating => dispatch(updateRating(rating))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RecipeShow));

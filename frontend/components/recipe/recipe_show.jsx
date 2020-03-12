@@ -14,7 +14,8 @@ class RecipeShow extends React.Component{
       commentContent: '',
       nutritionalInfo: {},
       nutrHover: false,
-      ratingHover: false
+      ratingHover: false,
+      starHover: this.props.recipe.avgRating ? this.props.recipe.avgRating : 0
     };
     this.handleCommentClick = this.handleCommentClick.bind(this);
     this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
@@ -22,7 +23,8 @@ class RecipeShow extends React.Component{
     this.getNutritionData = this.getNutritionData.bind(this);
     this.handleTyping = this.handleTyping.bind(this);
     this.setState = this.setState.bind(this);
-    this.handleRatingHover = this.handleRatingHover.bind(this)
+    this.handleRatingHover = this.handleRatingHover.bind(this);
+    this.handleStarHover = this.handleStarHover.bind(this);
   }
 
   componentDidMount() {
@@ -76,9 +78,13 @@ class RecipeShow extends React.Component{
     this.setState({ commentOpen : false })
   }
 
-  handleRatingSubmit(e){
-    e.preventDefault();
-    e.target.value
+  handleRatingSubmit(val){
+    debugger
+    if (this.props.currentUser.ratedRecipeIds.includes(this.props.recipe.id)) {
+      this.props.createRating({
+        starRating: val
+      })
+    }
   }
 
   handleTyping(e){
@@ -89,59 +95,8 @@ class RecipeShow extends React.Component{
     this.setState( { ratingHover : true } )
   }
 
-  handleStarHover(e){
-    switch(e.target.value) {
-      case 1:
-        return (
-        <div>
-          <img src="/assets/star-yellow.svg" value="1" />
-          <img src="/assets/star-empty.svg" value="2" />
-          <img src="/assets/star-empty.svg" value="3" />
-          <img src="/assets/star-empty.svg" value="4" />
-          <img src="/assets/star-empty.svg" value="5" />
-        </div>
-        )
-      case 2:
-        return (
-        <div>
-          <img src="/assets/star-yellow.svg" value="1" />
-          <img src="/assets/star-yellow.svg" value="2" />
-          <img src="/assets/star-empty.svg" value="3" />
-          <img src="/assets/star-empty.svg" value="4" />
-          <img src="/assets/star-empty.svg" value="5" />
-        </div>
-        )
-      case 3:
-        return (
-        <div>
-          <img src="/assets/star-yellow.svg" value="1" />
-          <img src="/assets/star-yellow.svg" value="2" />
-          <img src="/assets/star-yellow.svg" value="3" />
-          <img src="/assets/star-empty.svg" value="4" />
-          <img src="/assets/star-empty.svg" value="5" />
-        </div>
-        )
-      case 4:
-        <div>
-          <img src="/assets/star-yellow.svg" value="1" />
-          <img src="/assets/star-yellow.svg" value="2" />
-          <img src="/assets/star-yellow.svg" value="3" />
-          <img src="/assets/star-yellow.svg" value="4" />
-          <img src="/assets/star-empty.svg" value="5" />
-        </div>
-      case 5:
-        return (
-        <div>
-          <img src="/assets/star-yellow.svg" value="1" />
-          <img src="/assets/star-yellow.svg" value="2" />
-          <img src="/assets/star-yellow.svg" value="3" />
-          <img src="/assets/star-yellow.svg" value="4" />
-          <img src="/assets/star-yellow.svg" value="5" />
-        </div>
-        )
-      default:
-        return null;
-    }
+  handleStarHover(val){
+    this.setState( { starHover: val })
   }
   
   render() {
@@ -153,6 +108,8 @@ class RecipeShow extends React.Component{
         let currentUserRatings = this.props.ratings.filter(rating => rating.userId === this.props.currentUser.id)
         let currentUserRating = currentUserRatings.length > 0 && currentUserRatings[0] ? currentUserRatings[0].starRating : null
 
+        //fix this to be a short ternary based on the user rating
+        
         switch (currentUserRating) {
           case 1:
             starRating =
@@ -284,11 +241,11 @@ class RecipeShow extends React.Component{
             <div className={this.state.ratingHover ? "rating-tooltip-open" : "rating-tooltip-closed"}
               onMouseLeave={()=>this.setState( { ratingHover: false })}>
                 <div className = "recipe-rating-avg-stars">
-                  <img src="/assets/star-empty.svg" value="1" />
-                  <img src="/assets/star-empty.svg" value="2" />
-                  <img src="/assets/star-empty.svg" value="3" />
-                  <img src="/assets/star-empty.svg" value="4" />
-                  <img src="/assets/star-empty.svg" value="5" />
+                  <img src={this.state.starHover >= 1 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg" } onMouseOver={()=>this.handleStarHover(1)} onClick={()=>this.handleRatingSubmit(1)} />
+                  <img src={this.state.starHover >= 2 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg" } onMouseOver={()=>this.handleStarHover(2)} onClick={()=>this.handleRatingSubmit(2)} />
+                  <img src={this.state.starHover >= 3 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg" } onMouseOver={()=>this.handleStarHover(3)} onClick={()=>this.handleRatingSubmit(3)} />
+                  <img src={this.state.starHover >= 4 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg" } onMouseOver={()=>this.handleStarHover(4)} onClick={()=>this.handleRatingSubmit(4)} />
+                  <img src={this.state.starHover >= 5 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg" } onMouseOver={()=>this.handleStarHover(5)} onClick={()=>this.handleRatingSubmit(5)} />
                 </div>
             </div>
               <div class="rating-total">{this.props.recipe.numRatings} ratings</div>

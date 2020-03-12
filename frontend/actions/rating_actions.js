@@ -7,7 +7,7 @@ const receiveRating = recipes => {
   
   return {
     type: RECEIVE_RATING,
-    recipes
+    rating
   };
 };
 
@@ -19,7 +19,7 @@ const receiveRating = recipes => {
 // };
 
 
-export const createRating = Rating => dispatch => (
+export const createRating = rating => dispatch => (
   RatingAPIUtil.createRating(rating).then(
     (recipe => dispatch(receiveRating(recipe)))
   )

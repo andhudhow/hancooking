@@ -136,7 +136,7 @@ var UPDATE_RATING = 'UPDATE_RATING'; // export const REMOVE_RATING = 'REMOVE_RAT
 var receiveRating = function receiveRating(recipes) {
   return {
     type: RECEIVE_RATING,
-    recipes: recipes
+    rating: rating
   };
 }; // const removeRating = errors => {
 //   return {
@@ -146,7 +146,7 @@ var receiveRating = function receiveRating(recipes) {
 // };
 
 
-var createRating = function createRating(Rating) {
+var createRating = function createRating(rating) {
   return function (dispatch) {
     return _util_rating_api_util__WEBPACK_IMPORTED_MODULE_0__["createRating"](rating).then(function (recipe) {
       return dispatch(receiveRating(recipe));
@@ -1858,7 +1858,8 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       commentContent: '',
       nutritionalInfo: {},
       nutrHover: false,
-      ratingHover: false
+      ratingHover: false,
+      starHover: _this.props.recipe.avgRating ? _this.props.recipe.avgRating : 0
     };
     _this.handleCommentClick = _this.handleCommentClick.bind(_assertThisInitialized(_this));
     _this.handleCommentSubmit = _this.handleCommentSubmit.bind(_assertThisInitialized(_this));
@@ -1867,6 +1868,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     _this.handleTyping = _this.handleTyping.bind(_assertThisInitialized(_this));
     _this.setState = _this.setState.bind(_assertThisInitialized(_this));
     _this.handleRatingHover = _this.handleRatingHover.bind(_assertThisInitialized(_this));
+    _this.handleStarHover = _this.handleStarHover.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1944,9 +1946,14 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "handleRatingSubmit",
-    value: function handleRatingSubmit(e) {
-      e.preventDefault();
-      e.target.value;
+    value: function handleRatingSubmit(val) {
+      debugger;
+
+      if (this.props.currentUser.ratedRecipeIds.includes(this.props.recipe.id)) {
+        this.props.createRating({
+          starRating: val
+        });
+      }
     }
   }, {
     key: "handleTyping",
@@ -1964,101 +1971,10 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "handleStarHover",
-    value: function handleStarHover(e) {
-      switch (e.target.value) {
-        case 1:
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-yellow.svg",
-            value: "1"
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-empty.svg",
-            value: "2"
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-empty.svg",
-            value: "3"
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-empty.svg",
-            value: "4"
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-empty.svg",
-            value: "5"
-          }));
-
-        case 2:
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-yellow.svg",
-            value: "1"
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-yellow.svg",
-            value: "2"
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-empty.svg",
-            value: "3"
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-empty.svg",
-            value: "4"
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-empty.svg",
-            value: "5"
-          }));
-
-        case 3:
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-yellow.svg",
-            value: "1"
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-yellow.svg",
-            value: "2"
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-yellow.svg",
-            value: "3"
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-empty.svg",
-            value: "4"
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-empty.svg",
-            value: "5"
-          }));
-
-        case 4:
-          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-yellow.svg",
-            value: "1"
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-yellow.svg",
-            value: "2"
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-yellow.svg",
-            value: "3"
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-yellow.svg",
-            value: "4"
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-empty.svg",
-            value: "5"
-          }));
-
-        case 5:
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-yellow.svg",
-            value: "1"
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-yellow.svg",
-            value: "2"
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-yellow.svg",
-            value: "3"
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-yellow.svg",
-            value: "4"
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "/assets/star-yellow.svg",
-            value: "5"
-          }));
-
-        default:
-          return null;
-      }
+    value: function handleStarHover(val) {
+      this.setState({
+        starHover: val
+      });
     }
   }, {
     key: "render",
@@ -2073,7 +1989,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
           var currentUserRatings = this.props.ratings.filter(function (rating) {
             return rating.userId === _this4.props.currentUser.id;
           });
-          var currentUserRating = currentUserRatings.length > 0 && currentUserRatings[0] ? currentUserRatings[0].starRating : null;
+          var currentUserRating = currentUserRatings.length > 0 && currentUserRatings[0] ? currentUserRatings[0].starRating : null; //fix this to be a short ternary based on the user rating
 
           switch (currentUserRating) {
             case 1:
@@ -2278,20 +2194,45 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-rating-avg-stars"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/assets/star-empty.svg",
-        value: "1"
+        src: this.state.starHover >= 1 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg",
+        onMouseOver: function onMouseOver() {
+          return _this4.handleStarHover(1);
+        },
+        onClick: function onClick() {
+          return _this4.handleRatingSubmit(1);
+        }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/assets/star-empty.svg",
-        value: "2"
+        src: this.state.starHover >= 2 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg",
+        onMouseOver: function onMouseOver() {
+          return _this4.handleStarHover(2);
+        },
+        onClick: function onClick() {
+          return _this4.handleRatingSubmit(2);
+        }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/assets/star-empty.svg",
-        value: "3"
+        src: this.state.starHover >= 3 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg",
+        onMouseOver: function onMouseOver() {
+          return _this4.handleStarHover(3);
+        },
+        onClick: function onClick() {
+          return _this4.handleRatingSubmit(3);
+        }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/assets/star-empty.svg",
-        value: "4"
+        src: this.state.starHover >= 4 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg",
+        onMouseOver: function onMouseOver() {
+          return _this4.handleStarHover(4);
+        },
+        onClick: function onClick() {
+          return _this4.handleRatingSubmit(4);
+        }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/assets/star-empty.svg",
-        value: "5"
+        src: this.state.starHover >= 5 ? "/assets/star-yellow.svg" : "/assets/star-empty.svg",
+        onMouseOver: function onMouseOver() {
+          return _this4.handleStarHover(5);
+        },
+        onClick: function onClick() {
+          return _this4.handleRatingSubmit(5);
+        }
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         "class": "rating-total"
       }, this.props.recipe.numRatings, " ratings"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2417,8 +2358,10 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
-/* harmony import */ var _recipe_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./recipe_show */ "./frontend/components/recipe/recipe_show.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _actions_rating_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/rating_actions */ "./frontend/actions/rating_actions.js");
+/* harmony import */ var _recipe_show__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./recipe_show */ "./frontend/components/recipe/recipe_show.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
@@ -2470,11 +2413,17 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     deleteComment: function deleteComment(commentId) {
       return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__["deleteComment"])(commentId));
+    },
+    createRating: function createRating(rating) {
+      return dispatch(Object(_actions_rating_actions__WEBPACK_IMPORTED_MODULE_2__["createRating"])(rating));
+    },
+    updateRating: function updateRating(rating) {
+      return dispatch(Object(_actions_rating_actions__WEBPACK_IMPORTED_MODULE_2__["updateRating"])(rating));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_recipe_show__WEBPACK_IMPORTED_MODULE_2__["default"])));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_recipe_show__WEBPACK_IMPORTED_MODULE_3__["default"])));
 
 /***/ }),
 
@@ -3810,12 +3759,13 @@ __webpack_require__.r(__webpack_exports__);
 var fetchNutritionData = function fetchNutritionData(data) {
   return $.ajax({
     method: 'POST',
-    url: "https://api.edamam.com/api/nutrition-details?app_id=74b9d2c3&app_key=asdfasdfasdfasdfasdf",
+    // url: `https://api.edamam.com/api/nutrition-details?app_id=74b9d2c3&app_key=b3d15dc2182b81257d63ac5780f35895`,
     data: JSON.stringify(data),
     dataType: "json",
     contentType: "application/json"
   });
-}; //b3d15dc2182b81257d63ac5780f35895
+}; //74b9d2c3//b3d15dc2182b81257d63ac5780f35895
+//d4fcc8ee//56730f33d7840757ce4ef41594288bc8
 
 /***/ }),
 
