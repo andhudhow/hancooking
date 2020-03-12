@@ -82,7 +82,6 @@ class RecipeShow extends React.Component{
     const fetchedRecipeId = this.props.ingredients[0] ? this.props.ingredients[0].recipeId : null
 
     let starRating
-    debugger
     if (this.props.recipe) {
       if (this.props.ratings[0] && this.props.currentUser.ratedRecipeIds.includes(this.props.recipe.id)) {
         let currentUserRatings = this.props.ratings.filter(rating => rating.userId === this.props.currentUser.id)
