@@ -133,10 +133,17 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_RATING = 'RECEIVE_RATING';
 var UPDATE_RATING = 'UPDATE_RATING'; // export const REMOVE_RATING = 'REMOVE_RATING';
 
-var receiveRating = function receiveRating(recipes) {
+var receiveRating = function receiveRating(payload) {
   return {
     type: RECEIVE_RATING,
-    rating: rating
+    payload: payload
+  };
+};
+
+var receiveUpdatedRating = function receiveUpdatedRating(payload) {
+  return {
+    type: UPDATE_RATING,
+    payload: payload
   };
 }; // const removeRating = errors => {
 //   return {
@@ -148,15 +155,16 @@ var receiveRating = function receiveRating(recipes) {
 
 var createRating = function createRating(rating) {
   return function (dispatch) {
-    return _util_rating_api_util__WEBPACK_IMPORTED_MODULE_0__["createRating"](rating).then(function (recipe) {
-      return dispatch(receiveRating(recipe));
+    debugger;
+    return _util_rating_api_util__WEBPACK_IMPORTED_MODULE_0__["createRating"](rating).then(function (payload) {
+      return dispatch(receiveRating(payload));
     });
   };
 };
 var updateRating = function updateRating(rating) {
   return function (dispatch) {
-    return _util_rating_api_util__WEBPACK_IMPORTED_MODULE_0__["updateRating"](rating).then(function (recipe) {
-      return dispatch(receiveRating(recipe));
+    return _util_rating_api_util__WEBPACK_IMPORTED_MODULE_0__["updateRating"](rating).then(function (payload) {
+      return dispatch(receiveUpdatedRating(payload));
     });
   };
 }; // export const deleteRating = (ratingId) => (dispatch) => (
@@ -1948,12 +1956,10 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     key: "handleRatingSubmit",
     value: function handleRatingSubmit(val) {
       debugger;
-
-      if (this.props.currentUser.ratedRecipeIds.includes(this.props.recipe.id)) {
-        this.props.createRating({
-          starRating: val
-        });
-      }
+      this.props.createRating({
+        recipe_id: this.props.recipe.id,
+        star_rating: val
+      });
     }
   }, {
     key: "handleTyping",
@@ -3386,9 +3392,10 @@ var ratingsReducer = function ratingsReducer() {
       return action.recipe.ratings;
 
     case _actions_rating_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_RATING"]:
-      return action.recipe.ratings;
-    // case REMOVE_RATING:
-    //   return action.recipe.ratings;
+      return action.payload.ratings;
+
+    case _actions_rating_actions__WEBPACK_IMPORTED_MODULE_1__["UPDATE_RATING"]:
+      return action.payload.ratings;
 
     default:
       return state;
@@ -3621,10 +3628,20 @@ var sessionReducer = function sessionReducer() {
     case _actions_rating_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_RATING"]:
       return {
         currentUser: {
-          id: action.currentUser.id,
-          email: action.currentUser.email,
-          savedRecipeIds: action.currentUser.savedRecipeIds,
-          ratedRecipeIds: action.currentUser.ratedRecipeIds
+          id: state.currentUser.id,
+          email: state.currentUser.email,
+          savedRecipeIds: state.currentUser.savedRecipeIds,
+          ratedRecipeIds: action.payload.ratedRecipeIds
+        }
+      };
+
+    case _actions_rating_actions__WEBPACK_IMPORTED_MODULE_2__["UPDATE_RATING"]:
+      return {
+        currentUser: {
+          id: state.currentUser.id,
+          email: state.currentUser.email,
+          savedRecipeIds: state.currentUser.savedRecipeIds,
+          ratedRecipeIds: action.payload.ratedRecipeIds
         }
       };
 
@@ -3784,7 +3801,7 @@ __webpack_require__.r(__webpack_exports__);
 var createRating = function createRating(rating) {
   return $.ajax({
     method: 'POST',
-    url: "api/recipes/".concat(rating.recipeId, "/ratings"),
+    url: "api/recipes/".concat(rating.recipe_id, "/ratings"),
     data: {
       rating: rating
     }

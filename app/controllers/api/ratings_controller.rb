@@ -1,13 +1,14 @@
 class Api::RatingsController < ApplicationController
 
   def create
+    debugger
     rating = Rating.new(rating_params)
     rating.user_id = current_user.id
     rating.recipe_id = params[:recipe_id]
 
     if rating.save
       @recipe = Recipe.find_by(id: params[:recipe_id])
-      render 'api/recipes/show'
+      @user = User.find_by(id: current_user.id)
     else
       render json: rating.errors.full_messages, status: 422
     end
@@ -18,7 +19,6 @@ class Api::RatingsController < ApplicationController
     rating = Rating.find_by(id: params[:id])
     if rating.update(star_rating: params[:rating][:star_rating])
       @recipe = Recipe.find_by(id: rating.recipe_id)
-      render 'api/recipes/show'
     else
       render json: rating.errors.full_messages, status: 422
     end

@@ -80,11 +80,10 @@ class RecipeShow extends React.Component{
 
   handleRatingSubmit(val){
     debugger
-    if (this.props.currentUser.ratedRecipeIds.includes(this.props.recipe.id)) {
-      this.props.createRating({
-        starRating: val
-      })
-    }
+    this.props.createRating({
+      recipe_id: this.props.recipe.id,
+      star_rating: val
+    })
   }
 
   handleTyping(e){

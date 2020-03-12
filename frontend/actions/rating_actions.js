@@ -3,11 +3,17 @@ export const RECEIVE_RATING= 'RECEIVE_RATING';
 export const UPDATE_RATING = 'UPDATE_RATING';
 // export const REMOVE_RATING = 'REMOVE_RATING';
 
-const receiveRating = recipes => {
-  
+const receiveRating = payload => {
   return {
     type: RECEIVE_RATING,
-    rating
+    payload
+  };
+};
+
+const receiveUpdatedRating = payload => {
+  return {
+    type: UPDATE_RATING,
+    payload
   };
 };
 
@@ -18,16 +24,19 @@ const receiveRating = recipes => {
 //   };
 // };
 
-
-export const createRating = rating => dispatch => (
+export const createRating = rating => dispatch => 
+{
+  debugger
+  return (
   RatingAPIUtil.createRating(rating).then(
-    (recipe => dispatch(receiveRating(recipe)))
-  )
-);
+    (payload => dispatch(receiveRating(payload)))
+  ))
+}
+;
 
 export const updateRating = rating => dispatch => (
   RatingAPIUtil.updateRating(rating).then(
-    (recipe => dispatch(receiveRating(recipe)))
+    (payload => dispatch(receiveUpdatedRating(payload)))
   )
 );
 

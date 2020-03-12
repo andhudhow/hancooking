@@ -1,10 +1,11 @@
-export const createRating = (rating) => (
+export const createRating = (rating) => {
+  return (
   $.ajax({
     method: 'POST',
-    url: `api/recipes/${rating.recipeId}/ratings`,
+    url: `api/recipes/${rating.recipe_id}/ratings`,
     data: { rating }
-  })
-);
+  }))
+};
 
 export const updateRating = (rating) => (
   $.ajax({

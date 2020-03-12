@@ -8,7 +8,7 @@ import {
   REMOVE_RECIPE_SAVE
 } from '../actions/recipe_actions';
 
-import { RECEIVE_RATING, REMOVE_RATING } from '../actions/rating_actions';
+import { RECEIVE_RATING, UPDATE_RATING, REMOVE_RATING } from '../actions/rating_actions';
 
 
 const _nullUser = Object.freeze({
@@ -40,13 +40,20 @@ const sessionReducer = (state = _nullUser, action) => {
         savedRecipeIds: action.currentUser.savedRecipeIds,
         ratedRecipeIds: action.currentUser.ratedRecipeIds
       } };
-      case RECEIVE_RATING:
-        return { currentUser: {
-          id: action.currentUser.id,
-          email: action.currentUser.email,
-          savedRecipeIds: action.currentUser.savedRecipeIds,
-          ratedRecipeIds: action.currentUser.ratedRecipeIds
-        } };  
+    case RECEIVE_RATING:
+      return { currentUser: {
+        id: state.currentUser.id,
+        email: state.currentUser.email,
+        savedRecipeIds: state.currentUser.savedRecipeIds,
+        ratedRecipeIds: action.payload.ratedRecipeIds
+      } };
+    case UPDATE_RATING:
+      return { currentUser: {
+        id: state.currentUser.id,
+        email: state.currentUser.email,
+        savedRecipeIds: state.currentUser.savedRecipeIds,
+        ratedRecipeIds: action.payload.ratedRecipeIds
+      } };
     case LOGOUT_CURRENT_USER:
       return _nullUser;
     default:
