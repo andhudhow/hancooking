@@ -30,17 +30,15 @@ class RecipeShow extends React.Component{
   }
 
   componentDidMount() {
-    this.props.fetchRecipe(this.props.match.params.recipeId)
-      .then(this.getNutritionData());
-
+    debugger
+    this.props.fetchRecipe(parseInt(this.props.match.params.recipeId)).then(this.getNutritionData())
     { scrollTop() };
   }
 
   componentDidUpdate(prevProps) {
-    if (parseInt(this.props.match.params.recipeId) !== prevProps.recipe.id) {
-      this.props.fetchRecipes().then(this.props.fetchRecipe(this.props.match.params.recipeId))
-      .then(this.getNutritionData())
-    { scrollTop() };
+    debugger
+    if(prevProps.recipe && (parseInt(this.props.match.params.recipeId) !== prevProps.recipe.id)) {
+      this.props.fetchRecipe(parseInt(this.props.match.params.recipeId)).then(this.getNutritionData())
     }
   }
   

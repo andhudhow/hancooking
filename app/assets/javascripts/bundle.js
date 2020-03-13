@@ -1886,7 +1886,8 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   _createClass(RecipeShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchRecipe(this.props.match.params.recipeId).then(this.getNutritionData());
+      debugger;
+      this.props.fetchRecipe(parseInt(this.props.match.params.recipeId)).then(this.getNutritionData());
       {
         Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_5__["scrollTop"])();
       }
@@ -1895,12 +1896,10 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      if (parseInt(this.props.match.params.recipeId) !== prevProps.recipe.id) {
-        this.props.fetchRecipes().then(this.props.fetchRecipe(this.props.match.params.recipeId)).then(this.getNutritionData());
-        {
-          Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_5__["scrollTop"])();
-        }
-        ;
+      debugger;
+
+      if (prevProps.recipe && parseInt(this.props.match.params.recipeId) !== prevProps.recipe.id) {
+        this.props.fetchRecipe(parseInt(this.props.match.params.recipeId)).then(this.getNutritionData());
       }
     }
   }, {
@@ -2268,6 +2267,7 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var session = _ref.session,
       entities = _ref.entities;
+  debugger;
   return {
     currentUser: session.currentUser,
     recipe: entities.recipes[ownProps.match.params.recipeId],
@@ -3660,7 +3660,7 @@ var fetchNutritionData = function fetchNutritionData(data) {
   return $.ajax({
     method: 'POST',
     // url: `https://api.edamam.com/api/nutrition-details?app_id=74b9d2c3&app_key=b3d15dc2182b81257d63ac5780f35895`,
-    // url: `https://api.edamam.com/api/nutrition-details?app_id=d4fcc8ee&app_key=56730f33d7840757ce4ef41594288bc8`,
+    url: "https://api.edamam.com/api/nutrition-details?app_id=d4fcc8ee&app_key=56730f33d7840757ce4ef41594288bc8",
     data: JSON.stringify(data),
     dataType: "json",
     contentType: "application/json"
