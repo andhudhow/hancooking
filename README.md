@@ -18,22 +18,22 @@
   * Heroku
 
 ## Features
-* ### Recipes - beautiful recipe pages with ability to rate, add notes, and view nutritional information
+* #### Recipes - beautiful recipe pages with ability to rate, add notes, and view nutritional information
   ![recipe_show](img/recipe_show.gif "Recipe Pages")
 
-* ### Recipe Box - save recipes to your Recipe Box for easy future access
+* #### Recipe Box - save recipes to your Recipe Box for easy future access
   ![recipe_box](img/recipe_box.gif "Recipe Box")
 
-* ### Search - search for recipes by title or description
+* #### Search - search for recipes by title or description
   ![search](img/search.gif "Search")
 
-* ### Rating - see the commmunity's average rating and provide your rating on a scale to 1-5
+* #### Rating - see the commmunity's average rating and provide your rating on a scale to 1-5
   ![rating](img/rating.gif "Rating")
 
-* ### Notes - view recipe notes left by others and leave your own
+* #### Notes - view recipe notes left by others and leave your own
   ![notes](img/comment.gif "Notes")
 
-* ### Nutritional information - powered by the Edamam API, view the nutritional contents of a recipe
+* #### Nutritional information - powered by the Edamam API, view the nutritional contents of a recipe
   ![nutrition](img/nutr.gif "Nutrition")
 
 ### Future features
