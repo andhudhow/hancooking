@@ -30,13 +30,13 @@ class RecipeShow extends React.Component{
   }
 
   componentDidMount() {
-    debugger
+    
     this.props.fetchRecipe(parseInt(this.props.match.params.recipeId)).then(this.getNutritionData())
     { scrollTop() };
   }
 
   componentDidUpdate(prevProps) {
-    debugger
+    
     if(prevProps.recipe && (parseInt(this.props.match.params.recipeId) !== prevProps.recipe.id)) {
       this.props.fetchRecipe(parseInt(this.props.match.params.recipeId)).then(this.getNutritionData())
     }

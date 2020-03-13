@@ -1886,7 +1886,6 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   _createClass(RecipeShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      debugger;
       this.props.fetchRecipe(parseInt(this.props.match.params.recipeId)).then(this.getNutritionData());
       {
         Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_5__["scrollTop"])();
@@ -1896,8 +1895,6 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      debugger;
-
       if (prevProps.recipe && parseInt(this.props.match.params.recipeId) !== prevProps.recipe.id) {
         this.props.fetchRecipe(parseInt(this.props.match.params.recipeId)).then(this.getNutritionData());
       }
@@ -2267,7 +2264,6 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var session = _ref.session,
       entities = _ref.entities;
-  debugger;
   return {
     currentUser: session.currentUser,
     recipe: entities.recipes[ownProps.match.params.recipeId],
