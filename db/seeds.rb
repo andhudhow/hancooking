@@ -95,7 +95,7 @@ recipe_id = Recipe.first.id
 while recipe_id <= Recipe.last.id
   
     10.times do
-      Ingredient.create!(recipe_id: recipe_id, quantity: Faker::Number.between(from: 2, to: 8), description: ["cups", "tbs", "tsp", "grams", "satoshis"].sample + " " + Faker::Food.ingredient)
+      Ingredient.create!(recipe_id: recipe_id, quantity: Faker::Number.between(from: 2, to: 8), description: ["cups", "tbs", "tsp", "grams"].sample + " " + Faker::Food.ingredient)
     end
     
     step = 1
