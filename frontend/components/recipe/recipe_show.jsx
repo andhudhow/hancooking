@@ -16,7 +16,8 @@ class RecipeShow extends React.Component{
       nutritionalInfo: {},
       nutrHover: false,
       ratingHover: false,
-      starHover: this.props.recipe ? this.props.recipe.avgRating : 0
+      starHover: this.props.recipe ? this.props.recipe.avgRating : 0,
+      ratingText: "Rate Recipe"
     };
     this.handleCommentClick = this.handleCommentClick.bind(this);
     this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
@@ -29,7 +30,6 @@ class RecipeShow extends React.Component{
   }
 
   componentDidMount() {
-    debugger
     this.props.fetchRecipe(this.props.match.params.recipeId)
       .then(this.getNutritionData());
 
@@ -37,8 +37,7 @@ class RecipeShow extends React.Component{
   }
 
   componentDidUpdate(prevProps) {
-    debugger
-    if (prevProps.recipe === undefined || (parseInt(this.props.match.params.recipeId) !== prevProps.recipe.id)) {
+    if (parseInt(this.props.match.params.recipeId) !== prevProps.recipe.id) {
       this.props.fetchRecipes().then(this.props.fetchRecipe(this.props.match.params.recipeId))
       .then(this.getNutritionData())
     { scrollTop() };
@@ -106,7 +105,27 @@ class RecipeShow extends React.Component{
   }
 
   handleStarHover(val){
-    this.setState( { starHover: val })
+    this.setState( { starHover: val });
+    
+    switch (val) {
+      case 1:
+        this.setState( {ratingText: "Not Worth It"})
+        break;
+      case 2:
+        this.setState( {ratingText: "Fine"})
+        break;
+      case 3:
+        this.setState( {ratingText: "Good"})
+        break;
+      case 4:
+        this.setState( {ratingText: "Really Good"})
+        break;
+      case 5:
+        this.setState( {ratingText: "Delicious"})
+        break;
+      default:
+        null
+    };
   }
   
   render() {
@@ -145,6 +164,7 @@ class RecipeShow extends React.Component{
             <div className="recipe-metadata-container">
             <div className={this.state.ratingHover ? "rating-tooltip-open" : "rating-tooltip-closed"}
               onMouseLeave={()=>this.setState( { ratingHover: false })}>
+                <span className = "rating-text">{this.state.ratingText}</span>
                 <div className = "recipe-rating-avg-stars">
                   <img src={this.state.starHover >= 1 ? window.starYellowURL : window.starEmptyURL } onMouseOver={()=>this.handleStarHover(1)} onClick={()=>this.handleRatingSubmit(1)} />
                   <img src={this.state.starHover >= 2 ? window.starYellowURL : window.starEmptyURL } onMouseOver={()=>this.handleStarHover(2)} onClick={()=>this.handleRatingSubmit(2)} />
@@ -154,8 +174,7 @@ class RecipeShow extends React.Component{
                 </div>
             </div>
               <div class="rating-total">{this.props.recipe.numRatings} ratings</div>
-              <div class="star-rating"
-                onMouseEnter={()=>this.setState( { ratingHover: true })}>
+              <div class="star-rating" onMouseEnter={()=>this.setState( { ratingHover: true })}>
                   {starRating}
               </div>
             </div>

@@ -1869,7 +1869,8 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       nutritionalInfo: {},
       nutrHover: false,
       ratingHover: false,
-      starHover: _this.props.recipe ? _this.props.recipe.avgRating : 0
+      starHover: _this.props.recipe ? _this.props.recipe.avgRating : 0,
+      ratingText: "Rate Recipe"
     };
     _this.handleCommentClick = _this.handleCommentClick.bind(_assertThisInitialized(_this));
     _this.handleCommentSubmit = _this.handleCommentSubmit.bind(_assertThisInitialized(_this));
@@ -1885,7 +1886,6 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   _createClass(RecipeShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      debugger;
       this.props.fetchRecipe(this.props.match.params.recipeId).then(this.getNutritionData());
       {
         Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_5__["scrollTop"])();
@@ -1895,9 +1895,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      debugger;
-
-      if (prevProps.recipe === undefined || parseInt(this.props.match.params.recipeId) !== prevProps.recipe.id) {
+      if (parseInt(this.props.match.params.recipeId) !== prevProps.recipe.id) {
         this.props.fetchRecipes().then(this.props.fetchRecipe(this.props.match.params.recipeId)).then(this.getNutritionData());
         {
           Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_5__["scrollTop"])();
@@ -1995,6 +1993,43 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       this.setState({
         starHover: val
       });
+
+      switch (val) {
+        case 1:
+          this.setState({
+            ratingText: "Not Worth It"
+          });
+          break;
+
+        case 2:
+          this.setState({
+            ratingText: "Fine"
+          });
+          break;
+
+        case 3:
+          this.setState({
+            ratingText: "Good"
+          });
+          break;
+
+        case 4:
+          this.setState({
+            ratingText: "Really Good"
+          });
+          break;
+
+        case 5:
+          this.setState({
+            ratingText: "Delicious"
+          });
+          break;
+
+        default:
+          null;
+      }
+
+      ;
     }
   }, {
     key: "render",
@@ -2052,7 +2087,9 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
             ratingHover: false
           });
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "rating-text"
+      }, this.state.ratingText), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-rating-avg-stars"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: this.state.starHover >= 1 ? window.starYellowURL : window.starEmptyURL,
@@ -3623,6 +3660,7 @@ var fetchNutritionData = function fetchNutritionData(data) {
   return $.ajax({
     method: 'POST',
     // url: `https://api.edamam.com/api/nutrition-details?app_id=74b9d2c3&app_key=b3d15dc2182b81257d63ac5780f35895`,
+    // url: `https://api.edamam.com/api/nutrition-details?app_id=d4fcc8ee&app_key=56730f33d7840757ce4ef41594288bc8`,
     data: JSON.stringify(data),
     dataType: "json",
     contentType: "application/json"
