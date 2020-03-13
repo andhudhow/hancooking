@@ -181,9 +181,9 @@ class RecipeShow extends React.Component{
                 <h3 className='instructions-header'>Ingredients</h3>
                 <br /><br />
                 <IngredientListIndex ingredients={this.props.ingredients} />
-                <button className="add-glist-btn" type="button">
+                {/* <button className="add-glist-btn" type="button">
                   Add to Your Grocery List
-                </button>
+                </button> */}
                 {this.state.nutritionalInfo.calories ? 
                   <div className="nutr-container" onMouseLeave = {()=>this.setState( { nutrHover : false } )}>
                     <div className='nutr-header'>
@@ -231,11 +231,11 @@ class RecipeShow extends React.Component{
                 <h3 className='instructions-header'>Preparation</h3>
                 <br /><br />
                   <PrepStepsListIndex prepSteps={this.props.prepSteps} />
-                  <div className="cooked-module">
+                  {/* <div className="cooked-module">
                   <span className="cooked-label">Have you cooked this?</span>
                   <img className="cooked-icon" src={window.uncookedIconURL} />
                   <span className="cooked-text">Mark as <strong>Cooked</strong></span>
-                  </div>
+                  </div> */}
                   <div className="comments-container">
                     {/* TODO - ADD LOGIC FOR COOKED / UNCOOKED */}
                     <h3 className='instructions-header'>Cooking Notes</h3>

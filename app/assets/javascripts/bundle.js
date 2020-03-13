@@ -909,10 +909,6 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
 
       var navButtons = function navButtons() {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          to: "/"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          className: "nav-btns"
-        }, "Grocery List")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/recipe-box"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "nav-btns"
@@ -2144,10 +2140,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         className: "instructions-header"
       }, "Ingredients"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ingredient_list_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
         ingredients: this.props.ingredients
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "add-glist-btn",
-        type: "button"
-      }, "Add to Your Grocery List"), this.state.nutritionalInfo.calories ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), this.state.nutritionalInfo.calories ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nutr-container",
         onMouseLeave: function onMouseLeave() {
           return _this3.setState({
@@ -2191,15 +2184,6 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       }, "Preparation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_prep_steps_list_index__WEBPACK_IMPORTED_MODULE_3__["default"], {
         prepSteps: this.props.prepSteps
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "cooked-module"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "cooked-label"
-      }, "Have you cooked this?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "cooked-icon",
-        src: window.uncookedIconURL
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "cooked-text"
-      }, "Mark as ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Cooked"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "instructions-header"
