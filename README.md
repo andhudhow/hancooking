@@ -31,10 +31,10 @@
   ![rating](img/rating.gif "Rating")
 
 * Notes - view recipe notes left by others and leave your own
-  ![notes](img/commment.gif "Notes")
+  ![notes](img/comment.gif "Notes")
 
 * Nutritional information - powered by the Edamam API, view the nutritional contents of a recipe
-  ![nutrition](img/nutr.gif "Nutrition)
+  ![nutrition](img/nutr.gif "Nutrition")
 
 ### Future features
 * Grocery list - add ingredients to a shopping list
