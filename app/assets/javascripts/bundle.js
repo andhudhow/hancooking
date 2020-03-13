@@ -155,7 +155,6 @@ var receiveUpdatedRating = function receiveUpdatedRating(payload) {
 
 var createRating = function createRating(rating) {
   return function (dispatch) {
-    debugger;
     return _util_rating_api_util__WEBPACK_IMPORTED_MODULE_0__["createRating"](rating).then(function (payload) {
       return dispatch(receiveRating(payload));
     });
@@ -649,7 +648,8 @@ var Main = /*#__PURE__*/function (_React$Component) {
       }, "Recipe", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "of the day"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/recipes/967"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "rotd-card"
+        id: "rotd-card",
+        onClick: this.handleClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         id: "rotd-title"
       }, "Korean-Style Shortrib"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -1862,7 +1862,6 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck(this, RecipeShow);
 
-    debugger;
     _this = _possibleConstructorReturn(this, _getPrototypeOf(RecipeShow).call(this, props));
     _this.state = {
       commentOpen: false,
@@ -1964,8 +1963,6 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleRatingSubmit",
     value: function handleRatingSubmit(val) {
-      debugger;
-
       if (this.props.currentUser.ratedRecipeIds.includes(parseInt(this.props.match.params.recipeId))) {
         this.props.updateRating({
           recipe_id: this.props.recipe.id,
@@ -2014,195 +2011,36 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
           });
           var currentUserRating = currentUserRatings.length > 0 && currentUserRatings[0] ? currentUserRatings[0].starRating : null; //fix this to be a short ternary based on the user rating
 
-          switch (currentUserRating) {
-            case 1:
-              starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-                className: "recipe-rating-avg-stars"
-              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starYellowURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }));
-              break;
-
-            case 2:
-              starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-                className: "recipe-rating-avg-stars"
-              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starYellowURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starYellowURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }));
-              break;
-
-            case 3:
-              starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-                className: "recipe-rating-avg-stars"
-              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starYellowURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starYellowURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starYellowURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }));
-              break;
-
-            case 4:
-              starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-                className: "recipe-rating-avg-stars"
-              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starYellowURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starYellowURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starYellowURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starYellowURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }));
-              break;
-
-            case 5:
-              starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-                className: "recipe-rating-avg-stars"
-              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starYellowURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starYellowURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starYellowURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starYellowURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starYellowURL
-              }));
-              break;
-
-            default:
-              return null;
-          }
+          starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "recipe-rating-avg-stars"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: currentUserRating >= 1 ? window.starYellowURL : window.starEmptyURL
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: currentUserRating >= 2 ? window.starYellowURL : window.starEmptyURL
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: currentUserRating >= 3 ? window.starYellowURL : window.starEmptyURL
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: currentUserRating >= 4 ? window.starYellowURL : window.starEmptyURL
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: currentUserRating >= 5 ? window.starYellowURL : window.starEmptyURL
+          }));
         } else {
-          switch (this.props.recipe.avgRating) {
-            case 0:
-              starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-                className: "recipe-rating-avg-stars"
-              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }));
-              break;
-
-            case 1:
-              starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-                className: "recipe-rating-avg-stars"
-              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starRedURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }));
-              break;
-
-            case 2:
-              starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-                className: "recipe-rating-avg-stars"
-              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starRedURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starRedURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }));
-              break;
-
-            case 3:
-              starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-                className: "recipe-rating-avg-stars"
-              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starRedURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starRedURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starRedURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }));
-              break;
-
-            case 4:
-              starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-                className: "recipe-rating-avg-stars"
-              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starRedURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starRedURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starRedURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starRedURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starEmptyURL
-              }));
-              break;
-
-            case 5:
-              starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-                className: "recipe-rating"
-              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starRedURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starRedURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starRedURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starRedURL
-              }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                src: window.starRedURL
-              }));
-              break;
-
-            default:
-              return null;
-          }
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "recipe-rating-avg-stars"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: this.props.avgRating >= 1 ? window.starRedURL : window.starEmptyURL
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: this.props.avgRating >= 2 ? window.starRedURL : window.starEmptyURL
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: this.props.avgRating >= 3 ? window.starRedURL : window.starEmptyURL
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: this.props.avgRating >= 4 ? window.starRedURL : window.starEmptyURL
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: this.props.avgRating >= 5 ? window.starRedURL : window.starEmptyURL
+          }));
         }
       }
 
-      ;
       return this.props.recipe && this.props.match.params && fetchedRecipeId && fetchedRecipeId === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-show-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_recipe_header_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2607,7 +2445,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
- //comment with some more changes
+
 
 var RecipeCard = /*#__PURE__*/function (_React$Component) {
   _inherits(RecipeCard, _React$Component);

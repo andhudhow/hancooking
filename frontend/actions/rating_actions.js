@@ -26,7 +26,7 @@ const receiveUpdatedRating = payload => {
 
 export const createRating = rating => dispatch => 
 {
-  debugger
+  
   return (
   RatingAPIUtil.createRating(rating).then(
     (payload => dispatch(receiveRating(payload)))

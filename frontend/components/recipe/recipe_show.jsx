@@ -8,7 +8,7 @@ import { fetchNutritionData } from '../../util/nutr_info_api_util';
 
 class RecipeShow extends React.Component{
   constructor(props) {
-    debugger
+    
     super(props);
     this.state = {
       commentOpen: false,
@@ -38,7 +38,7 @@ class RecipeShow extends React.Component{
 
   componentDidUpdate(prevProps) {
     debugger
-    if (prevProps.recipe=== undefined || (parseInt(this.props.match.params.recipeId) !== prevProps.recipe.id)) {
+    if (prevProps.recipe === undefined || (parseInt(this.props.match.params.recipeId) !== prevProps.recipe.id)) {
       this.props.fetchRecipes().then(this.props.fetchRecipe(this.props.match.params.recipeId))
       .then(this.getNutritionData())
     { scrollTop() };
@@ -83,7 +83,7 @@ class RecipeShow extends React.Component{
   }
 
   handleRatingSubmit(val){
-    debugger
+    
     if (this.props.currentUser.ratedRecipeIds.includes(parseInt(this.props.match.params.recipeId))) { 
       this.props.updateRating({
         recipe_id: this.props.recipe.id,
@@ -119,129 +119,24 @@ class RecipeShow extends React.Component{
         let currentUserRating = currentUserRatings.length > 0 && currentUserRatings[0] ? currentUserRatings[0].starRating : null
 
         //fix this to be a short ternary based on the user rating
-        
-        switch (currentUserRating) {
-          case 1:
-            starRating =
-              <div className = "recipe-rating-avg-stars">
-                <img src={window.starYellowURL}></img>
-                <img src={window.starEmptyURL}></img>
-                <img src={window.starEmptyURL}></img>
-                <img src={window.starEmptyURL}></img>
-                <img src={window.starEmptyURL}></img>
-              </div>
-              break;
-          case 2:
-            starRating =
-              <div className = "recipe-rating-avg-stars">
-                <img src={window.starYellowURL}></img>
-                <img src={window.starYellowURL}></img>
-                <img src={window.starEmptyURL}></img>
-                <img src={window.starEmptyURL}></img>
-                <img src={window.starEmptyURL}></img>
-              </div>
-              break;
-          case 3:
-            starRating =
-            <div className = "recipe-rating-avg-stars">
-              <img src={window.starYellowURL}></img>
-              <img src={window.starYellowURL}></img>
-              <img src={window.starYellowURL}></img>
-              <img src={window.starEmptyURL}></img>
-              <img src={window.starEmptyURL}></img>
-            </div>
-            break;
-          case 4:
-            starRating =
-            <div className = "recipe-rating-avg-stars">
-              <img src={window.starYellowURL}></img>
-              <img src={window.starYellowURL}></img>
-              <img src={window.starYellowURL}></img>
-              <img src={window.starYellowURL}></img>
-              <img src={window.starEmptyURL}></img>
-            </div>
-            break;
-          case 5:
-            starRating =
-            <div className = "recipe-rating-avg-stars">
-              <img src={window.starYellowURL}></img>
-              <img src={window.starYellowURL}></img>
-              <img src={window.starYellowURL}></img>
-              <img src={window.starYellowURL}></img>
-              <img src={window.starYellowURL}></img>
-            </div>
-            break;
-          default:
-            return null;
-          } 
+        starRating =
+          <div className = "recipe-rating-avg-stars">
+            <img src={currentUserRating >= 1 ? window.starYellowURL : window.starEmptyURL }></img>
+            <img src={currentUserRating >= 2 ? window.starYellowURL : window.starEmptyURL }></img>
+            <img src={currentUserRating >= 3 ? window.starYellowURL : window.starEmptyURL }></img>
+            <img src={currentUserRating >= 4 ? window.starYellowURL : window.starEmptyURL }></img>
+            <img src={currentUserRating >= 5 ? window.starYellowURL : window.starEmptyURL }></img>
+          </div> 
       } else { 
-        switch (this.props.recipe.avgRating) {  
-          case 0:
-            starRating =
-              <div className = "recipe-rating-avg-stars">
-                <img src={window.starEmptyURL}></img>
-                <img src={window.starEmptyURL}></img>
-                <img src={window.starEmptyURL}></img>
-                <img src={window.starEmptyURL}></img>
-                <img src={window.starEmptyURL}></img>
-              </div>
-              break;
-          case 1:
-            starRating =
-              <div className = "recipe-rating-avg-stars">
-                <img src={window.starRedURL}></img>
-                <img src={window.starEmptyURL}></img>
-                <img src={window.starEmptyURL}></img>
-                <img src={window.starEmptyURL}></img>
-                <img src={window.starEmptyURL}></img>
-              </div>
-              break;
-          case 2:
-            starRating =
-              <div className = "recipe-rating-avg-stars">
-                <img src={window.starRedURL}></img>
-                <img src={window.starRedURL}></img>
-                <img src={window.starEmptyURL}></img>
-                <img src={window.starEmptyURL}></img>
-                <img src={window.starEmptyURL}></img>
-              </div>
-              break;
-          case 3:
-            starRating =
-            <div className = "recipe-rating-avg-stars">
-              <img src={window.starRedURL}></img>
-              <img src={window.starRedURL}></img>
-              <img src={window.starRedURL}></img>
-              <img src={window.starEmptyURL}></img>
-              <img src={window.starEmptyURL}></img>
-            </div>
-            break;
-          case 4:
-            starRating =
-            <div className = "recipe-rating-avg-stars">
-              <img src={window.starRedURL}></img>
-              <img src={window.starRedURL}></img>
-              <img src={window.starRedURL}></img>
-              <img src={window.starRedURL}></img>
-              <img src={window.starEmptyURL}></img>
-            </div>
-            break;
-          case 5:
-            starRating =
-            <div className = "recipe-rating">
-              <img src={window.starRedURL}></img>
-              <img src={window.starRedURL}></img>
-              <img src={window.starRedURL}></img>
-              <img src={window.starRedURL}></img>
-              <img src={window.starRedURL}></img>
-            </div>
-            break;
-          default:
-            return null;
-          } 
-      }
+        <div className = "recipe-rating-avg-stars">
+          <img src={this.props.avgRating >= 1 ? window.starRedURL : window.starEmptyURL }></img>
+          <img src={this.props.avgRating >= 2 ? window.starRedURL : window.starEmptyURL }></img>
+          <img src={this.props.avgRating >= 3 ? window.starRedURL : window.starEmptyURL }></img>
+          <img src={this.props.avgRating >= 4 ? window.starRedURL : window.starEmptyURL }></img>
+          <img src={this.props.avgRating >= 5 ? window.starRedURL : window.starEmptyURL }></img>
+        </div> 
+      } 
     }
-  ;
     
     return (
         this.props.recipe && this.props.match.params && fetchedRecipeId && (fetchedRecipeId === parseInt(this.props.match.params.recipeId)) ?
