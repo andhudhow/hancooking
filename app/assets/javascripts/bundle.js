@@ -494,7 +494,7 @@ var Footer = function Footer() {
     target: "_blank"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "online-presence-icon",
-    src: "https://www.iconsdb.com/icons/preview/white/pdf-xxl.png"
+    src: window.pdfIconURL
   }), "Resume")))));
 };
 

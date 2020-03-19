@@ -27,7 +27,7 @@ const Footer = () => (
         </li>
         <li key="resume" className="online-presence">
           <a href="https://drive.google.com/open?id=1CVIZ6PiTux9nYKQ2HY6xbUl4naoPQlCv" target="_blank">
-          <img className="online-presence-icon" src="https://www.iconsdb.com/icons/preview/white/pdf-xxl.png" />
+          <img className="online-presence-icon" src={window.pdfIconURL} />
             Resume
           </a>
         </li>
