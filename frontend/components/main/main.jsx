@@ -39,7 +39,7 @@ class Main extends React.Component{
           <video className='splash-img' autoPlay muted loop type='video/mp4' src={window.splashVidURL} />
             <div id="rotd-label">Recipe<br/>of the day</div>
               
-              <Link to='/recipes/967'><div id="rotd-card" onClick={this.handleClick}>
+              <Link to='/recipes/19'><div id="rotd-card" onClick={this.handleClick}>
                 <h3 id="rotd-title">
                     Korean-Style Shortrib
                 </h3>

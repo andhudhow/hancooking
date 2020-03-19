@@ -646,7 +646,7 @@ var Main = /*#__PURE__*/function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "rotd-label"
       }, "Recipe", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "of the day"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/recipes/967"
+        to: "/recipes/19"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "rotd-card",
         onClick: this.handleClick
