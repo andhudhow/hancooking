@@ -55,18 +55,21 @@
   padding-bottom: 12px;
 }
 
+.online-presence {
+  filter: brightness(80%);
+}
+
 .online-presence-icon {
   height: 25px;
   width: 25px;
   cursor: pointer;
-  filter: brightness(80%);
   padding-left: 5px;
   vertical-align: middle;
   padding-bottom: 7px;
   padding-right: 10px;
 }
 
-.online-presence-icon:hover {
+.online-presence:hover {
   filter: brightness(100%);
 }
 
