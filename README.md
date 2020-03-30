@@ -8,7 +8,7 @@
 ## Technologies used
 * Front-end:
   * React
-  * Reduxgi
+  * Redux
   * Edamam Nutritional Analysis API
 * Back-end
   * Ruby on Rails
