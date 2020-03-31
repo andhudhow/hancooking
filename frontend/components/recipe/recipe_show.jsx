@@ -3,8 +3,8 @@ import React from 'react';
 import RecipeHeaderContainer from './recipe_header_container';
 import IngredientListIndex from './ingredient_list_index';
 import PrepStepsListIndex from './prep_steps_list_index';
-import CommentIndexContainer from './comment_index_container';
-import RatingContainer from '../ratings/rating_container';
+import CommentIndexContainer from './comments/comment_index_container';
+import RatingContainer from './ratings/rating_container';
 import { scrollTop } from '../../util/scroll_util';
 import { fetchNutritionData } from '../../util/nutr_info_api_util';
 
@@ -16,10 +16,7 @@ class RecipeShow extends React.Component{
       commentOpen: false,
       commentContent: '',
       nutritionalInfo: {},
-      nutrHover: false,
-      // ratingHover: false,
-      // starHover: this.props.recipe ? this.props.recipe.avgRating : 0,
-      // ratingText: "Rate Recipe"
+      nutrHover: false
     };
     this.handleCommentClick = this.handleCommentClick.bind(this);
     this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
@@ -44,7 +41,6 @@ class RecipeShow extends React.Component{
     }
   }
   
-
   getNutritionData() {
     if (this.props.recipe) { 
       const nutrData = {
@@ -81,104 +77,18 @@ class RecipeShow extends React.Component{
     this.setState({ commentOpen : false })
   }
 
-  handleRatingSubmit(val){
-    
-    if (this.props.currentUser.ratedRecipeIds.includes(parseInt(this.props.match.params.recipeId))) { 
-      this.props.updateRating({
-        recipe_id: this.props.recipe.id,
-        star_rating: val
-      })
-    } else {
-      this.props.createRating({
-        recipe_id: this.props.recipe.id,
-        star_rating: val
-      })
-    }
-  }
-
   handleTyping(e){
     this.setState({ commentContent: e.currentTarget.value })
-  }
-
-  handleRatingHover(e){
-    this.setState( { ratingHover : true } )
-  }
-
-  handleStarHover(val){
-    this.setState( { starHover: val });
-    
-    switch (val) {
-      case 1:
-        this.setState( {ratingText: "Not Worth It"})
-        break;
-      case 2:
-        this.setState( {ratingText: "Fine"})
-        break;
-      case 3:
-        this.setState( {ratingText: "Good"})
-        break;
-      case 4:
-        this.setState( {ratingText: "Really Good"})
-        break;
-      case 5:
-        this.setState( {ratingText: "Delicious"})
-        break;
-      default:
-        null
-    };
   }
   
   render() {
     const fetchedRecipeId = this.props.ingredients[0] ? this.props.ingredients[0].recipeId : null
-
-    // let starRating
-    // if (this.props.recipe) {
-    //   if (this.props.ratings[0] && this.props.currentUser.ratedRecipeIds.includes(parseInt(this.props.match.params.recipeId))) {
-    //     let currentUserRatings = this.props.ratings.filter(rating => rating.userId === this.props.currentUser.id)
-    //     let currentUserRating = currentUserRatings.length > 0 && currentUserRatings[0] ? currentUserRatings[0].starRating : null
-
-    //     //fix this to be a short ternary based on the user rating
-    //     starRating =
-    //       <div className = "recipe-rating-avg-stars">
-    //         <img src={currentUserRating >= 1 ? window.starYellowURL : window.starEmptyURL }></img>
-    //         <img src={currentUserRating >= 2 ? window.starYellowURL : window.starEmptyURL }></img>
-    //         <img src={currentUserRating >= 3 ? window.starYellowURL : window.starEmptyURL }></img>
-    //         <img src={currentUserRating >= 4 ? window.starYellowURL : window.starEmptyURL }></img>
-    //         <img src={currentUserRating >= 5 ? window.starYellowURL : window.starEmptyURL }></img>
-    //       </div> 
-    //   } else { 
-    //     <div className = "recipe-rating-avg-stars">
-    //       <img src={this.props.avgRating >= 1 ? window.starRedURL : window.starEmptyURL }></img>
-    //       <img src={this.props.avgRating >= 2 ? window.starRedURL : window.starEmptyURL }></img>
-    //       <img src={this.props.avgRating >= 3 ? window.starRedURL : window.starEmptyURL }></img>
-    //       <img src={this.props.avgRating >= 4 ? window.starRedURL : window.starEmptyURL }></img>
-    //       <img src={this.props.avgRating >= 5 ? window.starRedURL : window.starEmptyURL }></img>
-    //     </div> 
-    //   } 
-    // }
     
     return (
         this.props.recipe && this.props.match.params && fetchedRecipeId && (fetchedRecipeId === parseInt(this.props.match.params.recipeId)) ?
           <div className="recipe-show-container">
             <RecipeHeaderContainer />
             <RatingContainer />
-            {/* <div className="recipe-metadata-container">
-            <div className={this.state.ratingHover ? "rating-tooltip-open" : "rating-tooltip-closed"}
-              onMouseLeave={()=>this.setState( { ratingHover: false })}>
-                <span className = "rating-text">{this.state.ratingText}</span>
-                <div className = "recipe-rating-avg-stars">
-                  <img src={this.state.starHover >= 1 ? window.starYellowURL : window.starEmptyURL } onMouseOver={()=>this.handleStarHover(1)} onClick={()=>this.handleRatingSubmit(1)} />
-                  <img src={this.state.starHover >= 2 ? window.starYellowURL : window.starEmptyURL } onMouseOver={()=>this.handleStarHover(2)} onClick={()=>this.handleRatingSubmit(2)} />
-                  <img src={this.state.starHover >= 3 ? window.starYellowURL : window.starEmptyURL } onMouseOver={()=>this.handleStarHover(3)} onClick={()=>this.handleRatingSubmit(3)} />
-                  <img src={this.state.starHover >= 4 ? window.starYellowURL : window.starEmptyURL } onMouseOver={()=>this.handleStarHover(4)} onClick={()=>this.handleRatingSubmit(4)} />
-                  <img src={this.state.starHover >= 5 ? window.starYellowURL : window.starEmptyURL } onMouseOver={()=>this.handleStarHover(5)} onClick={()=>this.handleRatingSubmit(5)} />
-                </div>
-            </div>
-              <div class="rating-total">{this.props.recipe.numRatings} ratings</div>
-              <div class="star-rating" onMouseEnter={()=>this.setState( { ratingHover: true })}>
-                  {starRating}
-              </div>
-            </div> */}
             <div className="recipe-instructions-container">
               <div className="recipe-ingredients-list-container">
                 <h3 className='instructions-header'>Ingredients</h3>
@@ -234,11 +144,6 @@ class RecipeShow extends React.Component{
                 <h3 className='instructions-header'>Preparation</h3>
                 <br /><br />
                   <PrepStepsListIndex prepSteps={this.props.prepSteps} />
-                  {/* <div className="cooked-module">
-                  <span className="cooked-label">Have you cooked this?</span>
-                  <img className="cooked-icon" src={window.uncookedIconURL} />
-                  <span className="cooked-text">Mark as <strong>Cooked</strong></span>
-                  </div> */}
                   <div className="comments-container">
                     {/* TODO - ADD LOGIC FOR COOKED / UNCOOKED */}
                     <h3 className='instructions-header'>Cooking Notes</h3>
