@@ -10,16 +10,17 @@ import {
 
 
 export default (state = [], action) => {
-  debugger
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_SESSION_ERRORS:
       return action.errors;
     case RECEIVE_CURRENT_USER:
       return [];
+    // remove if open other session form
     case OPEN_MODAL:
       return [];
     case CLOSE_MODAL:
+      // remove if close session form
       return [];
     default:
       return state;
