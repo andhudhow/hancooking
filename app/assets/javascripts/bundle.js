@@ -1295,6 +1295,243 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/ratings/rating.jsx":
+/*!************************************************!*\
+  !*** ./frontend/components/ratings/rating.jsx ***!
+  \************************************************/
+/*! exports provided: Rating */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Rating", function() { return Rating; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+var Rating = function Rating(props) {
+  var recipe = props.recipe,
+      ratings = props.ratings,
+      currentUser = props.currentUser,
+      match = props.match,
+      avgRating = props.avgRating,
+      updateRating = props.updateRating,
+      createRating = props.createRating;
+  var starRating;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      ratingHover = _useState2[0],
+      setRatingHover = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(recipe ? recipe.avgRating : 0),
+      _useState4 = _slicedToArray(_useState3, 2),
+      starHover = _useState4[0],
+      setStarHover = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("Rate Recipe"),
+      _useState6 = _slicedToArray(_useState5, 2),
+      ratingText = _useState6[0],
+      setRatingText = _useState6[1];
+
+  var handleRatingSubmit = function handleRatingSubmit(val) {
+    debugger;
+
+    if (currentUser.ratedRecipeIds.includes(parseInt(match.params.recipeId))) {
+      updateRating({
+        recipe_id: recipe.id,
+        star_rating: val
+      });
+    } else {
+      createRating({
+        recipe_id: recipe.id,
+        star_rating: val
+      });
+    }
+  };
+
+  var handleStarHover = function handleStarHover(val) {
+    setStarHover(val);
+
+    switch (val) {
+      case 1:
+        setRatingText("Not Worth It");
+        break;
+
+      case 2:
+        setRatingText("Fine");
+        break;
+
+      case 3:
+        setRatingText("Good");
+        break;
+
+      case 4:
+        setRatingText("Really Good");
+        break;
+
+      case 5:
+        setRatingText("Delicious");
+        break;
+
+      default:
+        null;
+    }
+
+    ;
+  };
+
+  if (recipe) {
+    if (ratings[0] && currentUser.ratedRecipeIds.includes(parseInt(match.params.recipeId))) {
+      var currentUserRatings = ratings.filter(function (rating) {
+        return rating.userId === currentUser.id;
+      });
+      var currentUserRating = currentUserRatings.length > 0 && currentUserRatings[0] ? currentUserRatings[0].starRating : null;
+      starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "recipe-rating-avg-stars"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: currentUserRating >= 1 ? window.starYellowURL : window.starEmptyURL
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: currentUserRating >= 2 ? window.starYellowURL : window.starEmptyURL
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: currentUserRating >= 3 ? window.starYellowURL : window.starEmptyURL
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: currentUserRating >= 4 ? window.starYellowURL : window.starEmptyURL
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: currentUserRating >= 5 ? window.starYellowURL : window.starEmptyURL
+      }));
+    } else {
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "recipe-rating-avg-stars"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: avgRating >= 1 ? window.starRedURL : window.starEmptyURL
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: avgRating >= 2 ? window.starRedURL : window.starEmptyURL
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: avgRating >= 3 ? window.starRedURL : window.starEmptyURL
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: avgRating >= 4 ? window.starRedURL : window.starEmptyURL
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: avgRating >= 5 ? window.starRedURL : window.starEmptyURL
+      }));
+    }
+  }
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recipe-metadata-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: ratingHover ? "rating-tooltip-open" : "rating-tooltip-closed",
+    onMouseLeave: function onMouseLeave() {
+      return setRatingHover(false);
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "rating-text"
+  }, ratingText), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recipe-rating-avg-stars"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: starHover >= 1 ? window.starYellowURL : window.starEmptyURL,
+    onMouseOver: function onMouseOver() {
+      return handleStarHover(1);
+    },
+    onClick: function onClick() {
+      return handleRatingSubmit(1);
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: starHover >= 2 ? window.starYellowURL : window.starEmptyURL,
+    onMouseOver: function onMouseOver() {
+      return handleStarHover(2);
+    },
+    onClick: function onClick() {
+      return handleRatingSubmit(2);
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: starHover >= 3 ? window.starYellowURL : window.starEmptyURL,
+    onMouseOver: function onMouseOver() {
+      return handleStarHover(3);
+    },
+    onClick: function onClick() {
+      return handleRatingSubmit(3);
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: starHover >= 4 ? window.starYellowURL : window.starEmptyURL,
+    onMouseOver: function onMouseOver() {
+      return handleStarHover(4);
+    },
+    onClick: function onClick() {
+      return handleRatingSubmit(4);
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: starHover >= 5 ? window.starYellowURL : window.starEmptyURL,
+    onMouseOver: function onMouseOver() {
+      return handleStarHover(5);
+    },
+    onClick: function onClick() {
+      return handleRatingSubmit(5);
+    }
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "rating-total"
+  }, recipe.numRatings, " ratings"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "star-rating",
+    onMouseEnter: function onMouseEnter() {
+      return setRatingHover(true);
+    }
+  }, starRating));
+};
+
+/***/ }),
+
+/***/ "./frontend/components/ratings/rating_container.js":
+/*!*********************************************************!*\
+  !*** ./frontend/components/ratings/rating_container.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _actions_rating_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/rating_actions */ "./frontend/actions/rating_actions.js");
+/* harmony import */ var _rating__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./rating */ "./frontend/components/ratings/rating.jsx");
+
+
+
+
+
+var mapStateToProps = function mapStateToProps(_ref, ownProps) {
+  var session = _ref.session,
+      entities = _ref.entities;
+  return {
+    currentUser: session.currentUser,
+    recipe: entities.recipes[ownProps.match.params.recipeId],
+    ratings: Object.keys(entities.ratings).map(function (key) {
+      return entities.ratings[key];
+    })
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    createRating: function createRating(rating) {
+      return dispatch(Object(_actions_rating_actions__WEBPACK_IMPORTED_MODULE_2__["createRating"])(rating));
+    },
+    updateRating: function updateRating(rating) {
+      return dispatch(Object(_actions_rating_actions__WEBPACK_IMPORTED_MODULE_2__["updateRating"])(rating));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_rating__WEBPACK_IMPORTED_MODULE_3__["Rating"])));
+
+/***/ }),
+
 /***/ "./frontend/components/recipe/comment_index.jsx":
 /*!******************************************************!*\
   !*** ./frontend/components/recipe/comment_index.jsx ***!
@@ -1822,8 +2059,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ingredient_list_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ingredient_list_index */ "./frontend/components/recipe/ingredient_list_index.jsx");
 /* harmony import */ var _prep_steps_list_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./prep_steps_list_index */ "./frontend/components/recipe/prep_steps_list_index.jsx");
 /* harmony import */ var _comment_index_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./comment_index_container */ "./frontend/components/recipe/comment_index_container.js");
-/* harmony import */ var _util_scroll_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/scroll_util */ "./frontend/util/scroll_util.js");
-/* harmony import */ var _util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../util/nutr_info_api_util */ "./frontend/util/nutr_info_api_util.js");
+/* harmony import */ var _ratings_rating_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../ratings/rating_container */ "./frontend/components/ratings/rating_container.js");
+/* harmony import */ var _util_scroll_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../util/scroll_util */ "./frontend/util/scroll_util.js");
+/* harmony import */ var _util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../util/nutr_info_api_util */ "./frontend/util/nutr_info_api_util.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1850,6 +2088,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var RecipeShow = /*#__PURE__*/function (_React$Component) {
   _inherits(RecipeShow, _React$Component);
 
@@ -1863,19 +2102,19 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       commentOpen: false,
       commentContent: '',
       nutritionalInfo: {},
-      nutrHover: false,
-      ratingHover: false,
-      starHover: _this.props.recipe ? _this.props.recipe.avgRating : 0,
-      ratingText: "Rate Recipe"
+      nutrHover: false // ratingHover: false,
+      // starHover: this.props.recipe ? this.props.recipe.avgRating : 0,
+      // ratingText: "Rate Recipe"
+
     };
     _this.handleCommentClick = _this.handleCommentClick.bind(_assertThisInitialized(_this));
     _this.handleCommentSubmit = _this.handleCommentSubmit.bind(_assertThisInitialized(_this));
     _this.handleCommentCancel = _this.handleCommentCancel.bind(_assertThisInitialized(_this));
     _this.getNutritionData = _this.getNutritionData.bind(_assertThisInitialized(_this));
     _this.handleTyping = _this.handleTyping.bind(_assertThisInitialized(_this));
-    _this.setState = _this.setState.bind(_assertThisInitialized(_this));
-    _this.handleRatingHover = _this.handleRatingHover.bind(_assertThisInitialized(_this));
-    _this.handleStarHover = _this.handleStarHover.bind(_assertThisInitialized(_this));
+    _this.setState = _this.setState.bind(_assertThisInitialized(_this)); // this.handleRatingHover = this.handleRatingHover.bind(this);
+    // this.handleStarHover = this.handleStarHover.bind(this);
+
     return _this;
   }
 
@@ -1884,7 +2123,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       this.props.fetchRecipe(parseInt(this.props.match.params.recipeId)).then(this.getNutritionData());
       {
-        Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_5__["scrollTop"])();
+        Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_6__["scrollTop"])();
       }
       ;
     }
@@ -1908,7 +2147,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
             return acc.concat(el.quantity + " " + el.description);
           }, [])
         };
-        Object(_util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_6__["fetchNutritionData"])(nutrData).then(function (pay) {
+        Object(_util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_7__["fetchNutritionData"])(nutrData).then(function (pay) {
           return _this2.setState({
             nutritionalInfo: pay
           });
@@ -2028,111 +2267,34 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
-      var fetchedRecipeId = this.props.ingredients[0] ? this.props.ingredients[0].recipeId : null;
-      var starRating;
-
-      if (this.props.recipe) {
-        if (this.props.ratings[0] && this.props.currentUser.ratedRecipeIds.includes(parseInt(this.props.match.params.recipeId))) {
-          var currentUserRatings = this.props.ratings.filter(function (rating) {
-            return rating.userId === _this3.props.currentUser.id;
-          });
-          var currentUserRating = currentUserRatings.length > 0 && currentUserRatings[0] ? currentUserRatings[0].starRating : null; //fix this to be a short ternary based on the user rating
-
-          starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "recipe-rating-avg-stars"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: currentUserRating >= 1 ? window.starYellowURL : window.starEmptyURL
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: currentUserRating >= 2 ? window.starYellowURL : window.starEmptyURL
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: currentUserRating >= 3 ? window.starYellowURL : window.starEmptyURL
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: currentUserRating >= 4 ? window.starYellowURL : window.starEmptyURL
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: currentUserRating >= 5 ? window.starYellowURL : window.starEmptyURL
-          }));
-        } else {
-          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "recipe-rating-avg-stars"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: this.props.avgRating >= 1 ? window.starRedURL : window.starEmptyURL
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: this.props.avgRating >= 2 ? window.starRedURL : window.starEmptyURL
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: this.props.avgRating >= 3 ? window.starRedURL : window.starEmptyURL
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: this.props.avgRating >= 4 ? window.starRedURL : window.starEmptyURL
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: this.props.avgRating >= 5 ? window.starRedURL : window.starEmptyURL
-          }));
-        }
-      }
+      var fetchedRecipeId = this.props.ingredients[0] ? this.props.ingredients[0].recipeId : null; // let starRating
+      // if (this.props.recipe) {
+      //   if (this.props.ratings[0] && this.props.currentUser.ratedRecipeIds.includes(parseInt(this.props.match.params.recipeId))) {
+      //     let currentUserRatings = this.props.ratings.filter(rating => rating.userId === this.props.currentUser.id)
+      //     let currentUserRating = currentUserRatings.length > 0 && currentUserRatings[0] ? currentUserRatings[0].starRating : null
+      //     //fix this to be a short ternary based on the user rating
+      //     starRating =
+      //       <div className = "recipe-rating-avg-stars">
+      //         <img src={currentUserRating >= 1 ? window.starYellowURL : window.starEmptyURL }></img>
+      //         <img src={currentUserRating >= 2 ? window.starYellowURL : window.starEmptyURL }></img>
+      //         <img src={currentUserRating >= 3 ? window.starYellowURL : window.starEmptyURL }></img>
+      //         <img src={currentUserRating >= 4 ? window.starYellowURL : window.starEmptyURL }></img>
+      //         <img src={currentUserRating >= 5 ? window.starYellowURL : window.starEmptyURL }></img>
+      //       </div> 
+      //   } else { 
+      //     <div className = "recipe-rating-avg-stars">
+      //       <img src={this.props.avgRating >= 1 ? window.starRedURL : window.starEmptyURL }></img>
+      //       <img src={this.props.avgRating >= 2 ? window.starRedURL : window.starEmptyURL }></img>
+      //       <img src={this.props.avgRating >= 3 ? window.starRedURL : window.starEmptyURL }></img>
+      //       <img src={this.props.avgRating >= 4 ? window.starRedURL : window.starEmptyURL }></img>
+      //       <img src={this.props.avgRating >= 5 ? window.starRedURL : window.starEmptyURL }></img>
+      //     </div> 
+      //   } 
+      // }
 
       return this.props.recipe && this.props.match.params && fetchedRecipeId && fetchedRecipeId === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-show-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_recipe_header_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "recipe-metadata-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: this.state.ratingHover ? "rating-tooltip-open" : "rating-tooltip-closed",
-        onMouseLeave: function onMouseLeave() {
-          return _this3.setState({
-            ratingHover: false
-          });
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "rating-text"
-      }, this.state.ratingText), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "recipe-rating-avg-stars"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.starHover >= 1 ? window.starYellowURL : window.starEmptyURL,
-        onMouseOver: function onMouseOver() {
-          return _this3.handleStarHover(1);
-        },
-        onClick: function onClick() {
-          return _this3.handleRatingSubmit(1);
-        }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.starHover >= 2 ? window.starYellowURL : window.starEmptyURL,
-        onMouseOver: function onMouseOver() {
-          return _this3.handleStarHover(2);
-        },
-        onClick: function onClick() {
-          return _this3.handleRatingSubmit(2);
-        }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.starHover >= 3 ? window.starYellowURL : window.starEmptyURL,
-        onMouseOver: function onMouseOver() {
-          return _this3.handleStarHover(3);
-        },
-        onClick: function onClick() {
-          return _this3.handleRatingSubmit(3);
-        }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.starHover >= 4 ? window.starYellowURL : window.starEmptyURL,
-        onMouseOver: function onMouseOver() {
-          return _this3.handleStarHover(4);
-        },
-        onClick: function onClick() {
-          return _this3.handleRatingSubmit(4);
-        }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.starHover >= 5 ? window.starYellowURL : window.starEmptyURL,
-        onMouseOver: function onMouseOver() {
-          return _this3.handleStarHover(5);
-        },
-        onClick: function onClick() {
-          return _this3.handleRatingSubmit(5);
-        }
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "rating-total"
-      }, this.props.recipe.numRatings, " ratings"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "star-rating",
-        onMouseEnter: function onMouseEnter() {
-          return _this3.setState({
-            ratingHover: true
-          });
-        }
-      }, starRating)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_recipe_header_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ratings_rating_container__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-instructions-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-ingredients-list-container"
@@ -3689,6 +3851,7 @@ var createRating = function createRating(rating) {
   });
 };
 var updateRating = function updateRating(rating) {
+  debugger;
   return $.ajax({
     method: 'PATCH',
     url: "api/ratings/".concat(rating.id),

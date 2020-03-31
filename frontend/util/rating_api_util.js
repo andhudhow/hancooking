@@ -7,13 +7,15 @@ export const createRating = (rating) => {
   }))
 };
 
-export const updateRating = (rating) => (
+export const updateRating = (rating) => {
+  debugger
+  return (
   $.ajax({
     method: 'PATCH',
     url: `api/ratings/${rating.id}`,
     data: { rating }
-  })
-);
+  }))}
+;
 
 export const deleteRating = (ratingId) => (
   $.ajax({
