@@ -10,7 +10,10 @@ export const NutritionalData = props => {
     const nutrData = {
         title: recipe.title,
         yield: recipe.servings + "servings",
-        ingr: ingredients.reduce((acc, el) => acc.concat((el.quantity + " " + el.description)), [])
+        ingr: ingredients.reduce(
+            (ingrList, ingr) => ingrList.concat(
+                (ingr.quantity + " " + ingr.description))
+            , [])
     };
     
     useEffect(() => {

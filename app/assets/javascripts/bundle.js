@@ -1480,8 +1480,8 @@ var NutritionalData = function NutritionalData(props) {
   var nutrData = {
     title: recipe.title,
     "yield": recipe.servings + "servings",
-    ingr: ingredients.reduce(function (acc, el) {
-      return acc.concat(el.quantity + " " + el.description);
+    ingr: ingredients.reduce(function (ingrList, ingr) {
+      return ingrList.concat(ingr.quantity + " " + ingr.description);
     }, [])
   };
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
@@ -2183,17 +2183,12 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(RecipeShow).call(this, props));
     _this.state = {
       commentOpen: false,
-      commentContent: '',
-      nutritionalInfo: {},
-      nutrHover: false
+      commentContent: ''
     };
     _this.handleCommentClick = _this.handleCommentClick.bind(_assertThisInitialized(_this));
     _this.handleCommentSubmit = _this.handleCommentSubmit.bind(_assertThisInitialized(_this));
     _this.handleCommentCancel = _this.handleCommentCancel.bind(_assertThisInitialized(_this));
     _this.handleTyping = _this.handleTyping.bind(_assertThisInitialized(_this));
-    _this.setState = _this.setState.bind(_assertThisInitialized(_this)); // this.handleRatingHover = this.handleRatingHover.bind(this);
-    // this.handleStarHover = this.handleStarHover.bind(this);
-
     return _this;
   }
 

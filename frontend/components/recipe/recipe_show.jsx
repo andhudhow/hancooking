@@ -17,18 +17,13 @@ class RecipeShow extends React.Component{
     this.state = {
       commentOpen: false,
       commentContent: '',
-      nutritionalInfo: {},
-      nutrHover: false
     };
 
     this.handleCommentClick = this.handleCommentClick.bind(this);
     this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
     this.handleCommentCancel = this.handleCommentCancel.bind(this);
-  
     this.handleTyping = this.handleTyping.bind(this);
-    this.setState = this.setState.bind(this);
-    // this.handleRatingHover = this.handleRatingHover.bind(this);
-    // this.handleStarHover = this.handleStarHover.bind(this);
+  
   }
 
   componentDidMount() {
