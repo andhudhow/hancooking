@@ -1484,10 +1484,11 @@ var NutritionalData = function NutritionalData(props) {
       return acc.concat(el.quantity + " " + el.description);
     }, [])
   };
-  debugger;
-  Object(_util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_1__["fetchNutritionData"])(nutrData).then(function (pay) {
-    return setNutrInfo(pay);
-  });
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    Object(_util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_1__["fetchNutritionData"])(nutrData).then(function (payload) {
+      return setNutrInfo(payload);
+    });
+  }, []);
   return nutrInfo ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "nutr-container",
     onMouseLeave: function onMouseLeave() {
@@ -2189,7 +2190,6 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     _this.handleCommentClick = _this.handleCommentClick.bind(_assertThisInitialized(_this));
     _this.handleCommentSubmit = _this.handleCommentSubmit.bind(_assertThisInitialized(_this));
     _this.handleCommentCancel = _this.handleCommentCancel.bind(_assertThisInitialized(_this));
-    _this.getNutritionData = _this.getNutritionData.bind(_assertThisInitialized(_this));
     _this.handleTyping = _this.handleTyping.bind(_assertThisInitialized(_this));
     _this.setState = _this.setState.bind(_assertThisInitialized(_this)); // this.handleRatingHover = this.handleRatingHover.bind(this);
     // this.handleStarHover = this.handleStarHover.bind(this);
@@ -2200,7 +2200,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   _createClass(RecipeShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchRecipe(parseInt(this.props.match.params.recipeId)).then(this.getNutritionData());
+      this.props.fetchRecipe(parseInt(this.props.match.params.recipeId));
       {
         Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_6__["scrollTop"])();
       }
@@ -2210,7 +2210,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       if (prevProps.recipe && parseInt(this.props.match.params.recipeId) !== prevProps.recipe.id) {
-        this.props.fetchRecipe(parseInt(this.props.match.params.recipeId)).then(this.getNutritionData());
+        this.props.fetchRecipe(parseInt(this.props.match.params.recipeId));
       }
     }
   }, {

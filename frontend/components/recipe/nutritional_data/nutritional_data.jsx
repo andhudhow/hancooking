@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { fetchNutritionData } from '../../../util/nutr_info_api_util';
 
@@ -12,8 +12,11 @@ export const NutritionalData = props => {
         yield: recipe.servings + "servings",
         ingr: ingredients.reduce((acc, el) => acc.concat((el.quantity + " " + el.description)), [])
     };
-    debugger
-    fetchNutritionData(nutrData).then(pay => setNutrInfo(pay));
+    
+    useEffect(() => {
+        fetchNutritionData(nutrData)
+        .then(payload => setNutrInfo(payload))
+    }, []);
 
     return (
         nutrInfo ? 

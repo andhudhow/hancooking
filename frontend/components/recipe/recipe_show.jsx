@@ -13,16 +13,18 @@ class RecipeShow extends React.Component{
   constructor(props) {
     
     super(props);
+
     this.state = {
       commentOpen: false,
       commentContent: '',
       nutritionalInfo: {},
       nutrHover: false
     };
+
     this.handleCommentClick = this.handleCommentClick.bind(this);
     this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
     this.handleCommentCancel = this.handleCommentCancel.bind(this);
-    this.getNutritionData = this.getNutritionData.bind(this);
+  
     this.handleTyping = this.handleTyping.bind(this);
     this.setState = this.setState.bind(this);
     // this.handleRatingHover = this.handleRatingHover.bind(this);
@@ -31,14 +33,14 @@ class RecipeShow extends React.Component{
 
   componentDidMount() {
     
-    this.props.fetchRecipe(parseInt(this.props.match.params.recipeId)).then(this.getNutritionData())
+    this.props.fetchRecipe(parseInt(this.props.match.params.recipeId))
     { scrollTop() };
   }
 
   componentDidUpdate(prevProps) {
     
     if(prevProps.recipe && (parseInt(this.props.match.params.recipeId) !== prevProps.recipe.id)) {
-      this.props.fetchRecipe(parseInt(this.props.match.params.recipeId)).then(this.getNutritionData())
+      this.props.fetchRecipe(parseInt(this.props.match.params.recipeId))
     }
   }
   
