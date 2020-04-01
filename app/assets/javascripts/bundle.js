@@ -2345,9 +2345,6 @@ var mapStateToProps = function mapStateToProps(_ref, ownProps) {
       return entities.comments[key];
     }).sort(function (a, b) {
       return a.createdAt > b.createdAt ? -1 : 1;
-    }),
-    ratings: Object.keys(entities.ratings).map(function (key) {
-      return entities.ratings[key];
     })
   };
 };
