@@ -49,6 +49,7 @@ class RecipeShow extends React.Component{
       recipe_id: this.props.match.params.recipeId,
       body: this.state.commentContent
     });
+    
     this.setState( { 
       commentOpen: false,
       commentContent: '' }

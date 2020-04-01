@@ -1,4 +1,5 @@
 import React from 'react';
+
 import timeSince from '../../../util/time_ago_util';
 
 export const CommentIndex = (props) => {

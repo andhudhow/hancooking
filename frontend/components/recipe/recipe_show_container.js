@@ -19,9 +19,7 @@ const mapDispatchToProps = dispatch => ({
   fetchRecipe: recipeId => dispatch(fetchRecipe(recipeId)),
   fetchRecipes: () => dispatch(fetchRecipes()),
   saveComment: comment => dispatch(saveComment(comment)),
-  deleteComment: commentId => dispatch(deleteComment(commentId)),
-  createRating: rating => dispatch(createRating(rating)),
-  updateRating: rating => dispatch(updateRating(rating))
+  deleteComment: commentId => dispatch(deleteComment(commentId))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RecipeShow));

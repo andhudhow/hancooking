@@ -2375,12 +2375,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     deleteComment: function deleteComment(commentId) {
       return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__["deleteComment"])(commentId));
-    },
-    createRating: function createRating(rating) {
-      return dispatch(Object(_actions_rating_actions__WEBPACK_IMPORTED_MODULE_2__["createRating"])(rating));
-    },
-    updateRating: function updateRating(rating) {
-      return dispatch(Object(_actions_rating_actions__WEBPACK_IMPORTED_MODULE_2__["updateRating"])(rating));
     }
   };
 };
