@@ -5,9 +5,9 @@ import IngredientListIndex from './ingredients/ingredient_list_index';
 import PrepStepsListIndex from './prep_steps/prep_steps_list_index';
 import CommentIndexContainer from './comments/comment_index_container';
 import RatingContainer from './ratings/rating_container';
-import { scrollTop } from '../../util/scroll_util';
-import { fetchNutritionData } from '../../util/nutr_info_api_util';
 import { NutritionalData } from './nutritional_data/nutritional_data';
+
+import { scrollTop } from '../../util/scroll_util';
 
 class RecipeShow extends React.Component{
   constructor(props) {
@@ -37,20 +37,6 @@ class RecipeShow extends React.Component{
     if(prevProps.recipe && (parseInt(this.props.match.params.recipeId) !== prevProps.recipe.id)) {
       this.props.fetchRecipe(parseInt(this.props.match.params.recipeId))
     }
-  }
-  
-  getNutritionData() {
-    if (this.props.recipe) { 
-      const nutrData = {
-        title: this.props.recipe.title,
-        yield: this.props.recipe.servings + "servings",
-        ingr: this.props.ingredients.reduce((acc, el) => acc.concat((el.quantity + " " + el.description)), [])
-      };
-      
-      fetchNutritionData(nutrData).then(pay => this.setState( { nutritionalInfo: pay } ));
-    } else {
-      null
-    };
   }
   
   handleCommentClick() {

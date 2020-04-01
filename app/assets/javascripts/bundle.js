@@ -2141,9 +2141,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _prep_steps_prep_steps_list_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./prep_steps/prep_steps_list_index */ "./frontend/components/recipe/prep_steps/prep_steps_list_index.jsx");
 /* harmony import */ var _comments_comment_index_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./comments/comment_index_container */ "./frontend/components/recipe/comments/comment_index_container.js");
 /* harmony import */ var _ratings_rating_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ratings/rating_container */ "./frontend/components/recipe/ratings/rating_container.js");
-/* harmony import */ var _util_scroll_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../util/scroll_util */ "./frontend/util/scroll_util.js");
-/* harmony import */ var _util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../util/nutr_info_api_util */ "./frontend/util/nutr_info_api_util.js");
-/* harmony import */ var _nutritional_data_nutritional_data__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./nutritional_data/nutritional_data */ "./frontend/components/recipe/nutritional_data/nutritional_data.jsx");
+/* harmony import */ var _nutritional_data_nutritional_data__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./nutritional_data/nutritional_data */ "./frontend/components/recipe/nutritional_data/nutritional_data.jsx");
+/* harmony import */ var _util_scroll_util__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../util/scroll_util */ "./frontend/util/scroll_util.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2161,7 +2160,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -2197,7 +2195,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       this.props.fetchRecipe(parseInt(this.props.match.params.recipeId));
       {
-        Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_6__["scrollTop"])();
+        Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_7__["scrollTop"])();
       }
       ;
     }
@@ -2207,30 +2205,6 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       if (prevProps.recipe && parseInt(this.props.match.params.recipeId) !== prevProps.recipe.id) {
         this.props.fetchRecipe(parseInt(this.props.match.params.recipeId));
       }
-    }
-  }, {
-    key: "getNutritionData",
-    value: function getNutritionData() {
-      var _this2 = this;
-
-      if (this.props.recipe) {
-        var nutrData = {
-          title: this.props.recipe.title,
-          "yield": this.props.recipe.servings + "servings",
-          ingr: this.props.ingredients.reduce(function (acc, el) {
-            return acc.concat(el.quantity + " " + el.description);
-          }, [])
-        };
-        Object(_util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_7__["fetchNutritionData"])(nutrData).then(function (pay) {
-          return _this2.setState({
-            nutritionalInfo: pay
-          });
-        });
-      } else {
-        null;
-      }
-
-      ;
     }
   }, {
     key: "handleCommentClick",
@@ -2284,7 +2258,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         className: "instructions-header"
       }, "Ingredients"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ingredients_ingredient_list_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
         ingredients: this.props.ingredients
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nutritional_data_nutritional_data__WEBPACK_IMPORTED_MODULE_8__["NutritionalData"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nutritional_data_nutritional_data__WEBPACK_IMPORTED_MODULE_6__["NutritionalData"], {
         recipe: this.props.recipe,
         ingredients: this.props.ingredients
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
