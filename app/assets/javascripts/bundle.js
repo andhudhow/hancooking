@@ -1424,7 +1424,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var CommentIndex = function CommentIndex(props) {
-  return props.comments.map(function (comment) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "comment-index-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "comment-index"
+  }, props.comments.map(function (comment) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "comment-wrap"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -1446,7 +1450,7 @@ var CommentIndex = function CommentIndex(props) {
         return props.deleteComment(comment.id);
       }
     }, "Delete Note") : null)));
-  });
+  })));
 };
 /* harmony default export */ __webpack_exports__["default"] = (CommentIndex);
 
@@ -2388,11 +2392,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         className: "comments-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "instructions-header"
-      }, "Cooking Notes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_comment_form_container__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "comment-index-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "comment-index"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_comment_index_container__WEBPACK_IMPORTED_MODULE_4__["default"], null))))))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Cooking Notes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_comment_form_container__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_comment_index_container__WEBPACK_IMPORTED_MODULE_4__["default"], null))))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "loading-show"
       }, "Loading...");
     }

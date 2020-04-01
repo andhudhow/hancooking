@@ -93,38 +93,16 @@ class RecipeShow extends React.Component{
                   <div className="comments-container">
                     {/* TODO - ADD LOGIC FOR COOKED / UNCOOKED */}
                     <h3 className='instructions-header'>Cooking Notes</h3>
-                    {/* <form onSubmit={this.handleCommentSubmit}>
-                      <div className="comment-body-container">
-                        <div className="user-name-container">
-                          <div className="comment-input-container">
-                            <textarea className={this.state.commentOpen ? "comment-textarea-editing" : "comment-textarea"}
-                              onClick={this.handleCommentClick} 
-                              onChange={this.handleTyping}
-                              placeholder="Share your notes with other cooks or leave a private note."
-                              value={this.state.commentContent} >
-                            </textarea>
-                          </div>
-                          <div className={this.state.commentOpen ? "comment-action-container" : "comment-action-container-hidden"}>
-                            <button className="cancel-comment-btn" onClick={this.handleCommentCancel}>Cancel</button>
-                            <button className={this.state.commentContent.length > 1 ? "add-comment-btn" : "add-comment-btn-disabled" }>Add Note</button>
-                          </div>
-                        </div>
-                      </div>
-                    </form> */}
                     <CommentFormContainer />
-                    <div className="comment-index-container">
-                      <div className="comment-index">
                         <CommentIndexContainer />
-                      </div>
-                    </div>
                   </div>
+              </div>
             </div>
           </div>
-          </div>
           :
-        <div className="loading-show">
-          Loading...
-        </div>
+          <div className="loading-show">
+            Loading...
+          </div>
     )
   }
 }
