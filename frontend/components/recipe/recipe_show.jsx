@@ -5,9 +5,11 @@ import IngredientListIndex from './ingredients/ingredient_list_index';
 import PrepStepsListIndex from './prep_steps/prep_steps_list_index';
 import CommentIndexContainer from './comments/comment_index_container';
 import RatingContainer from './ratings/rating_container';
+import CommentFormContainer from './comments/comment_form_container';
 import { NutritionalData } from './nutritional_data/nutritional_data';
 
 import { scrollTop } from '../../util/scroll_util';
+import { CommentForm } from './comments/comment_form';
 
 class RecipeShow extends React.Component{
   constructor(props) {
@@ -49,7 +51,7 @@ class RecipeShow extends React.Component{
       recipe_id: this.props.match.params.recipeId,
       body: this.state.commentContent
     });
-    
+
     this.setState( { 
       commentOpen: false,
       commentContent: '' }
@@ -91,7 +93,7 @@ class RecipeShow extends React.Component{
                   <div className="comments-container">
                     {/* TODO - ADD LOGIC FOR COOKED / UNCOOKED */}
                     <h3 className='instructions-header'>Cooking Notes</h3>
-                    <form onSubmit={this.handleCommentSubmit}>
+                    {/* <form onSubmit={this.handleCommentSubmit}>
                       <div className="comment-body-container">
                         <div className="user-name-container">
                           <div className="comment-input-container">
@@ -108,13 +110,14 @@ class RecipeShow extends React.Component{
                           </div>
                         </div>
                       </div>
-                    </form>
+                    </form> */}
+                    <CommentFormContainer />
                     <div className="comment-index-container">
                       <div className="comment-index">
                         <CommentIndexContainer />
                       </div>
                     </div>
-            </div>
+                  </div>
             </div>
           </div>
           </div>

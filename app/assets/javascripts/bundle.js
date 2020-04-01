@@ -1233,10 +1233,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _main_login_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../main/login_form_container */ "./frontend/components/main/login_form_container.jsx");
-/* harmony import */ var _main_signup_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../main/signup_form_container */ "./frontend/components/main/signup_form_container.jsx");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _main_login_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../main/login_form_container */ "./frontend/components/main/login_form_container.jsx");
+/* harmony import */ var _main_signup_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../main/signup_form_container */ "./frontend/components/main/signup_form_container.jsx");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 
 
 
@@ -1255,11 +1255,11 @@ function Modal(_ref) {
 
   switch (modal) {
     case 'login':
-      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_login_form_container__WEBPACK_IMPORTED_MODULE_3__["default"], null);
+      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_login_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null);
       break;
 
     case 'signup':
-      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_signup_form_container__WEBPACK_IMPORTED_MODULE_4__["default"], null);
+      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_signup_form_container__WEBPACK_IMPORTED_MODULE_3__["default"], null);
       break;
 
     default:
@@ -1286,12 +1286,125 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     closeModal: function closeModal() {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["closeModal"])());
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(Modal));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(Modal));
+
+/***/ }),
+
+/***/ "./frontend/components/recipe/comments/comment_form.jsx":
+/*!**************************************************************!*\
+  !*** ./frontend/components/recipe/comments/comment_form.jsx ***!
+  \**************************************************************/
+/*! exports provided: CommentForm */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CommentForm", function() { return CommentForm; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+var CommentForm = function CommentForm(props) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      commentOpen = _useState2[0],
+      setCommentOpen = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      commentContent = _useState4[0],
+      setCommentContent = _useState4[1];
+
+  var handleCommentCancel = function handleCommentCancel(e) {
+    e.preventDefault(e);
+    setCommentContent('');
+    setCommentOpen(false);
+  };
+
+  var handleCommentSubmit = function handleCommentSubmit(e) {
+    e.preventDefault();
+    props.saveComment({
+      recipe_id: props.match.params.recipeId,
+      body: commentContent
+    });
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: handleCommentSubmit
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "comment-body-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "user-name-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "comment-input-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+    className: commentOpen ? "comment-textarea-editing" : "comment-textarea",
+    onClick: function onClick() {
+      return setCommentOpen(!commentOpen);
+    },
+    onChange: function onChange(e) {
+      return setCommentContent(e.currentTarget.value);
+    },
+    placeholder: "Share your notes with other cooks or leave a private note.",
+    value: commentContent
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: commentOpen ? "comment-action-container" : "comment-action-container-hidden"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "cancel-comment-btn",
+    onClick: handleCommentCancel
+  }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: commentContent.length > 1 ? "add-comment-btn" : "add-comment-btn-disabled"
+  }, "Add Note")))));
+};
+
+/***/ }),
+
+/***/ "./frontend/components/recipe/comments/comment_form_container.jsx":
+/*!************************************************************************!*\
+  !*** ./frontend/components/recipe/comments/comment_form_container.jsx ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
+/* harmony import */ var _comment_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./comment_form */ "./frontend/components/recipe/comments/comment_form.jsx");
+
+
+
+
+
+var mapStateToProps = function mapStateToProps(_ref, ownProps) {
+  var entities = _ref.entities;
+  return {
+    recipe: entities.recipes[ownProps.match.params.recipeId]
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    saveComment: function saveComment(comment) {
+      return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_2__["saveComment"])(comment));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_comment_form__WEBPACK_IMPORTED_MODULE_3__["CommentForm"])));
 
 /***/ }),
 
@@ -2141,8 +2254,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _prep_steps_prep_steps_list_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./prep_steps/prep_steps_list_index */ "./frontend/components/recipe/prep_steps/prep_steps_list_index.jsx");
 /* harmony import */ var _comments_comment_index_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./comments/comment_index_container */ "./frontend/components/recipe/comments/comment_index_container.js");
 /* harmony import */ var _ratings_rating_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ratings/rating_container */ "./frontend/components/recipe/ratings/rating_container.js");
-/* harmony import */ var _nutritional_data_nutritional_data__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./nutritional_data/nutritional_data */ "./frontend/components/recipe/nutritional_data/nutritional_data.jsx");
-/* harmony import */ var _util_scroll_util__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../util/scroll_util */ "./frontend/util/scroll_util.js");
+/* harmony import */ var _comments_comment_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./comments/comment_form_container */ "./frontend/components/recipe/comments/comment_form_container.jsx");
+/* harmony import */ var _nutritional_data_nutritional_data__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./nutritional_data/nutritional_data */ "./frontend/components/recipe/nutritional_data/nutritional_data.jsx");
+/* harmony import */ var _util_scroll_util__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../util/scroll_util */ "./frontend/util/scroll_util.js");
+/* harmony import */ var _comments_comment_form__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./comments/comment_form */ "./frontend/components/recipe/comments/comment_form.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2160,6 +2275,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -2195,7 +2312,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       this.props.fetchRecipe(parseInt(this.props.match.params.recipeId));
       {
-        Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_7__["scrollTop"])();
+        Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_8__["scrollTop"])();
       }
       ;
     }
@@ -2258,7 +2375,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         className: "instructions-header"
       }, "Ingredients"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ingredients_ingredient_list_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
         ingredients: this.props.ingredients
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nutritional_data_nutritional_data__WEBPACK_IMPORTED_MODULE_6__["NutritionalData"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nutritional_data_nutritional_data__WEBPACK_IMPORTED_MODULE_7__["NutritionalData"], {
         recipe: this.props.recipe,
         ingredients: this.props.ingredients
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2271,28 +2388,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         className: "comments-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "instructions-header"
-      }, "Cooking Notes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleCommentSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "comment-body-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "user-name-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "comment-input-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-        className: this.state.commentOpen ? "comment-textarea-editing" : "comment-textarea",
-        onClick: this.handleCommentClick,
-        onChange: this.handleTyping,
-        placeholder: "Share your notes with other cooks or leave a private note.",
-        value: this.state.commentContent
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: this.state.commentOpen ? "comment-action-container" : "comment-action-container-hidden"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "cancel-comment-btn",
-        onClick: this.handleCommentCancel
-      }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: this.state.commentContent.length > 1 ? "add-comment-btn" : "add-comment-btn-disabled"
-      }, "Add Note"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Cooking Notes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_comment_form_container__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-index-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-index"
@@ -2320,10 +2416,8 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
-/* harmony import */ var _actions_rating_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/rating_actions */ "./frontend/actions/rating_actions.js");
-/* harmony import */ var _recipe_show__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./recipe_show */ "./frontend/components/recipe/recipe_show.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-
+/* harmony import */ var _recipe_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./recipe_show */ "./frontend/components/recipe/recipe_show.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
 
@@ -2376,7 +2470,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_recipe_show__WEBPACK_IMPORTED_MODULE_3__["default"])));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_recipe_show__WEBPACK_IMPORTED_MODULE_2__["default"])));
 
 /***/ }),
 
