@@ -1,12 +1,13 @@
 import React from 'react';
 
 import RecipeHeaderContainer from './recipe_header_container';
-import IngredientListIndex from './ingredient_list_index';
-import PrepStepsListIndex from './prep_steps_list_index';
+import IngredientListIndex from './ingredients/ingredient_list_index';
+import PrepStepsListIndex from './prep_steps/prep_steps_list_index';
 import CommentIndexContainer from './comments/comment_index_container';
 import RatingContainer from './ratings/rating_container';
 import { scrollTop } from '../../util/scroll_util';
 import { fetchNutritionData } from '../../util/nutr_info_api_util';
+import { NutritionalData } from './nutritional_data/nutritional_data';
 
 class RecipeShow extends React.Component{
   constructor(props) {
@@ -97,48 +98,7 @@ class RecipeShow extends React.Component{
                 {/* <button className="add-glist-btn" type="button">
                   Add to Your Grocery List
                 </button> */}
-                {this.state.nutritionalInfo.calories ? 
-                  <div className="nutr-container" onMouseLeave = {()=>this.setState( { nutrHover : false } )}>
-                    <div className='nutr-header'>
-                      <img className='nutr-icon' 
-                        src={window.nutrInfoIconOutline}
-                        onMouseEnter = {()=>this.setState( { nutrHover : true } )}
-                        // onMouseLeave = {()=>this.setState( { nutrHover : false } )}
-                        />
-                      <span className="nutr-header-text" 
-                        onMouseEnter = {()=>this.setState( { nutrHover : true } )}
-                        // onMouseLeave = {()=>this.setState( { nutrHover : false } )}
-                      > Nutritional Information</span>
-                    </div>
-                      {this.state.nutritionalInfo.totalNutrients ? 
-                        <div className={this.state.nutrHover ? "nutr-list" : "nutr-hidden"} >
-                          <div className="nutr-index-header">Based on {this.props.recipe.servings} servings:</div>
-                          {this.state.nutritionalInfo.calories ?
-                            <li>Calories: {Math.floor(this.state.nutritionalInfo.calories)}</li> : null}
-                          {this.state.nutritionalInfo.totalNutrients.CHOCDF ?
-                            <li>Carbs: {Math.floor(this.state.nutritionalInfo.totalNutrients.CHOCDF.quantity)} grams </li> : null }
-                          {this.state.nutritionalInfo.totalNutrients.FAT ?
-                            <li>Fat: {Math.floor(this.state.nutritionalInfo.totalNutrients.FAT.quantity)} grams</li> : null }
-                          {this.state.nutritionalInfo.totalNutrients.FATRN ?
-                            <li>Trans Fat: {Math.floor(this.state.nutritionalInfo.totalNutrients.FATRN.quantity)} grams</li> : null }
-                          {this.state.nutritionalInfo.totalNutrients.FAMS ?
-                            <li>Monosaturated Fat: {Math.floor(this.state.nutritionalInfo.totalNutrients.FAMS.quantity)} grams</li> : null }
-                          {this.state.nutritionalInfo.totalNutrients.FAPU ?
-                            <li>Polyunsaturated Fat: {Math.floor(this.state.nutritionalInfo.totalNutrients.FAPU.quantity)} grams</li> : null }
-                          {this.state.nutritionalInfo.totalNutrients.FIBTG ?
-                            <li>Fiber: {Math.floor(this.state.nutritionalInfo.totalNutrients.FIBTG.quantity)} grams</li> : null }
-                          {this.state.nutritionalInfo.totalNutrients.SUGAR ?
-                            <li>Sugar: {Math.floor(this.state.nutritionalInfo.totalNutrients.SUGAR.quantity)} grams</li> : null }
-                          {this.state.nutritionalInfo.totalNutrients.PROCNT ?
-                            <li>Protein: {Math.floor(this.state.nutritionalInfo.totalNutrients.PROCNT.quantity)} grams</li> : null }
-                          {this.state.nutritionalInfo.totalNutrients.NA ?
-                            <li>Sodium: {Math.floor(this.state.nutritionalInfo.totalNutrients.NA.quantity)} grams</li> : null }
-                          <p className="nutrition-note">Note: The information shown is Edamam’s estimate based on available ingredients and preparation. It should not be considered a substitute for a professional nutritionist’s advice.</p>
-                          <p className="nutrition-attribution">Powered by <img id="edamam-logo" src="https://static01.nyt.com/applications/cooking/982798d/assets/edamam-logo.png"></img></p>
-                        </div>
-                      : null }
-                  </div>
-                  : null }
+                <NutritionalData recipe={this.props.recipe} ingredients={this.props.ingredients} />
               </div>
               <div className="recipe-prepsteps-list">
                 <h3 className='instructions-header'>Preparation</h3>

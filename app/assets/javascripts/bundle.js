@@ -1380,21 +1380,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/recipe/ingredient_list_index.jsx":
-/*!**************************************************************!*\
-  !*** ./frontend/components/recipe/ingredient_list_index.jsx ***!
-  \**************************************************************/
-/*! exports provided: default */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/andrewhowell/Desktop/aA/hancooking/frontend/components/recipe/ingredient_list_index.jsx'");
-
-/***/ }),
-
-/***/ "./frontend/components/recipe/prep_steps_list_index.jsx":
-/*!**************************************************************!*\
-  !*** ./frontend/components/recipe/prep_steps_list_index.jsx ***!
-  \**************************************************************/
+/***/ "./frontend/components/recipe/ingredients/ingredient_list_index.jsx":
+/*!**************************************************************************!*\
+  !*** ./frontend/components/recipe/ingredients/ingredient_list_index.jsx ***!
+  \**************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1402,7 +1391,149 @@ throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _prep_steps_list_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./prep_steps_list_index_item */ "./frontend/components/recipe/prep_steps_list_index_item.jsx");
+/* harmony import */ var _ingredient_list_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ingredient_list_index_item */ "./frontend/components/recipe/ingredients/ingredient_list_index_item.jsx");
+
+
+
+var IngredientListIndex = function IngredientListIndex(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ingredients-wrap"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "ingredient-list"
+  }, props.ingredients.map(function (ingredient, index) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ingredient_list_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      ingredient: ingredient,
+      key: index
+    });
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (IngredientListIndex);
+
+/***/ }),
+
+/***/ "./frontend/components/recipe/ingredients/ingredient_list_index_item.jsx":
+/*!*******************************************************************************!*\
+  !*** ./frontend/components/recipe/ingredients/ingredient_list_index_item.jsx ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var IngredientListIndexItem = function IngredientListIndexItem(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    key: props.key,
+    className: "ingredient"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "ingredient-quantity"
+  }, props.ingredient.quantity), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "ingredient-desc"
+  }, props.ingredient.description));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (IngredientListIndexItem);
+
+/***/ }),
+
+/***/ "./frontend/components/recipe/nutritional_data/nutritional_data.jsx":
+/*!**************************************************************************!*\
+  !*** ./frontend/components/recipe/nutritional_data/nutritional_data.jsx ***!
+  \**************************************************************************/
+/*! exports provided: NutritionalData */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NutritionalData", function() { return NutritionalData; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../util/nutr_info_api_util */ "./frontend/util/nutr_info_api_util.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+var NutritionalData = function NutritionalData(props) {
+  var recipe = props.recipe,
+      ingredients = props.ingredients;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      nutrHover = _useState2[0],
+      setNutrHover = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(nutrInfo),
+      _useState4 = _slicedToArray(_useState3, 2),
+      nutrInfo = _useState4[0],
+      setNutrInfo = _useState4[1];
+
+  var nutrData = {
+    title: recipe.title,
+    "yield": recipe.servings + "servings",
+    ingr: ingredients.reduce(function (acc, el) {
+      return acc.concat(el.quantity + " " + el.description);
+    }, [])
+  };
+  debugger;
+  Object(_util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_1__["fetchNutritionData"])(nutrData).then(function (pay) {
+    return setNutrInfo(pay);
+  });
+  return nutrInfo ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "nutr-container",
+    onMouseLeave: function onMouseLeave() {
+      return setNutrHover(false);
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "nutr-header"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "nutr-icon",
+    src: window.nutrInfoIconOutline,
+    onMouseEnter: function onMouseEnter() {
+      return setNutrHover(true);
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "nutr-header-text",
+    onMouseEnter: function onMouseEnter() {
+      return setNutrHover(true);
+    }
+  }, " Nutritional Information")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: nutrHover ? "nutr-list" : "nutr-hidden"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "nutr-index-header"
+  }, "Based on ", recipe.servings, " servings:"), nutrInfo.calories ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Calories: ", Math.floor(nutrInfo.calories)) : null, nutrInfo.totalNutrients.CHOCDF ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Carbs: ", Math.floor(nutrInfo.totalNutrients.CHOCDF.quantity), " grams ") : null, nutrInfo.totalNutrients.FAT ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Fat: ", Math.floor(nutrInfo.totalNutrients.FAT.quantity), " grams") : null, nutrInfo.totalNutrients.FATRN ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Trans Fat: ", Math.floor(nutrInfo.totalNutrients.FATRN.quantity), " grams") : null, nutrInfo.totalNutrients.FAMS ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Monosaturated Fat: ", Math.floor(nutrInfo.totalNutrients.FAMS.quantity), " grams") : null, nutrInfo.totalNutrients.FAPU ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Polyunsaturated Fat: ", Math.floor(nutrInfo.totalNutrients.FAPU.quantity), " grams") : null, nutrInfo.totalNutrients.FIBTG ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Fiber: ", Math.floor(nutrInfo.totalNutrients.FIBTG.quantity), " grams") : null, nutrInfo.totalNutrients.SUGAR ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Sugar: ", Math.floor(nutrInfo.totalNutrients.SUGAR.quantity), " grams") : null, nutrInfo.totalNutrients.PROCNT ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Protein: ", Math.floor(nutrInfo.totalNutrients.PROCNT.quantity), " grams") : null, nutrInfo.totalNutrients.NA ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Sodium: ", Math.floor(nutrInfo.totalNutrients.NA.quantity), " grams") : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "nutrition-note"
+  }, "Note: The information shown is Edamam\u2019s estimate based on available ingredients and preparation. It should not be considered a substitute for a professional nutritionist\u2019s advice."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "nutrition-attribution"
+  }, "Powered by ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    id: "edamam-logo",
+    src: "https://static01.nyt.com/applications/cooking/982798d/assets/edamam-logo.png"
+  })))) : null;
+};
+
+/***/ }),
+
+/***/ "./frontend/components/recipe/prep_steps/prep_steps_list_index.jsx":
+/*!*************************************************************************!*\
+  !*** ./frontend/components/recipe/prep_steps/prep_steps_list_index.jsx ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _prep_steps_list_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./prep_steps_list_index_item */ "./frontend/components/recipe/prep_steps/prep_steps_list_index_item.jsx");
 
 
 
@@ -1423,10 +1554,10 @@ var PrepStepListIndex = function PrepStepListIndex(props) {
 
 /***/ }),
 
-/***/ "./frontend/components/recipe/prep_steps_list_index_item.jsx":
-/*!*******************************************************************!*\
-  !*** ./frontend/components/recipe/prep_steps_list_index_item.jsx ***!
-  \*******************************************************************/
+/***/ "./frontend/components/recipe/prep_steps/prep_steps_list_index_item.jsx":
+/*!******************************************************************************!*\
+  !*** ./frontend/components/recipe/prep_steps/prep_steps_list_index_item.jsx ***!
+  \******************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2005,12 +2136,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _recipe_header_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./recipe_header_container */ "./frontend/components/recipe/recipe_header_container.jsx");
-/* harmony import */ var _ingredient_list_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ingredient_list_index */ "./frontend/components/recipe/ingredient_list_index.jsx");
-/* harmony import */ var _prep_steps_list_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./prep_steps_list_index */ "./frontend/components/recipe/prep_steps_list_index.jsx");
+/* harmony import */ var _ingredients_ingredient_list_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ingredients/ingredient_list_index */ "./frontend/components/recipe/ingredients/ingredient_list_index.jsx");
+/* harmony import */ var _prep_steps_prep_steps_list_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./prep_steps/prep_steps_list_index */ "./frontend/components/recipe/prep_steps/prep_steps_list_index.jsx");
 /* harmony import */ var _comments_comment_index_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./comments/comment_index_container */ "./frontend/components/recipe/comments/comment_index_container.js");
 /* harmony import */ var _ratings_rating_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ratings/rating_container */ "./frontend/components/recipe/ratings/rating_container.js");
 /* harmony import */ var _util_scroll_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../util/scroll_util */ "./frontend/util/scroll_util.js");
 /* harmony import */ var _util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../util/nutr_info_api_util */ "./frontend/util/nutr_info_api_util.js");
+/* harmony import */ var _nutritional_data_nutritional_data__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./nutritional_data/nutritional_data */ "./frontend/components/recipe/nutritional_data/nutritional_data.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2028,6 +2160,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2145,8 +2278,6 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
-
       var fetchedRecipeId = this.props.ingredients[0] ? this.props.ingredients[0].recipeId : null;
       return this.props.recipe && this.props.match.params && fetchedRecipeId && fetchedRecipeId === parseInt(this.props.match.params.recipeId) ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-show-container"
@@ -2156,50 +2287,16 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         className: "recipe-ingredients-list-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "instructions-header"
-      }, "Ingredients"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ingredient_list_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, "Ingredients"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ingredients_ingredient_list_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
         ingredients: this.props.ingredients
-      }), this.state.nutritionalInfo.calories ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "nutr-container",
-        onMouseLeave: function onMouseLeave() {
-          return _this3.setState({
-            nutrHover: false
-          });
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "nutr-header"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "nutr-icon",
-        src: window.nutrInfoIconOutline,
-        onMouseEnter: function onMouseEnter() {
-          return _this3.setState({
-            nutrHover: true
-          });
-        } // onMouseLeave = {()=>this.setState( { nutrHover : false } )}
-
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "nutr-header-text",
-        onMouseEnter: function onMouseEnter() {
-          return _this3.setState({
-            nutrHover: true
-          });
-        } // onMouseLeave = {()=>this.setState( { nutrHover : false } )}
-
-      }, " Nutritional Information")), this.state.nutritionalInfo.totalNutrients ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: this.state.nutrHover ? "nutr-list" : "nutr-hidden"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "nutr-index-header"
-      }, "Based on ", this.props.recipe.servings, " servings:"), this.state.nutritionalInfo.calories ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Calories: ", Math.floor(this.state.nutritionalInfo.calories)) : null, this.state.nutritionalInfo.totalNutrients.CHOCDF ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Carbs: ", Math.floor(this.state.nutritionalInfo.totalNutrients.CHOCDF.quantity), " grams ") : null, this.state.nutritionalInfo.totalNutrients.FAT ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FAT.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.FATRN ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Trans Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FATRN.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.FAMS ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Monosaturated Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FAMS.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.FAPU ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Polyunsaturated Fat: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FAPU.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.FIBTG ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Fiber: ", Math.floor(this.state.nutritionalInfo.totalNutrients.FIBTG.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.SUGAR ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Sugar: ", Math.floor(this.state.nutritionalInfo.totalNutrients.SUGAR.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.PROCNT ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Protein: ", Math.floor(this.state.nutritionalInfo.totalNutrients.PROCNT.quantity), " grams") : null, this.state.nutritionalInfo.totalNutrients.NA ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Sodium: ", Math.floor(this.state.nutritionalInfo.totalNutrients.NA.quantity), " grams") : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "nutrition-note"
-      }, "Note: The information shown is Edamam\u2019s estimate based on available ingredients and preparation. It should not be considered a substitute for a professional nutritionist\u2019s advice."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "nutrition-attribution"
-      }, "Powered by ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        id: "edamam-logo",
-        src: "https://static01.nyt.com/applications/cooking/982798d/assets/edamam-logo.png"
-      }))) : null) : null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nutritional_data_nutritional_data__WEBPACK_IMPORTED_MODULE_8__["NutritionalData"], {
+        recipe: this.props.recipe,
+        ingredients: this.props.ingredients
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-prepsteps-list"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "instructions-header"
-      }, "Preparation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_prep_steps_list_index__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, "Preparation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_prep_steps_prep_steps_list_index__WEBPACK_IMPORTED_MODULE_3__["default"], {
         prepSteps: this.props.prepSteps
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comments-container"
