@@ -2945,7 +2945,7 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
           this.setState({
             results: []
           });
-          this.props.history.push("/search/".concat(this.props.search.query));
+          this.props.history.push("/search/".concat(this.props.searchQuery));
         } else {
           this.props.openModal('login');
         }

@@ -46,9 +46,9 @@ class SearchBar extends React.Component {
     if (e.key === 'Enter') {
       if (this.props.loggedIn) {
         this.setState( { results: [] });
-        this.props.history.push(`/search/${this.props.search.query}`)
+        this.props.history.push(`/search/${this.props.searchQuery}`)
       } else {
-        this.props.openModal('login');  
+        this.props.openModal('login');
       };
     }
 }
