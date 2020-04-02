@@ -25,10 +25,15 @@ class NavBar extends React.Component{
 
     const sessionButtons = () => (
       <ul>
-        <li className='nav-btns' onClick={() => openModal('login')}>Log in</li>
-        <li className='nav-btns' onClick={() => openModal('signup')}>Sign up</li>
+        <li className='nav-btns'
+          onClick={() => openModal('login')}>Log in</li>
+        <li className='nav-btns'
+          onClick={() => openModal('signup')}>Sign up</li>
         <li className='nav-btns' 
-          onClick={() => login({ email: 'andhudhow@gmail.com', password: 'password'})}>Demo
+          onClick={() => login({
+            email: 'andhudhow@gmail.com',
+            password: 'password'
+          })}>Demo
         </li>
       </ul>
     );
