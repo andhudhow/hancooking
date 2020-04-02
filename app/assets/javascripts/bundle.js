@@ -318,19 +318,21 @@ var deleteComment = function deleteComment(commentId) {
 /*!********************************************!*\
   !*** ./frontend/actions/search_actions.js ***!
   \********************************************/
-/*! exports provided: receiveSearchQuery, removeSearchQuery */
+/*! exports provided: RECEIVE_SEARCH_QUERY, REMOVE_SEARCH_QUERY, receiveSearchQuery, removeSearchQuery */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SEARCH_QUERY", function() { return RECEIVE_SEARCH_QUERY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_SEARCH_QUERY", function() { return REMOVE_SEARCH_QUERY; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveSearchQuery", function() { return receiveSearchQuery; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeSearchQuery", function() { return removeSearchQuery; });
 var RECEIVE_SEARCH_QUERY = "RECEIVE_SEARCH_QUERY";
 var REMOVE_SEARCH_QUERY = "REMOVE_SEARCH_QUERY";
-var receiveSearchQuery = function receiveSearchQuery(searchQuery) {
+var receiveSearchQuery = function receiveSearchQuery(query) {
   return {
     type: RECEIVE_SEARCH_QUERY,
-    searchQuery: searchQuery
+    query: query
   };
 };
 var removeSearchQuery = function removeSearchQuery() {
@@ -2891,7 +2893,6 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SearchBar).call(this, props));
     _this.state = {
-      query: '',
       results: []
     };
     _this.handleTyping = _this.handleTyping.bind(_assertThisInitialized(_this));
@@ -2910,9 +2911,7 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleTyping",
     value: function handleTyping(e) {
-      this.setState({
-        query: e.target.value
-      });
+      this.props.receiveSearchQuery(e.target.value);
       this.filterResults();
     }
   }, {
@@ -2946,7 +2945,7 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
           this.setState({
             results: []
           });
-          this.props.history.push("/search/".concat(this.state.query));
+          this.props.history.push("/search/".concat(this.props.search.query));
         } else {
           this.props.openModal('login');
         }
@@ -2960,7 +2959,7 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       var results = this.props.recipes.filter(function (recipe) {
-        return recipe.title.toLowerCase().split(' ').join('').includes(_this2.state.query.toLowerCase()) || recipe.description.toLowerCase().split(' ').join('').includes(_this2.state.query.toLowerCase());
+        return recipe.title.toLowerCase().split(' ').join('').includes(_this2.props.searchQuery.toLowerCase()) || recipe.description.toLowerCase().split(' ').join('').includes(_this2.props.searchQuery.toLowerCase());
       });
       this.setState({
         results: results
@@ -2994,9 +2993,9 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
         type: "text",
         placeholder: "\uD83D\uDD0D What would you like to cook?",
         onChange: this.handleTyping,
-        value: this.state.query,
+        value: this.props.searchQuery,
         onKeyPress: this.handleKeyEnterPress
-      }), this.state.query.length > 1 ? resultList.slice(0, 6) : null));
+      }), this.props.searchQuery && this.props.searchQuery.length > 1 ? resultList.slice(0, 6) : null));
     }
   }]);
 
@@ -3602,7 +3601,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var searchReducer = function searchReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
   var newState = Object.assign({}, state);
@@ -3613,7 +3612,7 @@ var searchReducer = function searchReducer() {
       return newState;
 
     case _actions_search_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_SEARCH_QUERY"]:
-      delete newState.query;
+      newState.query = "";
       return newState;
 
     default:
@@ -3933,7 +3932,6 @@ var createRating = function createRating(rating) {
   });
 };
 var updateRating = function updateRating(rating) {
-  debugger;
   return $.ajax({
     method: 'PATCH',
     url: "api/ratings/".concat(rating.id),

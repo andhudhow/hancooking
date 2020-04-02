@@ -8,7 +8,6 @@ export const createRating = (rating) => {
 };
 
 export const updateRating = (rating) => {
-  debugger
   return (
   $.ajax({
     method: 'PATCH',

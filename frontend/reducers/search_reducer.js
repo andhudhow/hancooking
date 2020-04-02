@@ -3,7 +3,7 @@ import {
     REMOVE_SEARCH_QUERY
 } from '../actions/search_actions';
 
-const searchReducer = (state = {}, action) => {
+const searchReducer = (state = "", action) => {
     Object.freeze(state);
 
     let newState = Object.assign({}, state);
@@ -13,7 +13,7 @@ const searchReducer = (state = {}, action) => {
             newState.query = action.query;
             return newState;
         case REMOVE_SEARCH_QUERY:
-            delete newState.query
+            newState.query = "";
             return newState;
         default:
             return state;

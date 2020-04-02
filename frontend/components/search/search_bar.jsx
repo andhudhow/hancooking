@@ -9,7 +9,6 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: '',
       results: [],
     }
     this.handleTyping = this.handleTyping.bind(this);
@@ -24,7 +23,7 @@ class SearchBar extends React.Component {
   }
   
   handleTyping(e){
-    this.setState( {query: e.target.value} );
+    this.props.receiveSearchQuery(e.target.value);
     this.filterResults();
   }
 
@@ -47,7 +46,7 @@ class SearchBar extends React.Component {
     if (e.key === 'Enter') {
       if (this.props.loggedIn) {
         this.setState( { results: [] });
-        this.props.history.push(`/search/${this.state.query}`)
+        this.props.history.push(`/search/${this.props.search.query}`)
       } else {
         this.props.openModal('login');  
       };
@@ -55,14 +54,13 @@ class SearchBar extends React.Component {
 }
 
   filterResults() {
-    
     let results = 
-      this.props.recipes.filter(recipe => (
-        recipe.title.toLowerCase().split(' ').join('').includes(this.state.query.toLowerCase())
-        || recipe.description.toLowerCase().split(' ').join('').includes(this.state.query.toLowerCase())
-      ));
+      this.props.recipes.filter(recipe => { return (
+        recipe.title.toLowerCase().split(' ').join('').includes(this.props.searchQuery.toLowerCase())
+        || recipe.description.toLowerCase().split(' ').join('').includes(this.props.searchQuery.toLowerCase())
+      )});
 
-    this.setState({ results })
+      this.setState({ results })
   }
   
   render() {
@@ -85,10 +83,10 @@ class SearchBar extends React.Component {
             type='text'
             placeholder='🔍 What would you like to cook?'
             onChange={this.handleTyping}
-            value={this.state.query}
+            value={this.props.searchQuery}
             onKeyPress={this.handleKeyEnterPress}
           />
-          {this.state.query.length > 1 ? resultList.slice(0,6) : null}
+          {this.props.searchQuery && this.props.searchQuery.length > 1 ? resultList.slice(0,6) : null}
         </div>
       </section>
     )
