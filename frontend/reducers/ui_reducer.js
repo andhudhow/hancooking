@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
 import modal from './modal_reducer';
-import searchQuery from './search_query_reducer';
+import search from './search_reducer';
 
 export default combineReducers({
   modal,
-  searchQuery
+  search
 });
