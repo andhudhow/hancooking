@@ -314,6 +314,33 @@ var deleteComment = function deleteComment(commentId) {
 
 /***/ }),
 
+/***/ "./frontend/actions/search_query_actions.js":
+/*!**************************************************!*\
+  !*** ./frontend/actions/search_query_actions.js ***!
+  \**************************************************/
+/*! exports provided: receiveSearchQuery, removeSearchQuery */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveSearchQuery", function() { return receiveSearchQuery; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeSearchQuery", function() { return removeSearchQuery; });
+var RECEIVE_SEARCH_QUERY = "RECEIVE_SEARCH_QUERY";
+var REMOVE_SEARCH_QUERY = "REMOVE_SEARCH_QUERY";
+var receiveSearchQuery = function receiveSearchQuery(searchQuery) {
+  return {
+    type: RECEIVE_SEARCH_QUERY,
+    searchQuery: searchQuery
+  };
+};
+var removeSearchQuery = function removeSearchQuery() {
+  return {
+    type: REMOVE_SEARCH_QUERY
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -2984,9 +3011,11 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _search_bar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./search_bar */ "./frontend/components/search/search_bar.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _search_bar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./search_bar */ "./frontend/components/search/search_bar.jsx");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _actions_search_query_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/search_query_actions */ "./frontend/actions/search_query_actions.js");
+
 
 
 
@@ -2994,10 +3023,12 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(_ref) {
   var entities = _ref.entities,
-      session = _ref.session;
+      session = _ref.session,
+      ui = _ref.ui;
   return {
     recipes: Object.values(entities.recipes),
-    loggedIn: Boolean(session.currentUser)
+    loggedIn: Boolean(session.currentUser),
+    searchQuery: ui.searchQuery
   };
 };
 
@@ -3018,11 +3049,17 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     }),
     openModal: function openModal(modal) {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])(modal));
+    },
+    receiveSearchQuery: function receiveSearchQuery(searchQuery) {
+      return dispatch(Object(_actions_search_query_actions__WEBPACK_IMPORTED_MODULE_4__["receiveSearchQuery"])(searchQuery));
+    },
+    removeSearchQuery: function removeSearchQuery() {
+      return dispatch(Object(_actions_search_query_actions__WEBPACK_IMPORTED_MODULE_4__["removeSearchQuery"])());
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_search_bar__WEBPACK_IMPORTED_MODULE_1__["default"])));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_search_bar__WEBPACK_IMPORTED_MODULE_2__["default"])));
 
 /***/ }),
 
@@ -3373,6 +3410,7 @@ function modalReducer() {
       return state;
   }
 }
+;
 
 /***/ }),
 
@@ -3464,8 +3502,6 @@ var recipesReducer = function recipesReducer() {
   switch (action.type) {
     case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_RECIPES"]:
       return action.recipes;
-    // case RECEIVE_RECIPE:
-    //   return action.recipe.recipe;
 
     default:
       return state;
@@ -3544,6 +3580,39 @@ var savedRecipesReducer = function savedRecipesReducer() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (savedRecipesReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/search_query_reducer.js":
+/*!***************************************************!*\
+  !*** ./frontend/reducers/search_query_reducer.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_search_query_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/search_query_actions */ "./frontend/actions/search_query_actions.js");
+
+
+var searchQueryReducer = function searchQueryReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_search_query_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SEARCH_QUERY"]:
+      return action.searchQuery;
+
+    case _actions_search_query_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_SEARCH_QUERY"]:
+      return null;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (searchQueryReducer);
 
 /***/ }),
 
@@ -3706,10 +3775,13 @@ var sessionReducer = function sessionReducer() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _modal_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal_reducer */ "./frontend/reducers/modal_reducer.js");
+/* harmony import */ var _search_query_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./search_query_reducer */ "./frontend/reducers/search_query_reducer.js");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  modal: _modal_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  modal: _modal_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  searchQuery: _search_query_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 }));
 
 /***/ }),
