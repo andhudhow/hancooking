@@ -45,7 +45,7 @@ class NavBar extends React.Component{
     return(
       <section className='main-nav'>
         <div className='logo-wrapper'>
-          <Link to='/'>
+          <Link to='/' onClick={this.props.removeSearchQuery}>
             <img className='logo' src={window.logoURL} />
           </Link>
         </div>
