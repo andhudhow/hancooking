@@ -9,7 +9,6 @@ import CommentFormContainer from './comments/comment_form_container';
 import { NutritionalData } from './nutritional_data/nutritional_data';
 
 import { scrollTop } from '../../util/scroll_util';
-import { CommentForm } from './comments/comment_form';
 
 class RecipeShow extends React.Component{
   constructor(props) {
@@ -69,10 +68,19 @@ class RecipeShow extends React.Component{
   }
   
   render() {
-    const fetchedRecipeId = this.props.ingredients[0] ? this.props.ingredients[0].recipeId : null
+    const fetchedRecipeId = this.props.ingredients[0] 
+      ? 
+      this.props.ingredients[0].recipeId
+      :
+      null
     
     return (
-        this.props.recipe && this.props.match.params && fetchedRecipeId && (fetchedRecipeId === parseInt(this.props.match.params.recipeId)) ?
+        this.props.recipe 
+          && this.props.match.params
+          && fetchedRecipeId
+          && (fetchedRecipeId === parseInt(this.props.match.params.recipeId))
+          
+          ?
           <div className="recipe-show-container">
             <RecipeHeaderContainer />
             <RatingContainer />
@@ -84,7 +92,9 @@ class RecipeShow extends React.Component{
                 {/* <button className="add-glist-btn" type="button">
                   Add to Your Grocery List
                 </button> */}
-                <NutritionalData recipe={this.props.recipe} ingredients={this.props.ingredients} />
+                <NutritionalData
+                  recipe={this.props.recipe}
+                  ingredients={this.props.ingredients} />
               </div>
               <div className="recipe-prepsteps-list">
                 <h3 className='instructions-header'>Preparation</h3>
