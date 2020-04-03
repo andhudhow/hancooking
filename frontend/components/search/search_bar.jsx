@@ -86,7 +86,8 @@ class SearchBar extends React.Component {
             value={this.props.searchQuery}
             onKeyPress={this.handleKeyEnterPress}
           />
-          {this.props.searchQuery && this.props.searchQuery.length > 1 ? resultList.slice(0,6) : null}
+          {this.props.searchQuery
+            && this.props.searchQuery.length > 1 ? resultList.slice(0,6) : null}
         </div>
       </section>
     )

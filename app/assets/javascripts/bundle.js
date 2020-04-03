@@ -675,7 +675,7 @@ var Main = /*#__PURE__*/function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "rotd-label"
       }, "Recipe", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "of the day"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/recipes/19"
+        to: "recipes/".concat(this.props.featuredRecipeId)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "rotd-card",
         onClick: this.handleClick
@@ -856,11 +856,12 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(_ref) {
   var entities = _ref.entities,
       session = _ref.session;
+  debugger;
   return {
     recipes: entities.recipes,
-    // featured_recipe: entities.recipes
     editor: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_1__["selectEditorRecipes"])(entities.recipes),
     popular: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_1__["selectPopularRecipes"])(entities.recipes),
+    featuredRecipeId: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_1__["selectFeaturedRecipe"])(entities.recipes),
     loggedIn: Boolean(session.currentUser)
   };
 };
@@ -3628,7 +3629,7 @@ var searchReducer = function searchReducer() {
 /*!****************************************!*\
   !*** ./frontend/reducers/selectors.js ***!
   \****************************************/
-/*! exports provided: selectAllRecipes, selectEditorRecipes, selectPopularRecipes */
+/*! exports provided: selectAllRecipes, selectEditorRecipes, selectPopularRecipes, selectFeaturedRecipe */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3636,6 +3637,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAllRecipes", function() { return selectAllRecipes; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectEditorRecipes", function() { return selectEditorRecipes; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectPopularRecipes", function() { return selectPopularRecipes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectFeaturedRecipe", function() { return selectFeaturedRecipe; });
 var selectAllRecipes = function selectAllRecipes(recipes) {
   return Object.keys(recipes).map(function (key) {
     return recipes[key];
@@ -3650,6 +3652,19 @@ var selectPopularRecipes = function selectPopularRecipes(recipes) {
   return Object.keys(recipes).map(function (key) {
     return recipes[key];
   }).slice(0, 11);
+};
+var selectFeaturedRecipe = function selectFeaturedRecipe(recipes) {
+  var recipesArr = Object.keys(recipes).map(function (key) {
+    return recipes[key];
+  });
+
+  if (recipesArr.length) {
+    return recipesArr.filter(function (recipe) {
+      return recipe.title === "Korean-Style Short Ribs";
+    })[0].id;
+  } else {
+    return null;
+  }
 };
 
 /***/ }),

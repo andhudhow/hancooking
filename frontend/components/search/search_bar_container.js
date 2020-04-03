@@ -18,4 +18,9 @@ const mapDispatchToProps = dispatch => ({
     removeSearchQuery: () => dispatch(removeSearchQuery())
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchBar));
+export default withRouter(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(SearchBar)
+    );
