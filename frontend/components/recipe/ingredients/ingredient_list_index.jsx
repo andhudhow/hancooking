@@ -1,4 +1,5 @@
 import React from 'react';
+
 import IngredientListIndexItem from './ingredient_list_index_item';
 
 const IngredientListIndex = (props) => {

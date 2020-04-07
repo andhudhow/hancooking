@@ -12,4 +12,8 @@ const mapDispatchToProps = dispatch => ({
   saveComment: comment => dispatch(saveComment(comment))
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CommentForm));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(CommentForm));

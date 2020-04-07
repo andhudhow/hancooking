@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { scrollTop } from '../../util/scroll_util';
 import RecipeHeaderContainer from './recipe_header_container';
 import IngredientListIndex from './ingredients/ingredient_list_index';
 import PrepStepsListIndex from './prep_steps/prep_steps_list_index';
@@ -7,8 +8,6 @@ import CommentIndexContainer from './comments/comment_index_container';
 import RatingContainer from './ratings/rating_container';
 import CommentFormContainer from './comments/comment_form_container';
 import { NutritionalData } from './nutritional_data/nutritional_data';
-
-import { scrollTop } from '../../util/scroll_util';
 
 class RecipeShow extends React.Component{
   constructor(props) {
@@ -80,7 +79,6 @@ class RecipeShow extends React.Component{
           && this.props.match.params
           && fetchedRecipeId
           && (fetchedRecipeId === parseInt(this.props.match.params.recipeId))
-          
           ?
           <div className="recipe-show-container">
             <RecipeHeaderContainer />

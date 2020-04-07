@@ -1,7 +1,8 @@
 import React from 'react';
+
 import { cookTime } from '../../util/cook_time_util';
-import RecipeCardContainer from '../recipe_box/recipe_card_container';
 import { scrollTop } from '../../util/scroll_util';
+import RecipeCardContainer from '../recipe_box/recipe_card_container';
 
 class RecipeIndex extends React.Component {
   constructor(props) {
@@ -12,8 +13,6 @@ class RecipeIndex extends React.Component {
     this.props.fetchRecipes();
     { scrollTop() };
   }
-  //icon-bookmark-hover-outline.svg if not saved
-  // if already saved icon-bookmark-hover-fill.svg on hover
 
   render() {
     const recipes = 

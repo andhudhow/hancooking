@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+
 import { deleteComment } from '../../../actions/recipe_actions';
 import CommentIndex from './comment_index';
 

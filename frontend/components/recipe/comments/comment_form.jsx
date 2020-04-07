@@ -23,16 +23,34 @@ export const CommentForm = props => {
             <div className="comment-body-container">
             <div className="user-name-container">
                 <div className="comment-input-container">
-                <textarea className={commentOpen ? "comment-textarea-editing" : "comment-textarea"}
+                <textarea className={commentOpen 
+                    ? 
+                    "comment-textarea-editing"
+                    :
+                    "comment-textarea"
+                }
                     onClick={() => setCommentOpen(!commentOpen)} 
                     onChange={e => setCommentContent(e.currentTarget.value)}
                     placeholder="Share your notes with other cooks or leave a private note."
                     value={commentContent} >
                 </textarea>
                 </div>
-                <div className={commentOpen ? "comment-action-container" : "comment-action-container-hidden"}>
-                <button className="cancel-comment-btn" onClick={handleCommentCancel}>Cancel</button>
-                <button className={commentContent.length > 1 ? "add-comment-btn" : "add-comment-btn-disabled" }>Add Note</button>
+                <div className={commentOpen
+                    ?
+                    "comment-action-container"
+                    :
+                    "comment-action-container-hidden"
+                }>
+                <button className="cancel-comment-btn"
+                    onClick={handleCommentCancel}>
+                        Cancel
+                </button>
+                <button className={commentContent.length > 1
+                    ?
+                    "add-comment-btn"
+                    :
+                    "add-comment-btn-disabled"
+                }>Add Note</button>
                 </div>
             </div>
             </div>
