@@ -8,15 +8,13 @@ import { fetchRecipes, unsaveRecipe } from '../../actions/recipe_actions';
 import { openModal } from '../../actions/modal_actions';
 import Main from './main';
 
-const mapStateToProps = ({ entities, session }) => {
-  debugger
-  return({
+const mapStateToProps = ({ entities, session }) => ({
   recipes: entities.recipes,
   editor: selectEditorRecipes(entities.recipes),
   popular: selectPopularRecipes(entities.recipes),
   featuredRecipeId: selectFeaturedRecipe(entities.recipes),
   loggedIn: Boolean(session.currentUser)
-})};
+});
   
 const mapDispatchToProps = dispatch => ({
     fetchRecipes: () => dispatch(fetchRecipes()),

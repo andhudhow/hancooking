@@ -15,6 +15,7 @@ class MainCarousel extends React.Component {
     const images = this.props.carousel.map((recipe, index) => 
       <div>
         <RecipeCardContainer
+          key={recipe.id}
           id={recipe.id}
           title={recipe.title}
           authorName={recipe.authorName}

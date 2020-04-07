@@ -58,7 +58,7 @@ class RecipeCard extends React.Component{
       <div>
       <Link to={url} onClick={this.handleCardClick}>
         <div className="recipe-card-container">
-          <div><img src={this.props.photoUrl} class="recipe-card-image" /></div>
+          <div><img src={this.props.photoUrl} className="recipe-card-image" /></div>
           <div className="card-base">
             <div className="card-title">{this.props.title}</div>
             <div className="card-byline">By {this.props.authorName}</div>

@@ -784,6 +784,7 @@ var MainCarousel = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var images = this.props.carousel.map(function (recipe, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_recipe_box_recipe_card_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          key: recipe.id,
           id: recipe.id,
           title: recipe.title,
           authorName: recipe.authorName,
@@ -856,7 +857,6 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(_ref) {
   var entities = _ref.entities,
       session = _ref.session;
-  debugger;
   return {
     recipes: entities.recipes,
     editor: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_1__["selectEditorRecipes"])(entities.recipes),
@@ -2744,7 +2744,7 @@ var RecipeCard = /*#__PURE__*/function (_React$Component) {
         className: "recipe-card-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: this.props.photoUrl,
-        "class": "recipe-card-image"
+        className: "recipe-card-image"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-base"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
