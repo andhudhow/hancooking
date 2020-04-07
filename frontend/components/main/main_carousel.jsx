@@ -2,8 +2,6 @@ import React from "react";
 import Slider from "react-slick";
 import RecipeCardContainer from "../recipe_box/recipe_card_container";
 import { cookTime } from '../../util/cook_time_util';
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
  
 class MainCarousel extends React.Component {
   constructor(props){

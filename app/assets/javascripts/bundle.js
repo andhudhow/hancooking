@@ -767,8 +767,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
- // import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
+
 
 var MainCarousel = /*#__PURE__*/function (_React$Component) {
   _inherits(MainCarousel, _React$Component);
