@@ -2346,7 +2346,6 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchRecipe(parseInt(this.props.match.params.recipeId));
-      debugger;
       {
         Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_8__["scrollTop"])();
       }

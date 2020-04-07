@@ -30,7 +30,6 @@ class RecipeShow extends React.Component{
   componentDidMount() {
     
     this.props.fetchRecipe(parseInt(this.props.match.params.recipeId));
-    debugger
     { scrollTop() };
   }
 
