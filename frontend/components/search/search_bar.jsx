@@ -54,11 +54,14 @@ class SearchBar extends React.Component {
 }
 
   filterResults() {
+    debugger
     let results = 
-      this.props.recipes.filter(recipe => { return (
-        recipe.title.toLowerCase().split(' ').join('').includes(this.props.searchQuery.toLowerCase())
-        || recipe.description.toLowerCase().split(' ').join('').includes(this.props.searchQuery.toLowerCase())
-      )});
+      this.props.recipes.filter(recipe => (
+        recipe.title.toLowerCase().split(' ').join('')
+          .includes(this.props.searchQuery.toLowerCase().split(' ').join(''))
+        || recipe.description.toLowerCase().split(' ').join('')
+            .includes(this.props.searchQuery.toLowerCase().split(' ').join(''))
+      ));
 
       this.setState({ results })
   }

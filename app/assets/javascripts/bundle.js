@@ -2960,8 +2960,9 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
     value: function filterResults() {
       var _this2 = this;
 
+      debugger;
       var results = this.props.recipes.filter(function (recipe) {
-        return recipe.title.toLowerCase().split(' ').join('').includes(_this2.props.searchQuery.toLowerCase()) || recipe.description.toLowerCase().split(' ').join('').includes(_this2.props.searchQuery.toLowerCase());
+        return recipe.title.toLowerCase().split(' ').join('').includes(_this2.props.searchQuery.toLowerCase().split(' ').join('')) || recipe.description.toLowerCase().split(' ').join('').includes(_this2.props.searchQuery.toLowerCase().split(' ').join(''));
       });
       this.setState({
         results: results
@@ -3171,7 +3172,7 @@ var mapStateToProps = function mapStateToProps(_ref, ownProps) {
       session = _ref.session;
   return {
     recipes: Object.values(entities.recipes).filter(function (recipe) {
-      return recipe.title.toLowerCase().split(' ').join('').includes(ownProps.match.params.searchQuery.toLowerCase()) || recipe.description.toLowerCase().split(' ').join('').includes(ownProps.match.params.searchQuery.toLowerCase());
+      return recipe.title.toLowerCase().split(' ').join('').includes(ownProps.match.params.searchQuery.toLowerCase().split(' ').join('')) || recipe.description.toLowerCase().split(' ').join('').includes(ownProps.match.params.searchQuery.toLowerCase().split(' ').join(''));
     })
   };
 };

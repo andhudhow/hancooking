@@ -5,8 +5,10 @@ import { withRouter } from 'react-router-dom';
 const mapStateToProps = ({ entities, session }, ownProps) => ({
   recipes: Object.values(entities.recipes)
             .filter(recipe => (
-              recipe.title.toLowerCase().split(' ').join('').includes(ownProps.match.params.searchQuery.toLowerCase())
-              || recipe.description.toLowerCase().split(' ').join('').includes(ownProps.match.params.searchQuery.toLowerCase())
+              recipe.title.toLowerCase().split(' ').join('')
+                .includes(ownProps.match.params.searchQuery.toLowerCase().split(' ').join(''))
+              || recipe.description.toLowerCase().split(' ').join('')
+                  .includes(ownProps.match.params.searchQuery.toLowerCase().split(' ').join(''))
             ))
 });
   
