@@ -819,9 +819,7 @@ var MainCarousel = /*#__PURE__*/function (_React$Component) {
             slidesToShow: 1,
             slidesToScroll: 1
           }
-        }] // nextArrow: <img src=""
-        // prevArrow: <SamplePrevArrow />
-
+        }]
       };
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, settings, images);
     }

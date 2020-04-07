@@ -57,8 +57,6 @@ class MainCarousel extends React.Component {
           }
         }
       ],
-      // nextArrow: <img src=""
-      // prevArrow: <SamplePrevArrow />
     };
 
     return (
