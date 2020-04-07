@@ -3168,8 +3168,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(_ref, ownProps) {
-  var entities = _ref.entities,
-      session = _ref.session;
+  var entities = _ref.entities;
   return {
     recipes: Object.values(entities.recipes).filter(function (recipe) {
       return recipe.title.toLowerCase().split(' ').join('').includes(ownProps.match.params.searchQuery.toLowerCase().split(' ').join('')) || recipe.description.toLowerCase().split(' ').join('').includes(ownProps.match.params.searchQuery.toLowerCase().split(' ').join(''));
