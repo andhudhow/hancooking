@@ -29,14 +29,16 @@ class RecipeShow extends React.Component{
 
   componentDidMount() {
     
-    this.props.fetchRecipe(parseInt(this.props.match.params.recipeId))
+    this.props.fetchRecipe(parseInt(this.props.match.params.recipeId));
+    debugger
     { scrollTop() };
   }
 
   componentDidUpdate(prevProps) {
     
     if(prevProps.recipe && (parseInt(this.props.match.params.recipeId) !== prevProps.recipe.id)) {
-      this.props.fetchRecipe(parseInt(this.props.match.params.recipeId))
+      this.props.fetchRecipe(parseInt(this.props.match.params.recipeId));
+      { scrollTop() };
     }
   }
   

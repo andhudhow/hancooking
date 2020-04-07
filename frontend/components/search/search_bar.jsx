@@ -54,7 +54,6 @@ class SearchBar extends React.Component {
 }
 
   filterResults() {
-
     let results = 
       this.props.recipes.filter(recipe => { return (
         recipe.title.toLowerCase().split(' ').join('').includes(this.props.searchQuery.toLowerCase())
