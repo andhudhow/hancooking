@@ -2910,7 +2910,7 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
     key: "handleTyping",
     value: function handleTyping(e) {
       this.props.receiveSearchQuery(e.target.value);
-      this.filterResults();
+      this.props.searchQuery ? this.filterResults() : null;
     }
   }, {
     key: "handleResultClick",

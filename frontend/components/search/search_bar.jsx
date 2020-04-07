@@ -24,7 +24,7 @@ class SearchBar extends React.Component {
   
   handleTyping(e){
     this.props.receiveSearchQuery(e.target.value);
-    this.filterResults();
+    this.props.searchQuery ? this.filterResults() : null;
   }
 
   handleResultClick(e){
@@ -54,6 +54,7 @@ class SearchBar extends React.Component {
 }
 
   filterResults() {
+
     let results = 
       this.props.recipes.filter(recipe => { return (
         recipe.title.toLowerCase().split(' ').join('').includes(this.props.searchQuery.toLowerCase())
