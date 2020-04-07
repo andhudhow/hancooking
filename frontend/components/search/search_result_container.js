@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
-import SearchResult from './search_result';
 import { withRouter } from 'react-router-dom';
+
+import SearchResult from './search_result';
 
 const mapStateToProps = ({ entities }, ownProps) => ({
   recipes: Object.values(entities.recipes)

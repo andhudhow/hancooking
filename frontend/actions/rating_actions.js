@@ -1,7 +1,6 @@
 import * as RatingAPIUtil from '../util/rating_api_util';
-export const RECEIVE_RATING= 'RECEIVE_RATING';
+export const RECEIVE_RATING = 'RECEIVE_RATING';
 export const UPDATE_RATING = 'UPDATE_RATING';
-// export const REMOVE_RATING = 'REMOVE_RATING';
 
 const receiveRating = payload => {
   return {
@@ -16,13 +15,6 @@ const receiveUpdatedRating = payload => {
     payload
   };
 };
-
-// const removeRating = errors => {
-//   return {
-//     type: REMOVE_RATING,
-//     errors
-//   };
-// };
 
 export const createRating = rating => dispatch => 
 {
@@ -39,9 +31,3 @@ export const updateRating = rating => dispatch => (
     (payload => dispatch(receiveUpdatedRating(payload)))
   )
 );
-
-// export const deleteRating = (ratingId) => (dispatch) => (
-//   RatingAPIUtil.deleteRating(ratingId).then(
-//     (recipe => dispatch(removeRating(recipe)))
-//   )
-// );

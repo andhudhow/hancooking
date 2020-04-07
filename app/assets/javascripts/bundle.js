@@ -131,7 +131,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_rating_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/rating_api_util */ "./frontend/util/rating_api_util.js");
 
 var RECEIVE_RATING = 'RECEIVE_RATING';
-var UPDATE_RATING = 'UPDATE_RATING'; // export const REMOVE_RATING = 'REMOVE_RATING';
+var UPDATE_RATING = 'UPDATE_RATING';
 
 var receiveRating = function receiveRating(payload) {
   return {
@@ -145,13 +145,7 @@ var receiveUpdatedRating = function receiveUpdatedRating(payload) {
     type: UPDATE_RATING,
     payload: payload
   };
-}; // const removeRating = errors => {
-//   return {
-//     type: REMOVE_RATING,
-//     errors
-//   };
-// };
-
+};
 
 var createRating = function createRating(rating) {
   return function (dispatch) {
@@ -166,11 +160,7 @@ var updateRating = function updateRating(rating) {
       return dispatch(receiveUpdatedRating(payload));
     });
   };
-}; // export const deleteRating = (ratingId) => (dispatch) => (
-//   RatingAPIUtil.deleteRating(ratingId).then(
-//     (recipe => dispatch(removeRating(recipe)))
-//   )
-// );
+};
 
 /***/ }),
 
@@ -596,8 +586,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _main_carousel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./main_carousel */ "./frontend/components/main/main_carousel.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _main_carousel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./main_carousel */ "./frontend/components/main/main_carousel.jsx");
 /* harmony import */ var _util_scroll_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/scroll_util */ "./frontend/util/scroll_util.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -674,7 +664,7 @@ var Main = /*#__PURE__*/function (_React$Component) {
         src: window.splashVidURL
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "rotd-label"
-      }, "Recipe", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "of the day"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      }, "Recipe", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "of the day"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "recipes/".concat(this.props.featuredRecipeId)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "rotd-card",
@@ -697,7 +687,7 @@ var Main = /*#__PURE__*/function (_React$Component) {
         className: "section-intro"
       }, "Recipes selected throughout the month by Andrew Howell, food editor of Hancooking."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "carousel-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_carousel__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_carousel__WEBPACK_IMPORTED_MODULE_2__["default"], {
         carousel: this.props.editor,
         unsaveRecipe: this.props.unsaveRecipe,
         openModal: this.props.openModal
@@ -711,11 +701,11 @@ var Main = /*#__PURE__*/function (_React$Component) {
         className: "section-intro"
       }, "Tried and true classics that are guaranteed to impress."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "carousel-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_carousel__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_carousel__WEBPACK_IMPORTED_MODULE_2__["default"], {
         carousel: this.props.popular,
         unsaveRecipe: this.props.unsaveRecipe,
         openModal: this.props.openModal
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: this.props.loggedIn ? "/recipes" : "/",
         onClick: this.handleClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
@@ -3161,8 +3151,8 @@ var SearchResult = /*#__PURE__*/function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _search_result__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./search_result */ "./frontend/components/search/search_result.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _search_result__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./search_result */ "./frontend/components/search/search_result.jsx");
 
 
 
@@ -3194,7 +3184,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_search_result__WEBPACK_IMPORTED_MODULE_1__["default"])));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_search_result__WEBPACK_IMPORTED_MODULE_2__["default"])));
 
 /***/ }),
 

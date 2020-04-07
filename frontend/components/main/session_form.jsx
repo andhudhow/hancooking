@@ -39,7 +39,10 @@ class SessionForm extends React.Component {
 
   handleDemoLogin(e) {
     this.props.closeModal();
-    return this.props.login({ email: 'andhudhow@gmail.com', password: 'password'})
+    return this.props.login({
+      email: 'andhudhow@gmail.com',
+      password: 'password'
+    })
   }
 
   render() {
@@ -81,10 +84,13 @@ class SessionForm extends React.Component {
               </label>
                 : null }
             <br/><br/>
-            <input className="session-submit" type="submit" value={this.props.buttonText} />
+            <input className="session-submit"
+              type="submit"
+              value={this.props.buttonText} />
           </div>
         </form>
-        <button className="session-submit demo" onClick={this.handleDemoLogin}>🇰🇷 Log in as demo user 🇰🇷</button>
+        <button className="session-submit demo"
+        onClick={this.handleDemoLogin}>🇰🇷 Log in as demo user 🇰🇷</button>
       </div>
     );
   }

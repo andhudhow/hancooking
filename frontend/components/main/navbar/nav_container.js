@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+
 import { logout, login } from '../../../actions/session_actions';
 import { openModal } from '../../../actions/modal_actions';
 import { removeSearchQuery } from '../../../actions/search_actions';

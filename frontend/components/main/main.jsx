@@ -1,6 +1,7 @@
 import React from 'react';
-import MainCarousel from './main_carousel';
 import { Link } from 'react-router-dom';
+
+import MainCarousel from './main_carousel';
 import { scrollTop } from '../../util/scroll_util';
 
 class Main extends React.Component{
@@ -36,20 +37,23 @@ class Main extends React.Component{
     return (
       <div className='outer'>
         <section className="rotd-container">
-          <video className='splash-img' autoPlay muted loop type='video/mp4' src={window.splashVidURL} />
+          <video className='splash-img' autoPlay muted loop type='video/mp4'
+            src={window.splashVidURL} />
             <div id="rotd-label">Recipe<br/>of the day</div>
               
-              <Link to={`recipes/${this.props.featuredRecipeId}`}><div id="rotd-card" onClick={this.handleClick}>
-                <h3 id="rotd-title">
-                    Korean-Style Shortrib
-                </h3>
-                <p id="rotd-description">
-                  Also known as galbi (갈비), these shortribs are great at a restaurant, but also wonderful at home.
-                </p>
-                <p id="rotd-byline">
-                  Suzana E. Lee
-                </p>
-            </div></Link>
+              <Link to={`recipes/${this.props.featuredRecipeId}`}>
+                <div id="rotd-card" onClick={this.handleClick}>
+                  <h3 id="rotd-title">
+                      Korean-Style Shortrib
+                  </h3>
+                  <p id="rotd-description">
+                    Also known as galbi (갈비), these shortribs are great at a restaurant, but also wonderful at home.
+                  </p>
+                  <p id="rotd-byline">
+                    Suzana E. Lee
+                  </p>
+                </div>
+            </Link>
           </section>
         <br />
         <section className="what-to-cook">
@@ -59,7 +63,11 @@ class Main extends React.Component{
             <h2 className="section-title">Suggestions From the Editor</h2>
             <h3 className="section-intro">Recipes selected throughout the month by Andrew Howell, food editor of Hancooking.</h3>
           <div className="carousel-container">
-            <MainCarousel carousel={this.props.editor} unsaveRecipe={this.props.unsaveRecipe} openModal={this.props.openModal} />
+            <MainCarousel
+              carousel={this.props.editor}
+              unsaveRecipe={this.props.unsaveRecipe}
+              openModal={this.props.openModal}
+            />
           </div>
           </div>
         </section>
@@ -68,9 +76,14 @@ class Main extends React.Component{
             <h2 className="section-title">Our Most Popular Recipes</h2>
             <h3 className="section-intro">Tried and true classics that are guaranteed to impress.</h3>
           <div className="carousel-container">
-            <MainCarousel carousel={this.props.popular} unsaveRecipe={this.props.unsaveRecipe} openModal={this.props.openModal} />
+            <MainCarousel
+              carousel={this.props.popular}
+              unsaveRecipe={this.props.unsaveRecipe}
+              openModal={this.props.openModal}
+            />
           </div>
-          <Link to={this.props.loggedIn ? "/recipes" : "/"} onClick={this.handleClick}>
+          <Link to={this.props.loggedIn ? "/recipes" : "/"}
+            onClick={this.handleClick}>
             <h3 className='recipe-index-link'>View All Recipes</h3>
           </Link>
           </div>
