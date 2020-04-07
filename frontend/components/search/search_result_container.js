@@ -14,7 +14,6 @@ const mapStateToProps = ({ entities, session }, ownProps) => ({
   
 const mapDispatchToProps = dispatch => ({
     fetchRecipes: () => dispatch(fetchRecipes()),
-    // openModal: modal => dispatch(openModal(modal))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchResult));

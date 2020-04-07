@@ -3191,8 +3191,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       return fetchRecipes;
     }(function () {
       return dispatch(fetchRecipes());
-    }) // openModal: modal => dispatch(openModal(modal))
-
+    })
   };
 };
 
