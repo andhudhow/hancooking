@@ -1,4 +1,5 @@
 import React from "react";
+
 import Modal from './modals/modal';
 import RecipeIndexContainer from './recipe/recipe_index_container';
 import RecipeShowContainer from './recipe/recipe_show_container';
@@ -11,24 +12,30 @@ import { ProtectedRoute } from '../util/route_util';
 
 import {
     Route,
-    Switch,
-    useLocation
+    Switch
 } from 'react-router-dom';
 
 const App = (props) => {
     return (
-    <div className="site-container">
-        <Modal />
-        <NavBarContainer />
-            <Switch>
-                <ProtectedRoute path="/recipe-box" component={ RecipeBoxContainer } />
-                <ProtectedRoute path="/search/:searchQuery" component={ SearchResultContainer } />
-                <ProtectedRoute path="/recipes/:recipeId" component={ RecipeShowContainer } />
-                <ProtectedRoute path="/recipes" component={ RecipeIndexContainer } />
-                <Route path="/" component={MainContainer} />
-            </Switch>
-        <Footer />
-    </div>
+        <div className="site-container">
+            <Modal />
+            <NavBarContainer />
+                <Switch>
+                    <ProtectedRoute
+                        path="/recipe-box" component={ RecipeBoxContainer } />
+                    <ProtectedRoute
+                        path="/search/:searchQuery"
+                        component={ SearchResultContainer } />
+                    <ProtectedRoute
+                        path="/recipes/:recipeId"
+                        component={ RecipeShowContainer } />
+                    <ProtectedRoute
+                        path="/recipes"
+                        component={ RecipeIndexContainer } />
+                    <Route path="/" component={MainContainer} />
+                </Switch>
+            <Footer />
+        </div>
     )
 };
 

@@ -1,7 +1,8 @@
 import React from 'react';
+
 import { cookTime } from '../../util/cook_time_util';
-import RecipeCardContainer from '../recipe_box/recipe_card_container';
 import { scrollTop } from '../../util/scroll_util';
+import RecipeCardContainer from '../recipe_box/recipe_card_container';
 
 class SearchResult extends React.Component {
   constructor(props) {
@@ -28,7 +29,8 @@ class SearchResult extends React.Component {
 
     return (
       <div className='search-results-container'>
-          <h3>Search results for <strong>{`${this.props.match.params.searchQuery}`}</strong></h3>
+          <h3>Search results for
+            <strong>{`${this.props.match.params.searchQuery}`}</strong></h3>
           <div className="saved-recipe-count">{resultIndex.length} recipes</div>
           <section className="saved-recipe-index-container">
             {resultIndex}

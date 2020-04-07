@@ -1,7 +1,3 @@
-//as you type ti's going to update the query
-//it's going to update the query and call filter results to get all the matching results
-//it will then render a card with the matching result cardrecipe title, photo and a link to that
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 

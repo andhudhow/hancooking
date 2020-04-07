@@ -2863,9 +2863,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-//as you type ti's going to update the query
-//it's going to update the query and call filter results to get all the matching results
-//it will then render a card with the matching result cardrecipe title, photo and a link to that
 
 
 
@@ -3067,8 +3064,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _util_cook_time_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/cook_time_util */ "./frontend/util/cook_time_util.js");
-/* harmony import */ var _recipe_box_recipe_card_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../recipe_box/recipe_card_container */ "./frontend/components/recipe_box/recipe_card_container.js");
-/* harmony import */ var _util_scroll_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/scroll_util */ "./frontend/util/scroll_util.js");
+/* harmony import */ var _util_scroll_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util/scroll_util */ "./frontend/util/scroll_util.js");
+/* harmony import */ var _recipe_box_recipe_card_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../recipe_box/recipe_card_container */ "./frontend/components/recipe_box/recipe_card_container.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3104,13 +3101,13 @@ var SearchResult = /*#__PURE__*/function (_React$Component) {
   _createClass(SearchResult, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_3__["scrollTop"])();
+      Object(_util_scroll_util__WEBPACK_IMPORTED_MODULE_2__["scrollTop"])();
     }
   }, {
     key: "render",
     value: function render() {
       var resultIndex = this.props.recipes.map(function (recipe, idx) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_recipe_box_recipe_card_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_recipe_box_recipe_card_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
           id: recipe.id,
           photoUrl: recipe.photoUrl,
           title: recipe.title,
@@ -3120,7 +3117,7 @@ var SearchResult = /*#__PURE__*/function (_React$Component) {
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-results-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Search results for ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "".concat(this.props.match.params.searchQuery))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Search results for", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "".concat(this.props.match.params.searchQuery))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "saved-recipe-count"
       }, resultIndex.length, " recipes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "saved-recipe-index-container"

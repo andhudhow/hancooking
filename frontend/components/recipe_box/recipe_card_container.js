@@ -15,4 +15,8 @@ const mapDispatchToProps = dispatch => ({
   openModal: modal => dispatch(openModal(modal))
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RecipeCard));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(RecipeCard));
