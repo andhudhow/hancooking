@@ -50,7 +50,6 @@ class SearchBar extends React.Component {
 }
 
   filterResults() {
-    debugger
     let results = 
       this.props.recipes.filter(recipe => (
         recipe.title.toLowerCase().split(' ').join('')

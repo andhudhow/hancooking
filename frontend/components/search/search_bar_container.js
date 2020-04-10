@@ -23,4 +23,4 @@ export default withRouter(
         mapStateToProps,
         mapDispatchToProps
     )(SearchBar)
-    );
+);
