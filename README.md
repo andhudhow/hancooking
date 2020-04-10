@@ -1,7 +1,7 @@
 ![logo](img/logo.png)
 # Hancooking
 
-[HanCooking](http://hancooking.herokuapp.com/#/) is a clone of [New York Times Cooking](https://cooking.nytimes.com/) focusing on modern and classic Korean cuisine. Users can discover recipes, rate them, comment on them, and save them to a Recipe Box for easy reference in the future.
+[HanCooking](http://hancooking.herokuapp.com/#/) is inspired by [New York Times Cooking](https://cooking.nytimes.com/) and focuses on modern and classic Korean cuisine. Users can discover recipes, rate them, comment on them, and save them to a Recipe Box for easy reference in the future.
 
 ![home](img/homepage.gif "HanCooking")
 
