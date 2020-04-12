@@ -2941,7 +2941,6 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
     value: function filterResults() {
       var _this2 = this;
 
-      debugger;
       var results = this.props.recipes.filter(function (recipe) {
         return recipe.title.toLowerCase().split(' ').join('').includes(_this2.props.searchQuery.toLowerCase().split(' ').join('')) || recipe.description.toLowerCase().split(' ').join('').includes(_this2.props.searchQuery.toLowerCase().split(' ').join(''));
       });
@@ -3117,7 +3116,7 @@ var SearchResult = /*#__PURE__*/function (_React$Component) {
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-results-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Search results for", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "".concat(this.props.match.params.searchQuery))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Search results for", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, " ", "".concat(this.props.match.params.searchQuery))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "saved-recipe-count"
       }, resultIndex.length, " recipes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "saved-recipe-index-container"

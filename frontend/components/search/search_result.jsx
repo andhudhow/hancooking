@@ -30,7 +30,7 @@ class SearchResult extends React.Component {
     return (
       <div className='search-results-container'>
           <h3>Search results for
-            <strong>{`${this.props.match.params.searchQuery}`}</strong></h3>
+            <strong> {`${this.props.match.params.searchQuery}`}</strong></h3>
           <div className="saved-recipe-count">{resultIndex.length} recipes</div>
           <section className="saved-recipe-index-container">
             {resultIndex}
