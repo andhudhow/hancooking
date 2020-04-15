@@ -1362,6 +1362,13 @@ var CommentForm = function CommentForm(props) {
       recipe_id: props.match.params.recipeId,
       body: commentContent
     });
+    setCommentContent('');
+  };
+
+  var handleCommentBoxClick = function handleCommentBoxClick(e) {
+    if (!commentContent) {
+      setCommentOpen(!commentOpen);
+    }
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -1374,9 +1381,7 @@ var CommentForm = function CommentForm(props) {
     className: "comment-input-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
     className: commentOpen ? "comment-textarea-editing" : "comment-textarea",
-    onClick: function onClick() {
-      return setCommentOpen(!commentOpen);
-    },
+    onClick: handleCommentBoxClick,
     onChange: function onChange(e) {
       return setCommentContent(e.currentTarget.value);
     },

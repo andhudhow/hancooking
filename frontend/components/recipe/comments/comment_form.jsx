@@ -15,8 +15,15 @@ export const CommentForm = props => {
         props.saveComment({
             recipe_id: props.match.params.recipeId,
             body: commentContent
-        })
+        });
+        setCommentContent('');
     };
+
+    const handleCommentBoxClick = e => {
+        if(!commentContent) {
+            setCommentOpen(!commentOpen);
+        }
+    }
     
     return (
         <form onSubmit={handleCommentSubmit}>
@@ -29,7 +36,7 @@ export const CommentForm = props => {
                     :
                     "comment-textarea"
                 }
-                    onClick={() => setCommentOpen(!commentOpen)} 
+                    onClick={handleCommentBoxClick} 
                     onChange={e => setCommentContent(e.currentTarget.value)}
                     placeholder="Share your notes with other cooks or leave a private note."
                     value={commentContent} >
