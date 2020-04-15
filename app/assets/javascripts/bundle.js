@@ -1625,7 +1625,9 @@ var NutritionalData = function NutritionalData(props) {
     }, [])
   };
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    Object(_util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_1__["fetchNutritionData"])(nutrData).then(function (payload) {
+    Object(_util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_1__["fetchNutritionData"])(nutrData).fail(function (err) {
+      return console.log("Nutritional data for recipe unavailable from Edamam.");
+    }).then(function (payload) {
       return setNutrInfo(payload);
     });
   }, []);
