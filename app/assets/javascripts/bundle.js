@@ -509,7 +509,7 @@ var Footer = function Footer() {
     key: "resume",
     className: "online-presence"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "https://drive.google.com/open?id=1CVIZ6PiTux9nYKQ2HY6xbUl4naoPQlCv",
+    href: "https://drive.google.com/file/d/1oP1jDqSBWSaOrRdZR2ee1tIeK5J0nyFU/view",
     target: "_blank"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "online-presence-icon",
