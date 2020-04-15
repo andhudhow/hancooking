@@ -57,7 +57,7 @@ export const CommentForm = props => {
                     ?
                     "add-comment-btn"
                     :
-                    ""
+                    "add-comment-btn-disabled"
                 }>Add Note</button>
                 </div>
             </div>

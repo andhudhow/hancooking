@@ -1394,7 +1394,7 @@ var CommentForm = function CommentForm(props) {
     className: "cancel-comment-btn",
     onClick: handleCommentCancel
   }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: commentContent.length > 1 ? "add-comment-btn" : ""
+    className: commentContent.length > 1 ? "add-comment-btn" : "add-comment-btn-disabled"
   }, "Add Note")))));
 };
 
