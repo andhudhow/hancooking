@@ -17,11 +17,12 @@ export const CommentForm = props => {
             body: commentContent
         });
         setCommentContent('');
+        setCommentOpen(false);
     };
 
     const handleCommentBoxClick = e => {
-        if(!commentContent) {
-            setCommentOpen(!commentOpen);
+        if(!commentOpen) {
+            setCommentOpen(true);
         }
     }
     

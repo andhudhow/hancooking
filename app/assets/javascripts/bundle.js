@@ -1363,11 +1363,12 @@ var CommentForm = function CommentForm(props) {
       body: commentContent
     });
     setCommentContent('');
+    setCommentOpen(false);
   };
 
   var handleCommentBoxClick = function handleCommentBoxClick(e) {
-    if (!commentContent) {
-      setCommentOpen(!commentOpen);
+    if (!commentOpen) {
+      setCommentOpen(true);
     }
   };
 
