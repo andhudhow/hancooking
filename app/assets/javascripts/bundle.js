@@ -1394,7 +1394,7 @@ var CommentForm = function CommentForm(props) {
     className: "cancel-comment-btn",
     onClick: handleCommentCancel
   }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: commentContent.length > 1 ? "add-comment-btn" : "add-comment-btn-disabled"
+    className: commentContent.length > 1 ? "add-comment-btn" : ""
   }, "Add Note")))));
 };
 
@@ -1631,10 +1631,11 @@ var NutritionalData = function NutritionalData(props) {
     }, [])
   };
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    Object(_util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_1__["fetchNutritionData"])(nutrData).fail(function (err) {
-      return console.log("Nutritional data for recipe unavailable from Edamam.");
-    }).then(function (payload) {
+    Object(_util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_1__["fetchNutritionData"])(nutrData).then(function (payload) {
       return setNutrInfo(payload);
+    }).fail(function () {
+      console.clear();
+      console.log("No nutritional data available from Edamam.");
     });
   }, []);
   return nutrInfo ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

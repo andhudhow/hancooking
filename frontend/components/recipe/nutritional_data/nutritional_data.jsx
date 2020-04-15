@@ -18,8 +18,11 @@ export const NutritionalData = props => {
     
     useEffect(() => {
         fetchNutritionData(nutrData)
-        .fail(err => console.log("Nutritional data for recipe unavailable from Edamam."))
         .then(payload => setNutrInfo(payload))
+        .fail(() => {
+            console.clear();
+            console.log("No nutritional data available from Edamam.")
+        })
     }, []);
 
     return (
