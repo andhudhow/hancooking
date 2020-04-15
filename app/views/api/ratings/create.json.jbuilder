@@ -1,4 +1,4 @@
-json.extract! @recipe, :avg_rating, :num_ratings
+json.extract! @recipe, :id, :avg_rating, :num_ratings
 
 json.set! :ratings do
   @recipe.ratings.each do |rating|

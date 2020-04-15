@@ -18,7 +18,7 @@ export const NutritionalData = props => {
     
     useEffect(() => {
         fetchNutritionData(nutrData)
-        .then(payload => setNutrInfo(payload))
+        .then(payload => setNutrInfo(payload));
     }, []);
 
     return (

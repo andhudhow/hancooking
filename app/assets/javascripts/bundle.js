@@ -3477,6 +3477,8 @@ var ratingsReducer = function ratingsReducer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
+/* harmony import */ var _actions_rating_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/rating_actions */ "./frontend/actions/rating_actions.js");
+
 
 
 var recipesReducer = function recipesReducer() {
@@ -3487,6 +3489,11 @@ var recipesReducer = function recipesReducer() {
   switch (action.type) {
     case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_RECIPES"]:
       return action.recipes;
+
+    case _actions_rating_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_RATING"]:
+      var newState = Object.assign({}, state);
+      newState[action.payload.id].numRatings = action.payload.numRatings;
+      return newState;
 
     default:
       return state;
