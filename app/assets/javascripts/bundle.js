@@ -1747,7 +1747,6 @@ var Rating = function Rating(props) {
       ratings = props.ratings,
       currentUser = props.currentUser,
       match = props.match,
-      avgRating = props.avgRating,
       updateRating = props.updateRating,
       createRating = props.createRating;
   var starRating;
@@ -1832,18 +1831,18 @@ var Rating = function Rating(props) {
         src: currentUserRating >= 5 ? window.starYellowURL : window.starEmptyURL
       }));
     } else {
-      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      starRating = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recipe-rating-avg-stars"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: avgRating >= 1 ? window.starRedURL : window.starEmptyURL
+        src: recipe.avgRating >= 1 ? window.starRedURL : window.starEmptyURL
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: avgRating >= 2 ? window.starRedURL : window.starEmptyURL
+        src: recipe.avgRating >= 2 ? window.starRedURL : window.starEmptyURL
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: avgRating >= 3 ? window.starRedURL : window.starEmptyURL
+        src: recipe.avgRating >= 3 ? window.starRedURL : window.starEmptyURL
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: avgRating >= 4 ? window.starRedURL : window.starEmptyURL
+        src: recipe.avgRating >= 4 ? window.starRedURL : window.starEmptyURL
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: avgRating >= 5 ? window.starRedURL : window.starEmptyURL
+        src: recipe.avgRating >= 5 ? window.starRedURL : window.starEmptyURL
       }));
     }
   }

@@ -194,9 +194,12 @@ while recipe_id <= Recipe.last.id
       Comment.create!(recipe_id: recipe_id, user_id: (User.first.id..User.last.id).to_a.sample, body: comment_options.sample)
     end
 
-    RecipeSave.create!(recipe_id: recipe_id, user_id: demo_id)
+    if recipe_id % 4 != 0
+      RecipeSave.create!(recipe_id: recipe_id, user_id: demo_id)
+    end
 
-    user_id = User.first.id
+    #don't auto-seed for demo user (will do manually on site)
+    user_id = User.first.id + 1
 
     while user_id < User.last.id
       Rating.create(recipe_id: recipe_id, user_id: user_id, star_rating: (3..5).to_a.sample)

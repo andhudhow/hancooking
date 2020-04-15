@@ -6,7 +6,6 @@ export const Rating = (props) => {
         ratings,
         currentUser,
         match,
-        avgRating,
         updateRating,
         createRating
     } = props;
@@ -69,13 +68,14 @@ export const Rating = (props) => {
                     <img src={currentUserRating >= 4 ? window.starYellowURL : window.starEmptyURL }></img>
                     <img src={currentUserRating >= 5 ? window.starYellowURL : window.starEmptyURL }></img>
                 </div> 
-        } else { 
+        } else {
+            starRating = 
             <div className = "recipe-rating-avg-stars">
-            <img src={avgRating >= 1 ? window.starRedURL : window.starEmptyURL }></img>
-            <img src={avgRating >= 2 ? window.starRedURL : window.starEmptyURL }></img>
-            <img src={avgRating >= 3 ? window.starRedURL : window.starEmptyURL }></img>
-            <img src={avgRating >= 4 ? window.starRedURL : window.starEmptyURL }></img>
-            <img src={avgRating >= 5 ? window.starRedURL : window.starEmptyURL }></img>
+                <img src={recipe.avgRating >= 1 ? window.starRedURL : window.starEmptyURL }></img>
+                <img src={recipe.avgRating >= 2 ? window.starRedURL : window.starEmptyURL }></img>
+                <img src={recipe.avgRating >= 3 ? window.starRedURL : window.starEmptyURL }></img>
+                <img src={recipe.avgRating >= 4 ? window.starRedURL : window.starEmptyURL }></img>
+                <img src={recipe.avgRating >= 5 ? window.starRedURL : window.starEmptyURL }></img>
             </div> 
         }
     }
