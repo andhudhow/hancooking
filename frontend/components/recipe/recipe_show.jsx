@@ -11,8 +11,7 @@ import { NutritionalData } from './nutritional_data/nutritional_data';
 
 class RecipeShow extends React.Component{
   constructor(props) {
-    super(props);
-    this.handleTyping = this.handleTyping.bind(this);
+    super(props)
   }
 
   componentDidMount() { 
