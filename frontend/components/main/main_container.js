@@ -5,6 +5,7 @@ import {
   selectPopularRecipes,
   selectFeaturedRecipe
 } from '../../reducers/selectors';
+import { addRedirect } from '../../actions/redirect_actions';
 import { fetchRecipes, unsaveRecipe } from '../../actions/recipe_actions';
 import { openModal } from '../../actions/modal_actions';
 import Main from './main';
@@ -20,7 +21,8 @@ const mapStateToProps = ({ entities, session }) => ({
 const mapDispatchToProps = dispatch => ({
     fetchRecipes: () => dispatch(fetchRecipes()),
     unsaveRecipe: recipeId => dispatch(unsaveRecipe(recipeId)),
-    openModal: modal => dispatch(openModal(modal))
+    openModal: modal => dispatch(openModal(modal)),
+    addRedirect: path => dispatch(addRedirect(path))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

@@ -673,10 +673,9 @@ var Main = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleClick",
     value: function handleClick(e) {
-      if (this.props.loggedIn) {
-        return null;
-      } else {
+      if (!this.props.loggedIn) {
         this.props.openModal('login');
+        this.props.addRedirect("recipes/".concat(this.props.featuredRecipeId));
       }
     }
   }, {
@@ -863,9 +862,11 @@ var MainCarousel = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _reducers_selectors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../reducers/selectors */ "./frontend/reducers/selectors.js");
-/* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
-/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
-/* harmony import */ var _main__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./main */ "./frontend/components/main/main.jsx");
+/* harmony import */ var _actions_redirect_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/redirect_actions */ "./frontend/actions/redirect_actions.js");
+/* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _main__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./main */ "./frontend/components/main/main.jsx");
+
 
 
 
@@ -887,18 +888,21 @@ var mapStateToProps = function mapStateToProps(_ref) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchRecipes: function fetchRecipes() {
-      return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_2__["fetchRecipes"])());
+      return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_3__["fetchRecipes"])());
     },
     unsaveRecipe: function unsaveRecipe(recipeId) {
-      return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_2__["unsaveRecipe"])(recipeId));
+      return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_3__["unsaveRecipe"])(recipeId));
     },
     openModal: function openModal(modal) {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])(modal));
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["openModal"])(modal));
+    },
+    addRedirect: function addRedirect(path) {
+      return dispatch(Object(_actions_redirect_actions__WEBPACK_IMPORTED_MODULE_2__["addRedirect"])(path));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_main__WEBPACK_IMPORTED_MODULE_4__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_main__WEBPACK_IMPORTED_MODULE_5__["default"]));
 
 /***/ }),
 

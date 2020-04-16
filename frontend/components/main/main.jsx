@@ -20,10 +20,9 @@ class Main extends React.Component{
   }
 
   handleClick(e){
-    if (this.props.loggedIn) {
-      return null
-    } else { 
-      this.props.openModal('login')
+    if (!this.props.loggedIn) {
+      this.props.openModal('login');
+      this.props.addRedirect(`recipes/${this.props.featuredRecipeId}`);
     }
   }
 
@@ -58,7 +57,8 @@ class Main extends React.Component{
         <br />
         <section className="what-to-cook">
           What to Cook This Month
-        <div className="recipes-week-of">Our best new recipes for {monthNames[d.getMonth()]}</div>
+        <div className="recipes-week-of">
+          Our best new recipes for {monthNames[d.getMonth()]}</div>
           <div className="rotm-container">
             <h2 className="section-title">Suggestions From the Editor</h2>
             <h3 className="section-intro">Recipes selected throughout the month by Andrew Howell, food editor of Hancooking.</h3>
