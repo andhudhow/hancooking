@@ -26,7 +26,6 @@ class SearchBar extends React.Component {
   handleResultClick(e){
     if (this.props.loggedIn) {
       this.props.history.push(e.path);
-      this.setState({query: ''});
       this.setState({results: []});
       return null
     } else { 
@@ -45,6 +44,7 @@ class SearchBar extends React.Component {
         this.props.history.push(`/search/${this.props.searchQuery}`)
       } else {
         this.props.openModal('login');
+        this.props.addRedirect(`/search/${this.props.searchQuery}`);
       };
     }
 }

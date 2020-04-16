@@ -3013,9 +3013,6 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
       if (this.props.loggedIn) {
         this.props.history.push(e.path);
         this.setState({
-          query: ''
-        });
-        this.setState({
           results: []
         });
         return null;
@@ -3041,6 +3038,7 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
           this.props.history.push("/search/".concat(this.props.searchQuery));
         } else {
           this.props.openModal('login');
+          this.props.addRedirect("/search/".concat(this.props.searchQuery));
         }
 
         ;
@@ -3112,7 +3110,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _search_bar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./search_bar */ "./frontend/components/search/search_bar.jsx");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
-/* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/search_actions */ "./frontend/actions/search_actions.js");
+/* harmony import */ var _actions_redirect_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/redirect_actions */ "./frontend/actions/redirect_actions.js");
+/* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/search_actions */ "./frontend/actions/search_actions.js");
+
 
 
 
@@ -3149,10 +3149,13 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])(modal));
     },
     receiveSearchQuery: function receiveSearchQuery(query) {
-      return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_4__["receiveSearchQuery"])(query));
+      return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_5__["receiveSearchQuery"])(query));
     },
     removeSearchQuery: function removeSearchQuery() {
-      return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_4__["removeSearchQuery"])());
+      return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_5__["removeSearchQuery"])());
+    },
+    addRedirect: function addRedirect(path) {
+      return dispatch(Object(_actions_redirect_actions__WEBPACK_IMPORTED_MODULE_4__["addRedirect"])(path));
     }
   };
 };
