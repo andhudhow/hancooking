@@ -78,8 +78,6 @@ class Main extends React.Component{
           <div className="carousel-container">
             <MainCarousel
               carousel={this.props.popular}
-              unsaveRecipe={this.props.unsaveRecipe}
-              openModal={this.props.openModal}
             />
           </div>
           <Link to={this.props.loggedIn ? "/recipes" : "/"}

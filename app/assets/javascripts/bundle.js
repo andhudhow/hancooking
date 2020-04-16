@@ -704,9 +704,7 @@ var Main = /*#__PURE__*/function (_React$Component) {
       }, "Tried and true classics that are guaranteed to impress."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "carousel-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_carousel__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        carousel: this.props.popular,
-        unsaveRecipe: this.props.unsaveRecipe,
-        openModal: this.props.openModal
+        carousel: this.props.popular
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: this.props.loggedIn ? "/recipes" : "/",
         onClick: this.handleClick
