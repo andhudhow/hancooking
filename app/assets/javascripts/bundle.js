@@ -306,6 +306,35 @@ var deleteComment = function deleteComment(commentId) {
 
 /***/ }),
 
+/***/ "./frontend/actions/redirect_actions.js":
+/*!**********************************************!*\
+  !*** ./frontend/actions/redirect_actions.js ***!
+  \**********************************************/
+/*! exports provided: ADD_REDIRECT, REMOVE_REDIRECT, addRedirect, removeRedirect */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_REDIRECT", function() { return ADD_REDIRECT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_REDIRECT", function() { return REMOVE_REDIRECT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addRedirect", function() { return addRedirect; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeRedirect", function() { return removeRedirect; });
+var ADD_REDIRECT = 'ADD_REDIRECT';
+var REMOVE_REDIRECT = 'REMOVE_REDIRECT';
+var addRedirect = function addRedirect(path) {
+  return {
+    type: ADD_REDIRECT,
+    path: path
+  };
+};
+var removeRedirect = function removeRedirect(path) {
+  return {
+    type: REMOVE_REDIRECT
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/search_actions.js":
 /*!********************************************!*\
   !*** ./frontend/actions/search_actions.js ***!
@@ -3607,6 +3636,39 @@ var recipesReducer = function recipesReducer() {
 
 /***/ }),
 
+/***/ "./frontend/reducers/redirect_reducer.js":
+/*!***********************************************!*\
+  !*** ./frontend/reducers/redirect_reducer.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_redirect_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/redirect_actions */ "./frontend/actions/redirect_actions.js");
+
+
+var redirectReducer = function redirectReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_redirect_actions__WEBPACK_IMPORTED_MODULE_0__["ADD_REDIRECT"]:
+      return action.path;
+
+    case _actions_redirect_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_REDIRECT"]:
+      return null;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (redirectReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/root_reducer.js":
 /*!*******************************************!*\
   !*** ./frontend/reducers/root_reducer.js ***!
@@ -3821,7 +3883,7 @@ var _nullUser = Object.freeze({
 var sessionReducer = function sessionReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _nullUser;
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(state); // 
+  Object.freeze(state);
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
@@ -3889,6 +3951,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modal_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal_reducer */ "./frontend/reducers/modal_reducer.js");
 /* harmony import */ var _search_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./search_reducer */ "./frontend/reducers/search_reducer.js");
 /* harmony import */ var _unsave_recipe_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./unsave_recipe_reducer */ "./frontend/reducers/unsave_recipe_reducer.js");
+/* harmony import */ var _redirect_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./redirect_reducer */ "./frontend/reducers/redirect_reducer.js");
+
 
 
 
@@ -3896,7 +3960,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   modal: _modal_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   search: _search_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  unsave: _unsave_recipe_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  unsave: _unsave_recipe_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  redirect: _redirect_reducer__WEBPACK_IMPORTED_MODULE_5__["default"]
 }));
 
 /***/ }),
