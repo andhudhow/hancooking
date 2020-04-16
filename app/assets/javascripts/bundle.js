@@ -3009,16 +3009,20 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "handleResultClick",
-    value: function handleResultClick(e) {
+    value: function handleResultClick(path) {
       if (this.props.loggedIn) {
-        this.props.history.push(e.path);
         this.setState({
           results: []
         });
-        return null;
       } else {
+        this.props.addRedirect(path);
+        this.setState({
+          results: []
+        });
         this.props.openModal('login');
       }
+
+      ;
     }
   }, {
     key: "handleOutsideClick",
@@ -3064,8 +3068,9 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
       var resultList = this.state.results.map(function (result) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/recipes/".concat(result.id),
-          path: "/recipes/".concat(result.id),
-          onClick: _this3.handleResultClick
+          onClick: function onClick() {
+            return _this3.handleResultClick("/recipes/".concat(result.id));
+          }
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "search-result"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {

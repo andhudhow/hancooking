@@ -23,14 +23,14 @@ class SearchBar extends React.Component {
     this.props.searchQuery ? this.filterResults() : null;
   }
 
-  handleResultClick(e){
+  handleResultClick(path){
     if (this.props.loggedIn) {
-      this.props.history.push(e.path);
       this.setState({results: []});
-      return null
-    } else { 
+    } else {
+      this.props.addRedirect(path);
+      this.setState({results: []});
       this.props.openModal('login');
-    }
+    };
   }
 
   handleOutsideClick(e){
@@ -64,8 +64,7 @@ class SearchBar extends React.Component {
   render() {
     let resultList = this.state.results.map(result => 
       <Link to={`/recipes/${result.id}`}
-          path={`/recipes/${result.id}`}
-          onClick={this.handleResultClick}>
+          onClick={()=>this.handleResultClick(`/recipes/${result.id}`)}>
         <li className='search-result'>
           <img className='search-thumb' src={result.photoUrl} />
           <span className='result-text'></span>{result.title}

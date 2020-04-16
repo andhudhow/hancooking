@@ -16,7 +16,7 @@ const mapStateToProps = ({ entities }, ownProps) => ({
 });
   
 const mapDispatchToProps = dispatch => ({
-    fetchRecipes: () => dispatch(fetchRecipes()),
+    fetchRecipes: () => dispatch(fetchRecipes())
 });
 
 export default withRouter(
