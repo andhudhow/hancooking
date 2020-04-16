@@ -101,11 +101,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closeModal", function() { return closeModal; });
 var OPEN_MODAL = 'OPEN_MODAL';
 var CLOSE_MODAL = 'CLOSE_MODAL';
-var openModal = function openModal(modal) {
-  var recipeTitle = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+var openModal = function openModal(modal, recipeId, recipeTitle) {
   return {
     type: OPEN_MODAL,
     modal: modal,
+    recipeId: recipeId,
     recipeTitle: recipeTitle
   };
 };
@@ -2527,16 +2527,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 var ConfirmSaveRemoval = function ConfirmSaveRemoval(props) {
+  var handleUnsave = function handleUnsave() {
+    props.unsaveRecipe(props.recipe.id).then(props.closeModal());
+  };
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-body"
   }, "Are you sure you want to remove ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     id: "bold-recipe"
-  }, props.recipeTitle), " from your recipe box?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, props.recipe.title), " from your recipe box?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "unsave-btns"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn-stn unsave-cancel-btn"
+    className: "btn-stn unsave-cancel-btn",
+    onClick: function onClick() {
+      return props.closeModal();
+    }
   }, "NO"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn-stn unsave-confirm-btn"
+    className: "btn-stn unsave-confirm-btn",
+    onClick: function onClick() {
+      return handleUnsave();
+    }
   }, "YES")));
 };
 /* harmony default export */ __webpack_exports__["default"] = (ConfirmSaveRemoval);
@@ -2554,7 +2564,9 @@ var ConfirmSaveRemoval = function ConfirmSaveRemoval(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
-/* harmony import */ var _confirm_save_removal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./confirm_save_removal */ "./frontend/components/recipe_box/confirm_save_removal.jsx");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _confirm_save_removal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./confirm_save_removal */ "./frontend/components/recipe_box/confirm_save_removal.jsx");
+
 
 
 
@@ -2562,7 +2574,7 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(_ref) {
   var ui = _ref.ui;
   return {
-    recipeTitle: ui.unsaveTitle
+    recipe: ui.unsave
   };
 };
 
@@ -2570,11 +2582,14 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     unsaveRecipe: function unsaveRecipe(recipeId) {
       return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__["unsaveRecipe"])(recipeId));
+    },
+    closeModal: function closeModal() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["closeModal"])());
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_confirm_save_removal__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_confirm_save_removal__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -2790,7 +2805,7 @@ var RecipeCard = /*#__PURE__*/function (_React$Component) {
     value: function handleSave(e) {
       if (this.props.loggedIn && this.props.savedRecipeIds.includes(parseInt(this.props.id))) {
         // return this.props.unsaveRecipe(this.props.id)
-        return this.props.openModal('removeSave', this.props.title);
+        return this.props.openModal('removeSave', this.props.id, this.props.title);
       } else if (this.props.loggedIn && this.state.saveHover) {
         return this.props.saveRecipe(this.props.id);
       } else {
@@ -2881,8 +2896,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     saveRecipe: function saveRecipe(recipeId) {
       return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__["saveRecipe"])(recipeId));
     },
-    openModal: function openModal(modal, recipeTitle) {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])(modal, recipeTitle));
+    openModal: function openModal(modal, recipeId, recipeTitle) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])(modal, recipeId, recipeTitle));
     }
   };
 };
@@ -3882,7 +3897,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   modal: _modal_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   search: _search_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  unsaveTitle: _unsave_recipe_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  unsave: _unsave_recipe_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 }));
 
 /***/ }),
@@ -3906,7 +3921,10 @@ var unsaveRecipeReducer = function unsaveRecipeReducer() {
 
   switch (action.type) {
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__["OPEN_MODAL"]:
-      return action.recipeTitle;
+      return {
+        id: action.recipeId,
+        title: action.recipeTitle
+      };
 
     default:
       return state;
