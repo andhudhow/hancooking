@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import LoginFormContainer from '../main/login_form_container';
 import SignupFormContainer from '../main/signup_form_container';
-import ConfirmSaveRemoval from '../recipe_box/confirm_save_removal';
+import ConfirmSaveRemovalContainer from '../recipe_box/confirm_save_removal_container';
 import { closeModal } from '../../actions/modal_actions';
 
 function Modal({modal, closeModal}) {
@@ -20,7 +20,8 @@ function Modal({modal, closeModal}) {
       component = <SignupFormContainer />;
       break;
     case 'remove':
-      component = <ConfirmSaveRemoval />;
+      component = <ConfirmSaveRemovalContainer
+        recipeId = />;
       break;
     default:
       return null;

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import { unsaveRecipe } from '../../actions/recipe_actions';
+import { openModal } from '../../actions/modal_actions';
 import RecipeBox from './recipe_box';
 
 const mapStateToProps = ( { entities, session } ) => {
@@ -15,7 +16,8 @@ const mapStateToProps = ( { entities, session } ) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  unsaveRecipe: recipeId => dispatch(unsaveRecipe(recipeId))
+  unsaveRecipe: recipeId => dispatch(unsaveRecipe(recipeId)),
+  openModal: modal => dispatch(openModal(modal))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipeBox);
