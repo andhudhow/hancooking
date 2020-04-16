@@ -26,7 +26,7 @@ class SearchBar extends React.Component {
   handleResultClick(path){
     if (this.props.loggedIn) {
       this.setState({results: []});
-    } else {
+  } else {
       this.props.addRedirect(path);
       this.setState({results: []});
       this.props.openModal('login');

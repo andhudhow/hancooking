@@ -19,10 +19,10 @@ class Main extends React.Component{
     { scrollTop() };
   }
 
-  handleClick(e){
+  handleClick(path){
     if (!this.props.loggedIn) {
       this.props.openModal('login');
-      this.props.addRedirect(`recipes/${this.props.featuredRecipeId}`);
+      this.props.addRedirect(path);
     }
   }
 
@@ -41,7 +41,7 @@ class Main extends React.Component{
             <div id="rotd-label">Recipe<br/>of the day</div>
               
               <Link to={`recipes/${this.props.featuredRecipeId}`}>
-                <div id="rotd-card" onClick={this.handleClick}>
+                <div id="rotd-card" onClick={()=>this.handleClick(`recipes/${this.props.featuredRecipeId}`)}>
                   <h3 id="rotd-title">
                       Korean-Style Shortrib
                   </h3>
@@ -81,7 +81,7 @@ class Main extends React.Component{
             />
           </div>
           <Link to={this.props.loggedIn ? "/recipes" : "/"}
-            onClick={this.handleClick}>
+            onClick={()=>this.handleClick("/recipes")}>
             <h3 className='recipe-index-link'>View All Recipes</h3>
           </Link>
           </div>

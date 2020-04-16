@@ -672,15 +672,17 @@ var Main = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "handleClick",
-    value: function handleClick(e) {
+    value: function handleClick(path) {
       if (!this.props.loggedIn) {
         this.props.openModal('login');
-        this.props.addRedirect("recipes/".concat(this.props.featuredRecipeId));
+        this.props.addRedirect(path);
       }
     }
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
       var d = new Date();
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -700,7 +702,9 @@ var Main = /*#__PURE__*/function (_React$Component) {
         to: "recipes/".concat(this.props.featuredRecipeId)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "rotd-card",
-        onClick: this.handleClick
+        onClick: function onClick() {
+          return _this2.handleClick("recipes/".concat(_this2.props.featuredRecipeId));
+        }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         id: "rotd-title"
       }, "Korean-Style Shortrib"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -737,7 +741,9 @@ var Main = /*#__PURE__*/function (_React$Component) {
         carousel: this.props.popular
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: this.props.loggedIn ? "/recipes" : "/",
-        onClick: this.handleClick
+        onClick: function onClick() {
+          return _this2.handleClick("/recipes");
+        }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "recipe-index-link"
       }, "View All Recipes")))));
