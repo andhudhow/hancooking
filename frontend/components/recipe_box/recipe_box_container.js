@@ -17,7 +17,7 @@ const mapStateToProps = ( { entities, session } ) => {
 
 const mapDispatchToProps = dispatch => ({
   unsaveRecipe: recipeId => dispatch(unsaveRecipe(recipeId)),
-  openModal: modal => dispatch(openModal(modal))
+  openModal: (modal, recipeId) => dispatch(openModal(modal, recipeId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipeBox);

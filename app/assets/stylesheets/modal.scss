@@ -15,7 +15,6 @@
   transform: translate(-50%, -50%);
   background-color: white;
   height: 400px;
-  width: 200;
   padding: 25px;
   font:15px 'cheltenham-300',Georgia,"Times New Roman",serif;
   border-radius: 10px;
@@ -110,4 +109,60 @@
   top: 10px;
   right: 20px;
   cursor: pointer;
+}
+
+.remove-confirm {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  min-height: 100px;
+  width: 475px;
+  padding: 25px;
+  font:18px 'franklin-500',Georgia,"Times New Roman",serif;
+  border-radius: 10px;
+}
+
+#bold-recipe {
+  font-family: 'franklin-700';
+}
+
+.btn-stn {
+  display: inline-block;
+  padding: 10px 30px;
+  text-align: center;
+  font-size: 0.8em;
+  font-family: 'franklin-300',Arial,Helvetica,sans-serif;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.unsave-btns {
+  text-align: center;
+  padding-top: 5%;
+}
+
+.unsave-cancel-btn {
+  background: 0 0;
+  color: #222;
+  border: 1px solid #222;
+}
+
+.unsave-confirm-btn {
+  background: #e33d26;
+  color: #fff;
+  border: 1px solid #e33d26;
+  margin-bottom: 0;
+  margin-left: 20px;
+}
+
+.unsave-cancel-btn:hover {
+  background: #222;
+  color: #fff;
+}
+
+.unsave-confirm-btn:hover {
+  background: #be1e08;
+  border-color: #be1e08;
 }

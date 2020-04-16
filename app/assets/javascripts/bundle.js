@@ -102,9 +102,11 @@ __webpack_require__.r(__webpack_exports__);
 var OPEN_MODAL = 'OPEN_MODAL';
 var CLOSE_MODAL = 'CLOSE_MODAL';
 var openModal = function openModal(modal) {
+  var recipeTitle = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
   return {
     type: OPEN_MODAL,
-    modal: modal
+    modal: modal,
+    recipeTitle: recipeTitle
   };
 };
 var closeModal = function closeModal() {
@@ -1181,10 +1183,10 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/main/signup_form_container.jsx":
-/*!************************************************************!*\
-  !*** ./frontend/components/main/signup_form_container.jsx ***!
-  \************************************************************/
+/***/ "./frontend/components/main/signup_form_container.js":
+/*!***********************************************************!*\
+  !*** ./frontend/components/main/signup_form_container.js ***!
+  \***********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1258,8 +1260,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _main_login_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../main/login_form_container */ "./frontend/components/main/login_form_container.jsx");
-/* harmony import */ var _main_signup_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../main/signup_form_container */ "./frontend/components/main/signup_form_container.jsx");
-/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _main_signup_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../main/signup_form_container */ "./frontend/components/main/signup_form_container.js");
+/* harmony import */ var _recipe_box_confirm_save_removal_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../recipe_box/confirm_save_removal_container */ "./frontend/components/recipe_box/confirm_save_removal_container.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
 
 
 
@@ -1275,14 +1279,22 @@ function Modal(_ref) {
   }
 
   var component;
+  var className;
 
   switch (modal) {
     case 'login':
       component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_login_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null);
+      className = "modal-child";
       break;
 
     case 'signup':
       component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_signup_form_container__WEBPACK_IMPORTED_MODULE_3__["default"], null);
+      className = "modal-child";
+      break;
+
+    case 'removeSave':
+      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_recipe_box_confirm_save_removal_container__WEBPACK_IMPORTED_MODULE_4__["default"], null);
+      className = "remove-confirm";
       break;
 
     default:
@@ -1293,7 +1305,7 @@ function Modal(_ref) {
     className: "modal-background",
     onClick: closeModal
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "modal-child",
+    className: className,
     onClick: function onClick(e) {
       return e.stopPropagation();
     }
@@ -1309,7 +1321,7 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     closeModal: function closeModal() {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__["closeModal"])());
     }
   };
 };
@@ -2501,6 +2513,71 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/recipe_box/confirm_save_removal.jsx":
+/*!*****************************************************************!*\
+  !*** ./frontend/components/recipe_box/confirm_save_removal.jsx ***!
+  \*****************************************************************/
+/*! exports provided: ConfirmSaveRemoval, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfirmSaveRemoval", function() { return ConfirmSaveRemoval; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var ConfirmSaveRemoval = function ConfirmSaveRemoval(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-body"
+  }, "Are you sure you want to remove ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    id: "bold-recipe"
+  }, props.recipeTitle), " from your recipe box?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "unsave-btns"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn-stn unsave-cancel-btn"
+  }, "NO"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn-stn unsave-confirm-btn"
+  }, "YES")));
+};
+/* harmony default export */ __webpack_exports__["default"] = (ConfirmSaveRemoval);
+
+/***/ }),
+
+/***/ "./frontend/components/recipe_box/confirm_save_removal_container.js":
+/*!**************************************************************************!*\
+  !*** ./frontend/components/recipe_box/confirm_save_removal_container.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
+/* harmony import */ var _confirm_save_removal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./confirm_save_removal */ "./frontend/components/recipe_box/confirm_save_removal.jsx");
+
+
+
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var ui = _ref.ui;
+  return {
+    recipeTitle: ui.unsaveTitle
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    unsaveRecipe: function unsaveRecipe(recipeId) {
+      return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__["unsaveRecipe"])(recipeId));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_confirm_save_removal__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
 /***/ "./frontend/components/recipe_box/recipe_box.jsx":
 /*!*******************************************************!*\
   !*** ./frontend/components/recipe_box/recipe_box.jsx ***!
@@ -2595,7 +2672,9 @@ var RecipeBox = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
-/* harmony import */ var _recipe_box__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./recipe_box */ "./frontend/components/recipe_box/recipe_box.jsx");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _recipe_box__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./recipe_box */ "./frontend/components/recipe_box/recipe_box.jsx");
+
 
 
 
@@ -2617,13 +2696,13 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     unsaveRecipe: function unsaveRecipe(recipeId) {
       return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__["unsaveRecipe"])(recipeId));
     },
-    saveRecipe: function saveRecipe(recipeId) {
-      return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__["unsaveRecipe"])(recipeId));
+    openModal: function openModal(modal, recipeId) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["openModal"])(modal, recipeId));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_recipe_box__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_recipe_box__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -2710,7 +2789,8 @@ var RecipeCard = /*#__PURE__*/function (_React$Component) {
     key: "handleSave",
     value: function handleSave(e) {
       if (this.props.loggedIn && this.props.savedRecipeIds.includes(parseInt(this.props.id))) {
-        return this.props.unsaveRecipe(this.props.id);
+        // return this.props.unsaveRecipe(this.props.id)
+        return this.props.openModal('removeSave', this.props.title);
       } else if (this.props.loggedIn && this.state.saveHover) {
         return this.props.saveRecipe(this.props.id);
       } else {
@@ -2801,8 +2881,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     saveRecipe: function saveRecipe(recipeId) {
       return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__["saveRecipe"])(recipeId));
     },
-    openModal: function openModal(modal) {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])(modal));
+    openModal: function openModal(modal, recipeTitle) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])(modal, recipeTitle));
     }
   };
 };
@@ -3794,13 +3874,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _modal_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal_reducer */ "./frontend/reducers/modal_reducer.js");
 /* harmony import */ var _search_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./search_reducer */ "./frontend/reducers/search_reducer.js");
+/* harmony import */ var _unsave_recipe_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./unsave_recipe_reducer */ "./frontend/reducers/unsave_recipe_reducer.js");
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   modal: _modal_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  search: _search_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
+  search: _search_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  unsaveTitle: _unsave_recipe_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 }));
+
+/***/ }),
+
+/***/ "./frontend/reducers/unsave_recipe_reducer.js":
+/*!****************************************************!*\
+  !*** ./frontend/reducers/unsave_recipe_reducer.js ***!
+  \****************************************************/
+/*! exports provided: unsaveRecipeReducer, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unsaveRecipeReducer", function() { return unsaveRecipeReducer; });
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
+var unsaveRecipeReducer = function unsaveRecipeReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__["OPEN_MODAL"]:
+      return action.recipeTitle;
+
+    default:
+      return state;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (unsaveRecipeReducer);
 
 /***/ }),
 

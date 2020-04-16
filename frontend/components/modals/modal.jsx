@@ -12,22 +12,27 @@ function Modal({modal, closeModal}) {
     return null;
   }
   let component;
+  let className;
+  
   switch (modal) {
     case 'login':
       component = <LoginFormContainer />;
+      className = "modal-child"
       break;
     case 'signup':
       component = <SignupFormContainer />;
+      className = "modal-child"
       break;
-    case 'remove':
+    case 'removeSave':
       component = <ConfirmSaveRemovalContainer />;
+      className = "remove-confirm"
       break;
     default:
       return null;
   }
   return (
     <div className="modal-background" onClick={closeModal}>
-      <div className="modal-child" onClick={e => e.stopPropagation()}>
+      <div className={className} onClick={e => e.stopPropagation()}>
         { component }
       </div>
     </div>

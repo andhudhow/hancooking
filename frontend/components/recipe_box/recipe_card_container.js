@@ -12,7 +12,7 @@ const mapStateToProps = ( { session } ) => ({
 const mapDispatchToProps = dispatch => ({
   unsaveRecipe: recipeId => dispatch(unsaveRecipe(recipeId)),
   saveRecipe: recipeId => dispatch(saveRecipe(recipeId)),
-  openModal: modal => dispatch(openModal(modal))
+  openModal: (modal, recipeTitle) => dispatch(openModal(modal, recipeTitle))
 });
 
 export default withRouter(

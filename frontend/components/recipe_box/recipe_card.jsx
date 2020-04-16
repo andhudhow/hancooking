@@ -34,7 +34,8 @@ class RecipeCard extends React.Component{
 
   handleSave(e) {
     if(this.props.loggedIn && this.props.savedRecipeIds.includes(parseInt(this.props.id))) {
-      return this.props.unsaveRecipe(this.props.id)
+      // return this.props.unsaveRecipe(this.props.id)
+      return this.props.openModal('removeSave', this.props.title)
     } else if (this.props.loggedIn && this.state.saveHover) {
       return this.props.saveRecipe(this.props.id)
     } else {
