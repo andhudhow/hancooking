@@ -3047,6 +3047,9 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
           });
           this.props.history.push("/search/".concat(this.props.searchQuery));
         } else {
+          this.setState({
+            results: []
+          });
           this.props.openModal('login');
           this.props.addRedirect("/search/".concat(this.props.searchQuery));
         }

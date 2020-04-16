@@ -43,6 +43,7 @@ class SearchBar extends React.Component {
         this.setState( { results: [] });
         this.props.history.push(`/search/${this.props.searchQuery}`)
       } else {
+        this.setState( { results: [] });
         this.props.openModal('login');
         this.props.addRedirect(`/search/${this.props.searchQuery}`);
       };
