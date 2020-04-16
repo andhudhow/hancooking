@@ -20,8 +20,7 @@ function Modal({modal, closeModal}) {
       component = <SignupFormContainer />;
       break;
     case 'remove':
-      component = <ConfirmSaveRemovalContainer
-        recipeId = />;
+      component = <ConfirmSaveRemovalContainer />;
       break;
     default:
       return null;
