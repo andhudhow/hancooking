@@ -2845,6 +2845,7 @@ var RecipeCard = /*#__PURE__*/function (_React$Component) {
     value: function handleCardClick(e) {
       if (!this.props.loggedIn) {
         this.props.openModal('login');
+        this.props.addRedirect("/recipes/".concat(this.props.id));
       }
     }
   }, {

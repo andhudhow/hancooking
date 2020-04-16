@@ -45,7 +45,8 @@ class RecipeCard extends React.Component{
   
   handleCardClick(e){
     if (!this.props.loggedIn) {
-      this.props.openModal('login')
+      this.props.openModal('login');
+      this.props.addRedirect(`/recipes/${this.props.id}`);
     }
   }
 
