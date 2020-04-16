@@ -1,7 +1,6 @@
 import React from 'react';
 
 export const ConfirmSaveRemoval = props => {
-    debugger
     const handleUnsave = () => {
         props.unsaveRecipe(props.recipe.id);
         props.closeModal();
