@@ -11,19 +11,8 @@ import { NutritionalData } from './nutritional_data/nutritional_data';
 
 class RecipeShow extends React.Component{
   constructor(props) {
-    
     super(props);
-
-    this.state = {
-      commentOpen: false,
-      commentContent: '',
-    };
-
-    this.handleCommentClick = this.handleCommentClick.bind(this);
-    this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
-    this.handleCommentCancel = this.handleCommentCancel.bind(this);
     this.handleTyping = this.handleTyping.bind(this);
-  
   }
 
   componentDidMount() { 
@@ -36,33 +25,6 @@ class RecipeShow extends React.Component{
       this.props.fetchRecipe(parseInt(this.props.match.params.recipeId));
       { scrollTop() };
     }
-  }
-  
-  handleCommentClick() {
-    this.setState({ commentOpen: !this.state.commentOpen })
-  }
-
-  handleCommentSubmit(e){
-    e.preventDefault();
-    this.props.saveComment({
-      recipe_id: this.props.match.params.recipeId,
-      body: this.state.commentContent
-    });
-
-    this.setState( { 
-      commentOpen: false,
-      commentContent: '' }
-    );
-  }
-
-  handleCommentCancel(e){
-    e.preventDefault();
-    this.setState({ commentContent: '' })
-    this.setState({ commentOpen : false })
-  }
-
-  handleTyping(e){
-    this.setState({ commentContent: e.currentTarget.value })
   }
   
   render() {

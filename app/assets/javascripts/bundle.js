@@ -2379,13 +2379,6 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, RecipeShow);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(RecipeShow).call(this, props));
-    _this.state = {
-      commentOpen: false,
-      commentContent: ''
-    };
-    _this.handleCommentClick = _this.handleCommentClick.bind(_assertThisInitialized(_this));
-    _this.handleCommentSubmit = _this.handleCommentSubmit.bind(_assertThisInitialized(_this));
-    _this.handleCommentCancel = _this.handleCommentCancel.bind(_assertThisInitialized(_this));
     _this.handleTyping = _this.handleTyping.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -2409,44 +2402,6 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         }
         ;
       }
-    }
-  }, {
-    key: "handleCommentClick",
-    value: function handleCommentClick() {
-      this.setState({
-        commentOpen: !this.state.commentOpen
-      });
-    }
-  }, {
-    key: "handleCommentSubmit",
-    value: function handleCommentSubmit(e) {
-      e.preventDefault();
-      this.props.saveComment({
-        recipe_id: this.props.match.params.recipeId,
-        body: this.state.commentContent
-      });
-      this.setState({
-        commentOpen: false,
-        commentContent: ''
-      });
-    }
-  }, {
-    key: "handleCommentCancel",
-    value: function handleCommentCancel(e) {
-      e.preventDefault();
-      this.setState({
-        commentContent: ''
-      });
-      this.setState({
-        commentOpen: false
-      });
-    }
-  }, {
-    key: "handleTyping",
-    value: function handleTyping(e) {
-      this.setState({
-        commentContent: e.currentTarget.value
-      });
     }
   }, {
     key: "render",
