@@ -2843,9 +2843,7 @@ var RecipeCard = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleCardClick",
     value: function handleCardClick(e) {
-      if (this.props.loggedIn) {
-        return null;
-      } else {
+      if (!this.props.loggedIn) {
         this.props.openModal('login');
       }
     }
@@ -2898,10 +2896,12 @@ var RecipeCard = /*#__PURE__*/function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
-/* harmony import */ var _recipe_card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./recipe_card */ "./frontend/components/recipe_box/recipe_card.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _actions_redirect_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/redirect_actions */ "./frontend/actions/redirect_actions.js");
+/* harmony import */ var _recipe_card__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./recipe_card */ "./frontend/components/recipe_box/recipe_card.jsx");
+
 
 
 
@@ -2919,18 +2919,24 @@ var mapStateToProps = function mapStateToProps(_ref) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     unsaveRecipe: function unsaveRecipe(recipeId) {
-      return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__["unsaveRecipe"])(recipeId));
+      return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_2__["unsaveRecipe"])(recipeId));
     },
     saveRecipe: function saveRecipe(recipeId) {
-      return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__["saveRecipe"])(recipeId));
+      return dispatch(Object(_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_2__["saveRecipe"])(recipeId));
     },
     openModal: function openModal(modal, recipeId, recipeTitle) {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])(modal, recipeId, recipeTitle));
+    },
+    addRedirect: function addRedirect(path) {
+      return dispatch(Object(_actions_redirect_actions__WEBPACK_IMPORTED_MODULE_4__["addRedirect"])(path));
+    },
+    removeRedirect: function removeRedirect() {
+      return dispatch(Object(_actions_redirect_actions__WEBPACK_IMPORTED_MODULE_4__["removeRedirect"])());
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_recipe_card__WEBPACK_IMPORTED_MODULE_2__["default"])));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_recipe_card__WEBPACK_IMPORTED_MODULE_5__["default"])));
 
 /***/ }),
 

@@ -44,9 +44,7 @@ class RecipeCard extends React.Component{
   }
   
   handleCardClick(e){
-    if (this.props.loggedIn) {
-      return null
-    } else { 
+    if (!this.props.loggedIn) {
       this.props.openModal('login')
     }
   }
