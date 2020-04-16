@@ -574,9 +574,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(_ref) {
-  var errors = _ref.errors;
+  var errors = _ref.errors,
+      ui = _ref.ui;
   return {
     errors: errors.session,
+    redirectPath: ui.redirect,
     formType: 'login',
     headerText: 'log in',
     buttonText: 'Log in'
@@ -1130,9 +1132,15 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this3 = this;
+
       e.preventDefault();
       var user = Object.assign({}, this.state);
-      this.props.processForm(user).then(this.props.closeModal);
+      this.props.processForm(user).then(function () {
+        _this3.props.closeModal();
+
+        _this3.props.history.push(_this3.props.redirectPath);
+      });
     }
   }, {
     key: "renderErrors",
@@ -1147,10 +1155,15 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleDemoLogin",
     value: function handleDemoLogin(e) {
-      this.props.closeModal();
-      return this.props.login({
+      var _this4 = this;
+
+      this.props.login({
         email: 'andhudhow@gmail.com',
         password: 'password'
+      }).then(function () {
+        _this4.props.closeModal();
+
+        _this4.props.history.push(_this4.props.redirectPath);
       });
     }
   }, {
@@ -1219,12 +1232,14 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
-/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
-/* harmony import */ var _session_form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./session_form */ "./frontend/components/main/session_form.jsx");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _session_form__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./session_form */ "./frontend/components/main/session_form.jsx");
+
 
 
 
@@ -1232,9 +1247,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(_ref) {
-  var errors = _ref.errors;
+  var errors = _ref.errors,
+      ui = _ref.ui;
   return {
     errors: errors.session,
+    redirectPath: ui.redirect,
     formType: 'signup',
     headerText: 'sign up',
     buttonText: 'Sign up'
@@ -1244,15 +1261,15 @@ var mapStateToProps = function mapStateToProps(_ref) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     processForm: function processForm(user) {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["signup"])(user));
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["signup"])(user));
     },
-    otherForm: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+    otherForm: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       onClick: function onClick() {
-        return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])('login'));
+        return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["openModal"])('login'));
       }
     }, "log in here"),
     closeModal: function closeModal() {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["closeModal"])());
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
     },
     login: function (_login) {
       function login(_x) {
@@ -1270,7 +1287,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_session_form__WEBPACK_IMPORTED_MODULE_4__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(_session_form__WEBPACK_IMPORTED_MODULE_5__["default"])));
 
 /***/ }),
 
@@ -3653,6 +3670,8 @@ var recipesReducer = function recipesReducer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_redirect_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/redirect_actions */ "./frontend/actions/redirect_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
 
 
 var redirectReducer = function redirectReducer() {
@@ -3664,7 +3683,7 @@ var redirectReducer = function redirectReducer() {
     case _actions_redirect_actions__WEBPACK_IMPORTED_MODULE_0__["ADD_REDIRECT"]:
       return action.path;
 
-    case _actions_redirect_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_REDIRECT"]:
+    case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["CLOSE_MODAL"]:
       return null;
 
     default:

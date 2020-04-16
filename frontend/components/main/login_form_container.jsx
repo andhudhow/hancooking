@@ -5,9 +5,10 @@ import { login } from '../../actions/session_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import SessionForm from './session_form';
 
-const mapStateToProps = ({ errors }) => {
+const mapStateToProps = ({ errors, ui }) => {
   return {
     errors: errors.session,
+    redirectPath: ui.redirect,
     formType: 'login',
     headerText: 'log in',
     buttonText: 'Log in'
