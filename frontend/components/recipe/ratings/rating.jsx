@@ -46,6 +46,7 @@ export const Rating = (props) => {
     };
 
     const hoverStarRating = () => {
+        //show filled stars based on which star is being hovered on
         let hoverStarRating = [];
 
         for(let i = 1; i <= 5; i++) {

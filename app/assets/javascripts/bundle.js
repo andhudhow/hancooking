@@ -1865,6 +1865,7 @@ var Rating = function Rating(props) {
   };
 
   var hoverStarRating = function hoverStarRating() {
+    //show filled stars based on which star is being hovered on
     var hoverStarRating = [];
 
     var _loop = function _loop(i) {

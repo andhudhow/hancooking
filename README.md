@@ -64,10 +64,21 @@ export const Rating = (props) => {
     const [ratingHover, setRatingHover ] = useState(false);
     const [starHover, setStarHover ] = useState(recipe ? recipe.avgRating : 0);
     const [ratingText, setRatingText ] = useState("Rate Recipe");
+    const ratingTextOptions = [   
+        "Rate Recipe",
+        "Not Worth It",
+        "Fine",
+        "Good",
+        "Really Good",
+        "Delicious"
+    ];
+    let starRating = [];
 
     const handleRatingSubmit = val => {
-
-        if (currentUser.ratedRecipeIds.includes(parseInt(match.params.recipeId))) { 
+        //if the user has already submitted the recipe, use updateRating to
+        //update their existing rating, else create a new rating
+        if (currentUser.ratedRecipeIds
+            .includes(parseInt(match.params.recipeId))) { 
           updateRating({
             recipe_id: recipe.id,
             star_rating: val
@@ -82,47 +93,28 @@ export const Rating = (props) => {
     
     const handleStarHover = val => {
         setStarHover(val);
-    
-        switch (val) {
-            case 1:
-                setRatingText("Not Worth It")
-                break;
-            case 2:
-                setRatingText("Fine")
-                break;
-            case 3:
-                setRatingText("Good")
-                break;
-            case 4:
-                setRatingText("Really Good")
-                break;
-            case 5:
-                setRatingText("Delicious")
-                break;
-            default:
-                null
-        };
+        setRatingText(ratingTextOptions[val]);
     };
 
     const hoverStarRating = () => {
-        let hoverStarRating = [];
+      let hoverStarRating = [];
 
-        for(let i = 1; i <= 5; i++) {
-            hoverStarRating.push(
-            <img src={starHover >= i
-                ? window.starYellowURL
-                : window.starEmptyURL}
-                onMouseOver={()=>handleStarHover(i)}
-                onClick={()=>handleRatingSubmit(i)}
-            />)
-        }
-        
-        return hoverStarRating.map(star => star);
+      for(let i = 1; i <= 5; i++) {
+          hoverStarRating.push(
+          <img src={starHover >= i
+              ? window.starYellowURL
+              : window.starEmptyURL}
+              onMouseOver={()=>handleStarHover(i)}
+              onClick={()=>handleRatingSubmit(i)}
+          />)
+      }
+      
+      return hoverStarRating.map(star => star);
     };
 
     const currentStarRating = () => {
-        let starRating = [];
-
+        //if we have a current recipe and the user has already rated the recipe
+        //find and display their rating, else show the community's avg rating
         if (recipe) {
             if (ratings[0]
                 && currentUser.ratedRecipeIds
@@ -142,8 +134,8 @@ export const Rating = (props) => {
                     <img src={currentUserRating >= i
                         ? window.starYellowURL
                         : window.starEmptyURL }
-                    />);
-                };
+                    />)
+                }
             } else {
                 for(let i = 1; i <= 5; i++) {
                     starRating.push(
@@ -151,8 +143,8 @@ export const Rating = (props) => {
                             ? window.starRedURL
                             : window.starEmptyURL }
                         />
-                    );
-                };
+                    )
+                }
             }
         }
         
@@ -181,5 +173,5 @@ export const Rating = (props) => {
           </div>
         </div>
     )
-};
+}
 ```
