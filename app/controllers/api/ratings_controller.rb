@@ -27,17 +27,6 @@ class Api::RatingsController < ApplicationController
     end
   end
 
-  def destroy
-    rating = Rating.find_by(id: params[:id])
-    @recipe = Recipe.find_by(id: rating.recipe_id)
-
-    if rating &.destroy
-      render 'api/recipes/show'
-    else
-      render json: rating.errors.full_messages, status: 422
-    end
-  end
-
   private
 
   def rating_params

@@ -6,8 +6,6 @@ import {
 import RecipeShow from './recipe_show';
 import { withRouter } from 'react-router-dom';
 
-
-
 const mapStateToProps = ({ session, entities}, ownProps) => ({
     currentUser: session.currentUser,
     recipe: entities.recipes[ownProps.match.params.recipeId],

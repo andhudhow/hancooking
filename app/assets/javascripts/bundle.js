@@ -1676,9 +1676,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var NutritionalData = function NutritionalData(props) {
-  var recipe = props.recipe,
-      ingredients = props.ingredients;
-
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState2 = _slicedToArray(_useState, 2),
       nutrHover = _useState2[0],
@@ -1689,12 +1686,17 @@ var NutritionalData = function NutritionalData(props) {
       nutrInfo = _useState4[0],
       setNutrInfo = _useState4[1];
 
+  var recipe = props.recipe,
+      ingredients = props.ingredients;
+  var ingr = []; //prep ingredient list for request to Edamam
+
+  ingredients.forEach(function (ingredient) {
+    return ingr.push(ingredient.quantity + " " + ingredient.description);
+  });
   var nutrData = {
     title: recipe.title,
     "yield": recipe.servings + "servings",
-    ingr: ingredients.reduce(function (ingrList, ingr) {
-      return ingrList.concat(ingr.quantity + " " + ingr.description);
-    }, [])
+    ingr: ingr
   };
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     Object(_util_nutr_info_api_util__WEBPACK_IMPORTED_MODULE_1__["fetchNutritionData"])(nutrData).then(function (payload) {
@@ -1730,7 +1732,7 @@ var NutritionalData = function NutritionalData(props) {
     className: "nutrition-note"
   }, "Note: The information shown is Edamam\u2019s estimate based on available ingredients and preparation. It should not be considered a substitute for a professional nutritionist\u2019s advice."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "nutrition-attribution"
-  }, "Powered by ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+  }, "Powered by", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     id: "edamam-logo",
     src: "https://static01.nyt.com/applications/cooking/982798d/assets/edamam-logo.png"
   })))) : null;

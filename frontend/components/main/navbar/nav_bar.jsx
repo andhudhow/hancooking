@@ -12,9 +12,6 @@ class NavBar extends React.Component{
     const { currentUser, openModal, logout, login } = this.props;
     const navButtons = () => (
       <ul>
-        {/* <Link to='/'>
-          <li className='nav-btns'>Grocery List</li>
-        </Link> */}
         <Link to='/recipe-box'>
           <li className='nav-btns'>Recipe Box</li>
         </Link>
@@ -50,7 +47,6 @@ class NavBar extends React.Component{
             <img className='logo' src={window.logoURL} />
           </Link>
         </div>
-        {/* <img src="/assets/nav-inline-search-glass" id="search-glass" /> */}
         <SearchBarContainer />
           <nav className='right-nav'>
               <div className="nav-btn-wrapper">
