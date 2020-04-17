@@ -2961,6 +2961,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _util_search_query_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util/search_query_util */ "./frontend/util/search_query_util.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2978,6 +2979,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -3055,7 +3057,7 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       var results = this.props.recipes.filter(function (recipe) {
-        return recipe.title.toLowerCase().split(' ').join('').includes(_this2.props.searchQuery.toLowerCase().split(' ').join('')) || recipe.description.toLowerCase().split(' ').join('').includes(_this2.props.searchQuery.toLowerCase().split(' ').join(''));
+        return Object(_util_search_query_util__WEBPACK_IMPORTED_MODULE_2__["lowerSplitJoin"])(recipe.title).includes(Object(_util_search_query_util__WEBPACK_IMPORTED_MODULE_2__["lowerSplitJoin"])(_this2.props.searchQuery)) || Object(_util_search_query_util__WEBPACK_IMPORTED_MODULE_2__["lowerSplitJoin"])(recipe.description).includes(Object(_util_search_query_util__WEBPACK_IMPORTED_MODULE_2__["lowerSplitJoin"])(_this2.props.searchQuery));
       });
       this.setState({
         results: results
@@ -3262,6 +3264,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _search_result__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./search_result */ "./frontend/components/search/search_result.jsx");
+/* harmony import */ var _util_search_query_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/search_query_util */ "./frontend/util/search_query_util.js");
+
 
 
 
@@ -3270,7 +3274,7 @@ var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var entities = _ref.entities;
   return {
     recipes: Object.values(entities.recipes).filter(function (recipe) {
-      return recipe.title.toLowerCase().split(' ').join('').includes(ownProps.match.params.searchQuery.toLowerCase().split(' ').join('')) || recipe.description.toLowerCase().split(' ').join('').includes(ownProps.match.params.searchQuery.toLowerCase().split(' ').join(''));
+      return Object(_util_search_query_util__WEBPACK_IMPORTED_MODULE_3__["lowerSplitJoin"])(recipe.title).includes(Object(_util_search_query_util__WEBPACK_IMPORTED_MODULE_3__["lowerSplitJoin"])(ownProps.match.params.searchQuery) || Object(_util_search_query_util__WEBPACK_IMPORTED_MODULE_3__["lowerSplitJoin"])(recipe.description).includes(Object(_util_search_query_util__WEBPACK_IMPORTED_MODULE_3__["lowerSplitJoin"])(ownProps.match.params.searchQuery)));
     })
   };
 };
@@ -4273,6 +4277,22 @@ var removeScrollTop = function removeScrollTop() {
   document.body.style.height = "";
   document.documentElement.style.width = "";
   document.body.style.width = "";
+};
+
+/***/ }),
+
+/***/ "./frontend/util/search_query_util.js":
+/*!********************************************!*\
+  !*** ./frontend/util/search_query_util.js ***!
+  \********************************************/
+/*! exports provided: lowerSplitJoin */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lowerSplitJoin", function() { return lowerSplitJoin; });
+var lowerSplitJoin = function lowerSplitJoin(string) {
+  return string.toLowerCase().split(' ').join('');
 };
 
 /***/ }),

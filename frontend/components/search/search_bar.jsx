@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { lowerSplitJoin } from '../../util/search_query_util'
+
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -48,10 +50,10 @@ class SearchBar extends React.Component {
   filterResults() {
     let results = 
       this.props.recipes.filter(recipe => (
-        recipe.title.toLowerCase().split(' ').join('')
-          .includes(this.props.searchQuery.toLowerCase().split(' ').join(''))
-        || recipe.description.toLowerCase().split(' ').join('')
-            .includes(this.props.searchQuery.toLowerCase().split(' ').join(''))
+        lowerSplitJoin(recipe.title)
+          .includes(lowerSplitJoin(this.props.searchQuery))
+        || lowerSplitJoin(recipe.description)
+            .includes(lowerSplitJoin(this.props.searchQuery))
       ));
 
       this.setState({ results })
