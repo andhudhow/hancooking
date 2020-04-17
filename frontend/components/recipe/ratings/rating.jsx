@@ -24,8 +24,10 @@ export const Rating = (props) => {
     let starRating = [];
 
     const handleRatingSubmit = val => {
-
-        if (currentUser.ratedRecipeIds.includes(parseInt(match.params.recipeId))) { 
+        //if the user has already submitted the recipe, use updateRating to
+        //update their existing rating, else create a new rating
+        if (currentUser.ratedRecipeIds
+            .includes(parseInt(match.params.recipeId))) { 
           updateRating({
             recipe_id: recipe.id,
             star_rating: val
@@ -60,6 +62,8 @@ export const Rating = (props) => {
     };
 
     const currentStarRating = () => {
+        //if we have a current recipe and the user has already rated the recipe
+        //find and display their rating, else show the community's avg rating
         if (recipe) {
             if (ratings[0]
                 && currentUser.ratedRecipeIds

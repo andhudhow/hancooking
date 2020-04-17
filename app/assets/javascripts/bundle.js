@@ -1844,6 +1844,8 @@ var Rating = function Rating(props) {
   var starRating = [];
 
   var handleRatingSubmit = function handleRatingSubmit(val) {
+    //if the user has already submitted the recipe, use updateRating to
+    //update their existing rating, else create a new rating
     if (currentUser.ratedRecipeIds.includes(parseInt(match.params.recipeId))) {
       updateRating({
         recipe_id: recipe.id,
@@ -1887,6 +1889,8 @@ var Rating = function Rating(props) {
   };
 
   var currentStarRating = function currentStarRating() {
+    //if we have a current recipe and the user has already rated the recipe
+    //find and display their rating, else show the community's avg rating
     if (recipe) {
       if (ratings[0] && currentUser.ratedRecipeIds.includes(parseInt(match.params.recipeId))) {
         var currentUserRatings = ratings.filter(function (rating) {
