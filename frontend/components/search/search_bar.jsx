@@ -10,7 +10,6 @@ class SearchBar extends React.Component {
     this.handleTyping = this.handleTyping.bind(this);
     this.filterResults = this.filterResults.bind(this);
     this.handleResultClick = this.handleResultClick.bind(this);
-    this.handleOutsideClick = this.handleOutsideClick.bind(this);
     this.handleKeyEnterPress = this.handleKeyEnterPress.bind(this);
   }
 
@@ -31,10 +30,6 @@ class SearchBar extends React.Component {
       this.setState({results: []});
       this.props.openModal('login');
     };
-  }
-
-  handleOutsideClick(e){
-    this.setState({results: []})
   }
 
   handleKeyEnterPress(e) {

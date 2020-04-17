@@ -2997,7 +2997,6 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
     _this.handleTyping = _this.handleTyping.bind(_assertThisInitialized(_this));
     _this.filterResults = _this.filterResults.bind(_assertThisInitialized(_this));
     _this.handleResultClick = _this.handleResultClick.bind(_assertThisInitialized(_this));
-    _this.handleOutsideClick = _this.handleOutsideClick.bind(_assertThisInitialized(_this));
     _this.handleKeyEnterPress = _this.handleKeyEnterPress.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -3029,13 +3028,6 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
       }
 
       ;
-    }
-  }, {
-    key: "handleOutsideClick",
-    value: function handleOutsideClick(e) {
-      this.setState({
-        results: []
-      });
     }
   }, {
     key: "handleKeyEnterPress",
