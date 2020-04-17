@@ -9,8 +9,6 @@ export const Rating = (props) => {
         updateRating,
         createRating
     } = props;
-
-    let starRating;
     
     const [ratingHover, setRatingHover ] = useState(false);
     const [starHover, setStarHover ] = useState(recipe ? recipe.avgRating : 0);
@@ -53,48 +51,82 @@ export const Rating = (props) => {
             default:
                 null
         };
-    }
+    };
 
-    if (recipe) {
-        if (ratings[0] && currentUser.ratedRecipeIds.includes(parseInt(match.params.recipeId))) {
-            let currentUserRatings = ratings.filter(rating => rating.userId === currentUser.id)
-            let currentUserRating = currentUserRatings.length > 0 && currentUserRatings[0] ? currentUserRatings[0].starRating : null;
+    const hoverStarRating = () => {
+        let hoverStarRating = [];
 
-            starRating =
-                <div className = "recipe-rating-avg-stars">
-                    <img src={currentUserRating >= 1 ? window.starYellowURL : window.starEmptyURL }></img>
-                    <img src={currentUserRating >= 2 ? window.starYellowURL : window.starEmptyURL }></img>
-                    <img src={currentUserRating >= 3 ? window.starYellowURL : window.starEmptyURL }></img>
-                    <img src={currentUserRating >= 4 ? window.starYellowURL : window.starEmptyURL }></img>
-                    <img src={currentUserRating >= 5 ? window.starYellowURL : window.starEmptyURL }></img>
-                </div> 
-        } else {
-            starRating = 
-            <div className = "recipe-rating-avg-stars">
-                <img src={recipe.avgRating >= 1 ? window.starRedURL : window.starEmptyURL }></img>
-                <img src={recipe.avgRating >= 2 ? window.starRedURL : window.starEmptyURL }></img>
-                <img src={recipe.avgRating >= 3 ? window.starRedURL : window.starEmptyURL }></img>
-                <img src={recipe.avgRating >= 4 ? window.starRedURL : window.starEmptyURL }></img>
-                <img src={recipe.avgRating >= 5 ? window.starRedURL : window.starEmptyURL }></img>
-            </div> 
+        for(let i = 1; i <= 5; i++) {
+            hoverStarRating.push(
+            <img src={starHover >= i
+                ? window.starYellowURL
+                : window.starEmptyURL}
+                onMouseOver={()=>handleStarHover(i)}
+                onClick={()=>handleRatingSubmit(i)}
+            />)
         }
-    }
+        
+        return hoverStarRating.map(star => star);
+    };
+
+    const currentStarRating = () => {
+        let starRating = [];
+
+        if (recipe) {
+            if (ratings[0]
+                && currentUser.ratedRecipeIds
+                    .includes(parseInt(match.params.recipeId))
+            ) {
+
+                const currentUserRatings = 
+                    ratings.filter(rating => rating.userId === currentUser.id);
+
+                const currentUserRating =
+                    currentUserRatings.length > 0 && currentUserRatings[0]
+                    ? currentUserRatings[0].starRating
+                    : null;
+
+                for(let i = 1; i <= 5; i++) {
+                    starRating.push(
+                    <img src={currentUserRating >= i
+                        ? window.starYellowURL
+                        : window.starEmptyURL }
+                    />)
+                }
+            } else {
+                for(let i = 1; i <= 5; i++) {
+                    starRating.push(
+                        <img src={recipe.avgRating >= i
+                            ? window.starRedURL
+                            : window.starEmptyURL }
+                        />
+                    )
+                }
+            }
+        }
+        
+        return starRating.map(star => star);
+    };
     
     return (
         <div className="recipe-metadata-container">
-            <div className={ratingHover ? "rating-tooltip-open" : "rating-tooltip-closed"} onMouseLeave={()=>setRatingHover(false)}>
+            <div className={ratingHover ?
+                "rating-tooltip-open"
+                : "rating-tooltip-closed"}
+                onMouseLeave={()=>setRatingHover(false)}
+            >
                 <span className = "rating-text">{ratingText}</span>
                 <div className = "recipe-rating-avg-stars">
-                <img src={starHover >= 1 ? window.starYellowURL : window.starEmptyURL } onMouseOver={()=>handleStarHover(1)} onClick={()=>handleRatingSubmit(1)} />
-                <img src={starHover >= 2 ? window.starYellowURL : window.starEmptyURL } onMouseOver={()=>handleStarHover(2)} onClick={()=>handleRatingSubmit(2)} />
-                <img src={starHover >= 3 ? window.starYellowURL : window.starEmptyURL } onMouseOver={()=>handleStarHover(3)} onClick={()=>handleRatingSubmit(3)} />
-                <img src={starHover >= 4 ? window.starYellowURL : window.starEmptyURL } onMouseOver={()=>handleStarHover(4)} onClick={()=>handleRatingSubmit(4)} />
-                <img src={starHover >= 5 ? window.starYellowURL : window.starEmptyURL } onMouseOver={()=>handleStarHover(5)} onClick={()=>handleRatingSubmit(5)} />
+                { hoverStarRating() }
                 </div>
             </div>
           <div className="rating-total">{recipe.numRatings} ratings</div>
-          <div className="star-rating" onMouseEnter={() => setRatingHover(true)}>
-            {starRating}
+          <div className="star-rating"
+            onMouseEnter={() => setRatingHover(true)}
+          >
+            <div className = "recipe-rating-avg-stars">
+                { currentStarRating() }
+            </div>
           </div>
         </div>
     )
