@@ -4,7 +4,9 @@ import { deleteComment } from '../../../actions/recipe_actions';
 import CommentIndex from './comment_index';
 
 const mapStateToProps = ({ entities, session }) => ({
-  comments: Object.keys(entities.comments).map(key => entities.comments[key]).sort((a, b) => (a.createdAt > b.createdAt) ? -1 : 1),
+  comments: Object.keys(entities.comments)
+    .map(key => entities.comments[key])
+    .sort((a, b) => (a.createdAt > b.createdAt) ? -1 : 1),
   currentUser: session.currentUser
 });
   
