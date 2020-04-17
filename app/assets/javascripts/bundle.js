@@ -1615,7 +1615,7 @@ var IngredientListIndex = function IngredientListIndex(props) {
   }, props.ingredients.map(function (ingredient, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ingredient_list_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
       ingredient: ingredient,
-      key: index
+      key: ingredient - index
     });
   })));
 };

@@ -7,7 +7,7 @@ const IngredientListIndex = (props) => {
     <div className="ingredients-wrap">
       <ul className="ingredient-list">
       {props.ingredients.map((ingredient, index) => (
-        <IngredientListIndexItem ingredient={ingredient} key={index} />
+        <IngredientListIndexItem ingredient={ingredient} key={ingredient-index} />
       ))}
       </ul>
     </div>
