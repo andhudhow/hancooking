@@ -13,6 +13,15 @@ export const Rating = (props) => {
     const [ratingHover, setRatingHover ] = useState(false);
     const [starHover, setStarHover ] = useState(recipe ? recipe.avgRating : 0);
     const [ratingText, setRatingText ] = useState("Rate Recipe");
+    const ratingTextOptions = [   
+        "Rate Recipe",
+        "Not Worth It",
+        "Fine",
+        "Good",
+        "Really Good",
+        "Delicious"
+    ];
+    let starRating = [];
 
     const handleRatingSubmit = val => {
 
@@ -31,26 +40,7 @@ export const Rating = (props) => {
     
     const handleStarHover = val => {
         setStarHover(val);
-    
-        switch (val) {
-            case 1:
-                setRatingText("Not Worth It")
-                break;
-            case 2:
-                setRatingText("Fine")
-                break;
-            case 3:
-                setRatingText("Good")
-                break;
-            case 4:
-                setRatingText("Really Good")
-                break;
-            case 5:
-                setRatingText("Delicious")
-                break;
-            default:
-                null
-        };
+        setRatingText(ratingTextOptions[val]);
     };
 
     const hoverStarRating = () => {
@@ -70,8 +60,6 @@ export const Rating = (props) => {
     };
 
     const currentStarRating = () => {
-        let starRating = [];
-
         if (recipe) {
             if (ratings[0]
                 && currentUser.ratedRecipeIds

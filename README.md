@@ -42,8 +42,11 @@
 * Local Korean market finder
 
 ### Code Snippets
-* If the user has previously rated the recipe, show the user's star rating with yellow stars.
-* If the user has NOT previously rated the recipe, show the average rating of the user community in red stars.
+
+#### Star Ratings
+To implement star ratings, the `useState` React Hook to manage local state for
+detecting if the user is hovering over the rating component, which star they're
+hovering over, and which text should be displayed based on the star hover
 
 ```javascript
 import React, { useState } from 'react';

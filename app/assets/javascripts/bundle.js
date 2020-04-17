@@ -1840,6 +1840,9 @@ var Rating = function Rating(props) {
       ratingText = _useState6[0],
       setRatingText = _useState6[1];
 
+  var ratingTextOptions = ["Rate Recipe", "Not Worth It", "Fine", "Good", "Really Good", "Delicious"];
+  var starRating = [];
+
   var handleRatingSubmit = function handleRatingSubmit(val) {
     if (currentUser.ratedRecipeIds.includes(parseInt(match.params.recipeId))) {
       updateRating({
@@ -1856,33 +1859,7 @@ var Rating = function Rating(props) {
 
   var handleStarHover = function handleStarHover(val) {
     setStarHover(val);
-
-    switch (val) {
-      case 1:
-        setRatingText("Not Worth It");
-        break;
-
-      case 2:
-        setRatingText("Fine");
-        break;
-
-      case 3:
-        setRatingText("Good");
-        break;
-
-      case 4:
-        setRatingText("Really Good");
-        break;
-
-      case 5:
-        setRatingText("Delicious");
-        break;
-
-      default:
-        null;
-    }
-
-    ;
+    setRatingText(ratingTextOptions[val]);
   };
 
   var hoverStarRating = function hoverStarRating() {
@@ -1910,8 +1887,6 @@ var Rating = function Rating(props) {
   };
 
   var currentStarRating = function currentStarRating() {
-    var starRating = [];
-
     if (recipe) {
       if (ratings[0] && currentUser.ratedRecipeIds.includes(parseInt(match.params.recipeId))) {
         var currentUserRatings = ratings.filter(function (rating) {
