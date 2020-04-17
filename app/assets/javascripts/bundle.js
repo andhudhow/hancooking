@@ -3186,6 +3186,7 @@ var SearchResult = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      debugger;
       var resultIndex = this.props.recipes.map(function (recipe, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_recipe_box_recipe_card_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
           id: recipe.id,
@@ -3234,7 +3235,7 @@ var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var entities = _ref.entities;
   return {
     recipes: Object.values(entities.recipes).filter(function (recipe) {
-      return Object(_util_search_query_util__WEBPACK_IMPORTED_MODULE_3__["lowerSplitJoin"])(recipe.title).includes(Object(_util_search_query_util__WEBPACK_IMPORTED_MODULE_3__["lowerSplitJoin"])(ownProps.match.params.searchQuery) || Object(_util_search_query_util__WEBPACK_IMPORTED_MODULE_3__["lowerSplitJoin"])(recipe.description).includes(Object(_util_search_query_util__WEBPACK_IMPORTED_MODULE_3__["lowerSplitJoin"])(ownProps.match.params.searchQuery)));
+      return Object(_util_search_query_util__WEBPACK_IMPORTED_MODULE_3__["lowerSplitJoin"])(recipe.title).includes(Object(_util_search_query_util__WEBPACK_IMPORTED_MODULE_3__["lowerSplitJoin"])(ownProps.match.params.searchQuery)) || Object(_util_search_query_util__WEBPACK_IMPORTED_MODULE_3__["lowerSplitJoin"])(recipe.description).includes(Object(_util_search_query_util__WEBPACK_IMPORTED_MODULE_3__["lowerSplitJoin"])(ownProps.match.params.searchQuery));
     })
   };
 };
@@ -3905,7 +3906,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modal_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal_reducer */ "./frontend/reducers/modal_reducer.js");
 /* harmony import */ var _search_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./search_reducer */ "./frontend/reducers/search_reducer.js");
 /* harmony import */ var _unsave_recipe_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./unsave_recipe_reducer */ "./frontend/reducers/unsave_recipe_reducer.js");
-/* harmony import */ var _redirect_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./redirect_reducer */ "./frontend/reducers/redirect_reducer.js");
+/* harmony import */ var _redirect_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./redirect_reducer */ "./frontend/reducers/redirect_reducer.js");
 
 
 
@@ -3915,7 +3916,7 @@ __webpack_require__.r(__webpack_exports__);
   modal: _modal_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   search: _search_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
   unsave: _unsave_recipe_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
-  redirect: _redirect_reducer__WEBPACK_IMPORTED_MODULE_5__["default"]
+  redirect: _redirect_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
 }));
 
 /***/ }),

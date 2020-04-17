@@ -8,10 +8,10 @@ const mapStateToProps = ({ entities }, ownProps) => ({
   recipes: Object.values(entities.recipes)
             .filter(recipe => (
               lowerSplitJoin(recipe.title)
-                .includes(lowerSplitJoin(ownProps.match.params.searchQuery)
+                .includes(lowerSplitJoin(ownProps.match.params.searchQuery))
               || lowerSplitJoin(recipe.description)
                   .includes(lowerSplitJoin(ownProps.match.params.searchQuery))
-            )))
+            ))
 });
   
 const mapDispatchToProps = dispatch => ({

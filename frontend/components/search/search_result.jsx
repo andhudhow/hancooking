@@ -14,6 +14,7 @@ class SearchResult extends React.Component {
   }
 
   render() {
+    debugger
     const resultIndex = 
       this.props.recipes.map((recipe, idx) =>
         <div>
