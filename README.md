@@ -295,3 +295,27 @@ export const NutritionalData = props => {
     )
 } 
 ```
+
+### Recipes backend
+In addition to an Index and Show route the Recipes Controller also has a `save` and `unsave` custom routes for saves that a user makes to their Recipe Box:
+
+```ruby
+#Backend routes
+Rails.application.routes.draw do
+  namespace :api, defaults: {format: :json} do
+    resources :users, only: [:create, :show]
+    resources :recipes, only: [:index, :show] do
+      post 'save'
+      delete 'unsave'
+      resources :comments, only: [:create]
+      resources :ratings, only: [:create]
+    end
+    resources :comments, only: [:destroy]
+    resources :ratings, only: [:update, :destroy]
+    resource :session, only: [:create, :destroy]
+  end
+
+  root "static_pages#root"
+end
+```
+

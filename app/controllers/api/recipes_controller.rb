@@ -9,7 +9,9 @@ class Api::RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.includes(:ingredients, :prep_steps, :ratings, comments: [:user]).find_by(id: params[:id])
+    @recipe = Recipe
+      .includes(:ingredients, :prep_steps, :ratings, comments: [:user])
+      .find_by(id: params[:id])
   end
 
   def save
