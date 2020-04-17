@@ -177,7 +177,7 @@ export const Rating = (props) => {
 ```
 
 ### Nutritional Info
-The `useEffect` and `useState` React Hooks are used to call and manage data from the [Edamam Nutrition API](https://developer.edamam.com/edamam-docs-nutrition-api). 
+The `useEffect` and `useState` React Hooks are used to call and manage data from the [Edamam Nutritional Analysis API](https://developer.edamam.com/edamam-docs-nutrition-api). If Edamam is unable to produce a high-quality result it will return a 555 HTTP error and occassionally will return a response with only certain macronutrients (e.g., Fiber content may not be available). This is guarded against by not displaying the nutritional data tooltip when a 555 error received or if a success response is recevied but not all data points are available, first checking for a data point's presence before trying to render it.
 
 ```javascript
 import React, { useEffect, useState } from 'react';
