@@ -36,11 +36,6 @@
 * #### Nutritional information - powered by the Edamam API, view the nutritional contents of a recipe
   ![nutrition](img/nutr.gif "Nutrition")
 
-### Future features
-* Grocery list - add ingredients to a shopping list
-* Mark as Cooked - indicate which recipes you've already cooked
-* Local Korean market finder
-
 ### Code Snippets
 
 #### Star Ratings
@@ -414,3 +409,7 @@ json.set! :ratings do
 end
 ```
 
+### Future features
+* Grocery list - add ingredients to a shopping list
+* Mark as Cooked - indicate which recipes you've already cooked
+* Local Korean market finder
