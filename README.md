@@ -297,10 +297,11 @@ export const NutritionalData = props => {
 ```
 
 ### Recipes backend
-In addition to an Index and Show route the Recipes Controller also has a `save` and `unsave` custom routes for saves that a user makes to their Recipe Box:
+In addition to an Index and Show route the Recipes Controller also uses a `save` and `unsave` custom routes for Recipe Saves that a user makes to their Recipe Box:
 
 ```ruby
 #Backend routes
+# / routes.rb
 Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resources :users, only: [:create, :show]
@@ -316,6 +317,100 @@ Rails.application.routes.draw do
   end
 
   root "static_pages#root"
+end
+```
+```Ruby
+# / recipes_controller.rb
+class Api::RecipesController < ApplicationController
+  def index
+    @recipes = Recipe.all
+    if @recipes
+      render 'api/recipes/index'
+    else
+      render json: recipe_save.errors.full_messages, status: 422
+    end
+  end
+
+  def show
+    @recipe = Recipe
+      .includes(:ingredients, :prep_steps, :ratings, comments: [:user])
+      .find_by(id: params[:id])
+  end
+
+  def save
+    @user = current_user
+    recipe_save = RecipeSave.new({
+      recipe_id: params[:recipe_id],
+      user_id: @user.id
+    })
+
+    if recipe_save.save
+      render 'api/users/show'
+    else
+      render json: recipe_save.errors.full_messages, status: 422
+    end
+
+  end
+
+  def unsave
+    @user = current_user
+    recipe_save = RecipeSave.find_by({
+      recipe_id: params[:recipe_id],
+      user_id: @user.id
+    })
+
+    if recipe_save && recipe_save.destroy
+      render 'api/users/show'
+    else
+      render json: ['No recipe save found to delete'], status: 422
+    end
+  end
+  
+end
+```
+
+For the Recipe Show page, jBuilder is used to shape the JSON response back to the front end so that it can easily be processed into the relevant slices of Redux state:
+
+```Ruby
+# views/recipes/show.jbuilder
+json.set! :recipe do
+  json.partial! 'api/recipes/recipe', recipe: @recipe
+  json.ingredientIds @recipe.ingredients.ids
+  json.prep_steps @recipe.prep_steps.order(:step).ids
+end
+
+json.set! :ingredients do
+  @recipe.ingredients.each do |ingredient|
+    json.set! ingredient.id do
+      json.extract! ingredient, :recipe_id, :quantity, :description
+    end
+  end
+end
+
+json.set! :prepSteps do
+  @recipe.prep_steps.each do |prep_step|
+    json.set! prep_step.id do
+      json.extract! prep_step, :recipe_id, :step, :description
+    end
+  end
+end
+
+json.set! :comments do
+  @recipe.comments.each do |comment|
+    json.set! comment.id do
+      json.extract! comment, :id, :user_id, :body, :created_at
+      json.nickname comment.user.nickname
+      json.avatarUrl url_for(comment.user.avatar)
+    end
+  end
+end
+
+json.set! :ratings do
+  @recipe.ratings.each do |rating|
+    json.set! rating.id do
+      json.extract! rating, :id, :user_id, :star_rating
+    end
+  end
 end
 ```
 
